@@ -16,9 +16,7 @@ from openedx.core.djangolib.markup import HTML, Text
 from branding import api as branding_api
 from openedx.core.djangoapps.lang_pref.api import header_language_selector_is_enabled, released_languages
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
-%>
-<%
-theme = configuration_helpers.get_value('theme', '')
+
 %>
 
 ## Provide a hook for themes to inject branding on top.
@@ -36,11 +34,6 @@ theme = configuration_helpers.get_value('theme', '')
 <%
   unsupported_browser_alert_versions = configuration_helpers.get_value('UNSUPPORTED_BROWSER_ALERT_VERSIONS', settings.FEATURES.get('UNSUPPORTED_BROWSER_ALERT_VERSIONS'))
 %>
-
-% if configuration_helpers.get_value('GOOGLE_TAG_MANAGER_SNIPPET'):
-    ${configuration_helpers.get_value('GOOGLE_TAG_MANAGER_SNIPPET') | n}
-% endif
-
 % if waffle.switch_is_active('enable_unsupported_browser_alert'):
   <script>
     var $buoop = {
@@ -58,15 +51,11 @@ theme = configuration_helpers.get_value('theme', '')
   </script>
 % endif
 
-% if theme:
-<header class="global-header ${'slim' if course else ''} ${theme}-header">
-% else:
 <header class="global-header ${'slim' if course else ''}">
-% endif
     % if use_cookie_banner:
         ${static.renderReact(
             component="CookiePolicyBanner",
-            id="cookie-policy-banner",
+            id="frontend-component-cookie-policy-banner",
             props={}
         )}
     % endif
@@ -92,8 +81,8 @@ theme = configuration_helpers.get_value('theme', '')
 <div class="ie-banner" aria-hidden="true">${Text(_('{begin_strong}Warning:{end_strong} Your browser is not fully supported. We strongly recommend using {chrome_link} or {ff_link}.')).format(
     begin_strong=HTML('<strong>'),
     end_strong=HTML('</strong>'),
-    chrome_link=HTML('<a href="https://www.google.com/chrome" target="_blank">Chrome</a>'),
-    ff_link=HTML('<a href="http://www.mozilla.org/firefox" target="_blank">Firefox</a>'),
+    chrome_link=HTML('<a href="https://www.google.com/chrome" rel="noopener" target="_blank">Chrome</a>'),
+    ff_link=HTML('<a href="http://www.mozilla.org/firefox" rel="noopener" target="_blank">Firefox</a>'),
 )}</div>
 <![endif]-->
 % endif
@@ -126,5 +115,3 @@ theme = configuration_helpers.get_value('theme', '')
         </form>
     % endif
 % endif
-
-<%include file="../help_modal.html"/>

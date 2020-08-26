@@ -6,22 +6,11 @@ from django.utils.translation import ugettext as _
 from django.urls import reverse
 
 from openedx.core.djangolib.markup import HTML, Text
-from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 %>
-<%
-search_courses_home = configuration_helpers.get_value('search_courses_home', '')
-support_mobile_banner = configuration_helpers.get_value('support_mobile_banner', '')
-quick_filters_home = configuration_helpers.get_value('quick_filters_home', [])
-home_page_title = configuration_helpers.get_value('home_page_title', 'Welcome')
-home_page_subtitle = configuration_helpers.get_value('home_page_subtitle', 'We think you might be interested in these programs')
-banner_image_url = configuration_helpers.get_value('banner_image_url', '/static/pearson-pols-theme/images/banner-pols.jpg')
-theme = configuration_helpers.get_value('theme', '')
-%>
-
 
 <main id="main" aria-label="Content" tabindex="-1">
-    <section class="home ${theme}">
-   <!--   <header>
+    <section class="home">
+      <header>
         <div class="outer-wrapper">
           <div class="title">
             <div class="heading-group">
@@ -46,96 +35,14 @@ theme = configuration_helpers.get_value('theme', '')
 
           </div>
 
-          <%include file="index_promo_video.html" /> 
+          <%include file="index_promo_video.html" />
         </div>
 
-      </header> -->
-      <section class="home-banner">
-          <header class="banner ${configuration_helpers.get_value('site_title_box_class', ' ')}" >
-
-          <img style="width:100%" src="${static.url(configuration_helpers.get_value('banner_image_url', '/static/pearson-pols-theme/images/banner-pols.jpg'))}" />
-            </header>
-             <h1 class="default"  style="color: #041e42">
-<br><br>
-
-                <span style="color: #041e42">
-                  ${home_page_title}
-                </span>
-<br><br>
-                <p  style="color: #041e42">
-                  ${home_page_subtitle}
-                </p>
-
-             </h1>
-          
-        </section>
-
-        %if search_courses_home:
-          <div class="course-search-home">
-            <label><span >${_("Search for a course")}</span></label>
-            <div class="search-home-container">
-              <input id="search-input" type="text" placeholder="${_("Search for a course")}"></input>
-              <span class="icon fa fa-remove clear-search-icon"></span>
-            </div>
-            
-            %if quick_filters_home:
-              <div class="quick-filters-home">
-                <div class="quick-filter-label">${_("Quick Filters:")}</div>
-                <ul>
-                  %for filter_item in quick_filters_home:
-                    <li class="quick-filter-item">${filter_item}</li>
-                  %endfor
-                </ul>  
-              </div>
-            %endif
-          </div>
-        %endif
-
+      </header>
       <%include file="${courses_list}" />
-
-    %if support_mobile_banner:
-
-        <div class="container no-border">
-          <div class="grid">
-            <div class="items">
-              <div>
-                <h1>${_("Access courses on the go")}</h1>
-
-                <p>${_("Download the app and access your courses wherever you are. Sync videos to your device and watch offline, at a time that suits you.")}</p>
-
-                % if False:
-                  <p><strong>Coming soon</strong></p>
-                % else:
-                  <div class="btn-center">
-                    <ul>
-                      <li>
-                        <a href="${configuration_helpers.get_value('ios_app_url', 'https://itunes.apple.com/us/app/')}" target="_blank">
-                          <img src="${static.url('images/appstore.png')}" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="${configuration_helpers.get_value('android_app_url', 'https://play.google.com/store/apps/')}" target="_blank">
-                          <img src="${static.url('images/playstore.png')}" />
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                % endif
-              </div>
-            </div>
-
-            <div class="items hidden-xs">
-              <img src="${static.url('images/app.gif')}" class="img-responsive pull-right" />
-            </div>
-          </div>
-        </div>
-    %endif
-
 
     </section>
 </main>
-
-
 
 % if show_homepage_promo_video:
   <section id="video-modal" class="modal home-page-video-modal video-modal">
@@ -162,57 +69,3 @@ theme = configuration_helpers.get_value('theme', '')
   $(window).load(function() {$('#signup_action').trigger("click");});
 </script>
 % endif
-
-%if search_courses_home:
-  <script type="text/javascript">
-    var searchHome = (function() {
-      'use strict';
-
-      var inputField, coursesList, filters, iconClear, valueInput, textCourse;
-
-      function initElements() {
-        inputField = $("#search-input");
-        coursesList = $(".courses-listing li");
-        filters = $(".quick-filter-item");
-        iconClear = $(".clear-search-icon");
-      }
-
-      function eventSearch() {
-        inputField.on("input", function() {
-          valueInput = $(this).val().toLowerCase();
-          coursesList.filter(function(){
-            textCourse = $(this).text().toLowerCase();
-            $(this).toggle(textCourse.indexOf(valueInput) > -1);
-          });
-        });
-      } 
-
-      function eventFilters() {
-        filters.on("click", function() {
-          inputField.val($(this).text()).trigger("input");  
-        });
-      }
-
-      function clearSearch() {
-        iconClear.on("click", function() {
-          inputField.val("").trigger("input");
-        });
-      }
-
-      return {
-        initElements: initElements,
-        eventSearch: eventSearch,
-        eventFilters: eventFilters,
-        clearSearch: clearSearch
-      };
-    }());
-
-    $(window).load(function() {
-      searchHome.initElements();
-      searchHome.eventSearch();
-      searchHome.eventFilters();
-      searchHome.clearSearch();
-    });
-
-  </script>
-%endif
