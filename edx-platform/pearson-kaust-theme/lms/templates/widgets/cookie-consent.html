@@ -1,7 +1,7 @@
 <!-- Cookie Consent -->
 <%page expression_filter="h"/>
 <%! from django.utils.translation import ugettext as _ %>
-<%namespace name='static' file='/../static_content.html'/>
+<%namespace name='static' file='../static_content.html'/>
  
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.css" />
 <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.1/cookieconsent.min.js"></script>
@@ -13,8 +13,8 @@ window.addEventListener("load", function(){
     window: '<div dir="${static.dir_rtl()}" role="dialog" tabindex="-1" id="cookiepopup" aria-label="cookieconsent" class="cc-window {{classes}}"><!--googleoff: all-->{{children}}<!--googleon: all--></div>',
 
     palette:{
-      popup: {background: "#EE2E24", text: "#ffffff"},
-      button: {background: "#F78F1E", text: "#ffffff"},
+      popup: {background: "#323538", text: "#ffffff"},
+      button: {background: "#005379", text: "#ffffff"},
     },
     "content": {
       "message": "${_('This website uses cookies to ensure you get the best experience on our website. If you continue browsing this site, we understand that you accept the use of cookies.')}",
