@@ -17,9 +17,7 @@ from six import text_type
     <div class="course-info" aria-hidden="true">
       <h2 class="course-name">
         <span class="course-organization">${course.display_org_with_default}</span>
-        % if course.display_number_with_default != course.display_name_with_default:
         <span class="course-code">${course.display_number_with_default}</span>
-        % endif
         <span class="course-title">${course.display_name_with_default}</span>
       </h2>
       <%
@@ -31,7 +29,7 @@ from six import text_type
       % if course.advertised_start is not None:
           <div class="course-date" aria-hidden="true">${_("Starts")}: ${course.advertised_start}</div>
       % else:
-          <div class="course-date localized_datetime" aria-hidden="true" data-format="shortDate" data-datetime="${course_date_string}" data-string="${_("Starts: {date}")}"></div>
+          <div class="course-date localized_datetime" aria-hidden="true" data-format="shortDate" data-datetime="${course_date_string}" data-language="${LANGUAGE_CODE}" data-string="${_("Starts: {date}")}"></div>
       % endif
     </div>
     <div class="sr">
@@ -41,7 +39,7 @@ from six import text_type
         % if course.advertised_start is not None:
             <li>${_("Starts")}: <time itemprop="startDate">${course.advertised_start}</time></li>
         % else:
-            <li>${_("Starts")}: <time class="localized_datetime" itemprop="startDate" data-format="shortDate" data-datetime="${course_date_string}"></time></li>
+            <li>${_("Starts")}: <time class="localized_datetime" itemprop="startDate" data-format="shortDate" data-datetime="${course_date_string}" data-language="${LANGUAGE_CODE}"></time></li>
         % endif
       </ul>
     </div>
