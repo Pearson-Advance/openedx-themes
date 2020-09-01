@@ -51,6 +51,10 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
   </script>
 % endif
 
+% if configuration_helpers.get_value('GOOGLE_TAG_MANAGER_SNIPPET'):
+    ${configuration_helpers.get_value('GOOGLE_TAG_MANAGER_SNIPPET') | n}
+% endif
+
 <header class="global-header ${'slim' if course else ''}">
     % if use_cookie_banner:
         ${static.renderReact(
