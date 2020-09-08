@@ -19,7 +19,7 @@ from openedx.core.djangolib.markup import HTML, Text
       <div class="col-md-12 col-xs-12">
         <button type="button" class="btn btn-default pull-right print">${_("Print Terms of Use")}</button>
 
-        % if user.is_authenticated():
+        % if user.is_authenticated:
 
         <h2>${_("End User License Agreement")}</h2>
         <p><strong><em>${_("PLEASE READ THE FOLLOWING CAREFULLY")}</em></strong></p>
