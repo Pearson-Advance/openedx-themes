@@ -18,6 +18,9 @@ from openedx.core.djangoapps.lang_pref.api import header_language_selector_is_en
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 
 %>
+<%
+theme = configuration_helpers.get_value('theme', '')
+%>
 
 ## Provide a hook for themes to inject branding on top.
 <%block name="navigation_top" />
@@ -51,7 +54,11 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
   </script>
 % endif
 
-<header class="global-header ${'slim' if course else ''}">
+% if theme:
+    <header class="global-header ${'slim' if course else ''} ${theme}-header">
+% else:
+    <header class="global-header ${'slim' if course else ''}">
+% endif
     % if use_cookie_banner:
         ${static.renderReact(
             component="CookiePolicyBanner",
