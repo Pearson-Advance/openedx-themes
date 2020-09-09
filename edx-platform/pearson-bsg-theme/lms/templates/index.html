@@ -6,39 +6,26 @@ from django.utils.translation import ugettext as _
 from django.urls import reverse
 
 from openedx.core.djangolib.markup import HTML, Text
+from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 %>
-
 <main id="main" aria-label="Content" tabindex="-1">
     <section class="home">
-      <header>
-        <div class="outer-wrapper">
-          <div class="title">
-            <div class="heading-group">
-              % if homepage_overlay_html:
-                ${homepage_overlay_html | n, decode.utf8}
-              % else:
-                <%include file="index_overlay.html" />
-              % endif
-            </div>
-            % if settings.FEATURES.get('ENABLE_COURSE_DISCOVERY'):
-              <div class="course-search">
-                <form method="get" action="/courses">
-                  <label><span class="sr">${_("Search for a course")}</span>
-                    <input class="search-input" name="search_query" type="text" placeholder="${_("Search for a course")}"></input>
-                  </label>
-                  <button class="search-button" type="submit">
-                    <span class="icon fa fa-search" aria-hidden="true"></span><span class="sr">${_("Search")}</span>
-                  </button>
-                </form>
-              </div>
-            % endif
+      <section class="home-banner">
+        <header class="banner ${configuration_helpers.get_value('site_title_box_class', ' ')}" >
 
-          </div>
-
-          <%include file="index_promo_video.html" />
-        </div>
-
-      </header>
+          <img src="${static.url(configuration_helpers.get_value('banner_image_url', '/static/pearson-pols-theme/images/banner-pols.jpg'))}" />
+        </header>
+        <h1 class="default">
+          <br><br>
+          <span>
+            ${configuration_helpers.get_value('home_page_title', 'Welcome')}
+          </span>
+          <br><br>
+          <p>
+            ${configuration_helpers.get_value('home_page_subtitle', 'We think you might be interested in these programs')}
+          </p>
+        </h1>
+      </section>
       <%include file="${courses_list}" />
 
     </section>
