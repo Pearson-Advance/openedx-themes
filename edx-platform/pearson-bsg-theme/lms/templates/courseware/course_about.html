@@ -86,6 +86,8 @@ from six import string_types
             </a>
           %endif
 
+        %elif course.other_course_settings.get("pay_now_link"):
+          <a href="${course.other_course_settings.get("pay_now_link")}" class="btn pay-now-button">${_("Buy Now")}</a>
         % elif is_course_full:
           <span class="register disabled">
             ${_("Course is full")}
