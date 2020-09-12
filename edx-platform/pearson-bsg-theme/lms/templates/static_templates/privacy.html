@@ -74,7 +74,7 @@ from openedx.core.djangolib.markup import HTML, Text
         <p>${_("We will not allow unrelated third parties to use your personal information for marketing without your consent. Where we rely on your consent, you have the right to withdraw it at any time.&nbsp;")}</p>
         <p>${_("We also use personal information to identify types of user, audit how our sites are used and to help with the strategic development of our sites. When doing so, we remove any direct identifiers.&nbsp;")}</p>
 
-        % if user.is_authenticated():
+        % if user.is_authenticated:
 
             <p>${_("We will show your username on any content you submit or post on our sites (including discussions, bulletin boards and forums).")}</p>
 
