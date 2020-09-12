@@ -121,6 +121,10 @@ header.banner {
   min-height: 10vh;
   overflow: hidden;
   max-height: 300px;
+
+  img {
+    width: 100%;
+  }
 }
 
   .vue {
