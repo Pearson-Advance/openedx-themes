@@ -1,8 +1,18 @@
 <%page expression_filter="h"/>
 <%namespace name='static' file='static_content.html'/>
 <%! from django.utils.translation import ugettext as _ %>
+<%!
+from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
+%>
+<%
+theme = configuration_helpers.get_value('theme', '')
+%>
 
+% if theme:
+<section class="courses-container ${theme}-container">
+%else:
 <section class="courses-container">
+%endif
   <section class="highlighted-courses">
 
     % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
