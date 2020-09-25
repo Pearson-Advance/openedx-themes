@@ -6,13 +6,14 @@ from django.utils.translation import ugettext as _
 from django.urls import reverse
 
 from openedx.core.djangolib.markup import HTML, Text
+from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 %>
 
 <main id="main" aria-label="Content" tabindex="-1">
     <section class="home">
       <header>
         <div class="outer-wrapper">
-          <div class="title">
+          <div class="title ${configuration_helpers.get_value('theme', '')}">
             <div class="heading-group">
               % if homepage_overlay_html:
                 ${homepage_overlay_html | n, decode.utf8}
