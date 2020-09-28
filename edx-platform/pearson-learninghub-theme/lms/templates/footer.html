@@ -15,7 +15,11 @@ theme = configuration_helpers.get_value('theme', '')
 <% icp_license_info = getattr(settings, 'ICP_LICENSE_INFO', {})%>
 <%namespace name='static' file='static_content.html'/>
 
-<div class="wrapper wrapper-footer">
+% if theme:
+  <div class="wrapper wrapper-footer ${theme}-footer">
+% else:
+  <div class="wrapper wrapper-footer">
+% endif
   <footer id="footer-openedx" class="grid-container"
   ## When rendering the footer through the branding API,
   ## the direction may not be set on the parent element,
