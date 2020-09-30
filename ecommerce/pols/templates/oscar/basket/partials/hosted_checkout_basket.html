@@ -5,7 +5,7 @@
 {% load widget_tweaks %}
 
 {% if not is_bulk_purchase %}
-    {% include 'partials/alert_messages.html' %}
+    {% include 'oscar/partials/alert_messages.html' %}
 {% endif %}
 <div id="order-summary">
 <div id="content-inner">
@@ -127,7 +127,7 @@
                                     <p id="voucher_form_link">
                                         <a href="#voucher">{% trans "Promotional Code" %}</a>
                                     </p>
-                                    {% include 'basket/partials/add_voucher_form.html' %}
+                                    {% include 'oscar/basket/partials/add_voucher_form.html' %}
                                 </div>
                             {% endif %}
                         {% endif %}
