@@ -1,0 +1,78 @@
+## mako
+
+<%page expression_filter="h" args="online_help_token"/>
+
+<%namespace name='static' file='/static_content.html'/>
+
+## This template should not use the target student's details when masquerading, see TNL-4895
+<%
+self.real_user = getattr(user, 'real_user', user)
+username = self.real_user.username
+%>
+
+<%!
+from django.urls import reverse
+from django.utils.translation import ugettext as _
+from lms.djangoapps.ccx.overrides import get_current_ccx
+from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
+
+# App that handles subdomain specific branding
+from branding import api as branding_api
+from openedx.core.djangoapps.lang_pref.api import header_language_selector_is_enabled, released_languages
+%>
+
+<nav class="navbar navbar-default container-fluid">
+  <a href="${branding_api.get_home_url()}">
+    <%block name="navigation_logo">
+      <img class="img-fluid" src="${branding_api.get_logo_url(is_secure)}" alt="${_("{platform_name} Home Page").format(platform_name=static.get_platform_name())}"/>
+    </%block>
+  </a>
+
+  <ul class="navbar-right">
+    <% languages = released_languages() %>
+    % if header_language_selector_is_enabled() and len(languages) > 1:
+      <li>
+        <div class="dropdown-options">
+          <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <span id="navBarSelectedLanguage"></span>
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" id="navBarLanguageSelector" aria-labelledby="languageSelector">
+            % for language in languages:
+              % if language[0] == LANGUAGE_CODE:
+                <li class="selected"><a href="#" type="submit" value="${language[0]}" id="lang-${language[0]}">${language[1]}</a></li>
+              % else:
+                <li><a href="#" type="submit" value="${language[0]}" id="lang-${language[0]}">${language[1]}</a></li>
+              % endif
+            % endfor
+          </ul>
+        </div>
+      </li>
+    % endif
+
+    % if user.is_authenticated:
+      <li class="">
+        Hi, ${username}
+      </li>
+    % endif
+
+    <li>
+      <button class="navbar-toggle navbar-light btn-default" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </li>
+  </ul>
+</nav>
+
+<div class="navbar-content">
+  <div>
+    <a href="#" class="navbar-content-close-btn">&times;</a>
+    <h2 class="navbar-title">${_("Menu")}</h2>
+
+    % if user.is_authenticated:
+      <%include file="navbar-authenticated.html" args="online_help_token=online_help_token"/>
+    % else:
+      <%include file="navbar-not-authenticated.html" args="online_help_token=online_help_token"/>
+    % endif
+  </div>
+</div>
