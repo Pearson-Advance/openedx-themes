@@ -42,16 +42,16 @@ from util.course import get_link_for_about_page, get_encoded_course_sharing_utm_
 
 % if display_course_modes_on_dashboard:
   <%
-  course_verified_certs = enrollment_mode_display(
-  enrollment.mode,
-  verification_status.get('status'),
-  course_overview.id
-  )
+    course_verified_certs = enrollment_mode_display(
+      enrollment.mode,
+      verification_status.get('status'),
+      course_overview.id
+    )
   %>
   <%
-  mode_class = course_verified_certs.get('display_mode', '')
-  if mode_class:
-    mode_class = ' ' + mode_class ;
+    mode_class = course_verified_certs.get('display_mode', '')
+    if mode_class:
+      mode_class = ' ' + mode_class ;
   %>
 % else:
   <% mode_class = '' %>
