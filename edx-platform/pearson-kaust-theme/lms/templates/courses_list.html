@@ -1,73 +1,24 @@
 <%page expression_filter="h"/>
-<%namespace name='static' file='/static_content.html'/>
+<%namespace name='static' file='static_content.html'/>
 <%! from django.utils.translation import ugettext as _ %>
 
-% if courses:
-  <section role="highlight">
-    <div class="container no-border">
-      % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
-      <div id="carousel-desktop" class="carousel slide d-none d-md-block" data-interval="false" data-ride="carousel">
-        <div class="carousel-inner" role="listbox">
-          % for index, car_courses in enumerate(carousel_courses):
-            % if index == 0:
-              <div class="item active">
-                <div class="grid">
-                  <div class="item">
-                    % for course in car_courses:
-                      <%include file="course.html" args="course=course" />
-                    % endfor
-                  </div>
-                </div>
-              </div>
-            % else:
-              <div class="item">
-                <div class="grid">
-                  <div class="item">
-                    % for course in car_courses:
-                      <%include file="course.html" args="course=course" />
-                    % endfor
-                  </div>
-                </div>
-              </div>
-            % endif
-          % endfor
-
-          ## in case there are courses that are not shown on the homepage, a 'View all Courses' link should appear
-          % if homepage_course_max and len(courses) > homepage_course_max:
-            <div class="item active">
-              <a class="courses-more-cta" href="${marketing_link('COURSES')}"> ${_("View all Courses")} </a>
-            </div>
-          % endif
+<section role="explore">
+<div class="container no-border">
+    % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
+      <section class="grid">
+        <div class=" item">
+          ## limiting the course number by using HOMEPAGE_COURSE_MAX as the maximum number of courses
+          %for course in courses[:homepage_course_max]:
+              <%include file="course.html" args="course=course" />
+        %endfor
         </div>
+      </section>
+    ## in case there are courses that are not shown on the homepage, a 'View all Courses' link should appear
+      % if homepage_course_max and len(courses) > homepage_course_max:
+      <div class="courses-more">
+        <a class="courses-more-cta" href="${marketing_link('COURSES')}"> ${_("View all Courses")} </a>
       </div>
-      % endif
-
-      % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
-      <div id="carousel-mobile" class="carousel slide d-sm-block d-md-none" data-interval="false" data-ride="carousel">
-        <div class="carousel-inner" role="listbox">
-          % for index, course in enumerate(courses):
-            % if index == 0:
-              <div class="carousel-item active">
-                  <%include file="course.html" args="course=course" />
-              </div>
-            % else:
-              <div class="carousel-item">
-                  <%include file="course.html" args="course=course" />
-              </div>
-            % endif
-          % endfor
-        </div>
-        <ol class="carousel-indicators">
-          % for index, course in enumerate(courses):
-            % if index == 0:
-              <li data-target="#carousel-mobile" data-slide-to="${index}" class="active"></li>
-            % else:
-              <li data-target="#carousel-mobile" data-slide-to="${index}"></li>
-            % endif
-          % endfor
-        </ol>
-      </div>
-      % endif
-    </div>
-  </section>
-% endif
+    % endif
+    % endif
+</div>
+</section>
