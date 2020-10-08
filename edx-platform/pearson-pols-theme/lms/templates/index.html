@@ -16,7 +16,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
 
           <img style="width:100%" src="${static.url(configuration_helpers.get_value('banner_image_url', '/static/pearson-pols-theme/images/banner-pols.jpg'))}" />
             </header>
-             <h1 class="title configuration_helpers.get_value('theme', '')">
+             <h1 class="title ${configuration_helpers.get_value('theme', '')}">
                 <span class="title-super">
                   ${configuration_helpers.get_value('home_page_title', 'Welcome')}
                 </span>
