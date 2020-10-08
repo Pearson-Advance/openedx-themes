@@ -3018,11 +3018,16 @@ p.hd-6 {
   font-size: 14px;
 }
 
-.course-outline .block-tree .section ol.outline-item .subsection a.outline-item {
+.course-outline .block-tree .section ol.outline-item .subsection a.outline-button {
   &:hover, &:focus {
     background-color: #6292ff;
     color: #333;
   }
+}
+
+a.outline-button:hover .subsection-title,
+.course-outline .block-tree .outline-button:hover .fa {
+  color: #333
 }
 
 .hd-1, .hd-2, .hd-3, .hd-4, .hd-5, .hd-6, .hd-7, .hd-8 {
@@ -4737,9 +4742,11 @@ div.info-wrapper section.handouts a {
 }
 
 .instructor-dashboard-content-2 .instructor-nav .nav-item .btn-link {
+  color: $inverse;
+
   &.active-section {
-    border-bottom: 3px solid $primary;
-    color: $primary;
+    border-bottom: 3px solid $inverse;
+    color: $inverse;
 
     &:hover, &:focus {
       background: none;
@@ -4764,6 +4771,19 @@ p a:not(.btn) {
 body.view-in-course {
   .wiki-wrapper, .instructor-dashboard-wrapper-2 {
     padding: 0 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .wiki-wrapper section.wiki .article-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .main-article,
+    .article-functions {
+      width: 100%;
+    }
   }
 }
 
@@ -4940,6 +4960,12 @@ textarea[name="specific_learners"] {
 
 .profile-self .wrapper-profile-field-account-privacy .u-field-account_privacy {
   max-width: 1920px !important;
+}
+
+@media (max-width: 576px) {
+  .account-settings-sections .section .account-settings-section-body .u-field-social {
+    width: 100%;
+  }
 }
 
 .view-profile .profile-self .wrapper-profile-field-account-privacy {

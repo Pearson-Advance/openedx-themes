@@ -3,6 +3,7 @@
 .navbar-right {
   align-items: center;
   display: flex;
+  list-style: none;
 }
 
 .navbar {
@@ -29,10 +30,13 @@
     -webkit-transition: all 0.3s;
     -o-transition: all 0.3s;
     transition: all 0.3s;
+    background: transparent;
+    cursor: pointer;
 
     &:hover, &:focus {
       background: none;
       border: none !important;
+      box-shadow: none;
     }
 
     &:hover .icon-bar, &:focus .icon-bar {
