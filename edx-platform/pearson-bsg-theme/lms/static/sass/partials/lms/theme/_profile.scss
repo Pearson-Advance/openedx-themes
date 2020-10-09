@@ -25,3 +25,9 @@
 .view-profile div.wrapper-profile {
   min-height: 442px;
 }
+
+@media (max-width: 576px) {
+  .account-settings-sections .section .account-settings-section-body .u-field-social {
+    width: 100%;
+  }
+}
