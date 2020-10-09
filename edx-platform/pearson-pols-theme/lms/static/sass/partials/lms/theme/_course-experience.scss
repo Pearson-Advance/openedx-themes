@@ -27,7 +27,8 @@
           }
 
           .subsection-text:hover {
-            .subsection-title {
+            .subsection-title,
+            .details {
               color: $inverse;
             }
 

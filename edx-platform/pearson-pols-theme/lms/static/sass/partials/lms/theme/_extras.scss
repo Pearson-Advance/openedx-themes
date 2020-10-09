@@ -83,7 +83,8 @@ button:hover:not(:disabled),
 .lti-link .link_lti_new_window:hover:not(:disabled),
 input[type="submit"].btn-blue:hover:not(:disabled),
 input.btn-blue:hover:not(:disabled),
-button.btn-blue:hover:not(:disabled) {
+button.btn-blue:hover:not(:disabled),
+.course-outline .block-tree .outline-button:hover {
   background: $primary;
   background-image: none;
 }

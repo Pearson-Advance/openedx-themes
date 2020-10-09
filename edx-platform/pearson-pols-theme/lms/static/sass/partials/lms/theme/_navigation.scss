@@ -8,24 +8,28 @@
   min-height: 70px;
 }
 
-.vue-header {
+.vue-header.global-header {
   background-color: $vue-header-footer !important;
   border: none;
-  color: $vue-btn-text; 
+  color: $vue-btn-text;
 
-      @media (min-width: 992px) {
-          .tab-nav-link {
-              color: $vue-btn-text !important;
-           }    
-      }
+  @media (min-width: 992px) {
+    .tab-nav-link {
+      color: $vue-btn-text !important;
+    }
+  }
 
-      .nav-links .secondary .nav-item a {
-        color: $vue-btn-text;
-      }
+  .nav-links .secondary .nav-item a {
+    color: $vue-btn-text;
+  }
 
-      .nav-links .secondary .dropdown-user-menu .dropdown-item a {
-         color: $vue-dark ;
-      }
+  .nav-links .secondary .dropdown-user-menu .dropdown-item a {
+    color: $vue-dark ;
+  }
+
+  .header-logo .course-header {
+    color: $white;
+  }
 }
 
 .apprenticeships-header {
