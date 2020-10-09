@@ -153,7 +153,8 @@ section.intro div.main-cta a strong {
     }
   }
 
-  .course-info .container .course-sidebar {
+  .course-info .container .course-sidebar,
+  .course-info .container .details {
     width: 100%;
   }
 }
@@ -191,8 +192,8 @@ section.updates div .updates-article {
   background: $background-color-info;
 }
 
-.course-outline .block-tree .section ol.outline-item .subsection a.outline-item:hover,
-.course-outline .block-tree .section ol.outline-item .subsection a.outline-item:focus {
+.course-outline .block-tree .section ol.outline-item .subsection a.outline-button:hover,
+.course-outline .block-tree .section ol.outline-item .subsection a.outline-button:focus {
   background-color: $primary;
   color: $inverse;
 }
@@ -574,6 +575,18 @@ div.form-actions a.btn.btn-large.back {
   font-size: 0.8em;
 }
 
+@media (max-width: 576px) {
+  .wiki-wrapper section.wiki .article-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .main-article,
+    .article-functions {
+      width: 100%;
+    }
+  }
+}
 
 //instructor-certificates
 .instructor-dashboard-wrapper-2
