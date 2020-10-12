@@ -17109,3 +17109,51 @@ iframe {
 .login-register .form-field label.focus-out[for="register-username"] {
     position: inherit;
 }
+
+.item .course-caption .dropdown-options .actions-dropdown {
+    display: none;
+    position: absolute;
+    top: 35px;
+    left: 5px;
+    pointer-events: none;
+    min-width: 140px;
+}
+
+.course-caption .dropdown-options .actions-dropdown.is-visible {
+    display: block;
+    pointer-events: auto;
+}
+
+.course-caption .dropdown-options .actions-dropdown.is-visible .actions-dropdown-list {
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    width: 97%;
+    border-radius: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 14px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+}
+
+.course-caption .actions-dropdown-list li a {
+    color: #000;
+    display: block;
+    padding: 5px 0;
+}
+
+.course-caption .actions-dropdown-list li:hover{
+    background: #6a6d6d;
+}
+
+.course-caption .actions-dropdown-list li:hover a,
+.course-caption .actions-dropdown-list li:focus a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#unenroll-modal .inner-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+}
