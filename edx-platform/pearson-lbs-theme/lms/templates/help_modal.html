@@ -60,7 +60,7 @@ from xmodule.tabs import CourseTabList
                                 <textarea name="details" id="feedback_form_details" required aria-describedby="feedback_form_details_tip"></textarea>
                                 <input name="issue_type" type="hidden">
                             % if course:
-                                <input name="course_id" type="hidden" value="${unicode(course.id)}">
+                                <input name="course_id" type="hidden" value="${str(course.id)}">
                             % endif
 
                           <div class="submit">
@@ -100,7 +100,7 @@ from xmodule.tabs import CourseTabList
                                 <textarea name="details" id="feedback_form_details" required aria-describedby="feedback_form_details_tip"></textarea>
                                 <input name="issue_type" type="hidden">
                             % if course:
-                                <input name="course_id" type="hidden" value="${unicode(course.id)}">
+                                <input name="course_id" type="hidden" value="${str(course.id)}">
                             % endif
 
                           <div class="submit">
@@ -140,7 +140,7 @@ from xmodule.tabs import CourseTabList
                                 <textarea name="details" id="feedback_form_details" required aria-describedby="feedback_form_details_tip"></textarea>
                                 <input name="issue_type" type="hidden">
                             % if course:
-                                <input name="course_id" type="hidden" value="${unicode(course.id)}">
+                                <input name="course_id" type="hidden" value="${str(course.id)}">
                             % endif
 
                           <div class="submit">
@@ -303,7 +303,7 @@ var currentCourseId,
     % endif
 
     % if course:
-        currentCourseId = "${unicode(course.id) | n, js_escaped_string}";
+        currentCourseId = "${str(course.id) | n, js_escaped_string}";
     % endif
     DialogTabControls.setKeydownListener($helpModal, $closeButton);
 
