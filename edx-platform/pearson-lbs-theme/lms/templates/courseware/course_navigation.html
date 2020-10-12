@@ -4,7 +4,7 @@
 <%namespace name='static' file='/static_content.html'/>
 
 <%!
-from courseware.tabs import get_course_tab_list
+from lms.djangoapps.courseware.tabs import get_course_tab_list
 from django.conf import settings
 from django.urls import reverse
 from django.utils.translation import ugettext as _
@@ -35,10 +35,10 @@ if course is not None:
 
 % if disable_tabs is UNDEFINED or not disable_tabs:
     <%
-    tab_list = get_course_tab_list(request, course)
+    tab_list = get_course_tab_list(request.user, course)
     %>
     % if uses_bootstrap:
-        <nav class="navbar course-tabs pb-0 navbar-expand-lg">
+        <nav class="navbar course-tabs pb-0 navbar-expand-lg" aria-label="${_('Course')}">
             <ul class="navbar-nav mr-auto">
                 % for tab in tab_list:
                     <%
@@ -61,18 +61,16 @@ if course is not None:
             </ul>
         </nav>
     % else:
-        <div class="container no-border">
-            <nav class="${active_page} wrapper-course-material" aria-label="${_('Course Material')}">
-                <div class="course-material">
-                    <%
-                    tabs_tmpl = static.get_template_path('/courseware/tabs.html')
-                    %>
-                    <ol class="tabs course-tabs">
-                        <%include file="${tabs_tmpl}" args="tab_list=tab_list,active_page=active_page,default_tab=default_tab,tab_image=tab_image" />
-                        <%block name="extratabs" />
-                    </ol>
-                </div>
-            </nav>
-        </div>
+        <nav class="${active_page} wrapper-course-material" aria-label="${_('Course Material')}">
+            <div class="course-material">
+                <%
+                tabs_tmpl = static.get_template_path('/courseware/tabs.html')
+                %>
+                <ol class="tabs course-tabs">
+                    <%include file="${tabs_tmpl}" args="tab_list=tab_list,active_page=active_page,default_tab=default_tab,tab_image=tab_image" />
+                    <%block name="extratabs" />
+                </ol>
+            </div>
+        </nav>
     % endif
 %endif

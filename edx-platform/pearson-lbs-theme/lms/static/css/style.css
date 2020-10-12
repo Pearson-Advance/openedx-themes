@@ -13202,8 +13202,8 @@ p.hd-6 {
     font-size: 14px;
 }
 
-.course-outline .block-tree .section ol.outline-item .subsection a.outline-item:hover,
-.course-outline .block-tree .section ol.outline-item .subsection a.outline-item:focus {
+.course-outline .block-tree .section ol.outline-item .subsection a.outline-button:hover,
+.course-outline .block-tree .section ol.outline-item .subsection a.outline-button:focus {
     background-color: #6292ff;
     color: #333
 }
