@@ -1,5 +1,5 @@
 <%page expression_filter="h"/>
-<%namespace name='static' file='/static_content.html'/>
+<%namespace name='static' file='static_content.html'/>
 
 <%!
 from datetime import datetime
@@ -9,6 +9,7 @@ from django.utils.translation import ugettext as _
 from django.urls import reverse
 from openedx.core.djangolib.js_utils import js_escaped_string
 from openedx.core.djangolib.markup import HTML, Text
+from xmodule.tabs import CourseTabList
 %>
 
 <div id="supportModal" class="modal fade" tabindex="-1" role="dialog" aria-label="${_("{platform_name} Support").format(platform_name=static.get_platform_name())}">
@@ -59,7 +60,7 @@ from openedx.core.djangolib.markup import HTML, Text
                       <textarea name="details" id="feedback_form_details" required aria-describedby="feedback_form_details_tip"></textarea>
                       <input name="issue_type" type="hidden">
                     % if course:
-                      <input name="course_id" type="hidden" value="${unicode(course.id)}">
+                      <input name="course_id" type="hidden" value="${str(course.id)}">
                     % endif
 
                     <div class="submit">
@@ -96,7 +97,7 @@ from openedx.core.djangolib.markup import HTML, Text
                       <textarea name="details" id="feedback_form_details" required aria-describedby="feedback_form_details_tip"></textarea>
                       <input name="issue_type" type="hidden">
                     % if course:
-                      <input name="course_id" type="hidden" value="${unicode(course.id)}">
+                      <input name="course_id" type="hidden" value="${str(course.id)}">
                     % endif
 
                     <div class="submit">
@@ -133,7 +134,7 @@ from openedx.core.djangolib.markup import HTML, Text
                         <textarea name="details" id="feedback_form_details" required aria-describedby="feedback_form_details_tip"></textarea>
                         <input name="issue_type" type="hidden">
                     % if course:
-                        <input name="course_id" type="hidden" value="${unicode(course.id)}">
+                        <input name="course_id" type="hidden" value="${str(course.id)}">
                     % endif
 
                     <div class="submit">
@@ -185,7 +186,7 @@ from openedx.core.djangolib.markup import HTML, Text
 
 <script type="text/javascript">
 $(document).ready(function() {
-var currentCourseId,
+    var currentCourseId,
         courseOptions = [],
         userAuthenticated = false,
         courseOptionsLoadInProgress = false,
@@ -287,12 +288,12 @@ var currentCourseId,
     % endif
 
     % if course:
-        currentCourseId = "${unicode(course.id) | n, js_escaped_string}";
+        currentCourseId = "${str(course.id) | n, js_escaped_string}";
     % endif
     DialogTabControls.setKeydownListener($helpModal, $closeButton);
 
     $(".help-tab").click(function() {
-		if (userAuthenticated && !finishedLoadingCourseOptions && !courseOptionsLoadInProgress) {
+        if (userAuthenticated && !finishedLoadingCourseOptions && !courseOptionsLoadInProgress) {
             loadCourseOptions();
         }
         $helpModal.css("position", "absolute");
