@@ -11891,7 +11891,8 @@ section[role="maintenance"] .grid .company h2 {
     }
 }
 
-.grid .course {
+.grid .course,
+.content-wrapper .home-courses .container .grid .course {
     min-width: 20%;
     padding: 0;
     border: none
@@ -11904,7 +11905,17 @@ section[role="maintenance"] .grid .company h2 {
 
 @media (max-width: 768px) {
     .grid .course {
-        min-width: 50%
+        min-width: 50%;
+    }
+
+    .content-wrapper .home-courses .container .grid .course,
+    .home-courses .img-responsive {
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+    .home-courses .grid {
+        margin: 15px;
     }
 }
 
@@ -11914,7 +11925,8 @@ section[role="maintenance"] .grid .company h2 {
     }
 }
 
-.grid .single-course {
+.grid .single-course,
+.content-wrapper .home-courses .container .grid .single-course {
     max-width: 22.5%
 }
 
@@ -12797,6 +12809,10 @@ body.view-in-course .container {
     margin: 0
 }
 
+.content-wrapper .home-courses {
+    background: #6a6d6d;
+}
+
 .wrapper-course-material .course-material,
 .wrapper-preview-menu .preview-menu {
     max-width: 1170px
@@ -12875,6 +12891,10 @@ body.view-in-course .container {
 
 .discussions-wrapper {
     list-style-type: none
+}
+
+section.discussion {
+  position: inherit;
 }
 
 .inline-topics {
