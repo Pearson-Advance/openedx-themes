@@ -491,7 +491,6 @@ section {
   &[role="explore"] {
     background: #e8e6e5;
     padding: 20px 0 30px;
-    min-height: 100vh;
     margin: 0 -20px;
 
     .container {
@@ -877,6 +876,10 @@ section {
       }
     }
   }
+}
+
+section.discussion {
+  position: inherit;
 }
 
 @media (max-width: 480px) {
@@ -3000,9 +3003,16 @@ ul.list-input {
   font-size: 14px;
 }
 
-.forum-search .search-input {
-  width: 60%;
-  margin: 0 auto;
+.forum-search {
+  .search-input {
+    width: 60%;
+    margin: 0 auto;
+  }
+
+  .field-label {
+    margin: 0;
+    padding-left: 20px;
+  }
 }
 
 .course-message {
