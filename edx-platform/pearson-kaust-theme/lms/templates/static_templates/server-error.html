@@ -8,7 +8,7 @@ from openedx.core.djangolib.markup import HTML, Text
 <%inherit file="../main.html" />
 
 <%def name="get_tech_support_link_address()"><%
-    return configuration_helpers.get_value('TECH_SUPPORT_LINK', settings.TECH_SUPPORT_LINK)
+    return configuration_helpers.get_value('TECH_SUPPORT_LINK', settings.SUPPORT_SITE_LINK)
 %></%def>
 
 <main id="main" aria-label="Content" tabindex="-1">
