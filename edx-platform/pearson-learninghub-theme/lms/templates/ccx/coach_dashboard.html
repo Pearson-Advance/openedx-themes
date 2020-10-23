@@ -49,7 +49,10 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
                   <input name="name" id="ccx_name" placeholder="${_('Name your CCX')}"/><br/>
                 </div>
                 <div class="field">
-                  <button id="create-ccx" type="submit">${_('Create a new Custom Course for edX')}</button>
+                  <button id="create-ccx" type="submit">${_('Create a course in {platform_name}'.format(
+                      platform_name=configuration_helpers.get_value('PLATFORM_NAME', ''),
+                    ))}
+                  </button>
                 </div>
               </form>
           </div>
