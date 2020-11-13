@@ -10014,8 +10014,10 @@ a:hover, a:focus {
 .btn-link:focus, .btn-link:hover {
   text-decoration: none; }
 
-.nav .nav-link:hover, .nav .nav-link:focus {
+.navbar-default .navbar-nav nav-link:hover, .navbar-default .navbar-nav nav-link:focus, .navbar-default .navbar-nav li > a:hover, .navbar-default .navbar-nav li > a:focus {
+  color: white;
   outline: inherit;
+  background-color: #337ab7;
   border-bottom-color: transparent; }
 
 .navbar {
@@ -10043,6 +10045,12 @@ a:hover, a:focus {
     display: inline-block;
     color: #0ea6ec;
     font-weight: 600; }
+  .navbar .navbar-toggle:hover, .navbar .navbar-toggle:focus {
+    color: white;
+    border-color: #337ab7;
+    background-color: #337ab7; }
+    .navbar .navbar-toggle:hover > .icon-bar, .navbar .navbar-toggle:focus > .icon-bar {
+      background-color: white; }
 
 .administration-navbar {
   padding: 10px;
@@ -11113,9 +11121,11 @@ i.fa {
     margin-bottom: 1.25rem; }
   .receipt .is-ready {
     background: #e8f6fc none repeat scroll 0 0; }
-  .receipt .nav-link {
+  .receipt .nav-link, .receipt a {
+    color: #0079bc;
+    border-bottom: none;
     text-decoration: none !important; }
-    .receipt .nav-link:active, .receipt .nav-link:hover, .receipt .nav-link:focus {
+    .receipt .nav-link:active, .receipt .nav-link:hover, .receipt .nav-link:focus, .receipt a:active, .receipt a:hover, .receipt a:focus {
       border-bottom: 1px dotted #0079bc; }
   .receipt .nav-wizard {
     padding: 15px 20px;
@@ -11359,6 +11369,8 @@ i.fa {
   border: none; }
   .navbar-brand .navbar-brand-logo {
     height: auto; }
+  .navbar-brand a:hover, .navbar-brand a:focus, .navbar-brand a:active {
+    border: none; }
 
 .navbar {
   border-bottom-color: #003057; }
@@ -11447,7 +11459,7 @@ i.fa {
   border-bottom: 4px solid #0ea6ec;
   color: black; }
 
-@media (min-width: 767px) {
+@media (min-width: 467px) {
   .navbar .user-menu {
     margin-top: 20px;
     margin-bottom: 20px; } }
@@ -11990,14 +12002,14 @@ p.use-voucher a {
   font-style: italic; }
 
 /* Small devices (tablets, 992px and lower) */
-@media (max-width: 991px) {
+@media (max-width: 467px) {
   .basket .container .basket-items .product-price-label {
     font-size: 20px;
     font-weight: bold;
     margin: 0px 20px 20px 0px; } }
 
 /* extra Small devices (phones, 768px and lower) */
-@media (max-width: 767px) {
+@media (max-width: 467px) {
   .basket .container .payment-buttons .payment-button {
     width: 100%;
     margin-bottom: 2px; }
@@ -12116,7 +12128,7 @@ p.use-voucher a {
     border-bottom: none; } }
 
 /* Medium devices (desktops, 992px and up) */
-@media (min-width: 480px) {
+@media (min-width: 467px) {
   .credit-checkout .payment-button {
     width: auto; } }
 
@@ -12699,11 +12711,7 @@ i.fa {
   background: #e8f6fc none repeat scroll 0 0; }
 
 .receipt .nav-link {
-  border-bottom: none;
   text-decoration: none !important; }
-
-.receipt .nav-link:active, .receipt .nav-link:hover, .receipt .nav-link:focus {
-  border-bottom: 1px dotted #0079bc; }
 
 .receipt .nav-wizard {
   padding: 15px 20px;
@@ -12747,7 +12755,7 @@ i.fa {
 
 .receipt h2 {
   margin-bottom: 10px;
- }
+  color: #0079bc; }
 
 .receipt p {
   margin: 0; }
@@ -13019,6 +13027,27 @@ i.fa {
 .navbar .user-menu {
   margin-top: 25px; }
 
+.receipt .dashboard-link, .receipt .nav-link {
+  padding: 15px 20px;
+  margin: 50px 0px;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #FFB81C;
+  font-size: 18px !important;
+  border: 2px solid #505759;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  color: #000000;
+  line-height:  16px !important; }
+
+.receipt .dashboard-link:hover, .receipt .nav-link:hover  {
+  border:  2px solid  #505759 !important; }
+
+.receipt .order-headers, .receipt h2, .receipt a {
+  color:   #007FA3 !important; }
+
 .element-invisible {
   position: absolute;
   overflow: hidden;
@@ -13124,9 +13153,6 @@ i.fa {
 
 .dropdown-menu .nav-link {
   transition: none; }
-
-.dropdown-menu .nav-link:hover, .dropdown-menu .nav-link:focus {
-  border-bottom-color: transparent; }
 
 html,
 body {
@@ -13660,7 +13686,7 @@ p.voucher_form_link a:hover {
     margin: 0px 20px 20px 0px; } }
 
 /* extra Small devices (phones, 768px and lower) */
-@media (max-width: 767px) {
+@media (max-width: 467px) {
   .basket .container .payment-buttons .payment-button {
     width: 100%;
     margin-bottom: 2px; }
@@ -13772,7 +13798,7 @@ p.voucher_form_link a:hover {
   margin-bottom: 5px; }
 
 /* Small devices (tablets, 768px and up) */
-@media (min-width: 768px) {
+@media (min-width: 468px) {
   .credit-checkout .payment-button {
     width: 49%; }
   .credit-checkout .course-details {
@@ -14058,12 +14084,12 @@ p.voucher_form_link a:hover {
   padding: 10px 0 0 0;
   box-shadow: 1px 1px 3px gray; }
 
-@media (min-width: 768px) {
+@media (min-width: 468px) {
   #offer .container .row .discount-multiple-courses .img-responsive {
     height: 150px;
     width: 100%; } }
 
-@media (max-width: 767px) {
+@media (max-width: 467px) {
   #offer .container .row .discount-multiple-courses .img-responsive {
     min-height: 150px;
     width: 100%; } }
@@ -14362,11 +14388,7 @@ i.fa {
   background: #e8f6fc none repeat scroll 0 0; }
 
 .receipt .nav-link {
-  border-bottom: none;
   text-decoration: none !important; }
-
-.receipt .nav-link:active, .receipt .nav-link:hover, .receipt .nav-link:focus {
-  border-bottom: 1px dotted #0079bc; }
 
 .receipt .nav-wizard {
   padding: 15px 20px;
@@ -14434,7 +14456,6 @@ i.fa {
   padding: 10px 15px; }
 
 .receipt .dashboard-link {
-  line-height: 20px;
   font-size: 13px; }
 
 .receipt .order-summary dt {
@@ -14446,7 +14467,6 @@ i.fa {
   font-size: 18px; }
 
 .receipt .order-headers {
-  color: #0079bc;
   font-size: 22px; }
 
 .receipt .order-line-data {
