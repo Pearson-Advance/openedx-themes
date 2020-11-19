@@ -1,0 +1,128 @@
+<div class="js-form-feedback" aria-live="assertive" tabindex="-1">
+</div>
+
+<div>
+  <img class="signin-logo" src="/static/pearson-vue-theme/images/CertPREP_Logo.png">
+</div>
+
+<div class="signin-container">
+
+  <div class="toggle-form">
+      <span class="text"><%- gettext("First time here?") %></span>
+      <a href="#login" class="form-toggle" data-type="register"><%- gettext("Create an account.") %></a>
+  </div>
+
+
+  <h2><%- gettext("Sign in") %></h2>
+
+  <form id="login" class="login-form" tabindex="-1" method="POST">
+
+      <p class="sr">
+          <% if ( context.providers.length > 0 && !context.currentProvider || context.hasSecondaryProviders ) { %>
+              <%- gettext("Sign in here using your email address and password, or use one of the providers listed below.") %>
+          <% } else { %>
+              <%- gettext("Sign in here using your email address and password.") %>
+          <% } %>
+          <%- gettext("If you do not yet have an account, use the button below to register.") %>
+      </p>
+
+      <% if ( context.hasSecondaryProviders ) { %>
+          <button type="button" class="button-secondary-login form-toggle" data-type="institution_login">
+              <%- gettext("Use my university info") %>
+          </button>
+
+          <div class="section-title lines">
+              <h3>
+                  <span class="text"><%- gettext("or sign in with") %></span>
+              </h3>
+          </div>
+      <% } %>
+
+      <%= HtmlUtils.HTML(context.fields) %>
+
+      <button type="submit" class="action action-primary action-update js-login login-button"><%- gettext("Sign in") %></button>
+
+      <% if ( context.providers.length > 0 && !context.currentProvider) { %>
+      <div class="login-providers">
+          <div class="section-title lines">
+              <h3>
+                  <span class="text"><%- gettext("or sign in with") %></span>
+              </h3>
+          </div>
+
+          <% _.each( context.providers, function( provider ) {1
+              if ( provider.loginUrl ) { %>
+                  <button type="button" class="button button-primary button-<%- provider.id %> login-provider login-<%- provider.id %>" data-provider-url="<%- provider.loginUrl %>">
+                      <div class="icon <% if ( provider.iconClass ) { %>fa <%- provider.iconClass %><% } %>" aria-hidden="true">
+                          <% if ( provider.iconImage ) { %>
+                              <img class="icon-image" src="<%- provider.iconImage %>" alt="<%- provider.name %> icon" />
+                          <% } %>
+                      </div>
+                      <span aria-hidden="true"><%- provider.name %></span>
+                      <span class="sr"><%- _.sprintf( gettext("Sign in with %(providerName)s"), {providerName: provider.name} ) %></span>
+                  </button>
+              <% }
+          }); %>
+      </div>
+      <% } %>
+  </form>
+</div>
+
+<style media="screen">
+  .signin-logo {
+        display: block;
+        width: 400px;
+        right: 120px;
+        position: absolute;
+        top: 150;
+  }
+
+  .signin-container {
+      padding: 30px;
+      border-radius: 10%;
+      box-shadow: 3px 2px 2px 5px #bcb9b9;
+      position: absolute;
+      right: 50px;
+      top: 300px
+  }
+
+  .signing-title {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+  }
+
+  .login-register .form-wrapper .login-providers {
+      display: flex;
+      text-align: left;
+      background: $gray-lightest;
+      padding: 10px 15px 40px;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 2px 2px 2px #eee;
+      border-bottom: 0.1px solid #919191;
+  }
+
+  .email-email .label-text,
+  .password-password .label-text {
+      display: block;
+      margin: 10px 0;
+      height: 0;
+  }
+
+  .form-field input.input-block {
+      height: 45px;
+      padding: 15px;
+      margin-bottom: 5px;
+  }
+
+  .login-register div.toggle-form {
+      margin-top: 15px;
+      text-align: center;
+  }
+  .login-register .action-primary {
+      width: 100%;
+      display: block;
+  }
+</style>
