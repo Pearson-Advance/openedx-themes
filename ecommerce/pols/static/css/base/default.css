@@ -6,6 +6,8 @@
   border: none; }
   .navbar-brand .navbar-brand-logo {
     height: auto; }
+  .navbar-brand a:hover, .navbar-brand a:focus, .navbar-brand a:active {
+    border: none; }
 
 .navbar {
   border-bottom-color: #003057; }
@@ -94,7 +96,7 @@
   border-bottom: 4px solid #0ea6ec;
   color: black; }
 
-@media (min-width: 767px) {
+@media (min-width: 467px) {
   .navbar .user-menu {
     margin-top: 20px;
     margin-bottom: 20px; } }
@@ -637,14 +639,14 @@ p.use-voucher a {
   font-style: italic; }
 
 /* Small devices (tablets, 992px and lower) */
-@media (max-width: 991px) {
+@media (max-width: 467px) {
   .basket .container .basket-items .product-price-label {
     font-size: 20px;
     font-weight: bold;
     margin: 0px 20px 20px 0px; } }
 
 /* extra Small devices (phones, 768px and lower) */
-@media (max-width: 767px) {
+@media (max-width: 467px) {
   .basket .container .payment-buttons .payment-button {
     width: 100%;
     margin-bottom: 2px; }
@@ -763,7 +765,7 @@ p.use-voucher a {
     border-bottom: none; } }
 
 /* Medium devices (desktops, 992px and up) */
-@media (min-width: 480px) {
+@media (min-width: 467px) {
   .credit-checkout .payment-button {
     width: auto; } }
 
@@ -1348,9 +1350,6 @@ i.fa {
 .receipt .nav-link {
   text-decoration: none !important; }
 
-.receipt .nav-link:active, .receipt .nav-link:hover, .receipt .nav-link:focus {
- }
-
 .receipt .nav-wizard {
   padding: 15px 20px;
   margin: 0;
@@ -1392,7 +1391,8 @@ i.fa {
   font-size: 18px; }
 
 .receipt h2 {
-  margin-bottom: 10px;}
+  margin-bottom: 10px;
+  color: #0079bc; }
 
 .receipt p {
   margin: 0; }
