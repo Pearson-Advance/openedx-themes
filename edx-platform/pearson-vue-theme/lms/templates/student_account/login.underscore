@@ -1,15 +1,12 @@
-<div class="js-form-feedback" aria-live="assertive" tabindex="-1">
-</div>
-
-<div class="background-login">
-
-</div>
+<div class="background-login"></div>
 
 <div>
   <img class="signin-logo" src="/static/pearson-vue-theme/images/CertPREP_Logo.png">
 </div>
 
 <div class="signin-container">
+  <div class="js-form-feedback" aria-live="assertive" tabindex="-1"></div>
+
 
   <div class="toggle-form">
     <span class="text"><%- gettext("First time here?") %></span>
@@ -72,13 +69,15 @@
   </form>
 </div>
 
+
+
 <style media="screen">
   .signin-logo {
       display: block;
       width: 400px;
-      right: 120px;
+      right: 35px;
       position: absolute;
-      top: 150;
+      top: 100px;
   }
 
   .signin-container {
@@ -88,7 +87,7 @@
       box-shadow: 3px 2px 2px 5px #bcb9b9;
       position: absolute;
       right: 50px;
-      top: 300px
+      top: 250px
   }
 
   .signing-title {
@@ -107,6 +106,10 @@
       align-items: center;
       box-shadow: 2px 2px 2px #eee;
       border-bottom: 0.1px solid #919191;
+  }
+
+  .login-register .status {
+    margin: 0;
   }
 
   .email-email .label-text,
@@ -156,5 +159,13 @@
     transition: max-height 1s;
     z-index: 1;
     position: relative;
+  }
+
+  .js-form-feedback {
+    /* position: absolute; */
+    bottom: 0px;
+    right: 0px;
+    margin: 25px 0;
+    z-index: 1;
   }
 </style>

@@ -10,7 +10,7 @@
   z-index: 1;
 }
 
-.vue-header {
+.vue-header.global-header {
   background-color: $vue-header-footer !important;
   border: none;
   color: $vue-btn-text;
@@ -31,6 +31,10 @@
 
       .header-logo .course-header {
         color: $white;
+      }
+
+      .dropdown-user-menu {
+        position: fixed !important;
       }
 }
 

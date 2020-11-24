@@ -14,11 +14,10 @@
 @import 'index';
 @import 'dashboard';
 @import 'support';
-@import 'login-register';
 @import 'course-experience';
 
 
-//registration 
+//registration
 .view-register .form-actions button[type="submit"]:hover {
   background-color:#fff;
   border: 1px solid #007FA3;

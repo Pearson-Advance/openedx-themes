@@ -59,11 +59,7 @@ theme = configuration_helpers.get_value('theme', '')
   </script>
 % endif
 
-% if theme:
-    <header class="global-header ${'slim' if course else ''} ${theme}-header">
-% else:
-    <header class="global-header ${'slim' if course else ''} vue-header">
-% endif
+<header class="global-header ${'slim' if course else ''} vue-header">
     % if use_cookie_banner:
         ${static.renderReact(
             component="CookiePolicyBanner",
