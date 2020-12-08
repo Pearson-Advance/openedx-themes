@@ -55,6 +55,6 @@ displayname = get_enterprise_learner_generic_name(request) or username
         % if configuration_helpers.get_value('EXTERNAL_SUPPORT_LINK', ''):
             <div class="mobile-nav-item dropdown-item dropdown-nav-item"><a href="${configuration_helpers.get_value('EXTERNAL_SUPPORT_LINK')}">${_("Support")}</a></div>
         % endif
-        <div class="mobile-nav-item dropdown-item dropdown-nav-item"><a href="${reverse('logout')}" role="menuitem">${_("Sign Out")}</a></div>
+        <div class="mobile-nav-item dropdown-item dropdown-nav-item"><a href="${reverse('logout')}" role="menuitem">${_("Sign out")}</a></div>
     </div>
 </div>
