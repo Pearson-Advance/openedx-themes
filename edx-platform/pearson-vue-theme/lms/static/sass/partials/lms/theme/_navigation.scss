@@ -1,6 +1,6 @@
 .global-header h1.header-logo a .logo {
     float: left;
-    height: 50px;
+    height: 55px;
     margin-left: 3px;
 }
 
@@ -31,7 +31,15 @@
 
       .header-logo .course-header {
         color: $white;
+
+        .course-name {
+          display: block;
+          font-size: $font-size-base;
+          margin-top: 15px !important;
+          font-weight: 600;
+        }
       }
+
 
       .dropdown-user-menu {
         position: fixed !important;
@@ -175,4 +183,11 @@ header.global-header .nav-links .secondary a.sign-in-btn {
     position: relative;
   }
 
+}
+
+.course-name {
+  display: block;
+  font-size: $font-size-base;
+  margin-top: 15px;
+  font-weight: 600;
 }

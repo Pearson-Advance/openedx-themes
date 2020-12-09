@@ -61,11 +61,15 @@ div.wrapper-footer footer#footer-openedx .footer-about-openedx a{
   li {
     display: inline-block;
     font-size: 0.6875em;
-    text-decoration: underline !important;
   }
 
   li::before{
     margin-right: $baseline*0.25;
+    margin-left: $baseline*0.25;
+  }
+
+  li:last-child:before {
+    content: "|";
   }
 }
 
