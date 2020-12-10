@@ -8,6 +8,7 @@
   min-height: 70px;
   position: relative;
   z-index: 1;
+  overflow: inherit;
 }
 
 .vue-header.global-header {
@@ -30,7 +31,7 @@
       }
 
       .header-logo .course-header {
-        color: $white;
+         color: $white;
 
         .course-name {
           display: block;
@@ -38,11 +39,6 @@
           margin-top: 15px !important;
           font-weight: 600;
         }
-      }
-
-
-      .dropdown-user-menu {
-        position: fixed !important;
       }
 }
 
