@@ -27,7 +27,7 @@ from openedx.features.course_experience.course_tools import HttpMethod
     <header class="page-header has-secondary">
         <div class="page-header-main">
             <nav aria-label="${_('Course Outline')}" class="sr-is-focusable" tabindex="-1">
-                <h2 class="hd hd-3 page-title">${course.display_name_with_default}</h2>
+                <h2 class="hd hd-3 page-title" style='font-family: "Times New Roman";'>${course.display_name_with_default}</h2>
             </nav>
         </div>
         <div class="page-header-secondary">
@@ -52,9 +52,9 @@ from openedx.features.course_experience.course_tools import HttpMethod
                 % if resume_course_url:
                     <a class="btn btn-primary action-resume-course" href="${resume_course_url}">
                         % if has_visited_course:
-                            <span data-action-type="resume">${_("Resume Course")}</span>
+                            <span data-action-type="resume">${_("Resume course")}</span>
                         % else:
-                            <span data-action-type="start">${_("Start Course")}</span>
+                            <span data-action-type="start">${_("Start course")}</span>
                         % endif
                     </a>
                 % endif
@@ -114,7 +114,7 @@ from openedx.features.course_experience.course_tools import HttpMethod
             % endif
             % if course_tools:
                 <div class="section section-tools">
-                    <h3 class="hd-6 section-title">${_("Course Tools")}</h3>
+                    <h3 class="hd-6 section-title">${_("Course tools")}</h3>
                     <ul class="list-unstyled">
                         % for course_tool in course_tools:
                             <li class="course-tool">
@@ -152,7 +152,7 @@ from openedx.features.course_experience.course_tools import HttpMethod
                                     ${Text(_("Upgrade ({price})")).format(price=upgrade_price)}
                                 </a>
                             </p>
-                            <p><button class="btn-link btn-small promo-learn-more">${_('Learn More')}</button></p>
+                            <p><button class="btn-link btn-small promo-learn-more">${_('Learn more')}</button></p>
                         </div>
                 </div>
             % endif
@@ -163,7 +163,7 @@ from openedx.features.course_experience.course_tools import HttpMethod
             % endif
             % if handouts_html:
                 <div class="section section-handouts">
-                    <h3 class="hd-6 section-title">${_("Course Handouts")}</h3>
+                    <h3 class="hd-6 section-title">${_("Course handouts")}</h3>
                     ${HTML(handouts_html)}
                 </div>
             % endif

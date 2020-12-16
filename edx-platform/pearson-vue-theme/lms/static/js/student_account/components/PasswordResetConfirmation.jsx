@@ -96,7 +96,7 @@ class PasswordResetConfirmation extends React.Component {
             <PasswordResetInput
               name="new_password1"
               describedBy="new_password_help_text"
-              label={gettext('New Password')}
+              label={gettext('New password')}
               onBlur={this.onBlurPassword1}
               isValid={this.state.isValid}
               validationMessage={this.state.validationMessage}
@@ -105,7 +105,7 @@ class PasswordResetConfirmation extends React.Component {
             <PasswordResetInput
               name="new_password2"
               describedBy="new_password_help_text"
-              label={gettext('Confirm Password')}
+              label={gettext('Confirm password')}
               onBlur={this.onBlurPassword2}
               isValid={!this.state.showMatchError}
               validationMessage={gettext('Passwords do not match.')}
@@ -139,8 +139,8 @@ PasswordResetConfirmation.propTypes = {
 
 PasswordResetConfirmation.defaultProps = {
   errorMessage: '',
-  primaryActionButtonLabel: gettext('Reset My Password'),
-  formTitle: gettext('Reset Your Password'),
+  primaryActionButtonLabel: gettext('Reset my password'),
+  formTitle: gettext('Reset your password'),
 };
 
 export { PasswordResetConfirmation }; // eslint-disable-line import/prefer-default-export

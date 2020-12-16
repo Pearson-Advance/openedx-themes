@@ -8,6 +8,7 @@
 
 @import 'certificates';
 @import 'courses';
+@import 'header';
 @import 'navigation';
 @import 'footer';
 @import 'profile';
@@ -251,7 +252,7 @@ iframe.rocket-chat-view {
 .signin-logo {
   display: block;
   width: 400px;
-  right: 35px;
+  right: 110px;
   position: absolute;
   top: 100px;
 }
@@ -282,6 +283,17 @@ iframe.rocket-chat-view {
   align-items: center;
   box-shadow: 2px 2px 2px #eee;
   border-bottom: 0.1px solid #919191;
+}
+
+.login-register-content {
+  h2 {
+    @extend %t-title4;
+    font-size: 1.2em;
+    margin-top: $baseline;
+    letter-spacing: normal;
+    font-family: $font-family-sans-serif;
+    color: $uxpl-blue-hover-active;
+  }
 }
 
 .login-register .status {
@@ -338,7 +350,7 @@ iframe.rocket-chat-view {
 }
 
 .js-form-feedback {
-  /* position: absolute; */
+  max-width: 650px;
   bottom: 0px;
   right: 0px;
   margin: 25px 0;

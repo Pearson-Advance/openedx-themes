@@ -146,17 +146,7 @@ header.global-header .nav-links .secondary a.sign-in-btn {
   color: $inverse;
 }
 
-@media (min-width: 992px){
-  .global-header .nav-links .main .nav-tab a {
-      padding: 10px;
-  }
-}
-
 @media (max-width: 992px){
-  .global-header .nav-links .main .nav-tab a {
-      padding: 10px;
-  }
-
   div.mobile-menu div.mobile-nav-link a {
     background-color: $light-gray;
     border-bottom: 1px solid $primary;

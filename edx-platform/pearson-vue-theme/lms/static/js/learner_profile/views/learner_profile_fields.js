@@ -35,7 +35,7 @@
                     HtmlUtils.interpolateHtml(
                         HtmlUtils.HTML('<a href="{settings_url}">'), {settings_url: this.options.accountSettingsPageUrl}
                     ),
-                    gettext('Account Settings page.'),
+                    gettext('Account sets page.'),
                     HtmlUtils.HTML('</a>')
                 );
                 if (this.profileIsPrivate) {

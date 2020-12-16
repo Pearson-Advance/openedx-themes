@@ -18,6 +18,9 @@ from openedx.core.djangoapps.lang_pref.api import header_language_selector_is_en
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 
 %>
+<%
+theme = configuration_helpers.get_value('theme', '')
+%>
 
 ## Provide a hook for themes to inject branding on top.
 <%block name="navigation_top" />
@@ -34,6 +37,11 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
 <%
   unsupported_browser_alert_versions = configuration_helpers.get_value('UNSUPPORTED_BROWSER_ALERT_VERSIONS', settings.FEATURES.get('UNSUPPORTED_BROWSER_ALERT_VERSIONS'))
 %>
+
+% if configuration_helpers.get_value('GOOGLE_TAG_MANAGER_SNIPPET'):
+    ${configuration_helpers.get_value('GOOGLE_TAG_MANAGER_SNIPPET') | n}
+% endif
+
 % if waffle.switch_is_active('enable_unsupported_browser_alert'):
   <script>
     var $buoop = {
@@ -51,7 +59,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
   </script>
 % endif
 
-<header class="global-header ${'slim' if course else ''}">
+<header class="global-header ${'slim' if course else ''} vue-header">
     % if use_cookie_banner:
         ${static.renderReact(
             component="CookiePolicyBanner",

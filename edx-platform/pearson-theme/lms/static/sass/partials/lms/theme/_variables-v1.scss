@@ -497,7 +497,7 @@ $homepage__header--gradient__color--bravo: saturate($gray, 30%) !default;
 $homepage__header--background: lighten($gray, 15%) !default;
 $homepage-background: rgb(252, 252, 252) !default;
 $course-card-height: ($baseline*18) !default;
-$course-image-height: ($baseline*8) !default;
+$course-image-height: auto;
 $course-info-height: ($baseline*10) !default;
 $course-title-height: ($baseline*3.6) !default;
 $homepage-bg-image: none !default;
