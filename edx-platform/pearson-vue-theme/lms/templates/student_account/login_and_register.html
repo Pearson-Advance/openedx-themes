@@ -29,6 +29,26 @@
     % endif
 </%block>
 
+% if configuration_helpers.get_value('hide_edx_login', False):
+    <style>
+      #login-form .toggle-form,
+      #login-form .form-field,
+      #login-form .login-button,
+      #login-form .login-providers .section-title,
+      #register-form .login-providers .section-title,
+      #register-form .toggle-form,
+      #register-form .required-fields,
+      #register-form .form-field,
+      #register-form .register-button {
+        display: none;
+      }
+
+      #login-form h2, #register-form h2 {
+        text-align: center;
+      }
+   </style>
+% endif
+
 <%block name="header_extras">
     % for template_name in ["account", "access", "form_field", "login", "register", "institution_login", "institution_register", "password_reset", "hinted_login"]:
         <script type="text/template" id="${template_name}-tpl">

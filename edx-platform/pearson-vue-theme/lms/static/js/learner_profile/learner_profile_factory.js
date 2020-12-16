@@ -66,11 +66,11 @@
                 required: true,
                 editable: 'always',
                 showMessages: false,
-                title: gettext('Profile Visibility:'),
+                title: gettext('Profile visibility:'),
                 valueAttribute: 'account_privacy',
                 options: [
-                    ['private', gettext('Limited Profile')],
-                    ['all_users', gettext('Full Profile')]
+                    ['private', gettext('Limited profile')],
+                    ['all_users', gettext('Full profile')]
                 ],
                 helpMessage: '',
                 accountSettingsPageUrl: options.account_settings_page_url,

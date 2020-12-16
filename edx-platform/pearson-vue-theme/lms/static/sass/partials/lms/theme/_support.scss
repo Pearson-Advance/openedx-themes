@@ -1,11 +1,11 @@
-.contact-us-wrapper .help-button {
-  color: $inverse;
+  .contact-us-wrapper .help-button {
+    color: $inverse;
 
-  &:hover,
-  &:focus {
-    color: $blue;
-    background-color: $inverse;
-  }
+    &:hover,
+    &:focus {
+      color: $blue;
+      background-color: $inverse;
+    }
 }
 
 select, textarea {

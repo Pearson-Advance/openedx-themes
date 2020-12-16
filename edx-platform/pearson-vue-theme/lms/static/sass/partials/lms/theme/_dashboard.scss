@@ -29,11 +29,11 @@
 .view-dashboard div.item li.course-item {
   text-align: left;
   width: 100%;
-  box-shadow: 0 1px 10px 0 rgba(0,48,87,0.125), inset 0 0 0 1px rgba(255,255,255,0.75);
+  box-shadow: 0 1px 10px 0 rgba(0,48,87,0.125), inset 0 0 0 1px rgba(255,255,255,0.75);
 }
 
 .view-dashboard div.item li.course-item:hover {
-  box-shadow: 0 1px 4px 0 rgba(0,127,163,0.4);
+  box-shadow: 0 1px 4px 0 rgba(0,127,163,0.4);
 }
 
 div.course-image {
@@ -55,15 +55,15 @@ div.course-image {
   }
 }
 
-.view-dashboard div.item .course .details .wrapper-course-details {
+.view-dashboard div.item .course .details .wrapper-course-details { 
   padding: 0px 10px !important;
 
   .course-title {
     text-align: left;
     font-size: 20px;
     line-height: 28px;
-    height: 70px;
-
+    height: 70px; 
+  
     a {
       overflow: hidden;
       -o-text-overflow: ellipsis;
@@ -75,10 +75,10 @@ div.course-image {
     }
   }
 
-  .course-info [class*="info-"],
+  .course-info [class*="info-"], 
   .view-dashboard div.item .course .details .wrapper-course-details .course-info [class*="info-"] {
     color: #003057 !important;
-    text-align: left;
+    text-align: left; 
   }
 
   .wrapper-course-actions {
@@ -142,7 +142,7 @@ div.course-image {
 
 //Upgrade button style and verify button hide
 
-.wrapper-messages-primary {
+.wrapper-messages-primary { 
 
   .message.is-shown {
     padding: 0px 0px 10px 0px;
@@ -172,22 +172,22 @@ div.course-image {
 
     .action-upgrade-container {
       width: 100%;
-      margin: 0px !important;
+      margin: 0px !important;
     }
 
     .action-upgrade {
       width: 100%;
-      color: #003057;
-      max-width: 192px;
-      background-color: #D2DB0E !important;
+      color: #003057;
+      max-width: 192px; 
+      background-color: #D2DB0E !important; 
       }
-
+    
     .action-upgrade:hover {
-      background-color: #84BD00;
+      background-color: #84BD00;
     }
 
     .wrapper-extended {
-      padding: 0px;
+      padding: 0px; 
     }
   }
 }
@@ -222,7 +222,7 @@ div.course-caption p.localized-datetime {
 }
 
 section[role=courses] div.container.no-border {
-  max-width: 2100px;
+  max-width: 2100px; 
   min-height: 77vh;
 
   header {

@@ -8,6 +8,8 @@ from lms.djangoapps.courseware.tabs import get_course_tab_list
 from django.conf import settings
 from django.urls import reverse
 from django.utils.translation import ugettext as _
+
+from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 %>
 
 <%
@@ -35,6 +37,7 @@ if course is not None:
 
 % if disable_tabs is UNDEFINED or not disable_tabs:
     <%
+    ALTERNAVITE_STRINGS = configuration_helpers.get_value('ALTERNAVITE_STRINGS', {})
     tab_list = get_course_tab_list(request.user, course)
     %>
     % if uses_bootstrap:
@@ -46,7 +49,7 @@ if course is not None:
                     %>
                     <li class="nav-item ${'active' if tab_is_active else ''}">
                         <a href="${tab.link_func(course, reverse)}" class="nav-link">
-                            ${_(tab.name)}
+                            ${_(ALTERNAVITE_STRINGS.get(tab.name, tab.name))}
                             % if tab_is_active:
                                 <span class="sr-only">, ${_('current location')}</span>
                             %endif
