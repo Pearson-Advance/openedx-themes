@@ -186,9 +186,6 @@ body.view-in-course .wrapper-course-material, body.view-in-course .wrapper-previ
   border-bottom: 1px solid $pearson-grey-courseware;
 }
 
-.bookmark-button {
-  display: none;
-}
 
 div.xmodule_display.xmodule_SequenceModule .sequence-nav ol li button .sequence-tooltip {
   background: $inverse;
@@ -647,4 +644,4 @@ div.content-wrapper.main-container div.container div.home {
       font-size: 1.2rem;
     }
   }
-} 
+}
