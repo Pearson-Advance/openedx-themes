@@ -1,604 +1,720 @@
-// lms - views - course discovery
-// ====================
+.highlighted-courses .courses .course a {
+  text-align: center;
+  margin-top: 10px;
+}
 
-// Table of Contents
-// * +Imports - Search
-// * +Variables - Search
-// * +Layout - Courses Container
-// * +Header - Course Search
-// * +Search Input
-// * +Filters and Facets- Search
-// * +All Other Styles
+.highlighted-courses .courses .course a:hover {
+  color: $primary;
+}
+
+.highlighted-courses .courses {
+  padding: 0px;
+}
+
+.courses-container .courses .course:hover .cover-image::before, .courses-container .courses .course:focus .cover-image::before {
+  opacity: 0;
+}
+
+.btn-learnmore {
+  border-style: solid;
+  border-radius: 0.1875rem;
+  border-width: 1px;
+  box-shadow: none;
+  padding: 0.625rem 1.25rem;
+  font-size: 16px;
+  font-weight: normal;
+  text-shadow: none;
+  color: $inverse;
+  background-color: $primary;
+  margin: 10px 15px 20px 15px;
+  text-align: center;
+}
+
+.btn-learnmore:hover {
+  color: $primary;
+  background-color: $inverse;
+}
 
 
-// +Imports - Search
-// ====================
-@import '../base/grid-settings';
-@import 'neat/neat'; // lib - Neat
+.courses-container .courses .course .course-info h2 {
+  margin-bottom: 5px;
+}
 
-// +Variables - Search
-// ====================
-$facet-text-color: #3d3e3f;
-$facet-background-color: #007db8;
+.courses-container .courses .course .course-info .course-date {
+  margin-bottom: 5px;
+}
 
-// +Layout - Courses Container
-// ====================
+.courses-container .courses .course .course-info .course-title {
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 1.3;
+  text-align: left;
+  height: 45px;
+  padding-top: 5px;
+}
+
+
 .find-courses,
 .university-profile {
-  .discovery-button:not(:disabled) {
-    @extend %t-action2;
-
-    @include text-align(left);
-
-    outline: 0 none;
-    box-shadow: none;
-    border: 0;
-    background: none;
-    padding: 0 ($baseline*0.6);
-    text-decoration: none;
-    text-shadow: none;
-    text-transform: none;
-
-    //STATE: hover
-    &:hover {
-      background: none;
-    }
-  }
-
-  .courses-container {
-    @include padding(($baseline*2), ($baseline/2), 0, ($baseline/2));
-
-    .courses {
-      @include rtl() { $layout-direction: "RTL"; }
-
-      .courses-listing .courses-listing-item {
-        @include fill-parent();
-
-        margin: ($baseline*0.75) 0 ($baseline*1.5) 0;
-        max-height: $course-card-height;
-      }
-
-      // CASE: Course Discovery Search enabled
-      &:not(.no-course-discovery) {
-        @include span-columns(9);
-
-        @include media($bp-medium) {
-          @include span-columns(8);
-        }
-
-        @include media($bp-large) {
-          @include span-columns(8);
-        }
-
-        @include media($bp-huge) {
-          @include span-columns(9);
-        }
-
-        .courses-listing .courses-listing-item {
-          @include media($bp-medium) {
-            @include span-columns(4); // 4 of 8
-            @include omega(2n);
-          }
-
-          @include media($bp-large) {
-            @include span-columns(6); // 6 of 12
-            @include omega(2n);
-          }
-
-          @include media($bp-huge) {
-            @include span-columns(4); // 4 of 12
-            @include omega(3n);
-          }
-        }
-      }
-
-      // CASE: Course Discovery Search disabled
-      &.no-course-discovery {
-        @include span-columns(12);
-
-        @include media($bp-medium) {
-          @include span-columns(8); // 8 of 8
-          @include omega(2n);
-        }
-
-        @include media($bp-large) {
-          @include span-columns(12);
-        }
-
-        @include media($bp-huge) {
-          @include span-columns(12);
-        }
-
-        .courses-listing .courses-listing-item {
-          @include media($bp-medium) {
-            @include span-columns(4); // 4 of 8
-            @include omega(2n);
-          }
-
-          @include media($bp-large) {
-            @include span-columns(4); // 4 of 12
-            @include omega(3n);
-          }
-
-          @include media($bp-huge) {
-            @include span-columns(3); // 3 of 12
-            @include omega(4n);
-          }
-        }
-      }
-    }
-  }
+  background: $background-color-courses;
 }
 
-// +Hero - Home Header
-// ====================
-.find-courses,
-.university-profile {
-  header.search {
-    background: $gray-l5;
-    background-size: cover;
-    background-image: $homepage-bg-image;
-    background-position: center top !important;
-    border-bottom: 1px solid $border-color-3;
-    box-shadow: inset 0 -1px 8px 0 rgba(0, 0, 0, 0.2), inset 0 1px 12px 0 rgba(0, 0, 0, 0.3);
-    height: 430px;
-    margin-top: $header_image_margin;
-    width: 100%;
-
-    .inner-wrapper {
-      height: 120px;
-      margin: 0 auto;
-      max-width: map-get($container-max-widths, xl);
-      padding-top: ($baseline*10);
-      position: relative;
-      text-align: center;
-      width: flex-grid(12);
-
-      > .heading-group {
-        background: $white;
-        background: $course-header-bg;
-        border: 1px solid $border-color-3;
-        box-shadow: 0 4px 25px 0 rgba(0, 0, 0, 0.5);
-        padding: $baseline ($baseline*1.5);
-        position: relative;
-        z-index: 2;
-      }
-
-      &.main-search,
-      &.university-search {
-        text-align: center;
-
-        .heading-group {
-          display: inline-block;
-        }
-
-        .logo {
-          @include border-right(1px solid $light-gray);
-          @include margin-right(30px);
-          @include padding-right(30px);
-
-          display: inline-block;
-          height: 80px;
-          position: relative;
-          vertical-align: middle;
-
-          &::after {
-            @include right(0);
-
-            content: "";
-            display: block;
-            height: 80px;
-            position: absolute;
-            top: 0;
-          }
-
-          img {
-            height: 100%;
-          }
-        }
-
-        h1 {
-          color: $body-color;
-          font-family: $font-family-sans-serif;
-          font-style: italic;
-          font-weight: 700;
-          letter-spacing: 0;
-          text-transform: none;
-        }
-
-        h1,
-        h2 {
-          display: inline-block;
-          letter-spacing: 1px;
-          margin-bottom: 0;
-          text-shadow: 0 1px rgba(255, 255, 255, 0.8);
-          vertical-align: middle;
-        }
-      }
-    }
-  }
+.courses-container .courses .course
+.course-image .cover-image .learn-more {
+  background: $primary;
 }
 
-// +Search Input
-// ====================
-.find-courses {
-  .wrapper-search-context {
-    @include outer-container;
-
-    @include rtl() { $layout-direction: "RTL"; }
-
-    .search-status-label {
-      @extend %t-title3;
-
-      @include span-columns(9);
-
-      min-height: $course-search-input-height;
-
-      @include media($bp-tiny) {
-        @include fill-parent();
-        @include font-size(20);
-      }
-
-      @include media($bp-small) {
-        @include span-columns(4);
-        @include font-size(20);
-      }
-
-      @include media($bp-medium) {
-        @include span-columns(4);
-      }
-
-      @include media($bp-large) {
-        @include span-columns(8);
-      }
-    }
-
-    .wrapper-search-input {
-      @include span-columns(3);
-
-      @extend %ui-depth0;
-
-      position: relative;
-
-      @include media($bp-tiny) {
-        @include fill-parent();
-      }
-
-      @include media($bp-small) {
-        @include span-columns(4);
-      }
-
-      @include media($bp-medium) {
-        @include span-columns(4);
-      }
-
-      @include media($bp-large) {
-        @include span-columns(4);
-      }
-    }
-  }
-
-  .discovery-input {
-    @extend %ui-depth1;
-    @extend %t-copy-sub1;
-    @extend %t-demi-strong;
-
-    @include border-radius(3px);
-    @include padding-right(55px);
-
-    border: 2px solid $gray-l3;
-    width: 100%;
-    height: $course-search-input-height;
-    color: $black;
-    font-style: normal;
-
-    //STATE: focus
-    &:focus {
-      @extend %no-outline;
-
-      box-shadow: none;
-      border-color: $m-blue-d6;
-    }
-  }
-
-  .discovery-submit {
-    @extend %ui-depth2;
-    @extend %t-icon3;
-    @extend %t-strong;
-
-    @include margin-left(-2px);
-    @include right(0);
-
-    position: absolute;
-    top: 0;
-    border: 2px solid $m-blue-d6;
-    border-radius: ($baseline*0.1);
-    height: $course-search-input-height;
-    padding: 0 ($baseline*0.7);
-    background: $blue;
-    box-shadow: none;
-    color: $white;
-    text-shadow: none;
-
-    //STATE: hover, focus
-    &:hover,
-    &:focus {
-      background: $m-blue-d5;
-    }
-  }
-
-  .loading-spinner {
-    @include transition(all $tmg-f1 ease-out 0s);
-
-    background: $blue;
-    position: absolute;
-    top: ($baseline*0.7); // same as padding rule for .discovery-submit
-  }
+.courses-container .courses .course .course-info .course-organization,
+.courses-container .courses .course .course-info .course-code,
+.courses-container .courses .course .course-info .course-date {
+  color: $secondary;
 }
 
-// +Filters and Facets - Search
-// ====================
-.find-courses {
-  .filters {
-    @include clearfix();
+div.content-wrapper.main-container {
+  min-height: 442px;
+}
 
-    margin-top: ($baseline/2);
-    width: 100%;
-    height: auto;
-    max-height: ($baseline*10);
-    overflow: hidden;
+//about
+.course-info header.course-profile .intro-inner-wrapper
+section.intro div.main-cta a strong {
+  background: $primary;
+  box-shadow: none;
+  border: 0;
+  color: $inverse;
+}
 
-    &.is-animated {
-      @include transition(max-height 0.3s);
-    }
+.course-info header.course-profile .intro-inner-wrapper .intro .main-cta a.register, .course-info .button-enroll-bottom a.register, .course-info header.course-profile .intro-inner-wrapper .intro .main-cta a.add-to-cart  {
+  border: none;
+  background-image: none;
+  text-decoration: none;
+  text-shadow: none;
+  background-color: $primary;
+  color: $inverse;
+  border-radius: 3px;
+  border: 1px solid white;
+}
 
-    &.is-collapsed {
-      max-height: 0;
-    }
+.course-info header.course-profile .intro-inner-wrapper .intro .main-cta a.register:hover:not(:disabled), .course-info header.course-profile .intro-inner-wrapper .intro .main-cta a.register:focus:not(:disabled), .course-info header.course-profile .intro-inner-wrapper .intro .main-cta a.register:active:not(:disabled), .course-info header.course-profile .intro-inner-wrapper .intro .main-cta a.add-to-cart:hover:not(:disabled), .course-info header.course-profile .intro-inner-wrapper .intro .main-cta a.add-to-cart:focus:not(:disabled), .course-info header.course-profile .intro-inner-wrapper .intro .main-cta a.add-to-cart:active:not(:disabled) {
+  border: 1px solid $primary;
+  background-image: none;
+  text-decoration: none;
+  text-shadow: none;
+  background-color: #fff;
+  color: $primary;
+  box-shadow: none;
+}
 
-    .filters-inner {
-      @include clearfix();
+.course-info header.course-profile .intro-inner-wrapper .intro .main-cta a.register:hover, .course-info .button-enroll-bottom a.register:hover, .course-info header.course-profile .intro-inner-wrapper .intro .main-cta a.add-to-cart:hover, .course-info .button-enroll-bottom a.add-to-cart:hover  {
+  border: none;
+  background-image: none;
+  text-decoration: none;
+  text-shadow: none;
+  background-color: #fff;
+  color: $primary;
+}
 
-      border-top: 2px solid $courseware-button-border-color;
-      border-bottom: 2px solid $courseware-button-border-color;
-    }
+.course-info header.course-profile .intro-inner-wrapper {
+  box-shadow:none !important;
+}
 
-    ul {
-      @include padding-left(0);
+.content-wrapper .course-info header.course-profile {
+  height: auto;
+  padding-top: 0;
+}
 
-      margin: 0;
-      list-style: outside none none;
-    }
+@media (max-width: 767px){
+  .course-info header.course-profile .intro-inner-wrapper div.table {
+    display: flex;
+    flex-direction: column-reverse;
 
-    li {
-      @include float(left);
-      @include margin(($baseline/2), $baseline, ($baseline/2), 0);
-
-      position: relative;
-      padding: ($baseline/2) ($baseline*0.75);
-      width: auto;
-      background: $courseware-button-border-color;
-
-      .facet-option {
-        @extend %t-strong;
-
-        color: $gray-d2;
-        text-decoration: none;
-
-        i {
-          color: $gray-l2;
-        }
-      }
-    }
-
-    .clear-filters {
-      @include line-height(29.73);
-
-      @extend %t-icon5;
-      @extend %t-strong;
-
-      margin: ($baseline/2);
-      width: auto;
-      color: $blue-d1; // WCAG 2.0 AA requirements
-      text-align: center;
-
-      &:hover,
-      &:focus {
-        background: $gray-l4;
-      }
-    }
-
-    .flt-right {
-      @include float(right);
-    }
-  }
-
-  .search-facets {
-    @include fill-parent();
-    @include omega();
-
-    box-sizing: border-box;
-
-    @extend %ui-depth1;
-
-    position: relative;
-    margin: ($baseline*2) 0 ($baseline*3.5) 0;
-    box-shadow: 1px 2px 5px $black-t0;
-    border-top: 1px solid $black;
-    border-bottom: 2px solid $black;
-    max-height: ($baseline*100);
-    background-color: $white;
-
-    @include media($bp-tiny) {
-      @include fill-parent();
-    }
-
-    @include media($bp-small) {
-      @include span-columns(4);
-    }
-
-    @include media($bp-medium) {
-      @include span-columns(8);
-    }
-
-    @include media($bp-large) {
-      @include span-columns(4);
-    }
-
-    @include media($bp-huge) {
-      @include span-columns(3);
-    }
-
-    &.phone-menu {
-      border: medium none;
-      padding: 0;
-      overflow: visible;
-    }
-
-    &::before {
-      @include right(0);
-
-      position: absolute;
-      top: (-$baseline*0.15);
-      opacity: 0;
-      background-color: $white;
-      padding: ($baseline*2) ($baseline*0.75) 0 ($baseline*0.75);
-      width: ($baseline*2.5);
-      height: ($baseline/4);
-      content: "";
-    }
-
-    .header-search-facets,
-    .header-facet {
-      @extend %t-title6;
-      @extend %t-strong;
-
-      margin: 0;
-      padding: ($baseline/2);
-      color: $facet-text-color;
-      text-transform: none;
-    }
-
-    .header-facet {
-      border-top: 1px solid $gray-l4;
-    }
-
-    .facet-list {
-      @extend %ui-no-list;
-
-      @include clearfix();
-
-      padding-bottom: ($baseline/2);
-
-      &.collapse {
-        max-height: ($baseline*1.5*9) - ($baseline/2);
-        overflow: hidden;
-      }
-
-      li {
-        @include clearfix();
-
-        position: relative;
-        padding: 0;
-        height: ($baseline*1.5);
-        clear: both;
-      }
-    }
-
-    .facet-option {
-      @include float(left);
-      @include transition(all $tmg-f2 ease-out 0s);
-      @include clearfix();
-
-      @extend %t-action3;
-      @extend %text-truncated;
-
-      opacity: 1;
-      border-radius: 0;
-      padding: ($baseline/4) ($baseline/2);
+    .intro {
       width: 100%;
-      color: $facet-text-color;
-
-      .count {
-        @include right($baseline*0.6);
-        @include text-align(right);
-
-        box-sizing: border-box;
-
-        @include transition(all 0.2s ease-out);
-
-        position: absolute;
-        width: ($baseline*2);
-      }
-
-      //STATE: hover, focus
-      &:hover,
-      &:focus {
-        background: $facet-background-color;
-        color: $white;
-        text-decoration: none;
-
-        .count {
-          color: $white;
-        }
-      }
-
-      //STATE: selected (hover, focus)
-      &.selected,
-      &.selected:hover,
-      &.selected:focus {
-        background: $gray-l4;
-        color: $facet-text-color;
-
-        .count {
-          color: theme-color("dark");
-
-          .count-number {
-            display: none;
-          }
-        }
-
-        .count::before {
-          @include left($baseline*0.75);
-
-          position: absolute;
-          width: ($baseline*2);
-          color: $gray-l1;
-          font-family: FontAwesome;
-          text-align: center;
-          content: '\f00d'; // fa-times
-        }
-      }
+      text-align: center;
     }
 
-    .toggle {
-      @include clearfix();
-
-      button {
-        @extend %t-icon6;
-        @extend %t-strong;
-
-        padding: ($baseline/4) ($baseline/2);
-        color: $facet-background-color;
-      }
+    .pay-now-button {
+      margin: 0 auto;
     }
+
+    .media {
+      width: fit-content;
+      margin: 0 auto;
+    }
+
+    img {
+      height: 160px;
+      max-width: 264px;
+    }
+  }
+
+  .course-info .container .course-sidebar {
+    width: 100%;
   }
 }
 
-// +All Other Styles
-// ====================
-.find-courses,
-.university-profile {
+.wrapper-course-material .course-tabs {
+  padding: 0;
+}
+
+.tabs .tab a, .tabs .tab a:visited {
+  padding: 10px 15px 7px 15px;
+}
+
+body.view-in-course .wrapper-course-material .course-material .course-tabs {
+  padding: 0;
+}
+
+div.wrapper-course-material .course-tabs .tab a,
+div.wrapper-course-material .course-tabs .tab a:visited {
+  padding: 10px 15px 7px 15px;
+}
+
+.course-wrapper section#course-content #main {
+  max-width: 980px;
+  display: block;
+  margin: 0 auto;
+}
+
+div.course-wrapper .course-content .xblock.xblock-student_view-vertical,
+div.course-wrapper .courseware-results-wrapper .xblock.xblock-student_view-vertical {
+  max-width: 100%;
+}
+
+//info
+section.updates div .updates-article {
+  background: $background-color-info;
+}
+
+.course-outline .block-tree .section ol.outline-item .subsection a.outline-item:hover,
+.course-outline .block-tree .section ol.outline-item .subsection a.outline-item:focus {
+  background-color: $primary;
+  color: $inverse;
+}
+
+
+div.info-wrapper section.updates>ol .updates-article,
+div.info-wrapper section.updates section .updates-article,
+div.info-wrapper section.updates div article.updates-article {
+  background-color: $background-color-info;
+}
+
+.wrapper-course-material .course-tabs li.tab a,
+.wrapper-course-material .course-tabs li.tab a:visited {
+  color: $primary-font-color;
+}
+
+.xmodule_display.xmodule_SequenceModule
+.sequence-nav ol li button div.sequence-tooltip {
+  color: $primary-font-color;
+}
+
+body.view-in-course div.info-wrapper section.handouts a {
+  color: $primary;
+}
+
+div.info-wrapper section.updates div article .toggle-visibility-element {
+  color: $primary;
+}
+
+//course-course
+.xmodule_display.xmodule_SequenceModule div.sequence-nav ol li button span.icon {
+  font-size: 100%;
+  color: $pearson-dark-blue-courseware;
+}
+
+h2.hd.hd-2.unit-title,
+.xblock .xblock h2,  {
+  font-size: 2.25em;
+  font-family: $serif;
+}
+
+.course-outline .block-tree .section .section-name .section-title {
+  font-family: Playfair Display, serif;
+  font-size: 1.3rem;
+}
+
+.instructor-dashboard-content-2 input[type="button"] {
+  text-shadow: none;
+  font-weight: bold;
+  box-shadow: none;
+}
+
+.forum-nav .search-alert-content .message {
+  color: black;
+}
+
+
+.hd.hd-3.discussion-module-title, .hd-2 {
+  font-size: 1.5em;
+  font-weight: 600;
+  line-height: 1.4em;
+  font-family: $serif;
+}
+
+.discussion-module .inline-discussion-topic {
+  font-size: 1rem;
+}
+
+
+.course-content div.bookmark-button-wrapper {
+  margin-bottom: 10px;
+}
+
+div.content-wrapper.main-container .container {
+  div.home {
+    border: 0;
+    box-shadow: none;
+  }
+
+  div.info-wrapper,
+  div.info-wrapper section.updates div article.updates-article {
+    background-color: $pearson-grey-courseware-3;
+    border:0;
+    box-shadow: none;
+  }
+}
+
+.content-wrapper .page-header {
+  border: 0;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+header.page-header.has-secondary {
+  padding-bottom: 0;
+}
+
+.xmodule_display.xmodule_VideoModule .video .wrapper-downloads {
+  padding: 10px;
+}
+
+.xmodule_display.xmodule_SequenceModule .sequence-nav ol li button.past .icon {
+  color: $pearson-grey-courseware-4;
+}
+
+.xmodule_display.xmodule_SequenceModule .sequence-nav-button.focused .icon, .xmodule_display.xmodule_SequenceModule .sequence-nav-button:hover .icon, .xmodule_display.xmodule_SequenceModule .sequence-nav-button:active .icon, .xmodule_display.xmodule_SequenceModule .sequence-nav-button.active .icon, .xmodule_display.xmodule_SequenceModule .sequence-nav button.focused .icon, .xmodule_display.xmodule_SequenceModule .sequence-nav button:hover .icon, .xmodule_display.xmodule_SequenceModule .sequence-nav {
+  color: $pearson-dark-blue-courseware;
+}
+
+button:active .icon, .xmodule_display.xmodule_SequenceModule .sequence-nav button.active .icon {
+  font-size: 110%;
+  color: $pearson-dark-blue-courseware !important;
+}
+
+body.view-in-course .wrapper-course-material, body.view-in-course .wrapper-preview-menu {
+  border-bottom: 1px solid $pearson-grey-courseware;
+}
+
+div.xmodule_display.xmodule_SequenceModule .sequence-nav ol li button .sequence-tooltip {
+  background: $inverse;
+  border: 1px solid $pearson-dark-blue-courseware;
+  color: $pearson-dark-blue-courseware;
+}
+
+div.xmodule_display.xmodule_SequenceModule .sequence-nav ol li button .sequence-tooltip::after {
+  background: $inverse;
+  border-top: 1px solid $pearson-dark-blue-courseware;
+  border-left: 1px solid $pearson-dark-blue-courseware;
+  top: -6px;
+}
+
+div.xmodule_display.xmodule_SequenceModule .sequence-nav ol li button .sequence-tooltip {
+  text-shadow: none;
+}
+
+div.xmodule_display.xmodule_SequenceModule .sequence-nav button.active {
+  border-bottom: 3px solid $pearson-dark-blue-courseware;
+}
+
+div.xmodule_display.xmodule_SequenceModule .sequence-nav {
+  margin: 20px auto 30px;
+}
+
+.content-wrapper > .container {
+  max-width: 1920px !important;
+  width: 100%;
+}
+
+#main > .container {
+  border: none !important;
+}
+
+.content-wrapper .page-content-container {
+  border: none !important;
+}
+
+nav.courseware {
+  border-bottom: 1px solid $pearson-grey-courseware;
+}
+
+div.xmodule_display.xmodule_SequenceModule .sequence-nav-button.focused,
+div.xmodule_display.xmodule_SequenceModule .sequence-nav-button:hover,
+div.xmodule_display.xmodule_SequenceModule .sequence-nav-button:active,
+div.xmodule_display.xmodule_SequenceModule .sequence-nav-button.active,
+div.xmodule_display.xmodule_SequenceModule .sequence-nav button.focused,
+div.xmodule_display.xmodule_SequenceModule .sequence-nav button:hover,
+div.xmodule_display.xmodule_SequenceModule .sequence-nav button:active,
+div.xmodule_display.xmodule_SequenceModule .sequence-nav button.active {
+  background-color: transparent;
+}
+
+div.xmodule_display.xmodule_SequenceModule .sequence-nav-button.focused .icon,
+div.xmodule_display.xmodule_SequenceModule .sequence-nav-button:hover .icon,
+div.xmodule_display.xmodule_SequenceModule .sequence-nav-button:active .icon,
+div.xmodule_display.xmodule_SequenceModule .sequence-nav-button.active .icon,
+div.xmodule_display.xmodule_SequenceModule .sequence-nav button.focused .icon,
+div.xmodule_display.xmodule_SequenceModule .sequence-nav button:hover .icon,
+div.xmodule_display.xmodule_SequenceModule .sequence-nav button:active .icon,
+div.xmodule_display.xmodule_SequenceModule .sequence-nav button.active .icon {
+  font-size: 110% !important;
+}
+
+div.xmodule_display.xmodule_SequenceModule .sequence-nav ol li {
+  border-top-color: $pearson-grey-courseware;
+  border-left-color: $inverse;
+  border-right-color: $inverse;
+}
+
+.xblock--drag-and-drop .feedback {
+  border: none !important;
+}
+
+div.course-wrapper .course-content .vert-mod .vert, .course-wrapper .courseware-results-wrapper .vert-mod .vert {
+  border: none !important;
+}
+
+.sponsors > li > a > img {
+  width: 50%;
+}
+
+.sponsors > li:first-child {
+  text-align: right;
+}
+
+.sponsors > li:last-child {
+  text-align: left;
+}
+
+//info-home
+div.home div.page-header-main{
+  font-family: "Times New Roman" !important;
+
+  .page-title , .page-subtitle {
+	  color: $primary-font-color;
+	}
+}
+
+.xmodule_display.xmodule_SequenceModule .sequence-nav-button:hover {
+  color:$secondary;
+}
+
+article.updates-article {
+  color: $primary-font-color;
+}
+
+//discussion-home
+.view-discussion-home .helpgrid-row th.row-title{
+  background-color: $inverse;
+}
+
+.forum-nav-thread .forum-nav-thread-link ,
+.forum-nav-thread-list .thread-preview-body{
+  background-color:$gray-l5;
+  color: $primary-font-color;
+}
+
+.forum-nav-thread .forum-nav-thread-link:hover {
+  background-color:$gray-l5;
+}
+
+span.forum-nav-thread-comments-count {
+  background-color: $secondary;
+  color: $inverse;
+}
+
+.discussion .post-label.post-label-following {
+  color: $primary;
+}
+
+.forum-nav-thread .forum-nav-thread-link.is-active {
+  background-color: $gray-l5;
+}
+
+aside.forum-nav div.search-alert {
+  background-color: $gray-l5;
+}
+
+//profile
+.view-profile .wrapper-profile-section-container-one div.wrapper-profile-section-one {
+  background-color:$gray-l5;
+}
+
+//instructor
+section.instructor-dashboard-content-2 {
+  input[type="button"], input[type="button"]:hover:not(:disabled) {
+    background: $primary;
+    color: $inverse;
+    border: 1px solid $primary;
+    font-weight: 400;
+  }
+}
+
+.instructor-dashboard-wrapper-2
+section.idash-section#membership
+.member-lists-management .auth-list-container
+.member-list-widget div.bottom-bar {
+  background-color: $gray-l5;
+}
+
+.instructor-dashboard-content-2 .instructor-nav .nav-item button.btn-link:hover,
+.instructor-dashboard-content-2 .instructor-nav .nav-item button.btn-link:focus {
+    background: $inverse;
+    color: $secondary;
+}
+
+.idash-section div.message-warning {
   background: $gray-l5;
-  padding-bottom: ($baseline*3);
+}
+//wiki
+
+.wiki-wrapper section.wiki ul.nav-tabs li.active a {
+  background-color: $gray-l5;
+}
+
+section#wiki-content {
+  border: 1px solid $pearson-grey-courseware-2;
+}
+
+div.wiki-wrapper {
+  box-shadow: none;
+  border: 0;
+}
+
+.wiki-wrapper section.wiki ul.breadcrumb {
+  margin: 0 0 0 13px;
+}
+
+.wiki-wrapper section.wiki .breadcrumbs-header
+div.global-functions.pull-right
+a.add-article-btn.btn.pull-left {
+  color: $inverse;
+}
+
+div.global-functions.pull-right a.add-article-btn.btn.pull-left,
+article#main-article div.form-actions a#previewButton,
+.wiki-wrapper section.wiki a.btn:active:not(:disabled),
+.wiki-wrapper section.wiki a.btn:focus:not(:disabled),
+.wiki-wrapper section.wiki a.btn:hover:not(:disabled),
+div.form-actions a.btn.btn-large.back {
+  border: 1px solid $primary;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 0 0 $primary;
+  color: $primary-font-color;
+  display: inline-block;
+  font-weight: bold;
+  background: $primary;
+  padding: 7px 18px;
+  text-decoration: none;
+  background-clip: padding-box;
+  font-size: 0.8em;
+}
 
 
-  section.message {
-    @include columns(2 20px);
-    @include clearfix();
+//instructor-certificates
+.instructor-dashboard-wrapper-2
+.customBrowseBtn {
+  div.file-browse {
+    border: 0;
+    background: transparent;
+    bottom: -10px;
 
-    border-top: 1px solid $border-color-2;
-    margin-top: $baseline;
-    padding-top: ($baseline*3);
+    span.browse {
+      margin-left: 248px;
+    }
+
+    input.file_field {
+      padding: 14px 0 0;
+      left: -25%;
+      top: 1px;
+      color: $primary-font-color;
+    }
+
+  }
+
+}
+
+button.btn-blue, .view-teams .action-primary,
+.instructor-dashboard-wrapper-2 button.btn-blue {
+  color: $primary-font-color;
+}
+
+div.instructor-dashboard-wrapper-2 button.btn-blue {
+  background: $primary;
+  color: $primary-font-color;
+}
+
+//team
+.join-team.form-actions
+button.action.action-primary {
+  background: $primary;
+  color: $primary-font-color;
+}
+
+li.card.list-card.team-card,
+li.card.square-card.topic-card.has-pennant {
+  border: 1px solid $secondary;
+}
+
+div.page-header-main nav.breadcrumbs a.nav-item {
+  color: $primary;
+}
+
+@media (max-width: 767px) {
+  .view-teams  {
+    div.team-profile div.page-content-main,
+    div.team-profile div.page-content-secondary {
+      width: 100%;
+    }
+
+    li.card.list-card div.card-actions,
+    li.card.square-card.topic-card.has-pennant {
+      width: 100%;
+    }
+  }
+
+}
+
+div.gradebook-wrapper section.gradebook-content
+table.student-table td a {
+  color: $primary-black;
+}
+
+div.gradebook-wrapper section.gradebook-content
+table.grade-table td {
+  color: $primary-black;
+}
+
+div.gradebook-wrapper section.gradebook-content .student-search-field {
+  color: $primary-font-color;
+}
+
+.ui-dialog-titlebar.ui-widget-header.ui-corner-all.ui-helper-clearfix {
+  background: $primary;
+  border: 1px solid;
+}
+
+.view-teams div.wrapper-msg {
+  background: $inverse;
+  border-top: 3px solid $primary;
+  .right-floater button {
+    color: $primary;
+  }
+}
+
+.wrapper-prompt .prompt div.nav-actions {
+  background: $secondary;
+}
+
+span.ui-button-icon-primary.ui-icon.ui-icon-closethick {
+  margin: -9px;
+}
+
+li.errors {
+  color: red;
+}
+
+li.success {
+  color: $secondary;
+}
+
+.ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-front.ui-draggable.ui-resizable {
+  background: $gray-l5;
+}
+
+
+@media (max-width: 767px) {
+  .instructor-dashboard-wrapper-2 section.idash-section#membership
+  .member-lists-management .auth-list-container
+  div.member-list-widget div.bottom-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .instructor-dashboard-wrapper-2 section.idash-section#membership
+  .member-lists-management div.auth-list-container
+  .member-list-widget input[type="button"].add {
+    position: relative;
+    right: inherit;
+  }
+
+  article.updates-article
+  .toggle-visibility-element.article-content {
+    font-size: 0.6rem;
+  }
+
+}
+
+.instructor-dashboard-wrapper-2
+section.idash-section#membership
+.enroll-option div.hint.auto-enroll-hint,
+.instructor-dashboard-wrapper-2 section.idash-section#membership
+.enroll-option div.hint.email-students-hint {
+  background: $gray-l5;
+}
+
+.instructor-dashboard-wrapper-2 section.idash-section#membership
+.enroll-option .hint span.hint-caret {
+  border-right: 8px solid $gray-l5;
+  border-left: 8px solid transparent;
+  border-top: 8px solid $gray-l5;
+  border-bottom: 8px solid transparent;
+}
+
+div.container>div {
+  border: 0 !important;
+  box-shadow: none !important;
+  margin: 0px;
+}
+
+section#instructor-dashboard-content,
+.view-teams div.page-content,
+section#course-info-progress,
+.content-wrapper header.page-header,
+div.content-wrapper.main-container div.container div.home {
+  padding-left: 13px;
+  padding-right: 13px;
+}
+
+.content-wrapper .course-info .container {
+  padding-bottom: 0;
+}
+
+.content {
+  padding: 0px 30px;
+}
+
+.course-info .button-enroll-bottom {
+  margin-bottom: 15px;
+  text-align: center;
+  margin-top: 15px;
+
+  .pay-now-button {
+    margin: 0 auto;
+  }
+
+  a {
+    background: $pearson-grey-font;
+    padding: 10px;
+
+    &.register {
+      background: $pearson-dark-blue-courseware;
+      color: $white;
+      font-size: 1.2rem;
+    }
   }
 }
