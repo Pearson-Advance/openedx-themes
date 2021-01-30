@@ -1,3 +1,22 @@
+// LMS -- elements -- navigation
+// ====================
+
+// in this document:
+// --------------------
+// +notes
+// +skip navigation
+// +utility navigation
+// +toggling utilities
+// +case - calculator spacing
+// +tabs
+
+// +notes:
+// --------------------
+// this Sass partial should have its contents eventually abstracted out so that onboarding/non-coureware navigation is separate from in course-based navigation systems
+
+
+// +skip navigation
+// --------------------
 .global-header h1.header-logo a .logo {
     float: left;
     height: 55px;
@@ -27,7 +46,7 @@
       }
 
       .nav-links .secondary .dropdown-user-menu .dropdown-item a {
-         color: $vue-dark ;
+         color: $vue-dark;
       }
 
       .header-logo .course-header {
@@ -71,7 +90,7 @@
 .apprencticeships-btn:hover {
   background-color: $app-btn-text !important;
   border: 1px solid $app-btn !important;
-  color: $app-btn  !important;
+  color: $app-btn !important;
 }
 
 .settings-language-form {
@@ -80,7 +99,7 @@
 
 select, option, optgroup {
   color: #fff !important;
-  background-color: #003057 !important;
+  background-color: $secondary !important;
 }
 
 
@@ -94,7 +113,7 @@ select, option, optgroup {
   header.global-header .nav-links .secondary a.register-btn:hover {
     background-color: $font-color-login;
     border: 1px solid $primary;
-    color:$button-color-login;
+    color: $button-color-login;
   }
 
   .vue-btn {
@@ -112,7 +131,7 @@ select, option, optgroup {
    .vue-btn:hover, .apprenticeships-btn:hover {
     background-color: $font-color-login;
     border: 1px solid $primary;
-    color:$button-color-login;
+    color: $button-color-login;
   }
 }
 
@@ -120,7 +139,7 @@ select, option, optgroup {
 header.global-header .nav-links .secondary a.sign-in-btn {
     background-color: $button-color-login;
     border: 1px solid $button-color-login;
-    color:$font-color-login;
+    color: $font-color-login;
   }
 
 
@@ -128,13 +147,13 @@ header.global-header .nav-links .secondary a.sign-in-btn {
   header.global-header .nav-links .secondary a.sign-in-btn {
     background-color: $button-color-login;
     border: 1px solid $button-color-login;
-    color:$font-color-login;
+    color: $font-color-login;
   }
 
   header.global-header .nav-links .secondary a.sign-in-btn:hover {
     background-color: $font-color-login;
     border: 1px solid $primary;
-    color:$button-color-login;
+    color: $button-color-login;
   }
 
 
@@ -150,7 +169,7 @@ header.global-header .nav-links .secondary a.sign-in-btn {
   div.mobile-menu div.mobile-nav-link a {
     background-color: $light-gray;
     border-bottom: 1px solid $primary;
-    color: #003057;
+    color: $secondary;
   }
 }
 
@@ -176,4 +195,8 @@ header.global-header .nav-links .secondary a.sign-in-btn {
   font-size: $font-size-base;
   margin-top: 15px;
   font-weight: 600;
+}
+
+.hd .hd-3 .page-title {
+  font-family: "Times New Roman";
 }
