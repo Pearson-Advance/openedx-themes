@@ -3,7 +3,7 @@
 
 <% if (!context.syncLearnerProfileData) { %>
 	<div class="toggle-form">
-		<span class="text"><%- edx.StringUtils.interpolate(gettext('Already have an {platformName} account?'), {platformName: context.platformName }) %></span>
+		<span class="text"><%- edx.StringUtils.interpolate(gettext('Already have a {platformName} account?'), {platformName: context.platformName }) %></span>
 		<a href="#login" class="form-toggle" data-type="login"><%- gettext("Sign in.") %></a>
 	</div>
 <% } %>
@@ -45,7 +45,7 @@
                 </h3>
             </div>
         <% } else { %>
-            <h2><%- gettext('Create an Account')%></h2>
+            <h2><%- gettext('Create an account')%></h2>
         <% } %>
     <% } else if (context.autoRegisterWelcomeMessage) { %>
         <span class="auto-register-message"><%- context.autoRegisterWelcomeMessage %></span>
@@ -64,6 +64,19 @@
 
 
     <button type="submit" class="action action-primary action-update js-register register-button">
-    	<% if ( context.registerFormSubmitButtonText ) { %><%- context.registerFormSubmitButtonText %><% } else { %><%- gettext("Create Account") %><% } %>
+    	<% if ( context.registerFormSubmitButtonText ) { %><%- context.registerFormSubmitButtonText %><% } else { %><%- gettext("Create account") %><% } %>
     </button>
 </form>
+
+<script type="text/javascript">
+	// This removes all capital letters, except the first one for the label-text class
+	for(label of document.getElementsByClassName('label-text')) {
+		let content = label.textContent.toLocaleLowerCase();
+		content = content.charAt(0).toUpperCase() + content.slice(1);
+		label.textContent = content;
+	}
+
+	var xpath = "//a[text()='Terms of Service and Honor Code']";
+	var TOSLink = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+	TOSLink.text = "Terms of Service"
+</script>
