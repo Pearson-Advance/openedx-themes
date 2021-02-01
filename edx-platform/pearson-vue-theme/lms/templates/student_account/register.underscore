@@ -70,13 +70,21 @@
 
 <script type="text/javascript">
 	// This removes all capital letters, except the first one for the label-text class
-	for(label of document.getElementsByClassName('label-text')) {
-		let content = label.textContent.toLocaleLowerCase();
+	var label;
+	var content;
+
+	for (var i = 0; i < document.getElementsByClassName('label-text').length; i++)  {
+		label = document.getElementsByClassName('label-text')[i];
+		content = label.textContent.toLocaleLowerCase();
 		content = content.charAt(0).toUpperCase() + content.slice(1);
 		label.textContent = content;
 	}
 
-	var xpath = "//a[text()='Terms of Service and Honor Code']";
-	var TOSLink = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-	TOSLink.text = "Terms of Service"
+	var allLinks = document.getElementsByTagName('a');
+
+	for (var i = 0; i < allLinks.length; i++) {
+		if (allLinks[i].textContent.indexOf('Terms of Service and Honor Code') !== -1) {
+			allLinks[i].textContent = '<%- gettext("Terms of Service")%>';
+    }
+	}
 </script>
