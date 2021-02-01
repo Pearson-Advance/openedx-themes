@@ -6,15 +6,10 @@
 // partials directly into this file so that you can break your
 // rules into modular pieces.
 
-@import 'certificates';
 @import 'courses';
 @import 'header';
 @import 'navigation';
 @import 'footer';
-@import 'profile';
-@import 'index';
-@import 'dashboard';
-@import 'support';
 @import 'course-experience';
 
 
@@ -352,4 +347,20 @@ iframe.rocket-chat-view {
   right: 0px;
   margin: 25px 0;
   z-index: 1;
+}
+
+label[for=register-name]{
+  padding-top: 10px !important;
+}
+
+label[for=register-username]{
+  padding-top: 10px !important;
+}
+
+label[for=register-email]{
+  padding-top: 0 !important;
+}
+
+label[for=register-password]{
+  padding-top: 0 !important;
 }
