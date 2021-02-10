@@ -51,12 +51,16 @@
 }
 
 @media (max-width: 991px) {
-  header.global-header h1.header-logo a .logo {
-      margin-left: -50%;
+  header.global-header .header-logo a {
+    margin-left: 20px;
+    height: 40px;
+    width: auto;
   }
 
-  .global-header .hamburger-menu {
+  .global-header .main-header .hamburger-menu {
     position: relative;
+    float: right;
+    left: initial;
+    right: 20px;
   }
-
 }

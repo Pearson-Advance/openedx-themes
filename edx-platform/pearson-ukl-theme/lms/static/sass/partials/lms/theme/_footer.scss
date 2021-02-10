@@ -2,13 +2,14 @@
 
  a, .copyright,
  .colophon .nav-colophon li a {
-    color: $primary;
+    color: $inverse;
   }
 }
 
 .wrapper-footer {
   border-top: 1px solid $primary;
   box-shadow: 0 -1px 5px 0 rgba(0,0,0,0.1) !important;
+  background: $primary-black;
 }
 
 div.wrapper-footer footer#footer-openedx .colophon .nav-colophon li a:hover,
