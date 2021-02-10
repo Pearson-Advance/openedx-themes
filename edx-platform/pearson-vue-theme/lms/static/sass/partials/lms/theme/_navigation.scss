@@ -19,12 +19,13 @@
 // --------------------
 .global-header h1.header-logo a .logo {
     float: left;
-    height: 55px;
+    height: 40px;
     margin-left: 3px;
 }
 
 .global-header {
-  min-height: 70px;
+  height: 70px;
+  max-height: 70px;
   position: relative;
   z-index: 1;
   overflow: inherit;
