@@ -96,7 +96,7 @@
 
       .main {
         @include float(left);
-        @include margin($baseline*0.9, 0, 0, $baseline);
+        margin: $baseline*0.9 0 0 $baseline !important;
 
         .nav-item {
           @include float(left);
