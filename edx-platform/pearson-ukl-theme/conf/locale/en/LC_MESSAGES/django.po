@@ -19,9 +19,11 @@ msgstr ""
 "Generated-By: Babel 2.6.0\n"
 
 # edx-platform/lms/djangoapps/courseware/views/views.py
+# This string was manually added and edited to overwrite it from the theme and avoid changing the platform code.
 msgid "To see course content, {sign_in_link} or {register_link}."
 msgstr "To see course content, {sign_in_link}."
 
 # edx-platform/openedx/features/course_experience/views/course_home_messages.py
+# This string was manually added and edited to overwrite it from the theme and avoid changing the platform code.
 msgid "{sign_in_link} or {register_link} and then enroll in this course."
 msgstr "{sign_in_link} and then enroll in this course."
