@@ -244,7 +244,6 @@ iframe.rocket-chat-view {
 .signin-logo {
   display: block;
   width: 400px;
-  right: 110px;
   position: absolute;
   top: 100px;
 }
@@ -255,8 +254,8 @@ iframe.rocket-chat-view {
   border-radius: 10%;
   box-shadow: 3px 2px 2px 5px $light-shadow;
   position: absolute;
-  right: 50px;
-  top: 250px
+  left: 45px;
+  top: 300px;
 }
 
 .signing-title {
@@ -269,12 +268,10 @@ iframe.rocket-chat-view {
 .login-register .form-wrapper .login-providers {
   display: flex;
   text-align: left;
-  background: $vue-backgroud-white;
-  padding: 10px 15px 40px;
-  justify-content: space-between;
+  background: $inverse;
+  padding: 40px 15px 10px;
+  justify-content: center;
   align-items: center;
-  box-shadow: 2px 2px 2px $vue-light-gray;
-  border-bottom: 0.1px solid $vue-gray;
 }
 
 .login-register-content {
@@ -308,10 +305,26 @@ iframe.rocket-chat-view {
 .login-register div.toggle-form {
   margin-top: 15px;
   text-align: center;
+
+  h1 {
+    font-size: 45px;
+    color: $vue-black;
+    font-weight: 600;
+  }
+
+  span {
+    color: $vue-black;
+  }
 }
+
 .login-register .action-primary {
   width: 100%;
   display: block;
+}
+
+.login-container {
+   position: absolute;
+   right: 450px;
 }
 
 .background-login {
