@@ -377,3 +377,24 @@ label[for=register-email]{
 label[for=register-password]{
   padding-top: 0 !important;
 }
+
+.login-register .login-provider, .financial-assistance-wrapper .financial-assistance-form .login-provider {
+    padding: 0 20px;
+    text-align: left;
+    position: relative;
+    height: 35px;
+    text-shadow: none;
+    text-transform: none;
+    width: auto;
+    border-radius: 5px;
+    background: $vue-btn;
+    color: $inverse;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: inherit;
+}
+
+.login-register .login-provider span, .financial-assistance-wrapper .financial-assistance-form .login-provider span {
+    color: inherit;
+    padding-left: 10px;
+}
