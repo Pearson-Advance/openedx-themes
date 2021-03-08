@@ -1,4 +1,4 @@
-{% extends 'ace_common/edx_ace/common/base_body.html' %}
+% extends 'ace_common/edx_ace/common/base_body.html' %}
 
 {% load i18n %}
 {% load static %}
@@ -25,16 +25,12 @@
                         background-repeat: no-repeat;">
 
                 <h1 style="font-family:'Playfair Display', serif; font-weight: 700;">
-                    {% filter force_escape %}
                     {% blocktrans %}You have been invited to {{ course_name }}{% endblocktrans %}
-                    {% endfilter %}
                 </h1>
                 <p style="padding: 0px;
                           width: 50%;
                           min-width: 300px;">
-                    {% filter force_escape %}
                     {% blocktrans %}You have been invited to join {{ course_name }} at {{ site_name }} by a member of the course staff.{% endblocktrans %}
-                    {% endfilter %}
                     <br />
                 </p>
 
@@ -43,9 +39,7 @@
                 <p style="padding: 0px;
                           width: 50%;
                           min-width: 300px;">
-                    {% filter force_escape %}
                     {% blocktrans %}To access this course click on the button below and log in.{% endblocktrans %}
-                    {% endfilter %}
                     <br />
                 </p>
 
@@ -54,9 +48,7 @@
                 <p style="padding: 0px;
                           width: 50%;
                           min-width: 300px;">
-                    {% filter force_escape %}
                     {% blocktrans %}To access this course visit it and register:{% endblocktrans %}
-                    {% endfilter %}
                     <br />
                 </p>
 
@@ -66,9 +58,7 @@
             <p style="padding: 0px;
                           width: 50%;
                           min-width: 300px;">
-                {% filter force_escape %}
                 {% blocktrans %}Please finish your registration and fill out the registration form, making sure to use {{ email_address }} in the Email field:{% endblocktrans %}
-                {% endfilter %}
                 <br />
             </p>
 
@@ -79,18 +69,12 @@
                         width: 50%;
                         min-width: 300px;">
                 {% if auto_enroll %}
-                    {% filter force_escape %}
                     {% blocktrans %}Once you have registered and activated your account, you will see {{ course_name }} listed on your dashboard.{% endblocktrans %}
-                    {% endfilter %}
                 {% elif course_about_url is not None %}
-                    {% filter force_escape %}
                     {% blocktrans %}Once you have registered and activated your account, you will be able to access this course:{% endblocktrans %}
-                    {% endfilter %}
                     {% include "ace_common/edx_ace/common/return_to_course_cta.html" with course_cta_text=course_name course_cta_url=course_about_url %}
                 {% else %}
-                    {% filter force_escape %}
                     {% blocktrans %}You can then enroll in {{ course_name }}.{% endblocktrans %}
-                    {% endfilter %}
                 {% endif %}
                 <br />
             </p>
@@ -102,14 +86,12 @@
     <tr>
         <td>
             <p style="font-family: 'Open Sans', sans-serif;
-            color: #505759;
-            text-align: left;
-            padding: 2% 5%;
-            margin: 0px;">
-            {% filter force_escape %}
-            {% blocktrans %}If you are receiving this email in error, please let us know at <a href="mailto:{{ support_email }}">{{ support_email }}</a>.{% endblocktrans %}
-            {% endfilter %}
-            <br />
+                color: #505759;
+                text-align: left;
+                padding: 2% 5%;
+                margin: 0px;">
+                {% blocktrans %}If you are receiving this email in error, please let us know at <a href="mailto:{{ support_email }}">{{ support_email }}</a>.{% endblocktrans %}
+                <br />
             </p>
         </td>
     </tr>
