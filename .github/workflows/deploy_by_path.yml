@@ -1,0 +1,90 @@
+name: deploy_by_path
+
+on:
+  push:
+    branches:
+      - 'pearson-release/*.master'
+      - 'pearson-release/*.dev'
+
+jobs:
+  check-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      ecomm: ${{ steps.ecomm.outputs.src }}
+      edxapp: ${{ steps.edxapp.outputs.src }}
+    name: check changes by path
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dorny/paths-filter@v2.10.1
+        id: ecomm
+        with:
+          base: ${{ github.ref }}
+          filters: |
+            src:
+              - 'ecommerce/**'
+      
+      - uses: dorny/paths-filter@v2.10.1
+        id: edxapp
+        with:
+          base: ${{ github.ref }}
+          filters: |
+            src:
+              - 'edx-platform/**'
+
+  build-dev:
+    name: Build Dev deployment
+    needs: check-changes
+    if: endsWith(github.ref, '.dev')
+    environment: dev
+    runs-on: ubuntu-latest
+    steps:
+    - name: Build edxapp deployment
+      if: ${{ needs.check-changes.outputs.edxapp == 'true' }}
+      uses: Mondtic/build-jenkins-job@v1.0.0
+      with:
+        jenkins-url: ${{ secrets.JENKINS_URL }}
+        jenkins-token: ${{ secrets.JENKINS_TOKEN }}
+        jenkins-user: ${{ secrets.JENKINS_USER }}
+        jenkins-job: ${{ secrets.EDXAPP_JOB }}
+        jenkins-job-params: '{"NODE": "dev", "ENVIRONMENT": "dev", "BRANCH_CUSTOMER_DATA": "development", "COMPILE_THEMES": true}'
+        jenkins-wait-job: 'no-wait'
+
+    - name: Build ecomm deployment
+      if: ${{ needs.check-changes.outputs.ecomm == 'true' }}
+      uses: Mondtic/build-jenkins-job@v1.0.0
+      with:
+        jenkins-url: ${{ secrets.JENKINS_URL }}
+        jenkins-token: ${{ secrets.JENKINS_TOKEN }}
+        jenkins-user: ${{ secrets.JENKINS_USER }}
+        jenkins-job: ${{ secrets.ECOMM_JOB }}
+        jenkins-job-params: '{"NODE": "dev", "ENVIRONMENT": "dev", "BRANCH_CUSTOMER_DATA": "development"}'
+        jenkins-wait-job: 'no-wait'
+
+  build-prod:
+    name: Build Prod deployment
+    needs: check-changes
+    if: endsWith(github.ref, '.master')
+    environment: production
+    runs-on: ubuntu-latest
+    steps:
+    - name: Build edxapp deployment
+      if: ${{ needs.check-changes.outputs.edxapp == 'true' }}
+      uses: Mondtic/build-jenkins-job@v1.0.0
+      with:
+        jenkins-url: ${{ secrets.JENKINS_URL }}
+        jenkins-token: ${{ secrets.JENKINS_TOKEN }}
+        jenkins-user: ${{ secrets.JENKINS_USER }}
+        jenkins-job: ${{ secrets.EDXAPP_JOB }}
+        jenkins-job-params: '{"NODE": "master", "ENVIRONMENT": "prod", "BRANCH_CUSTOMER_DATA": "production", "COMPILE_THEMES": true}'
+        jenkins-wait-job: 'no-wait'
+        
+    - name: Build ecomm deployment
+      if: ${{ needs.check-changes.outputs.ecomm == 'true' }}
+      uses: Mondtic/build-jenkins-job@v1.0.0
+      with:
+        jenkins-url: ${{ secrets.JENKINS_URL }}
+        jenkins-token: ${{ secrets.JENKINS_TOKEN }}
+        jenkins-user: ${{ secrets.JENKINS_USER }}
+        jenkins-job: ${{ secrets.ECOMM_JOB }}
+        jenkins-job-params: '{"NODE": "master", "ENVIRONMENT": "prod", "BRANCH_CUSTOMER_DATA": "production"}'
+        jenkins-wait-job: 'no-wait'
