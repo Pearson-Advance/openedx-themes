@@ -249,11 +249,11 @@ iframe.rocket-chat-view {
   margin-bottom: 10px;
 }
 
-.login-register .form-wrapper .login-providers {
+.login-providers {
   display: flex;
   text-align: left;
   background: $inverse;
-  padding: 10px;
+  padding: 10px 0;
   justify-content: center;
   align-items: center;
 }
@@ -286,7 +286,7 @@ iframe.rocket-chat-view {
   margin-bottom: 5px;
 }
 
-.login-register div.toggle-form {
+div.toggle-form {
   margin-top: 15px;
   text-align: center;
   max-width: initial;
@@ -303,7 +303,7 @@ iframe.rocket-chat-view {
   }
 }
 
-.login-register .action-primary {
+.action-primary {
   width: 100%;
   display: block;
 }
@@ -367,7 +367,7 @@ label[for=register-password]{
   padding-top: 0 !important;
 }
 
-.login-register .login-provider, .financial-assistance-wrapper .financial-assistance-form .login-provider {
+.button-vue {
   padding: 0 10px;
   text-align: left;
   position: relative;
@@ -384,7 +384,7 @@ label[for=register-password]{
   margin: auto;
 }
 
-.login-register .login-provider span, .financial-assistance-wrapper .financial-assistance-form .login-provider span {
+.login-provider span, .financial-assistance-wrapper .financial-assistance-form .login-provider span {
   color: inherit;
   padding-left: 10px;
 }
@@ -415,7 +415,7 @@ label[for=register-password]{
     box-shadow: 2px 1px 1px 3px $light-shadow;
   }
 
-  .login-register div.toggle-form {
+  div.toggle-form {
     h1 {
       font-size: 30px;
     }
@@ -439,7 +439,7 @@ label[for=register-password]{
     top: 280px;
   }
 
-  .login-register div.toggle-form {
+  div.toggle-form {
     h1 {
       font-size: 35px;
     }
@@ -466,7 +466,7 @@ label[for=register-password]{
     width: 150px;
   }
 
-  .login-register div.toggle-form {
+  div.toggle-form {
     margin-top: 0;
     font-size: 12px;
 
@@ -476,7 +476,7 @@ label[for=register-password]{
     }
   }
 
-  .login-register .login-provider, .financial-assistance-wrapper .financial-assistance-form .login-provider {
+  .button-vue {
     font-size: 8px;
   }
 }
@@ -504,7 +504,7 @@ label[for=register-password]{
     height: 250px;
   }
 
-  .login-register div.toggle-form {
+  div.toggle-form {
     font-size: 16px;
     margin-bottom: 30px;
     margin-top: 20px;
@@ -514,7 +514,7 @@ label[for=register-password]{
     }
   }
 
-  .login-register .login-provider, .financial-assistance-wrapper .financial-assistance-form .login-provider {
+  .button-vue {
     font-size: 12px;
   }
 }
@@ -538,7 +538,7 @@ label[for=register-password]{
     height: 320px;
   }
 
-  .login-register div.toggle-form {
+  div.toggle-form {
     font-size: 20px;
 
     h1 {
@@ -547,7 +547,7 @@ label[for=register-password]{
     }
   }
 
-  .login-register .login-provider, .financial-assistance-wrapper .financial-assistance-form .login-provider {
+  .button-vue {
     font-size: 16px;
     height: 45px;
   }
