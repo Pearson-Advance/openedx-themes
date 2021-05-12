@@ -31,5 +31,22 @@
     .copyright {
       color: $inverse;
     }
+
+    .footer-language-selector {
+      label {
+        display: inline;
+        color: $inverse;
+        font-size: 2em;
+      }
+
+      #footer-language-select {
+        font-size: 1.5em;
+        font-weight: lighter;
+
+        option {
+          font-weight: lighter;
+        }
+      }
+    }
   }
 }
