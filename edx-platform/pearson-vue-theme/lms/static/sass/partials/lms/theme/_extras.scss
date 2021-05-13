@@ -402,7 +402,7 @@ label[for=register-password]{
   }
 
   .signin-logo {
-    width: 300px;
+    width: 270px;
   }
 
   .background-login {
@@ -410,7 +410,7 @@ label[for=register-password]{
   }
 
   .signin-container {
-    top: 260px;
+    top: 230px;
     width: 230px;
     box-shadow: 2px 1px 1px 3px $light-shadow;
   }
@@ -428,7 +428,7 @@ label[for=register-password]{
   }
 
   .signin-logo {
-    width: 400px;
+    width: 280px;
   }
 
   .background-login {
@@ -436,7 +436,7 @@ label[for=register-password]{
   }
 
   .signin-container {
-    top: 280px;
+    top: 230px;
   }
 
   div.toggle-form {
@@ -457,7 +457,8 @@ label[for=register-password]{
 
   .login-container {
     position: absolute;
-    right: 30px;
+    right: 8%;
+    top: 25%;
   }
 
   .signin-container {
@@ -483,23 +484,23 @@ label[for=register-password]{
 
 @media (min-width: 1024px) {
   .signin-logo {
-    width: 300px;
+    width: 180px;
   }
 
   .signin-container {
-    top: 150px;
-    right: 65px;
+    top: 90px;
+    right: 5px;
   }
 }
 
 @media (min-width: 1280px) {
   .signin-logo {
-    width: 400px;
+    width: 260px;
   }
 
   .signin-container {
-    top: 200px;
-    right: 80px;
+    top: 130px;
+    right: 10px;
     width: 220px;
     height: 250px;
   }
@@ -519,21 +520,14 @@ label[for=register-password]{
   }
 }
 
-@media (min-width: 1600px) {
-  .login-container {
-    right: 100px;
-    top: 160px;
-  }
-}
-
 @media (min-width: 1860px) {
   .signin-logo {
-    width: 550px;
+    width: 320px;
   }
 
   .signin-container {
-    top: 240px;
-    right: 115px;
+    top: 150px;
+    right: 0;
     width: 300px;
     height: 320px;
   }
