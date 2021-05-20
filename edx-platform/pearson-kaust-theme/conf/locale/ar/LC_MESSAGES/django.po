@@ -103,6 +103,11 @@ msgstr ""
 msgid "title"
 msgstr ""
 
+# See FOOTER_AVAILABLE_LINKS.
+#: edx-platform/pearson-kaust-theme/lms/templates/footer.html:23
+msgid "Cookie Policy"
+msgstr ""
+
 #: edx-platform/pearson-kaust-theme/lms/templates/header.html:8
 #: edx-platform/pearson-kaust-theme/lms/templates/navigation/navbar-logo-header.html:27
 msgid "{platform_name} Home Page"
@@ -213,7 +218,7 @@ msgstr ""
 
 #: edx-platform/pearson-kaust-theme/lms/templates/help_modal.html:235
 msgid "- Select -"
-msgstr ""
+msgstr "- اختر -"
 
 #: edx-platform/pearson-kaust-theme/lms/templates/help_modal.html:320
 msgid "problem"
@@ -3699,4 +3704,8 @@ msgstr ""
 #: edx-platform/pearson-kaust-theme/lms/templates/widgets/footer-language-selector.html:23
 msgid "Choose Language"
 msgstr ""
+
+#: lms/templates/courseware/progress.html
+msgid "Course Progress for '{username}' ({email})"
+msgstr "تقدم الدورة ل '{username}' ({email})"
 

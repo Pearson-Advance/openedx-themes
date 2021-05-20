@@ -9,7 +9,7 @@ help: ## Display this help message
 	@perl -nle'print $& if m{^[\.a-zA-Z_-]+:.*?## .*$$}' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m  %-25s\033[0m %s\n", $$1, $$2}'
 
 
-theme = edx-platform/cabinet-theme
+theme = edx-platform/pearson-pols-theme
 lang_targets = en fr
 create_translations_catalogs: ## Create the initial configuration of .mo files for translation
 	pybabel extract -F $(theme)/conf/locale/babel.cfg -o  $(theme)/conf/locale/django.pot --msgid-bugs-address=support@edunext.co --copyright-holder=eduNEXT $(theme)/*
