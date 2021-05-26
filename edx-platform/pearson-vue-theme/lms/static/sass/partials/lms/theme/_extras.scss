@@ -452,7 +452,10 @@ label[for=register-password]{
   }
 
   .signin-logo {
-    width: 200px;
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    width: 130px;
   }
 
   .login-container {
@@ -484,7 +487,9 @@ label[for=register-password]{
 
 @media (min-width: 1024px) {
   .signin-logo {
-    width: 180px;
+    right: 25px;
+    top: 22px;
+    width: 130px;
   }
 
   .signin-container {
@@ -495,7 +500,9 @@ label[for=register-password]{
 
 @media (min-width: 1280px) {
   .signin-logo {
-    width: 260px;
+    right: 55px;
+    top: 50px;
+    width: 150px;
   }
 
   .signin-container {
@@ -522,7 +529,9 @@ label[for=register-password]{
 
 @media (min-width: 1860px) {
   .signin-logo {
-    width: 320px;
+    width: 210px;
+    top: 50px;
+    right: 55px;
   }
 
   .signin-container {
