@@ -381,7 +381,6 @@ section {
   }
 
   &[role="courses"], &[role="explore"] {
-    background: #e8e6e5;
     padding: 20px 0 30px;
 
     .container {
@@ -452,6 +451,13 @@ section {
         }
       }
     }
+  }
+
+  // Used by role="courses".
+  &.background-image {
+    background-image: url('#{$static-path}/images/banner.jpeg');
+    background-size: cover;
+    background-repeat: repeat;
   }
 
   &[role="course"] {
