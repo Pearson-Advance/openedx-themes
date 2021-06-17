@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: support@edunext.co\n"
-"POT-Creation-Date: 2021-05-19 01:12-0500\n"
+"POT-Creation-Date: 2021-06-17 02:57+0000\n"
 "PO-Revision-Date: 2021-05-19 01:11-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ar\n"
@@ -103,11 +103,6 @@ msgstr ""
 msgid "title"
 msgstr ""
 
-# See FOOTER_AVAILABLE_LINKS.
-#: edx-platform/pearson-kaust-theme/lms/templates/footer.html:23
-msgid "Cookie Policy"
-msgstr ""
-
 #: edx-platform/pearson-kaust-theme/lms/templates/header.html:8
 #: edx-platform/pearson-kaust-theme/lms/templates/navigation/navbar-logo-header.html:27
 msgid "{platform_name} Home Page"
@@ -116,17 +111,17 @@ msgstr ""
 #: edx-platform/pearson-kaust-theme/lms/templates/help_modal.html:15
 #: edx-platform/pearson-kaust-theme/lms/templates/help_modal.html:21
 msgid "{platform_name} Support"
-msgstr ""
+msgstr "{platform_name} الدعم"
 
 #: edx-platform/pearson-kaust-theme/lms/templates/help_modal.html:31
 msgid ""
 "Have a question about something? You can contact the support team "
 "directly:"
-msgstr ""
+msgstr "هل لديك سؤال عن شيء ما؟ يمكنك الاتصال بفريق الدعم مباشرة:"
 
 #: edx-platform/pearson-kaust-theme/lms/templates/help_modal.html:40
 msgid "Report a problem"
-msgstr ""
+msgstr "الإبلاغ عم مشكلة"
 
 #: edx-platform/pearson-kaust-theme/lms/templates/help_modal.html:51
 #: edx-platform/pearson-kaust-theme/lms/templates/help_modal.html:88
@@ -138,14 +133,12 @@ msgstr ""
 #: edx-platform/pearson-kaust-theme/lms/templates/help_modal.html:90
 #: edx-platform/pearson-kaust-theme/lms/templates/help_modal.html:127
 #: edx-platform/pearson-kaust-theme/lms/templates/login.html:168
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:70
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:109
 msgid "E-mail"
 msgstr ""
 
 #: edx-platform/pearson-kaust-theme/lms/templates/help_modal.html:56
 msgid "Briefly describe your issue"
-msgstr ""
+msgstr "صِف بإيجاز مشكلتك"
 
 #: edx-platform/pearson-kaust-theme/lms/templates/help_modal.html:58
 #: edx-platform/pearson-kaust-theme/lms/templates/help_modal.html:59
@@ -153,50 +146,50 @@ msgid ""
 "Describe what you were doing when you encountered the issue. Include any "
 "details that will help us to troubleshoot, including error messages that "
 "you saw."
-msgstr ""
+msgstr "صِف ما كنت تفعله عندما واجهت المشكلة. قم بتضمين أي تفاصيل ستساعدنا في استكشاف الأخطاء وإصلاحها ، بما في ذلك رسائل الخطأ التي رأيتها."
 
 #: edx-platform/pearson-kaust-theme/lms/templates/help_modal.html:67
 #: edx-platform/pearson-kaust-theme/lms/templates/help_modal.html:104
 #: edx-platform/pearson-kaust-theme/lms/templates/help_modal.html:141
 msgid "Submit"
-msgstr ""
+msgstr "إرسال"
 
 #: edx-platform/pearson-kaust-theme/lms/templates/help_modal.html:77
 msgid "Make a suggestion"
-msgstr ""
+msgstr "قدم اقتراحك"
 
 #: edx-platform/pearson-kaust-theme/lms/templates/help_modal.html:93
 msgid "Briefly describe your suggestion"
-msgstr ""
+msgstr "صِف اقتراحك بإيجاز"
 
 #: edx-platform/pearson-kaust-theme/lms/templates/help_modal.html:95
 #: edx-platform/pearson-kaust-theme/lms/templates/help_modal.html:96
 msgid ""
 "Please give us specific details of where in the course your suggestion is"
 " related to, and why you are making that suggestion."
-msgstr ""
+msgstr "يرجى تزويدنا بتفاصيل محددة حول المكان الذي يتعلق به اقتراحك في الدورة التدريبية ، ولماذا تقدم هذا الاقتراح."
 
 #: edx-platform/pearson-kaust-theme/lms/templates/help_modal.html:114
 msgid "Ask a question"
-msgstr ""
+msgstr "اطرح سؤالك"
 
 #: edx-platform/pearson-kaust-theme/lms/templates/help_modal.html:130
 msgid "Briefly state your question here"
-msgstr ""
+msgstr "اذكر سؤالك هنا بإيجاز"
 
 #: edx-platform/pearson-kaust-theme/lms/templates/help_modal.html:132
 #: edx-platform/pearson-kaust-theme/lms/templates/help_modal.html:133
 msgid ""
 "Please tell us the details of where in the course your question relates "
 "to so that we can give you a detailed answer."
-msgstr ""
+msgstr "يرجى إخبارنا بتفاصيل المكان الذي يتعلق به سؤالك في الدورة التدريبية حتى نتمكن من إعطائك إجابة مفصلة."
 
 #: edx-platform/pearson-kaust-theme/lms/templates/help_modal.html:148
 msgid ""
 "Please note: The support team is English speaking. While we will do our "
 "best to address your inquiry in any language, our responses will be in "
 "English."
-msgstr ""
+msgstr "الرجاء ملاحظة: فريق الدعم يتحدث الإنجليزية. بينما سنبذل قصارى جهدنا لمعالجة استفسارك بأي لغة ، ستكون ردودنا باللغة الإنجليزية"
 
 #: edx-platform/pearson-kaust-theme/lms/templates/help_modal.html:156
 msgid "Thank You!"
@@ -291,21 +284,11 @@ msgstr ""
 msgid "Sign in or Sign up"
 msgstr ""
 
-#: edx-platform/pearson-kaust-theme/lms/templates/index.html:70
-#: edx-platform/pearson-kaust-theme/lms/templates/login.html:205
-#: edx-platform/pearson-kaust-theme/lms/templates/navigation/navbar-not-authenticated.html:42
-#: edx-platform/pearson-kaust-theme/lms/templates/navigation/navbar-not-authenticated.html:46
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:15
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:132
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:241
-msgid "Register"
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/index.html:88
+#: edx-platform/pearson-kaust-theme/lms/templates/index.html:86
 msgid "Access courses on the go"
 msgstr ""
 
-#: edx-platform/pearson-kaust-theme/lms/templates/index.html:89
+#: edx-platform/pearson-kaust-theme/lms/templates/index.html:87
 msgid ""
 "Download the app and access your courses wherever you are. Sync videos to"
 " your device and watch offline, at a time that suits you."
@@ -345,8 +328,6 @@ msgid "username"
 msgstr ""
 
 #: edx-platform/pearson-kaust-theme/lms/templates/login.html:169
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:71
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:110
 msgid "example: username@domain.com"
 msgstr ""
 
@@ -357,8 +338,6 @@ msgid ""
 msgstr ""
 
 #: edx-platform/pearson-kaust-theme/lms/templates/login.html:173
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:83
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:88
 msgid "Password"
 msgstr ""
 
@@ -386,156 +365,16 @@ msgstr ""
 msgid "Forgot password?"
 msgstr ""
 
+#: edx-platform/pearson-kaust-theme/lms/templates/login.html:205
+msgid "Register"
+msgstr ""
+
 #: edx-platform/pearson-kaust-theme/lms/templates/login.html:215
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:42
 msgid "or"
 msgstr ""
 
 #: edx-platform/pearson-kaust-theme/lms/templates/login.html:228
 msgid "Sign in with {provider_name}"
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:17
-msgid "Step 1 of 2"
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:33
-msgid "Sign up with {provider_name}"
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:46
-msgid "Create your own {platform_name} account below"
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:53
-msgid "You've successfully signed in with {selected_provider}."
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:54
-msgid ""
-"We just need a little more information before you start learning with "
-"{platform_name}."
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:62
-msgid "Please complete the following fields to register for an account. "
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:63
-msgid ""
-"Required fields are noted by <strong class=\"indicator\">bold text and an"
-" asterisk (*)</strong>."
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:73
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:120
-msgid "Full Name"
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:74
-msgid "example: Jane Doe"
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:75
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:122
-msgid "Your legal name, used for any certificates you earn."
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:77
-msgid "Public Username"
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:78
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:115
-msgid "example: JaneDoe"
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:79
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:116
-msgid "Will be shown in any discussions or forums you participate in"
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:79
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:116
-msgid "cannot be changed later"
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:94
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:235
-msgid "The following errors occurred while processing your registration:"
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:98
-msgid "Continue"
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:99
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:242
-msgid "Already have an account? Sign in"
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:104
-msgid "Welcome {username}"
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:104
-msgid "Enter a Public Display Name:"
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:114
-msgid "Public Display Name"
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:134
-msgid "Step 2 of 2"
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:138
-msgid "Year of Birth"
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:150
-msgid "Gender"
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:162
-msgid "City"
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:163
-msgid "example: New York"
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:169
-msgid "Country"
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:181
-msgid "Highest Level of Education Completed"
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:193
-msgid "Mailing Address"
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:200
-msgid "Please share with us your reasons for registering with {platform_name}"
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:209
-msgid "I agree to the {link_start}Terms of Service{link_end}"
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:225
-msgid "I agree to the {link_start}Terms of Service and Honor Code{link_end}"
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:240
-msgid "Go back to step 1"
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/register-form.html:241
-msgid "Create My Account"
 msgstr ""
 
 #: edx-platform/pearson-kaust-theme/lms/templates/register-sidebar.html:10
@@ -605,12 +444,12 @@ msgstr ""
 msgid "Account"
 msgstr ""
 
-#: edx-platform/pearson-kaust-theme/lms/templates/navigation/navbar-not-authenticated.html:62
+#: edx-platform/pearson-kaust-theme/lms/templates/navigation/navbar-not-authenticated.html:48
 #: edx-platform/pearson-kaust-theme/lms/templates/user_dropdown.html:39
 msgid "Support"
-msgstr ""
+msgstr "الدعم"
 
-#: edx-platform/pearson-kaust-theme/lms/templates/navigation/navbar-not-authenticated.html:65
+#: edx-platform/pearson-kaust-theme/lms/templates/navigation/navbar-not-authenticated.html:51
 #: edx-platform/pearson-kaust-theme/lms/templates/user_dropdown.html:41
 msgid "Contact"
 msgstr ""
@@ -751,11 +590,11 @@ msgstr ""
 
 #: edx-platform/pearson-kaust-theme/lms/templates/courseware/course_about.html:276
 msgid "Enrol now"
-msgstr ""
+msgstr "سجل الآن"
 
 #: edx-platform/pearson-kaust-theme/lms/templates/courseware/course_about.html:282
 msgid "Or explore other courses"
-msgstr ""
+msgstr "أو استكشف دورات أخرى"
 
 #: edx-platform/pearson-kaust-theme/lms/templates/courseware/course_about.html:319
 msgid "View About Page in studio"
@@ -1041,7 +880,7 @@ msgstr ""
 
 #: edx-platform/pearson-kaust-theme/lms/templates/dashboard/_dashboard_course_listing.html:242
 msgid "Options"
-msgstr ""
+msgstr "الخيارات"
 
 #: edx-platform/pearson-kaust-theme/lms/templates/dashboard/_dashboard_course_listing.html:244
 msgid "Available Actions"
@@ -1182,9 +1021,13 @@ msgstr ""
 msgid "Shopping Cart"
 msgstr ""
 
+#: edx-platform/pearson-kaust-theme/lms/templates/navigation/navbar-logo-header.html:55
+msgid "Hi, {username}"
+msgstr "مرحبًا ، {username}"
+
 #: edx-platform/pearson-kaust-theme/lms/templates/navigation/navbar-logo-header.html:70
 msgid "Menu"
-msgstr ""
+msgstr "القائمة"
 
 #: edx-platform/pearson-kaust-theme/lms/templates/navigation/navbar-not-authenticated.html:30
 msgid "How it Works"
@@ -1219,9 +1062,10 @@ msgstr ""
 msgid "Invalid Password Reset Link"
 msgstr ""
 
+# See FOOTER_AVAILABLE_LINKS.
 #: edx-platform/pearson-kaust-theme/lms/templates/static_templates/cookies.html:9
 msgid "Cookie Policy"
-msgstr ""
+msgstr "سياسة ملفات تعريف الارتباط"
 
 #: edx-platform/pearson-kaust-theme/lms/templates/static_templates/cookies.html:15
 #: edx-platform/pearson-kaust-theme/lms/templates/static_templates/cookies.html:34
@@ -3708,4 +3552,3 @@ msgstr ""
 #: lms/templates/courseware/progress.html
 msgid "Course Progress for '{username}' ({email})"
 msgstr "تقدم الدورة ل '{username}' ({email})"
-
