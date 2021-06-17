@@ -23,7 +23,7 @@ update_translations: ## update strings to be translated
 	pybabel extract -F $(theme)/conf/locale/babel.cfg -o $(theme)/conf/locale/django.pot $(theme)/*
 	pybabel update -N -D django -i $(theme)/conf/locale/django.pot -d $(theme)/conf/locale/
 	pybabel update -N -D djangojs -i $(theme)/conf/locale/django.pot -d $(theme)/conf/locale/
-	#rm $(theme)/conf/locale/django.pot
+	rm $(theme)/conf/locale/django.pot
 
 
 compile_translations: ## compile .mo files into .po files

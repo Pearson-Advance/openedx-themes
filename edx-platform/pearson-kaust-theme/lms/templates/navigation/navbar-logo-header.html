@@ -52,7 +52,7 @@ from openedx.core.djangoapps.lang_pref.api import header_language_selector_is_en
 
     % if user.is_authenticated:
       <li class="">
-        Hi, ${username}
+        ${_("Hi, {username}").format(username=username)}
       </li>
     % endif
 
