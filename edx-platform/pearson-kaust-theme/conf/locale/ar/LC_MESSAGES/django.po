@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: support@edunext.co\n"
-"POT-Creation-Date: 2021-06-17 02:57+0000\n"
+"POT-Creation-Date: 2021-06-30 02:45+0000\n"
 "PO-Revision-Date: 2021-05-19 01:11-0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ar\n"
@@ -449,12 +449,7 @@ msgstr ""
 msgid "Support"
 msgstr "الدعم"
 
-#: edx-platform/pearson-kaust-theme/lms/templates/navigation/navbar-not-authenticated.html:51
 #: edx-platform/pearson-kaust-theme/lms/templates/user_dropdown.html:41
-msgid "Contact"
-msgstr ""
-
-#: edx-platform/pearson-kaust-theme/lms/templates/user_dropdown.html:42
 msgid "Sign Out"
 msgstr ""
 
@@ -991,6 +986,27 @@ msgstr ""
 
 #: edx-platform/pearson-kaust-theme/lms/templates/dashboard/_dashboard_course_listing.html:439
 msgid "Upgrade to Verified"
+msgstr ""
+
+#: edx-platform/pearson-kaust-theme/lms/templates/learner_profile/learner-achievements-fragment.html:14
+msgid "Course Certificates"
+msgstr "الشهادات الممنوحة"
+
+#: edx-platform/pearson-kaust-theme/lms/templates/learner_profile/learner-achievements-fragment.html:21
+msgid "Completed {completion_date_html}"
+msgstr ""
+
+#: edx-platform/pearson-kaust-theme/lms/templates/learner_profile/learner-achievements-fragment.html:42
+#: edx-platform/pearson-kaust-theme/lms/templates/learner_profile/learner-achievements-fragment.html:58
+msgid "{course_mode} certificate"
+msgstr ""
+
+#: edx-platform/pearson-kaust-theme/lms/templates/learner_profile/learner-achievements-fragment.html:73
+msgid "You haven't earned any certificates yet."
+msgstr ""
+
+#: edx-platform/pearson-kaust-theme/lms/templates/learner_profile/learner-achievements-fragment.html:78
+msgid "Explore New Courses"
 msgstr ""
 
 #: edx-platform/pearson-kaust-theme/lms/templates/learner_profile/learner_profile.html:16
