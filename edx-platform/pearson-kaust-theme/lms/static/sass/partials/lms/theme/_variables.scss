@@ -40,3 +40,7 @@ $serif: Playfair Display;
 @import 'edx-bootstrap/sass/open-edx/theme';
 
 $static-path: '..' !default;
+
+// Override the contrast color of the navbar.
+// Used in the menu icon.
+$navbar-dark-color: $white !default;

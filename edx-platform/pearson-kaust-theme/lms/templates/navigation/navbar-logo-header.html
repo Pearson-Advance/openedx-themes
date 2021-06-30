@@ -51,13 +51,13 @@ from openedx.core.djangoapps.lang_pref.api import header_language_selector_is_en
     % endif
 
     % if user.is_authenticated:
-      <li class="">
+      <li class="text-white">
         ${_("Hi, {username}").format(username=username)}
       </li>
     % endif
 
     <li>
-      <button class="navbar-toggle navbar-light btn-default" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggle navbar-dark btn-default" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
     </li>
