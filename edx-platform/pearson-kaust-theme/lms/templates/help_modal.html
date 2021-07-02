@@ -18,9 +18,9 @@ from xmodule.tabs import CourseTabList
       <div class="modal-content">
         <div class="modal-header">
           <h3 class="modal-title">
-            ${Text(_('{platform_name} Support')).format(
-                platform_name=HTML(u'<span class="edx">{}</span>').format(static.get_platform_name()),
-            )}
+            ${_('{platform_name}'.format(
+              platform_name=static.get_platform_name(),
+            ))}
           </h3>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>

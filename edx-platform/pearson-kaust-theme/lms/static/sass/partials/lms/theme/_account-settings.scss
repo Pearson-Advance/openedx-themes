@@ -11,3 +11,22 @@
     }
   }
 }
+
+.account-settings-sections {
+  .section {
+    .account-settings-section-body {
+      .u-field {
+        .field {
+          select {
+            ~ .icon-caret-down:dir(rtl) {
+              &::after {
+                right: initial;
+                left: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

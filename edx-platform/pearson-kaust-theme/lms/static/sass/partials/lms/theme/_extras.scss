@@ -185,6 +185,10 @@ body {
       left: 3px;
     }
 
+    .dropdown-menu:dir(rtl) {
+      text-align: right;
+    }
+
     .open .dropdown-toggle.btn-default:focus {
       background: none;
       border: 1px solid #fff !important;
@@ -387,7 +391,7 @@ section {
     .container {
       h1 {
         text-align: center;
-        color: #000;
+        color: $inverse;
       }
 
       header {

@@ -110,8 +110,8 @@ msgstr ""
 
 #: edx-platform/pearson-kaust-theme/lms/templates/help_modal.html:15
 #: edx-platform/pearson-kaust-theme/lms/templates/help_modal.html:21
-msgid "{platform_name} Support"
-msgstr "{platform_name} الدعم"
+msgid "{platform_name}"
+msgstr ""
 
 #: edx-platform/pearson-kaust-theme/lms/templates/help_modal.html:31
 msgid ""
@@ -3568,3 +3568,25 @@ msgstr ""
 #: lms/templates/courseware/progress.html
 msgid "Course Progress for '{username}' ({email})"
 msgstr "تقدم الدورة ل '{username}' ({email})"
+
+#: Django-countries, Kosovo.
+msgid "Kosovo"
+msgstr ""
+
+#: Django-countries, Taiwan.
+msgid "Taiwan"
+msgstr "تايوان"
+
+#: Django-countries, United Arab Emirates.
+msgid "United Arab Emirates"
+msgstr "‫السعودية‬ ‫العربية‬ ‫المملكة‬"
+
+#: lms/templates/index.html
+#: See: home_page_title.
+msgid "KAUST Entrepreneurship Online"
+msgstr "مركز ريادة الأعمال - كاوست"
+
+#: lms/templates/index.html
+#: See: home_page_subtitle.
+msgid "Adopt an entrepreneurial mindset in your life, career or startup venture"
+msgstr "طّور فكرك الريادي واكتسب المهارات للتميز في عملك وحياتك ومشروعك الناشئ"
