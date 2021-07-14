@@ -1,0 +1,63 @@
+// Receipt styles ecommerce/ecommerce/static/sass/partials/views/_receipt.scss.
+
+.receipt {
+  h2 {
+    color: initial;
+  }
+
+  .order-headers {
+    color: initial;
+
+    dl {
+      dd {
+        color: $main-elements-color;
+      }
+    }
+  }
+
+  .table {
+    dl {
+      border: 1px solid;
+    }
+
+    .header, .order-line-data {
+      dt, dd {
+        &:not(:last-child) {
+          border-right: none;
+        }
+      }
+    }
+
+    .header {
+      background-color: $body-bg;
+    }
+
+    .order-line-data {
+      &:not(:last-child) {
+        border-bottom: none;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  #cta-nav-links {
+    .nav-link-button {
+      border-color: $contrast-color;
+      background: $contrast-color;
+      border-radius: 2em;
+      color: $body-bg;
+      padding: 1em;
+
+      &:hover,
+      &.is-hovered,
+      &:focus,
+      &.is-focused {
+        border-color: $button-hover-color;
+        background: $button-hover-color;
+      }
+    }
+  }
+}

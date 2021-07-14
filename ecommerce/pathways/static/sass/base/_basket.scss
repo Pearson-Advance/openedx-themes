@@ -1,0 +1,45 @@
+// Basket styles ecommerce/ecommerce/static/sass/partials/views/_basket.scss.
+
+.basket {
+  .container {
+    .basket-items {
+      border: 1px solid $gray;
+      padding: 15px;
+    }
+
+    .payment-buttons {
+      .payment-button {
+        border-color: $contrast-color;
+        background: $contrast-color;
+        border-radius: 2em;
+
+        &:hover,
+        &.is-hovered,
+        &:focus,
+        &.is-focused {
+          border-color: $button-hover-color;
+          background: $button-hover-color;
+        }
+      }
+    }
+
+    .total, #summary {
+      .use-voucher {
+        #voucher_form_link {
+          @include float(right);
+        }
+      }
+
+      #basket_totals {
+        text-align: initial;
+        border-top: 2px solid;
+        margin-top: 10px;
+        padding-top: 10px;
+
+        span {
+          float: right;
+        }
+      }
+    }
+  }
+}

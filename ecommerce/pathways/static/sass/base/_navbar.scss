@@ -1,0 +1,37 @@
+// Navbar styles ecommerce/ecommerce/static/sass/partials/components/_navbar.scss.
+
+.navbar {
+  border-bottom: none;
+  box-shadow: 0px 0px 5px $gray;
+
+  .navbar-brand {
+    .navbar-brand-logo {
+      display: inline-block;
+      width: 40%;
+      height: auto;
+      margin-right: 10px;
+    }
+  }
+}
+
+.user-menu {
+  > .nav-button {
+    border-color: $body-bg;
+    color: $main-elements-color;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &:focus {
+      color: $main-elements-color;
+      background-color: $body-bg;
+      border-color: $body-bg;
+      box-shadow: none;
+
+      > .icon {
+        color: $main-elements-color;
+        background-color: $body-bg;
+      }
+    }
+  }
+}
