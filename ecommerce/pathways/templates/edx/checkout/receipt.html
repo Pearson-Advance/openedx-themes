@@ -68,13 +68,15 @@
           </div>
 
           <div class="order-headers order-summary col-md-4">
-            <dl>
+            <dl class="col-md-6">
               <dt>{% trans "Order Number:" as tmsg %}{{ tmsg | force_escape }}</dt>
               <dd>{{ order.number }}</dd>
               {% if payment_method %}
                 <dt>{% trans "Payment Method:" as tmsg %}{{ tmsg | force_escape }}</dt>
                 <dd>{{ payment_method }}</dd>
               {% endif %}
+            </dl>
+            <dl class="col-md-6">
               <dt>{% trans "Order Date:" as tmsg %}{{ tmsg | force_escape }}</dt>
               <dd>{{ order.date_placed|date:"E d, Y" }}</dd>
             </dl>
@@ -188,19 +190,12 @@
         {% endif %}
       </div>
 
-      {% if not has_enrollment_code_product and show_verification_banner  %}
-        <div class="nav-wizard row">
-            {% include 'oscar/checkout/_verification_data.html' %}
-        </div>
-      {% endif %}
       <div id="cta-nav-links" class="row">
         <div class="col-xs-12 text-right">
-          {% if not show_verification_banner %}
-          <a class="dashboard-link nav-link" href="{{ order_dashboard_url }}">
+          <a class="btn nav-link-button" href="{{ order_dashboard_url }}">
             {% trans "Go to dashboard" as tmsg %}{{ tmsg | force_escape }}
           </a>
-          {% endif %}
-          <a class="find-more-courses-link nav-link" href="{{ explore_courses_url }}">
+          <a class="btn nav-link-button" href="{{ explore_courses_url }}">
             {% trans "Find more courses" as tmsg %}{{ tmsg | force_escape }}
           </a>
         </div>
