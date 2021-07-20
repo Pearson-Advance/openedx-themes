@@ -10,6 +10,7 @@
 {% endif %}
 
 <div id="content-inner">
+    <h3>{% trans "Order Summary" as tmsg %}{{ tmsg | force_escape }}</h3>
     {% block basket_form_main %}
         <form action="." method="post">
             {% csrf_token %}
@@ -110,7 +111,7 @@
                             {% if voucher_form %}
                                 <div class="use-voucher col-xs-12">
                                     <p id="voucher_form_link">
-                                        <a href="#voucher">{% trans "Apply a coupon code" as tmsg %}{{ tmsg | force_escape }}</a>
+                                        <a href="#voucher">{% trans "Promotional Code" as tmsg %}{{ tmsg | force_escape }}</a>
                                     </p>
                                     {% include 'oscar/basket/partials/add_voucher_form.html' %}
                                 </div>
