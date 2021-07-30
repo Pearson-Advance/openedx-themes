@@ -3,6 +3,12 @@
 <%!
 import six
 from django.utils.translation import ugettext as _
+from courseware.courses import get_course_by_id
+%>
+<%
+course = get_course_by_id(course_overview.id)
+course_display_tab = '_blank' if course.other_course_settings.get('external_course_run_id')\
+    and course.other_course_settings.get('external_course_target') else '_self'
 %>
 
 % if resume_button_url != '':
@@ -17,7 +23,8 @@ from django.utils.translation import ugettext as _
 % elif not is_course_blocked:
   <a href="${course_target}"
       class="course-target-link enter-course ${'hidden' if is_unfulfilled_entitlement else ''}"
-      data-course-key="${enrollment.course_id}">
+      data-course-key="${enrollment.course_id}"
+      target="${course_display_tab}">
     ${_('View Course')}
     <span class="sr">
       &nbsp;${course_overview.display_name_with_default}
@@ -25,7 +32,8 @@ from django.utils.translation import ugettext as _
   </a>
 % else:
   <a class="enter-course-blocked"
-      data-course-key="${enrollment.course_id}">
+      data-course-key="${enrollment.course_id}"
+      target="${course_display_tab}">
     ${_('View Course')}
     <span class="sr">
       &nbsp;${course_overview.display_name_with_default}
