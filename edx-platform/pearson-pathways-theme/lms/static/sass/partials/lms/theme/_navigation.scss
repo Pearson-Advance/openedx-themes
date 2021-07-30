@@ -1,0 +1,36 @@
+// Styles for the headers templates.
+
+.global-header {
+  border-bottom: none;
+
+  .nav-links {
+    .main {
+      .nav-tab {
+        a, .tab-nav-link {
+          color: $primary;
+
+          &.active,
+          &:hover {
+            border-bottom-color: $secondary;
+          }
+        }
+      }
+    }
+
+    .secondary {
+      color: $primary;
+
+      .toggle-user-dropdown {
+        i {
+          padding: 0 0.5em;
+        }
+      }
+
+      .nav-item {
+        a, .help-link {
+          color: $primary;
+        }
+      }
+    }
+  }
+}
