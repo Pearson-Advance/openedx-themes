@@ -1,0 +1,69 @@
+// Styles for the user profile page.
+
+$profile-background: #F5F5F5;
+
+.view-profile {
+  .wrapper-profile-section-container-one {
+    .wrapper-profile-section-one {
+      border-top: none;
+      background-color: $profile-background;
+
+      .profile-section-one-fields {
+        .u-field {
+          .u-field-title {
+            font-weight: bold;
+            color: $dark;
+          }
+
+          &:not(.u-field-readonly) {
+            &:not(:last-child) {
+              padding-bottom: 15px;
+              border-bottom: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .wrapper-profile-section-container-two {
+    .u-field.mode-placeholder {
+      border: 2px dashed $dark;
+
+      span {
+        color: $dark;
+      }
+    }
+  }
+
+  .profile-image-field {
+    .image-wrapper {
+      .image-frame {
+        margin-top: 20px;
+        border: none;
+        background: initial;
+      }
+    }
+  }
+
+  .profile-header {
+    .header {
+      font-weight: 100;
+      font-size: 3em;
+      margin-bottom: 30px;
+    }
+  }
+}
+
+.learner-achievements {
+  .learner-message {
+    .message-actions {
+      .btn-brand {
+        border-radius: 2em;
+        width: 222px;
+        padding: 15px;
+        background: $footer-background;
+      }
+    }
+  }
+}

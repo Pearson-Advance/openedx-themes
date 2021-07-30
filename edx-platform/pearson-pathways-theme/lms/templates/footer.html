@@ -1,0 +1,128 @@
+## mako
+<%page expression_filter="h"/>
+<%!
+  from datetime import datetime
+  from django.urls import reverse
+  from django.utils.translation import ugettext as _
+  from branding.api import get_footer
+  from openedx.core.djangoapps.lang_pref.api import footer_language_selector_is_enabled
+%>
+<% footer = get_footer(is_secure=is_secure) %>
+<% icp_license_info = getattr(settings, 'ICP_LICENSE_INFO', {})%>
+<%namespace name='static' file='static_content.html'/>
+
+<div class="wrapper-footer">
+  <footer class="container">
+    <div class="row">
+      <div class="col-md-4 col-12">
+        <div class="wrapper-logo">
+          <p>
+            <a href="/">
+              ## The default logo is a placeholder.
+              ## You can either replace this link entirely or update
+              ## the FOOTER_ORGANIZATION_IMAGE in Django settings.
+              ## If you customize FOOTER_ORGANIZATION_IMAGE, then the image
+              ## can be included in the footer on other sites
+              ## (e.g. a blog or marketing front-end) to provide a consistent
+              ## user experience.  See the branding app for details.
+              <img alt="${_('organization logo')}" src="${footer['logo_image']}">
+            </a>
+          </p>
+          <h4>Empowering people to make progress in their lives through learning</h4>
+        </div>
+        <ul class="social-links">
+          <li>
+            <a href="https://www.facebook.com/PearsonPathways" target="_blank" aria-label="Facebook">
+              <i class="fa fa-facebook" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.twitter.com/PearsonPathways" target="_blank" aria-label="Twitter">
+              <i class="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/company/pearson-pathways" target="_blank" aria-label="LinkedIn">
+              <i class="fa fa-linkedin" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/pearsonpathways/" target="_blank" aria-label="Instagram">
+              <i class="fa fa-instagram" aria-hidden="true"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4 col-12 mid-footer-container">
+        <h4>Students</h4>
+        <p><a href="https://www.pearson.com/pathways/recommended-programs.html">GET RECOMMENDATIONS</a></p>
+        <p><a href="https://www.pearson.com/pathways/compare.html">COMPARE PROGRAMS</a></p>
+        <p><a href="https://www.pearson.com/pathways/program-profiles.html">DEGREES, CERTIFICATES &amp; COURSES</a></p>
+        <p><a href="https://www.pearson.com/pathways/areas-work-study.html">AREAS OF WORK &amp; STUDY</a></p>
+        <h4>Colleges &amp; Universities<br></h4>
+        <p><a href="https://www.pearson.com/pathways/partner-with-us.html">JOIN THE PATHWAYS MARKETPLACE</a></p>
+      </div>
+      <div class="col-md-4 col-12 mid-footer-container">
+        <h4>Company</h4>
+        <p><a href="https://www.pearson.com/pathways/about.html">ABOUT US</a></p>
+        <p><a href="https://www.pearson.com/pathways/learner-profile.html/account">MY ACCOUNT</a></p>
+        <p><a href="https://www.pearson.com/pathways/request-information.html">REQUEST FOR INFORMATION</a></p>
+        <p><a href="https://www.pearson.com/pathways/contact.html">CONTACT US</a></p>
+      </div>
+      <div class="col-12 legal-nav">
+        <ul>
+            <li><a href="https://www.pearson.com/pathways/terms-of-use.html">TERMS OF USE</a></li>
+            <li><a href="https://www.pearson.com/pathways/privacy-policy.html">PRIVACY POLICY</a></li>
+            <li><a href="https://www.pearson.com/pathways/do-not-sell-my-information.html">DO NOT SELL MY PERSONAL INFORMATION</a><br></li>
+            <li><a href="https://www.pearson.com/pathways/complaint-resolution.html">COMPLAINT RESOLUTION</a></li>
+        </ul>
+        <p class="copyright">Copyright ©&nbsp;1996–${datetime.today().year}&nbsp;
+          <a href="https://www.pearson.com" aria-label="Pearson" title="Pearson">PEARSON</a>&nbsp;
+          All rights reserved.
+        </p>
+        <p class="notice">
+          Tuition, fees, and dates may be subject to change without notice by university,
+          administrative, federal, or state legislative changes. <br>
+          Consult with the specific institution for more specific information.
+        </p>
+      </div>
+      <div class="col-md-12">
+        ## Please leave this link and use one of the logos provided
+        ## The OpenEdX link may be hidden when this view is served
+        ## through an API to partner sites (such as marketing sites or blogs),
+        ## which are not technically powered by Open edX.
+        % if not hide_openedx_link:
+          <div class="footer-about-openedx">
+            <p>
+              <a href="${footer['openedx_link']['url']}">
+                <img src="${footer['openedx_link']['image']}" alt="${footer['openedx_link']['title']}" width="140" />
+              </a>
+            </p>
+          </div>
+        % endif
+      </div>
+    </div>
+    <div class="footer-miscellaneous-buttons">
+      <a href="https://embanet.frontlinesvc.com/app/home/p/5359" target="_blank" class="btn btn-default support-btn" aria-label="Live chat">
+        <i class="fa fa-comments" aria-hidden="true"></i>
+        Live chat
+      </a>
+      <a href="#top" class="btn btn-default back-to-top-btn">
+        <i class="fa fa-angle-up" aria-hidden="true"></i>
+        <span>TOP</span>
+      </a>
+    </div>
+  </footer>
+</div>
+
+% if include_dependencies:
+  <%static:js group='base_vendor'/>
+  <%static:css group='style-vendor'/>
+  <%include file="widgets/segment-io.html" />
+  <%include file="widgets/segment-io-footer.html" />
+% endif
+% if footer_css_urls:
+  % for url in footer_css_urls:
+    <link rel="stylesheet" type="text/css" href="${url}"></link>
+  % endfor
+% endif
