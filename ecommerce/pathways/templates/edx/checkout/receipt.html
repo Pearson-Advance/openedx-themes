@@ -192,11 +192,11 @@
 
       <div id="cta-nav-links" class="row">
         <div class="col-xs-12 text-right">
-          <a class="btn nav-link-button" href="{{ order_dashboard_url }}">
-            {% trans "Go to dashboard" as tmsg %}{{ tmsg | force_escape }}
+          <a class="btn nav-link-button find-more-courses-button" href="{{ custom_settings.find_more_courses_link|default:explore_courses_url }}">
+            {% trans "FIND MORE COURSES" as tmsg %}{{ tmsg | force_escape }}
           </a>
-          <a class="btn nav-link-button" href="{{ explore_courses_url }}">
-            {% trans "Find more courses" as tmsg %}{{ tmsg | force_escape }}
+          <a class="btn nav-link-button" href="{{ order_dashboard_url }}">
+            {% trans "GO TO DASHBOARD" as tmsg %}{{ tmsg | force_escape }}
           </a>
         </div>
       </div>

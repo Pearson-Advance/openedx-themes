@@ -49,15 +49,27 @@
       background: $contrast-color;
       border-radius: 2em;
       color: $body-bg;
-      padding: 1em;
-
+      padding: 1em 2em;
+      font-size: 0.8em;
+      height: 48px;
+      letter-spacing: 0.16em;
+      
       &:hover,
       &.is-hovered,
       &:focus,
       &.is-focused {
-        border-color: $button-hover-color;
-        background: $button-hover-color;
+        border-bottom: solid $contrast-color 1px;
       }
     }
+    
+    .find-more-courses-button {
+      background: initial;
+      color: $contrast-color;
+      margin-right: 25px;
+    }
+  }
+
+  .nav-link, a {
+    border-bottom: solid $contrast-color 1px;
   }
 }
