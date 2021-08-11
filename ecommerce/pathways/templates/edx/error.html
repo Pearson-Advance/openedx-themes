@@ -1,4 +1,7 @@
 {% extends 'edx/base.html' %}
+
+{% load core_extras %}
+{% load django_markup %}
 {% load i18n %}
 {% load static %}
 
@@ -13,7 +16,11 @@
         <div class="container">
             <div class="depth depth-2 message-error-content">
                 <h3>{{ error }}</h3>
-                {% trans "If you need assistance, contact edX support." as tmsg %}{{ tmsg | force_escape }}
+                {% settings_value 'payment_support_url' as setting %}
+                {% blocktrans asvar tmsg %}
+                    If you need assistance, contact {start_anchor}support{end_anchor}.
+                {% endblocktrans %}
+                {% interpolate_html tmsg start_anchor='<a href="'|add:setting|add:'">'|safe end_anchor='</a>'|safe %}
             </div>
         </div>
     </div>
