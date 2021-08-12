@@ -29,6 +29,10 @@
         {% block stylesheets %}
         {% endblock %}
     {% endcompress %}
+
+    {% if custom_settings.GOOGLE_TAG_MANAGER_SNIPPET %}
+        {{ custom_settings.GOOGLE_TAG_MANAGER_SNIPPET|safe }}
+    {% endif %}
 </head>
 <body>
 {% block skip_link %}
