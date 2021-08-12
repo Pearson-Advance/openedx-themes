@@ -128,13 +128,6 @@ $line-color: rgba(255,255,255,0.2);
     right: 20px;
     background: initial;
 
-    .support-btn {
-      background: $primary;
-      transform: rotate(-90deg) translate(0,100%);
-      border-radius: 2em;
-      color: $inverse;
-    }
-
     .back-to-top-btn {
       background: $primary;
       border-radius: 50%;
