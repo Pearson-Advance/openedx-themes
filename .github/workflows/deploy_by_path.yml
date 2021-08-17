@@ -35,7 +35,6 @@ jobs:
     name: Build Dev deployment
     needs: check-changes
     if: endsWith(github.ref, '.dev')
-    environment: dev
     runs-on: ubuntu-latest
     steps:
     - name: Build edxapp deployment
@@ -46,7 +45,7 @@ jobs:
         jenkins-token: ${{ secrets.JENKINS_TOKEN }}
         jenkins-user: ${{ secrets.JENKINS_USER }}
         jenkins-job: ${{ secrets.EDXAPP_JOB }}
-        jenkins-job-params: '{"NODE": "dev", "ENVIRONMENT": "dev", "BRANCH_CUSTOMER_DATA": "development", "COMPILE_THEMES": true}'
+        jenkins-job-params: '{"ENVIRONMENT": "dev", "COMPILE_THEMES": true}'
         jenkins-wait-job: 'no-wait'
 
     - name: Build ecomm deployment
@@ -57,14 +56,13 @@ jobs:
         jenkins-token: ${{ secrets.JENKINS_TOKEN }}
         jenkins-user: ${{ secrets.JENKINS_USER }}
         jenkins-job: ${{ secrets.ECOMM_JOB }}
-        jenkins-job-params: '{"NODE": "dev", "ENVIRONMENT": "dev", "BRANCH_CUSTOMER_DATA": "development"}'
+        jenkins-job-params: '{"ENVIRONMENT": "dev"}'
         jenkins-wait-job: 'no-wait'
 
   build-prod:
     name: Build Prod deployment
     needs: check-changes
     if: endsWith(github.ref, '.master')
-    environment: production
     runs-on: ubuntu-latest
     steps:
     - name: Build edxapp deployment
@@ -75,7 +73,7 @@ jobs:
         jenkins-token: ${{ secrets.JENKINS_TOKEN }}
         jenkins-user: ${{ secrets.JENKINS_USER }}
         jenkins-job: ${{ secrets.EDXAPP_JOB }}
-        jenkins-job-params: '{"NODE": "master", "ENVIRONMENT": "prod", "BRANCH_CUSTOMER_DATA": "production", "COMPILE_THEMES": true}'
+        jenkins-job-params: '{"ENVIRONMENT": "stage", "COMPILE_THEMES": true}'
         jenkins-wait-job: 'no-wait'
         
     - name: Build ecomm deployment
@@ -86,5 +84,5 @@ jobs:
         jenkins-token: ${{ secrets.JENKINS_TOKEN }}
         jenkins-user: ${{ secrets.JENKINS_USER }}
         jenkins-job: ${{ secrets.ECOMM_JOB }}
-        jenkins-job-params: '{"NODE": "master", "ENVIRONMENT": "prod", "BRANCH_CUSTOMER_DATA": "production"}'
+        jenkins-job-params: '{"ENVIRONMENT": "stage"}'
         jenkins-wait-job: 'no-wait'
