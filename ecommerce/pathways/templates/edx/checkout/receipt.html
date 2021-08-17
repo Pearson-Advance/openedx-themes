@@ -32,12 +32,10 @@
        data-total-amount="{{ order.total_incl_tax | unlocalize }}"
        data-back-button="{{ disable_back_button | default:0 }}">
        {% include 'oscar/partials/alert_messages.html' %}
-
-      <h2 class="thank-you">{% trans "Thank you for your order!" as tmsg %}{{ tmsg | force_escape }}</h2>
-
       <div class="list-info">
         <div class="info-item payment-info row">
           <div class="copy col-md-8">
+            <h2 class="thank-you">{% trans "Thank you for your order!" as tmsg %}{{ tmsg | force_escape }}</h2>
             <div class="confirm-message">
               {% captureas link_start %}
                 <a href="mailto:{{ order.user.email }}">
@@ -68,7 +66,7 @@
           </div>
 
           <div class="order-headers order-summary col-md-4">
-            <dl class="col-md-6">
+            <dl class="col-md-7">
               <dt>{% trans "Order Number:" as tmsg %}{{ tmsg | force_escape }}</dt>
               <dd>{{ order.number }}</dd>
               {% if payment_method %}
@@ -76,7 +74,7 @@
                 <dd>{{ payment_method }}</dd>
               {% endif %}
             </dl>
-            <dl class="col-md-6">
+            <dl class="col-md-5">
               <dt>{% trans "Order Date:" as tmsg %}{{ tmsg | force_escape }}</dt>
               <dd>{{ order.date_placed|date:"E d, Y" }}</dd>
             </dl>

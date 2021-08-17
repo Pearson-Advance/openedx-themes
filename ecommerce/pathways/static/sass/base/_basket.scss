@@ -4,22 +4,25 @@
   .container {
     .basket-items {
       border: 1px solid $gray;
-      padding: 15px;
+      padding: 20px;
     }
 
     .payment-buttons {
       .payment-button {
         border-color: $contrast-color;
-        padding: 0.8em 3.5em;
+        padding: 1em 3em;
         background: $contrast-color;
         border-radius: 2em;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-size: 0.8em;
 
         &:hover,
         &.is-hovered,
         &:focus,
         &.is-focused {
-          border-color: $button-hover-color;
-          background: $button-hover-color;
+          border-color: $contrast-color;
+          background: $contrast-color;
         }
       }
     }
@@ -32,10 +35,12 @@
       }
 
       #basket_totals {
+        color: inherit;
         text-align: initial;
-        border-top: 2px solid;
+        border-top: 1px solid $gray;
         margin-top: 10px;
-        padding-top: 10px;
+        right: 15px;
+        padding: 10px 0;
 
         span {
           float: right;
