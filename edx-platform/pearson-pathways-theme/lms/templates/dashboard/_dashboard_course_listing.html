@@ -1,4 +1,4 @@
-<%page args="course_overview, enrollment, entitlement, entitlement_session, course_card_index, is_unfulfilled_entitlement, is_fulfilled_entitlement, entitlement_available_sessions, entitlement_expiration_date, entitlement_expired_at, show_courseware_link, cert_status, can_refund_entitlement, can_unenroll, credit_status, show_email_settings, course_mode_info, is_paid_course, is_course_blocked, verification_status, course_requirements, dashboard_index, share_settings, related_programs, display_course_modes_on_dashboard, show_consent_link, enterprise_customer_name, resume_button_url" expression_filter="h"/>
+<%page args="course_overview, enrollment, entitlement, entitlement_session, course_card_index, is_unfulfilled_entitlement, is_fulfilled_entitlement, entitlement_available_sessions, entitlement_expiration_date, entitlement_expired_at, show_courseware_link, cert_status, can_refund_entitlement, can_unenroll, credit_status, show_email_settings, course_mode_info, is_paid_course, is_course_blocked, verification_status, course_requirements, dashboard_index, share_settings, related_programs, display_course_modes_on_dashboard, show_consent_link, enterprise_customer_name, resume_button_url, mit_subscription" expression_filter="h"/>
 
 <%!
 import six
@@ -37,6 +37,7 @@ from util.course import get_link_for_about_page, get_encoded_course_sharing_utm_
   billing_email = settings.PAYMENT_SUPPORT_EMAIL
 
   is_course_expired = hasattr(show_courseware_link, 'error_code') and show_courseware_link.error_code == 'audit_expired'
+  mit_subscription = mit_subscription.get(str(enrollment.course_id))
 %>
 
 <%namespace name='static' file='../static_content.html'/>
@@ -184,6 +185,13 @@ from util.course import get_link_for_about_page, get_encoded_course_sharing_utm_
                         % endif
                 </div>
             % endif
+            % if mit_subscription and not course_mode_info['show_upsell']:
+              <div class="info-expires-at">
+                <span class="msg-icon fa fa-warning" aria-hidden="true"></span>
+                ${_("Your access expires on - {date}").format(date=mit_subscription.get('expires_at'))}
+              </div>
+            % endif
+
         </div>
         <div class="wrapper-course-actions">
           <div class="course-actions">
@@ -474,6 +482,16 @@ from util.course import get_link_for_about_page, get_encoded_course_sharing_utm_
                 </a>
               </div>
             </div>
+          </div>
+        % endif
+        % if mit_subscription and not course_mode_info['show_upsell']:
+          <div class="message message-upsell has-actions is-shown">
+              <a class="action action-upgrade" href="${ecommerce_payment_page}?sku=${mit_subscription.get('verified_sku')}">
+                <span class="action-upgrade-icon" aria-hidden="true"></span>
+                <span class="wrapper-copy">
+                  <span class="copy" id="upgrade-to-verified">${_("Buy time extension")}</span>
+                </span>
+              </a>
           </div>
         % endif
       % endif
