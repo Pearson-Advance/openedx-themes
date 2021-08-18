@@ -1,6 +1,8 @@
 // Styles for the footer template.
 
 $line-color: rgba(255,255,255,0.2);
+$letter-spacing: 2.6px;
+$main-font-size: 0.875em;
 
 .wrapper-footer {
   border-top: none;
@@ -9,7 +11,7 @@ $line-color: rgba(255,255,255,0.2);
 
   footer {
     // Reset Bootstrap "container" style.
-    max-width: 960px !important;
+    max-width: 1200px !important;
     padding: 40px 0 0 0;
 
     // There is a generic style similar applying div and box shadow on the wiki page of course.
@@ -33,7 +35,7 @@ $line-color: rgba(255,255,255,0.2);
 
       h4 {
         font-family: $serif;
-        font-size: 1.5em;
+        font-size: 1.25em;
         color: $inverse;
         margin-top: 12px;
       }
@@ -54,17 +56,19 @@ $line-color: rgba(255,255,255,0.2);
     }
 
     .mid-footer-container {
-      padding-left: 80px;
+      padding-left: 50px;
 
       h4 {
         font-family: $serif;
+        font-size: 1.1em;
         color: $inverse;
         margin-bottom: 18px;
       }
 
       p {
         margin-bottom: 30px;
-        font-size: 0.9em;
+        font-size: $main-font-size;
+        letter-spacing: $letter-spacing;
 
         a {
           color: $footer-contrast;
@@ -85,18 +89,26 @@ $line-color: rgba(255,255,255,0.2);
 
       li {
         display: inline-block;
-        margin: 0 50px 0 0;
-        font-size: 0.9em;
+        margin: 0 42px 0 0;
+        font-size: $main-font-size;
+        letter-spacing: $letter-spacing;
 
         a {
           color: $footer-contrast;
         }
+      }
+
+      li:not(:first-child) a::before {
+        content: none;
       }
     }
 
     .copyright {
       margin-top: 60px;
       color: $footer-contrast;
+      font-size: $main-font-size;
+      letter-spacing: $letter-spacing;
+      text-transform: capitalize;
 
       a {
         color: $footer-contrast;
@@ -108,7 +120,7 @@ $line-color: rgba(255,255,255,0.2);
     color: $inverse;
     font-family: $font-family-sans-serif;
     line-height: 2em;
-    font-size: 0.9em;
+    font-size: $main-font-size;
     font-weight: bold;
   }
 
