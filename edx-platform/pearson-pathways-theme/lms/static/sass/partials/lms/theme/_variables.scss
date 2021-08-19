@@ -1,19 +1,20 @@
 // Theme variables.
 
 //color
-$primary: #007FA3;
+$primary: #005A70;
 $inverse: #FFF;
 $secondary: #ffbd3c;
-$gray: #dbdbdb;
 $footer-background: #0d2b52;
 $footer-contrast: rgba(255,255,255,0.7);
 $dark: #313131;
+$gray: #E6E6E6;
 
 // Theme fonts
 $font-family-sans-serif: Open Sans;
-$serif: 'Playfair Display','Georgia','Times New Roman', serif;
+$serif: Playfair Display, 'Georgia', 'Times New Roman', serif;
 
 // Initialize the Open edX Bootstrap theme
 @import 'edx-bootstrap/sass/open-edx/theme';
 // Import Bootstrap layout definitions.
 @import 'bootstrap/scss/bootstrap-grid';
+@import url("https://fonts.googleapis.com/css?family=Playfair+Display");

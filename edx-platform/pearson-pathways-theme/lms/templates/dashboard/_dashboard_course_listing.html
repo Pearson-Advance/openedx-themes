@@ -153,9 +153,19 @@ from util.course import get_link_for_about_page, get_encoded_course_sharing_utm_
                     </span>
                 % else:
                     % if isinstance(course_date, six.string_types):
-                        <span class="info-date-block">${container_string.format(date=course_date)}</span>
+                      <span class="info-date-block">${container_string.format(date=course_date)}</span>
                     % elif course_date is not None:
-                        <span class="info-date-block localized-datetime" data-language="${user_language}" data-timezone="${user_timezone}" data-datetime="${course_date.strftime('%Y-%m-%dT%H:%M:%S%z')}" data-format=${format} data-string="${container_string}"></span>
+                      <%
+                        # Formatting the date string like this: Started - <b>{date}</b>
+                        container_string = Text(container_string).format(
+                          date=Text('{bold_start}{date}{bold_end}').format(
+                            bold_start=HTML('<b>'),
+                            date=course_date.strftime('%b %-d, %Y'),
+                            bold_end=HTML('</b>'),
+                          ),
+                        )
+                      %>
+                      <span class="info-date-block localized-datetime">${container_string}</span>
                     % endif
                 % endif
                 % if entitlement:
