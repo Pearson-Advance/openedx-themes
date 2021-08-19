@@ -84,51 +84,49 @@
     {% endblock %}
 
     <div class="total">
-        <div class="row">
-            {# If hide_voucher_section is set to True, it will hide the voucher section no matter what. #}
-            {% if not custom_settings.hide_voucher_section %}
-                {% if show_voucher_form %}
-                    {% block vouchers %}
-                        {% if basket.contains_a_voucher %}
-                            <div class="vouchers col-sm-7 col-xs-8">
-                                {% for voucher in basket.vouchers.all %}
-                                    <p class="voucher">
-                                        {% filter force_escape %}
-                                            {% blocktrans with voucher_code=voucher.code %}
-                                                Coupon code {{ voucher_code }} applied
-                                            {% endblocktrans %}
-                                        {% endfilter %}
-                                    <form action="{% url 'basket:vouchers-remove' pk=voucher.id %}" method="POST">
-                                        {% csrf_token %}
-                                        <button class="remove-voucher" type="submit"><i class="fa fa-times"></i>
-                                        </button>
-                                    </form>
-                                    </p>
-                                {% endfor %}
+        {# If hide_voucher_section is set to True, it will hide the voucher section no matter what. #}
+        {% if not custom_settings.hide_voucher_section %}
+            {% if show_voucher_form %}
+                {% block vouchers %}
+                    {% if basket.contains_a_voucher %}
+                        <div class="vouchers col-sm-7 col-xs-8">
+                            {% for voucher in basket.vouchers.all %}
+                                <p class="voucher">
+                                    {% filter force_escape %}
+                                        {% blocktrans with voucher_code=voucher.code %}
+                                            Coupon code {{ voucher_code }} applied
+                                        {% endblocktrans %}
+                                    {% endfilter %}
+                                <form action="{% url 'basket:vouchers-remove' pk=voucher.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <button class="remove-voucher" type="submit"><i class="fa fa-times"></i>
+                                    </button>
+                                </form>
+                                </p>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {# Hide the entire section if a custom BasketView doesn't pass in a voucher form #}
+                        {% if voucher_form %}
+                            <div class="use-voucher col-xs-12">
+                                <p id="voucher_form_link">
+                                    <a href="#voucher">{% trans "Promotional Code" as tmsg %}{{ tmsg | force_escape }}</a>
+                                </p>
+                                {% include 'oscar/basket/partials/add_voucher_form.html' %}
                             </div>
-                        {% else %}
-                            {# Hide the entire section if a custom BasketView doesn't pass in a voucher form #}
-                            {% if voucher_form %}
-                                <div class="use-voucher col-xs-12">
-                                    <p id="voucher_form_link">
-                                        <a href="#voucher">{% trans "Promotional Code" as tmsg %}{{ tmsg | force_escape }}</a>
-                                    </p>
-                                    {% include 'oscar/basket/partials/add_voucher_form.html' %}
-                                </div>
-                            {% endif %}
                         {% endif %}
-                    {% endblock vouchers %}
-                {% endif %}
+                    {% endif %}
+                {% endblock vouchers %}
             {% endif %}
+        {% endif %}
 
-            <div id="basket_totals" class="col-sm-4 col-xs-12">
-                {% trans "Total:" as tmsg %}{{ tmsg | force_escape }}
-                <span class="text-right">
-                    {% block order_total %}
-                        {{ order_total.incl_tax|currency:basket.currency }}
-                    {% endblock %}
-                </span>
-            </div>
+        <div id="basket_totals" class="col-md-4 col-sm-5 col-xs-12">
+            {% trans "Total:" as tmsg %}{{ tmsg | force_escape }}
+            <span class="text-right">
+                {% block order_total %}
+                    {{ order_total.incl_tax|currency:basket.currency }}
+                {% endblock %}
+            </span>
         </div>
     </div>
 
