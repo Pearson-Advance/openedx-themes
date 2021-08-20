@@ -281,6 +281,7 @@ section[role=courses] div.container.no-border {
   }
 
   .course .details .enter-course {
+    margin-bottom: 20px;
     height: 40px;
     color: $primary;
     float: right;
@@ -401,17 +402,6 @@ section[role=courses] div.container.no-border {
   }
 }
 
-@media (max-width: 767px){
-  section .container.no-border .grid {
-    padding: 20px;
-  }
-
-  .view-dashboard div.item {
-    flex-direction: column;
-    min-width: 0;
-  }
-}
-
 input.btn.btn-lg.btn-default {
   color: $primary;
   background: $primary;
@@ -452,6 +442,22 @@ div.modal-content .modal-header button.close {
 
     @media (max-width: 767px) {
       width: 100%;
+    }
+  }
+}
+
+// Screens less than 768px.
+@include media-breakpoint-down(sm) {
+  .view-dashboard div.item {
+    min-width: 0;
+  }
+}
+
+// Screens less than 992px.
+@include media-breakpoint-down(md) {
+  section[role=courses] div.container.no-border {
+    h1 {
+      display: none;
     }
   }
 }
