@@ -1,35 +1,82 @@
 // Styles for the headers templates.
 
-.global-header {
-  border-bottom: none;
+// The selector '#top' allows us to increase the specification of these rules
+// and avoid an issue because lms-course.css
+// is imported after lms-main-v1.css on the courseware page and overwrites the theme rules.
+#top {
+  &.global-header {
+    border-bottom: none;
 
-  .nav-links {
-    .main {
-      .nav-tab {
-        a, .tab-nav-link {
-          color: $primary;
+    .nav-links {
+      .main {
+        .nav-tab {
+          a, .tab-nav-link {
+            color: $primary;
 
-          &.active,
-          &:hover {
-            border-bottom-color: $secondary;
-            font-weight: 700;
+            &.active,
+            &:hover {
+              border-bottom-color: $secondary;
+              font-weight: 700;
+            }
+          }
+        }
+      }
+
+      .secondary {
+        color: $primary;
+
+        .toggle-user-dropdown {
+          i {
+            padding: 0 0.5em;
+          }
+        }
+
+        .nav-item {
+          a, .help-link {
+            color: $primary;
           }
         }
       }
     }
+  }
+}
 
-    .secondary {
-      color: $primary;
+// Screens less than 992px.
+@include media-breakpoint-down(md) {
+  #top {
+    &.global-header {
+      .hamburger-menu {
+        top: 27px;
+        left: unset;
+        right: 30px;
+        width: 18px;
 
-      .toggle-user-dropdown {
-        i {
-          padding: 0 0.5em;
+        .line {
+          height: 2px;
+
+          &:nth-child(1) {
+            top: 0;
+          }
+
+          &:nth-child(2),
+          &:nth-child(3) {
+            top: 5px;
+          }
+
+          &:nth-child(4) {
+            top: 10px;
+          }
         }
       }
 
-      .nav-item {
-        a, .help-link {
-          color: $primary;
+      .header-logo {
+        a {
+          margin: 20px 0 0 20px;
+
+          .logo {
+            margin-left: 0;
+            height: 27px;
+          }
         }
       }
     }

@@ -61,6 +61,7 @@ $main-font-size: 0.875em;
       h4 {
         font-family: $serif;
         font-size: 1.1em;
+        font-weight: 700;
         color: $inverse;
         margin-bottom: 18px;
       }
@@ -166,14 +167,39 @@ $main-font-size: 0.875em;
   }
 }
 
-@media (max-width: 767.98px) {
+// Screens less than 768px.
+@include media-breakpoint-down(sm) {
   .wrapper-footer {
+    padding: 25px 20px 30px 22px;
+
     footer {
       max-width: 100%;
+
+      .mid-footer-container {
+        h4 {
+          margin-top: 48px;
+        }
+      }
 
       .col-md-4, .col-12 {
         padding-left: 0;
       }
+    }
+
+    .legal-nav {
+      ul {
+        li {
+          margin: 0 42px 17px 0;
+        }
+      }
+
+      .copyright {
+        margin-top: 40px;
+      }
+    }
+
+    .notice {
+      margin-top: 40px;
     }
   }
 }
