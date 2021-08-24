@@ -49,6 +49,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
     try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
     catch(e){window.attachEvent("onload", $buo_f)}
   </script>
+% endif
 
 <header class="global-header ${'slim' if course else ''}">
     % if use_cookie_banner:
