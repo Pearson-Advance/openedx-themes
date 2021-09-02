@@ -19,6 +19,10 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
 self.real_user = getattr(user, 'real_user', user)
 profile_image_url = get_profile_image_urls_for_user(self.real_user)['medium']
 username = self.real_user.username
+
+if configuration_helpers.get_value('SHOW_PROFILE_NAME_INSTEAD_OF_USERNAME', False):
+    username = username if not self.real_user.profile.name else self.real_user.profile.name
+
 resume_block = retrieve_last_sitewide_block_completed(self.real_user)
 displayname = get_enterprise_learner_generic_name(request) or username
 %>

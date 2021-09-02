@@ -4,12 +4,6 @@
 
 <%namespace name='static' file='/static_content.html'/>
 
-## This template should not use the target student's details when masquerading, see TNL-4895
-<%
-self.real_user = getattr(user, 'real_user', user)
-username = self.real_user.username
-%>
-
 <%!
 from django.urls import reverse
 from django.utils.translation import ugettext as _
@@ -19,6 +13,15 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
 # App that handles subdomain specific branding
 from branding import api as branding_api
 from openedx.core.djangoapps.lang_pref.api import header_language_selector_is_enabled, released_languages
+%>
+
+## This template should not use the target student's details when masquerading, see TNL-4895
+<%
+self.real_user = getattr(user, 'real_user', user)
+username = self.real_user.username
+
+if getattr(self.real_user, 'profile', None) and configuration_helpers.get_value('SHOW_PROFILE_NAME_INSTEAD_OF_USERNAME', False):
+  username = username if not self.real_user.profile.name else self.real_user.profile.name
 %>
 
 % if False:
