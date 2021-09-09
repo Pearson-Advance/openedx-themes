@@ -156,6 +156,34 @@ from student.models import CourseEnrollment
             'SOCIAL_SHARING_SETTINGS',
             getattr(settings, 'SOCIAL_SHARING_SETTINGS', {})
           )
+
+          # MIT subscription information to be displayed on course cards.
+          mit_subscription = {}
+
+          if configuration_helpers.get_value('ENABLE_MIT_HZ_SUBSCRIPTION', False):
+            try:
+              from course_modes.models import CourseMode
+              from openedx_external_enrollments.models import ExternalEnrollment
+
+              subscriptions = ExternalEnrollment.objects.filter(
+                controller_name='mit_hz',
+                email=user.email,
+              ).exclude(meta={})
+
+              # Retrieves the SKU from the verified enrollment mode. The reason is because when it is already verified,
+              # the course_mode_info object does not bring the sku anymore.
+              for subscription in subscriptions:
+                mit_subscription.update({
+                  str(subscription.course_shell): {
+                    'verified_sku': CourseMode.modes_for_course_dict(subscription.course_shell).get('verified').sku,
+                    'expires_at': datetime.strptime(
+                      subscription.meta.get('expires_at'),
+                      "%Y-%m-%dT%H:%M:%S.%fZ",
+                    ).strftime("%b %-d, %Y"),
+                  },
+                })
+            except:
+              pass
         %>
         % for dashboard_index, enrollment in enumerate(course_entitlements + course_enrollments):
         <div class="items course single-course">
@@ -215,7 +243,7 @@ from student.models import CourseEnrollment
           course_overview = enrollment.course_overview
           resume_button_url = resume_button_urls[dashboard_index]
         %>
-        <%include file='dashboard/_dashboard_course_listing.html' args='course_overview=course_overview, course_card_index=dashboard_index, enrollment=enrollment, is_unfulfilled_entitlement=is_unfulfilled_entitlement, is_fulfilled_entitlement=is_fulfilled_entitlement, entitlement=entitlement, entitlement_session=entitlement_session, entitlement_available_sessions=entitlement_available_sessions, entitlement_expiration_date=entitlement_expiration_date, entitlement_expired_at=entitlement_expired_at, show_courseware_link=show_courseware_link, cert_status=cert_status, can_refund_entitlement=can_refund_entitlement, can_unenroll=can_unenroll, credit_status=credit_status, show_email_settings=show_email_settings, course_mode_info=course_mode_info, is_paid_course=is_paid_course, is_course_blocked=is_course_blocked, verification_status=course_verification_status, course_requirements=course_requirements, dashboard_index=dashboard_index, share_settings=share_settings, user=user, related_programs=related_programs, display_course_modes_on_dashboard=display_course_modes_on_dashboard, show_consent_link=show_consent_link, enterprise_customer_name=enterprise_customer_name, resume_button_url=resume_button_url' />
+        <%include file='dashboard/_dashboard_course_listing.html' args='course_overview=course_overview, course_card_index=dashboard_index, enrollment=enrollment, is_unfulfilled_entitlement=is_unfulfilled_entitlement, is_fulfilled_entitlement=is_fulfilled_entitlement, entitlement=entitlement, entitlement_session=entitlement_session, entitlement_available_sessions=entitlement_available_sessions, entitlement_expiration_date=entitlement_expiration_date, entitlement_expired_at=entitlement_expired_at, show_courseware_link=show_courseware_link, cert_status=cert_status, can_refund_entitlement=can_refund_entitlement, can_unenroll=can_unenroll, credit_status=credit_status, show_email_settings=show_email_settings, course_mode_info=course_mode_info, is_paid_course=is_paid_course, is_course_blocked=is_course_blocked, verification_status=course_verification_status, course_requirements=course_requirements, dashboard_index=dashboard_index, share_settings=share_settings, user=user, related_programs=related_programs, display_course_modes_on_dashboard=display_course_modes_on_dashboard, show_consent_link=show_consent_link, enterprise_customer_name=enterprise_customer_name, resume_button_url=resume_button_url, mit_subscription=mit_subscription' />
         </div>
         % endfor
       </div>
