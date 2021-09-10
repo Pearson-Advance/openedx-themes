@@ -162,6 +162,8 @@ from student.models import CourseEnrollment
 
           if configuration_helpers.get_value('ENABLE_MIT_HZ_SUBSCRIPTION', False):
             try:
+              from dateutil import parser as date_parser
+
               from course_modes.models import CourseMode
               from openedx_external_enrollments.models import ExternalEnrollment
 
@@ -176,10 +178,7 @@ from student.models import CourseEnrollment
                 mit_subscription.update({
                   str(subscription.course_shell): {
                     'verified_sku': CourseMode.modes_for_course_dict(subscription.course_shell).get('verified').sku,
-                    'expires_at': datetime.strptime(
-                      subscription.meta.get('expires_at'),
-                      "%Y-%m-%dT%H:%M:%S.%fZ",
-                    ).strftime("%b %-d, %Y"),
+                    'expires_at': date_parser.parse(subscription.meta.get('expires_at')).strftime("%b %-d, %Y"),
                   },
                 })
             except:
