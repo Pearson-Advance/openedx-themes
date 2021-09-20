@@ -63,9 +63,27 @@
                                 <div class="discount">
                                     <div class="benefit">
                                         {% filter force_escape %}
+                                        {% comment "Code explanation" %}
+                                        The line_data.benefit_value could be either a percentage or a currency
+                                        value (50.0% $50.0), This is an issue if the currency of the purchase is
+                                        different than the "$" symbol. The idea here is to get rid of the "$" symbol by applying the filter
+                                        |cut:"$" and then use the currency filter to format the value with the corresponding
+                                        purchase currency, |currency:line_data.line.price_currency.
+                                        Previous code:
+                                        {% blocktrans with benefit_value=line_data.benefit_value %}
+                                        {{ benefit_value }} off
+                                        {% endblocktrans %}
+                                        {% endcomment %}
+
+                                        {% if "$" in line_data.benefit_value %}
+                                        {% blocktrans with benefit_value=line_data.benefit_value|cut:"$"|currency:line_data.line.price_currency %}
+                                            {{ benefit_value }} off
+                                        {% endblocktrans %}
+                                        {% else %}
                                         {% blocktrans with benefit_value=line_data.benefit_value %}
                                             {{ benefit_value }} off
                                         {% endblocktrans %}
+                                        {% endif %}
                                         {% endfilter %}
                                     </div>
                                     <div class="old-price">
