@@ -194,10 +194,18 @@ from openedx.core.djangolib.js_utils import (
             <div class="field">
               <label class="field-label">${_("Show all courses in organization:")}
                 % if org_names_list:
-                <select class="form-select" name="org">
-                  <option value="" selected></option>
-                  %for org in org_names_list:
-                    <option value="${org}">${org}</option>
+                <select class="form-select" name="org" onchange="this.form.submit();">
+                  %if request.GET.get('org'):
+                    <option value="">${_("All organizations")}</option>
+                  %else:
+                    <option value="" selected>${_("All organizations")}</option>
+                  %endif
+                  %for org in sorted(org_names_list, key=str.lower):
+                    %if request.GET.get('org') == org:
+                      <option value="${org}" selected>${org}</option>
+                    %else:
+                      <option value="${org}">${org}</option>
+                    %endif
                   %endfor
                 </select>
                 % else:
@@ -207,9 +215,11 @@ from openedx.core.djangolib.js_utils import (
               </label>
             </div>
           </fieldset>
+          %if not org_names_list:
           <div class="form-actions">
               <button class="btn-brand btn-base" type="submit">${_("Submit")}</button>
           </div>
+          %endif
         </form>
       </div>
       %endif
