@@ -25,6 +25,7 @@
 {% endblock navbar %}
 
 {% block content %}
+  {% is_special_coupon order as is_special_coupon %}
   <div id="receipt-container"
        class="receipt container content-container"
        data-currency="{{ order.currency }}"
@@ -101,20 +102,35 @@
                       {{ line.product.course.id|course_organization }}
                     </p>
                   {% endif %}
+                {% if is_special_coupon %}
+                  <p class="course-description-subtitle" data-course-id="{{ line.product.course.id }}">
+                    {{ order|get_special_coupon_data }}
+                  </p>
+                {% endif %}
                 </dd>
                 <dt class="line-price sr">{% trans "Item Price:" as tmsg %}{{ tmsg | force_escape }}</dt>
+                {% if is_special_coupon %}
+                <dd class="line-price price">{{ line.line_price_incl_tax|currency:order.currency }}</dd>
+                {% else %}
                 <dd class="line-price price">{{ line.unit_price_incl_tax|currency:order.currency }}</dd>
+                {% endif %}
               </div>
             {% endfor %}
           </dl>
           <div class="order-total">
             <div class="description">{% trans "Subtotal" as tmsg %}{{ tmsg | force_escape }}</div>
+            {% if is_special_coupon %}
+            <div class="price">{{ order.basket_total_incl_tax|currency:order.currency }}</div>
+            {% else %}
             <div class="price">{{ order.total_before_discounts_incl_tax|currency:order.currency }}</div>
+            {% endif %}
           </div>
 
           {% with discounts=order.basket_discounts %}
             {% if discounts %}
               {% for discount in discounts %}
+              {% is_special_coupon discount as is_special_coupon_from_discount %}
+              {% if not is_special_coupon_from_discount %}
                 <div class="order-total">
                   <div class="description">
                     <span class="label label-success">{% trans "Discount" as tmsg %}{{ tmsg | force_escape }}</span>
@@ -163,6 +179,7 @@
                       </div>
                   {%  endif %}
                 </div>
+                {% endif %}
               {% endfor %}
 
             {% endif %}

@@ -10,6 +10,7 @@
 {% endif %}
 
 <div id="content-inner">
+    {% is_special_coupon basket as is_special_coupon %}
     <h3>{% trans "Order Summary" as tmsg %}{{ tmsg | force_escape }}</h3>
     {% block basket_form_main %}
         <form action="." method="post">
@@ -29,6 +30,9 @@
                             <p class="product-title">{{ line_data.product_title }} {% if line_data.course_key %}- {{ line_data.course_key.org }}
                                 ({{ line_data.course_key.run }}) {% endif %}</p>
                             <p class="product-description">{{ line_data.product_description|default_if_none:'' }}</p>
+                            {% if is_special_coupon %}
+                              <p class="product-description">{{ basket|get_special_coupon_data }}</p>
+                            {% endif %}
                         </div>
                         {% if line_data.enrollment_code %}
                             <div class="col-md-1 col-xs-12">
@@ -60,6 +64,7 @@
                             {% endif %}
 
                             {% if line_data.line.has_discount %}
+                                {% if not is_special_coupon %}
                                 <div class="discount">
                                     <div class="benefit">
                                         {% filter force_escape %}
@@ -72,8 +77,9 @@
                                         {{ line_data.line.line_price_incl_tax|currency:line_data.line.price_currency }}
                                     </div>
                                 </div>
+                                {% endif %}
                             {% endif %}
-                            <div class="price {% if line_data.line.has_discount %}discounted{% endif %}">
+                            <div class="price {% if line_data.line.has_discount and not is_special_coupon %}discounted{% endif %}">
                                 {{ line_data.line.line_price_incl_tax_incl_discounts|currency:line_data.line.price_currency }}
                             </div>
                         </div>
@@ -92,16 +98,20 @@
                         <div class="vouchers col-sm-7 col-xs-8">
                             {% for voucher in basket.vouchers.all %}
                                 <p class="voucher">
-                                    {% filter force_escape %}
-                                        {% blocktrans with voucher_code=voucher.code %}
-                                            Coupon code {{ voucher_code }} applied
-                                        {% endblocktrans %}
-                                    {% endfilter %}
-                                <form action="{% url 'basket:vouchers-remove' pk=voucher.id %}" method="POST">
-                                    {% csrf_token %}
-                                    <button class="remove-voucher" type="submit"><i class="fa fa-times"></i>
-                                    </button>
-                                </form>
+                                    {% if is_special_coupon %}
+                                        {{ voucher.code }}
+                                    {% else %}
+                                        {% filter force_escape %}
+                                            {% blocktrans with voucher_code=voucher.code %}
+                                                Coupon code {{ voucher_code }} applied
+                                            {% endblocktrans %}
+                                        {% endfilter %}
+                                    {% endif %}
+                                    <form action="{% url 'basket:vouchers-remove' pk=voucher.id %}" method="POST">
+                                        {% csrf_token %}
+                                        <button class="remove-voucher" type="submit"><i class="fa fa-times"></i>
+                                        </button>
+                                    </form>
                                 </p>
                             {% endfor %}
                         </div>
