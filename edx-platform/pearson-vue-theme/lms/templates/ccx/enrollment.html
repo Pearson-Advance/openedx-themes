@@ -3,6 +3,19 @@
 from django.utils.translation import ugettext as _
 from django.utils.translation import pgettext
 from openedx.core.djangolib.markup import HTML, Text
+from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
+%>
+
+<%
+    allow_ccx_unenroll = True
+
+    if configuration_helpers.get_value('PCO_ENABLE_LICENSE_ENFORCEMENT', False) and not configuration_helpers.get_value('ALLOW_CCX_UNENROLL', True):
+        try:
+            from pearson_course_operation.utils import is_ccx_license_managed
+
+            allow_ccx_unenroll = not is_ccx_license_managed(course.id)
+        except ImportError:
+            pass
 %>
 
 <h2 class="hd hd-2">${_("Enrollment")}</h2>
@@ -55,7 +68,9 @@ from openedx.core.djangolib.markup import HTML, Text
 
   <div>
     <input type="submit" name="enrollment-button" class="enrollment-button" value="${pgettext('someone','Enroll')}">
-    <input type="submit" name="enrollment-button" class="enrollment-button" value="${_("Unenroll")}">
+    %if allow_ccx_unenroll:
+      <input type="submit" name="enrollment-button" class="enrollment-button" value="${_("Unenroll")}">
+    %endif
   </div>
   <div class="request-response"></div>
   <div class="request-response-error"></div>
@@ -82,16 +97,24 @@ from openedx.core.djangolib.markup import HTML, Text
             <tr>
               <th class="label" scope="col">${_("Username")}</th>
               <th class="label" scope="col">${_("Email")}</th>
-              <th class="label" scope="col">${_("Revoke access")}</th>
+              %if allow_ccx_unenroll:
+                <th class="label" scope="col">${_("Revoke access")}</th>
+              %endif
             </tr>
           </thead>
           <tbody>
             %for member in ccx_members:
-            <tr>
-              <td>${member.user}</td>
-              <td>${member.user.email}</td>
-              <td><button type="button" class="revoke"><span class="fa fa-times-circle" aria-hidden="true"></span>${_("Revoke access")}</button></td>
-            </tr>
+              <tr>
+                <td>${member.user}</td>
+                <td>${member.user.email}</td>
+                %if allow_ccx_unenroll:
+                  <td>
+                    <button type="button" class="revoke">
+                      <span class="fa fa-times-circle" aria-hidden="true"></span>${_("Revoke access")}
+                    </button>
+                  </td>
+                %endif
+              </tr>
             %endfor
           </tbody>
         </table>
