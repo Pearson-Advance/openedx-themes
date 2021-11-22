@@ -1,4 +1,4 @@
-<%page args="course_overview, enrollment, entitlement, entitlement_session, course_card_index, is_unfulfilled_entitlement, is_fulfilled_entitlement, entitlement_available_sessions, entitlement_expiration_date, entitlement_expired_at, show_courseware_link, cert_status, can_refund_entitlement, can_unenroll, credit_status, show_email_settings, course_mode_info, is_paid_course, is_course_blocked, verification_status, course_requirements, dashboard_index, share_settings, related_programs, display_course_modes_on_dashboard, show_consent_link, enterprise_customer_name, resume_button_url, mit_subscription" expression_filter="h"/>
+<%page args="course_overview, enrollment, entitlement, entitlement_session, course_card_index, is_unfulfilled_entitlement, is_fulfilled_entitlement, entitlement_available_sessions, entitlement_expiration_date, entitlement_expired_at, show_courseware_link, cert_status, can_refund_entitlement, can_unenroll, credit_status, show_email_settings, course_mode_info, is_paid_course, is_course_blocked, verification_status, course_requirements, student_not_enrollment_in_requirement, dashboard_index, share_settings, related_programs, display_course_modes_on_dashboard, show_consent_link, enterprise_customer_name, resume_button_url, mit_subscription" expression_filter="h"/>
 
 <%!
 import six
@@ -496,18 +496,26 @@ from util.course import get_link_for_about_page, get_encoded_course_sharing_utm_
         % endif
       % endif
 
-        % if course_requirements:
-        ## Multiple pre-requisite courses are not supported on frontend that's why we are pulling first element
-        <% prc_target = reverse('about_course', args=[six.text_type(course_requirements['courses'][0]['key'])]) %>
-        <div class="prerequisites">
-          <p class="tip">
-            ${Text(_("You must successfully complete {link_start}{prc_display}{link_end} before you begin this course.")).format(
-                link_start=HTML('<a href="{}">').format(prc_target),
-                link_end=HTML('</a>'),
-                prc_display=course_requirements['courses'][0]['display'],
-              )}
-          </p>
-        </div>
+       % if course_requirements:
+          % if student_not_enrollment_in_requirement:
+            ## Multiple pre-requisite courses are not supported on frontend that's why we are pulling first element
+            <div class="prerequisites">
+                You must successfully complete <a href="${ecommerce_payment_page}?sku=${student_not_enrollment_in_requirement}">${Text(_("{prc_display}")).format(
+                prc_display=course_requirements['courses'][0]['display'],)}</a> before you begin this course.
+            </div>
+          %else:
+            ## Multiple pre-requisite courses are not supported on frontend that's why we are pulling first element
+            <% prc_target = reverse('about_course', args=[six.text_type(course_requirements['courses'][0]['key'])]) %>
+            <div class="prerequisites">
+              <p class="tip">
+                ${Text(_("You must successfully complete {link_start}{prc_display}{link_end} before you begin this course.")).format(
+                    link_start=HTML('<a href="{}">').format(prc_target),
+                    link_end=HTML('</a>'),
+                    prc_display=course_requirements['courses'][0]['display'],
+                  )}
+              </p>
+            </div>
+          %endif
         % endif
     </div>
   </footer>
