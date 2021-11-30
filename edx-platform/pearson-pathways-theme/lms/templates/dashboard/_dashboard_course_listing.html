@@ -501,7 +501,7 @@ from util.course import get_link_for_about_page, get_encoded_course_sharing_utm_
             ## Multiple pre-requisite courses are not supported on frontend that's why we are pulling first element
             <div class="prerequisites">
                 You must successfully complete <a href="${ecommerce_payment_page}?sku=${student_not_enrollment_in_requirement}">${Text(_("{prc_display}")).format(
-                prc_display=course_requirements['courses'][0]['display'],)}</a> before you begin this course.
+                prc_display=course_requirements['courses'][0]['display'])}</a> before you begin this course.
             </div>
           %else:
             ## Multiple pre-requisite courses are not supported on frontend that's why we are pulling first element
