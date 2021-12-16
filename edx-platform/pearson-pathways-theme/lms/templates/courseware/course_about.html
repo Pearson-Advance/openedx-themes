@@ -217,21 +217,44 @@ from six import string_types
             </li>
           %endif
 
-          % if pre_requisite_courses:
-          <% prc_target = reverse('about_course', args=[text_type(pre_requisite_courses[0]['key'])]) %>
-          <li class="prerequisite-course important-dates-item">
-            <span class="icon fa fa-list-ul" aria-hidden="true"></span>
-            <p class="important-dates-item-title">${_("Prerequisites")}</p>
-            ## Multiple pre-requisite courses are not supported on frontend that's why we are pulling first element
-            <span class="important-dates-item-text pre-requisite"><a href="${prc_target}">${pre_requisite_courses[0]['display']}</a></span>
-            <p class="tip">
-            ${Text(_("You must successfully complete {link_start}{prc_display}{link_end} before you begin this course.")).format(
-              link_start=HTML('<a href="{}">').format(prc_target),
-              link_end=HTML('</a>'),
-              prc_display=pre_requisite_courses[0]['display'],
-            )}
-            </p>
-          </li>
+          % if course_requirements:
+            % if student_not_enrollment_in_requirement:
+              <li class="prerequisite-course important-dates-item">
+                <span class="icon fa fa-list-ul" aria-hidden="true"></span>
+                <p class="important-dates-item-title">${_("Prerequisites")}</p>
+                ## Multiple pre-requisite courses are not supported on frontend that's why we are pulling first element
+                <span class="important-dates-item-text pre-requisite">
+                  <a href="${ecommerce_payment_page}?sku=${student_not_enrollment_in_requirement}">
+                    ${course_requirements['display']}
+                  </a>
+                </span>
+                <p class="tip">
+                  ${Text(_("You must successfully complete {link_start}{prc_display}{link_end} before you begin this course.")).format(
+                    link_start=HTML('<a href="{ecommerce_payment_page}?sku={student_not_enrollment_in_requirement}">').format(
+                      ecommerce_payment_page=ecommerce_payment_page,
+                      student_not_enrollment_in_requirement=student_not_enrollment_in_requirement,
+                    ),
+                    link_end=HTML('</a>'),
+                    prc_display=course_requirements['display'],
+                  )}
+                </p>
+              </li>
+            %else:
+              <% prc_target = reverse('about_course', args=[text_type(course_requirements['key'])]) %>
+              <li class="prerequisite-course important-dates-item">
+                <span class="icon fa fa-list-ul" aria-hidden="true"></span>
+                <p class="important-dates-item-title">${_("Prerequisites")}</p>
+                ## Multiple pre-requisite courses are not supported on frontend that's why we are pulling first element
+                <span class="important-dates-item-text pre-requisite"><a href="${prc_target}">${course_requirements['display']}</a></span>
+                <p class="tip">
+                  ${Text(_("You must successfully complete {link_start}{prc_display}{link_end} before you begin this course.")).format(
+                    link_start=HTML('<a href="{}">').format(prc_target),
+                    link_end=HTML('</a>'),
+                    prc_display=course_requirements['display'],
+                  )}
+                </p>
+              </li>
+            %endif
           % endif
 
           % if get_course_about_section(request, course, "prerequisites"):
