@@ -1,0 +1,15 @@
+// Theme variables.
+
+// Colours
+$primary: #ff9400;
+$inverse: #FFF;
+$secondary: #007FA3;
+$gray: #8C8C8C;
+
+// Theme fonts
+$font-family-sans-serif: Open Sans, sans-serif;
+$font-family-serif: Playfair Display, 'Georgia', 'Times New Roman', serif;
+
+// Initialize the Open edX Bootstrap theme
+@import 'edx-bootstrap/sass/open-edx/theme';
+@import url("https://fonts.googleapis.com/css?family=Playfair+Display");

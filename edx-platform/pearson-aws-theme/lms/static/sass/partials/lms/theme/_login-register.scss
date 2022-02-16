@@ -1,0 +1,12 @@
+.login-register-content {
+  h2 {
+    color: $primary;
+  }
+
+  .login-register {
+    .action-primary {
+      background: $primary;
+      color: $inverse;
+    }
+  }
+}
