@@ -37,11 +37,14 @@
       <nav class="nav-legal" aria-label="${_('Legal')}">
         <ul>
           % for item_num, link in enumerate(footer['legal_links'], start=1):
+            ## Remove the Honor Code link.
+            % if link['name'] == 'honor_code':
+              <% continue %>
+            % endif
             <li class="nav-legal-0${item_num}">
               <a href="${link['url']}">${link['title']}</a>
             </li>
           % endfor
-          <li><a href="${footer['edx_org_link']['url']}">${footer['edx_org_link']['text']}</a></li>
         </ul>
       </nav>
     </div>
