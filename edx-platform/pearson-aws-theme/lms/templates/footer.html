@@ -49,19 +49,20 @@
       </nav>
     </div>
 
-    ## Please leave this link and use one of the logos provided
-    ## The OpenEdX link may be hidden when this view is served
-    ## through an API to partner sites (such as marketing sites or blogs),
-    ## which are not technically powered by OpenEdX.
-    % if not hide_openedx_link:
-    <div class="footer-about-openedx">
+    <div class="wrapper-logo">
       <p>
-        <a href="${footer['openedx_link']['url']}">
-          <img src="${footer['openedx_link']['image']}" alt="${footer['openedx_link']['title']}" width="140" />
+        <a href="/">
+          ## The default logo is a placeholder.
+          ## You can either replace this link entirely or update
+          ## the FOOTER_ORGANIZATION_IMAGE in Django settings.
+          ## If you customize FOOTER_ORGANIZATION_IMAGE, then the image
+          ## can be included in the footer on other sites
+          ## (e.g. a blog or marketing front-end) to provide a consistent
+          ## user experience.  See the branding app for details.
+          <img alt="${_('organization logo')}" src="${footer['logo_image']}">
         </a>
       </p>
     </div>
-    % endif
   </footer>
 </div>
 
