@@ -5,5 +5,14 @@
     .copyright {
       color: $primary;
     }
+
+    .wrapper-logo {
+      margin: 15px;
+      float: right;
+
+      img {
+        width: 120px;
+      }
+    }
   }
 }
