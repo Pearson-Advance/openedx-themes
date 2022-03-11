@@ -5,6 +5,7 @@
   from django.utils.translation import ugettext as _
   from branding.api import get_footer
   from openedx.core.djangoapps.lang_pref.api import footer_language_selector_is_enabled
+  from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 %>
 <% footer = get_footer(is_secure=is_secure) %>
 <% icp_license_info = getattr(settings, 'ICP_LICENSE_INFO', {})%>
@@ -25,7 +26,8 @@
       % endif
 
       ## Site operators: Please do not remove this paragraph! This attributes back to edX and makes your acknowledgement of edX's trademarks clear.
-        <p class="copyright">${footer['copyright']}
+        <p class="copyright">
+            &copy; ${configuration_helpers.get_value('PLATFORM_NAME', getattr(settings, 'PLATFORM_NAME', {}))}
             % if icp_license_info.get('icp_license'):
               ${u" | {text}".format(text=icp_license_info.get('text'))}
               <a href="${icp_license_info.get('icp_license_link', '#')}">

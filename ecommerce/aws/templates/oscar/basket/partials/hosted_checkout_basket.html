@@ -56,41 +56,6 @@
                             </div>
                         {% endif %}
                         <div class="col-md-{% if line_data.enrollment_code %}1{% else %}5{% endif %} col-xs-12 product-prices pull-right">
-                            {% if line_data.enrollment_code %}
-                                <label class="product-price-label text-muted">{% trans 'Price' %}</label>
-                            {% endif %}
-
-                            {% if line_data.line.has_discount %}
-                                <div class="discount">
-                                    <div class="benefit">
-                                        {% comment "Code explanation" %}
-                                            The line_data.benefit_value could be either a percentage or a currency
-                                            value (50.0% $50.0), This is an issue if the currency of the purchase is
-                                            different than the "$" symbol. The idea here is to get rid of the "$" symbol by applying the filter
-                                            |cut:"$" and then use the currency filter to format the value with the corresponding
-                                            purchase currency, |currency:line_data.line.price_currency.
-
-                                            Previous code:
-                                            {% blocktrans with benefit_value=line_data.benefit_value %}
-                                                {{ benefit_value }} off
-                                            {% endblocktrans %}
-                                        {% endcomment %}
-
-                                        {% if "$" in line_data.benefit_value %}
-                                            {% blocktrans with benefit_value=line_data.benefit_value|cut:"$"|currency:line_data.line.price_currency %}
-                                                {{ benefit_value }} off
-                                            {% endblocktrans %}
-                                        {% else %}
-                                            {% blocktrans with benefit_value=line_data.benefit_value %}
-                                                {{ benefit_value }} off
-                                            {% endblocktrans %}
-                                        {% endif %}
-                                    </div>
-                                    <div class="old-price">
-                                        {{ line_data.line.line_price_incl_tax|currency:line_data.line.price_currency }}
-                                    </div>
-                                </div>
-                            {% endif %}
                             <div class="price {% if line_data.line.has_discount %}discounted{% endif %}">
                                 {{ line_data.line.line_price_incl_tax_incl_discounts|currency:line_data.line.price_currency }}
                             </div>
