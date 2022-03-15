@@ -206,7 +206,7 @@
             #basket_totals {
                 @include text-align(right);
 
-                color: #337ab7;
+                color: $brand-primary;
                 font-size: 18px;
                 font-weight: bold;
             }

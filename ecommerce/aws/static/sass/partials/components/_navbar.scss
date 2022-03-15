@@ -8,7 +8,7 @@
       &:focus {
         color: white;
         outline: inherit;
-        background-color: #337ab7;
+        background-color: $brand-primary;
         border-bottom-color: transparent;
       }
     }
@@ -23,7 +23,7 @@
   border-radius: 0;
 
   // Add our own border
-  border-bottom: $navbar-border-bottom-width solid palette(primary, accent);
+  border-bottom: $navbar-border-bottom-width solid $brand-primary;
 
   // Vertically center the logo
   .navbar-brand {
@@ -41,7 +41,7 @@
       @include center-vertically;
       top: 0;
       display: inline-block;
-      color: palette(primary, accent);
+      color: $brand-primary;
       font-weight: 600;
     }
   }
@@ -51,8 +51,8 @@
     &:hover,
     &:focus {
       color: white;
-      border-color: #337ab7;
-      background-color: #337ab7;
+      border-color: $brand-primary;
+      background-color: $brand-primary;
 
       > .icon-bar {
         background-color: white;

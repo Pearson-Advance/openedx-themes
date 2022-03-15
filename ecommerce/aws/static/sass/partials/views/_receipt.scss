@@ -65,12 +65,12 @@
     }
 
     .nav-link, a {
-        color: #0079bc;
+        color: $brand-primary;
         border-bottom: none;
         text-decoration: none !important;
 
         &:active, &:hover, &:focus {
-            border-bottom: 1px dotted #0079bc;
+            border-bottom: 1px dotted $brand-primary;
         }
     }
 
@@ -124,7 +124,7 @@
 
     h2 {
         margin-bottom: 10px;
-        color: rgb(0, 121, 188);
+        color: $brand-primary;
     }
 
     p {
@@ -173,7 +173,7 @@
     }
 
     .order-headers {
-        color: rgb(0, 121, 188);
+        color: $brand-primary;
         font-size: 22px;
     }
 
@@ -289,7 +289,7 @@
             }
 
             &:last-child {
-                border-bottom: 4px solid;
+                border-bottom: 4px solid $brand-primary;
             }
 
             dd {
