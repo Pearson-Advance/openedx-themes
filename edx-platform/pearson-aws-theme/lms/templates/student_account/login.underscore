@@ -4,7 +4,7 @@
 <% if ( context.createAccountOption !== false && !context.syncLearnerProfileData && !(context.enterpriseName && context.currentProvider) ) { %>
 <div class="toggle-form">
     <h2 class="text-center"><%= HtmlUtils.HTML(context.platformName) %></h2>
-    <p><%- gettext("Login or create an account to enroll in {platform_name} courses delivered by Pearson.").replace(/{platform_name}/g, context.platformName) %></p></br>
+    <p><%- gettext("Login or create an account to enroll in {platform_name}.").replace(/{platform_name}/g, context.platformName) %></p></br>
     <span class="text"><%- gettext("First time here?") %></span>
     <a href="#login" class="form-toggle" data-type="register"><%- gettext("Create an Account.") %></a>
 </div>
