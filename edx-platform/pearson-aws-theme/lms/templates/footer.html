@@ -1,6 +1,8 @@
 ## mako
 <%page expression_filter="h"/>
 <%!
+  from datetime import datetime
+
   from django.urls import reverse
   from django.utils.translation import ugettext as _
   from branding.api import get_footer
@@ -9,6 +11,7 @@
 %>
 <% footer = get_footer(is_secure=is_secure) %>
 <% icp_license_info = getattr(settings, 'ICP_LICENSE_INFO', {})%>
+<% year = datetime.today().year %>
 <%namespace name='static' file='static_content.html'/>
 
 <div class="wrapper wrapper-footer">
@@ -27,7 +30,7 @@
 
       ## Site operators: Please do not remove this paragraph! This attributes back to edX and makes your acknowledgement of edX's trademarks clear.
         <p class="copyright">
-            &copy; ${configuration_helpers.get_value('PLATFORM_NAME', getattr(settings, 'PLATFORM_NAME', {}))}
+            &copy; ${configuration_helpers.get_value('PLATFORM_NAME', getattr(settings, 'PLATFORM_NAME', {}))} ${year}. All rights reserved except where noted.
             % if icp_license_info.get('icp_license'):
               ${u" | {text}".format(text=icp_license_info.get('text'))}
               <a href="${icp_license_info.get('icp_license_link', '#')}">
