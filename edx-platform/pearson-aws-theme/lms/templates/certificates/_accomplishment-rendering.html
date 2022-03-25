@@ -1,8 +1,10 @@
 <%page expression_filter="h"/>
+<%! from django.contrib.staticfiles.storage import staticfiles_storage %>
 <%! from django.utils.translation import ugettext as _ %>
 <%namespace name='static' file='../static_content.html'/>
 <%
 course_mode_class = course_mode if course_mode else ''
+certificate_ico_url = staticfiles_storage.url('images/certificates/images/ico-{course_mode_class}.png'.format(course_mode_class=course_mode_class))
 %>
 
 <main class="accomplishment accomplishment-main">
@@ -16,7 +18,7 @@ course_mode_class = course_mode if course_mode else ''
 
             <div class="accomplishment-type">
                 <span class="accomplishment-type-symbol">
-                    <img class="src" src="/static/certificates/images/ico-${course_mode_class}.png" alt="Image for course mode of type ${course_mode_class}">
+                    <img class="src" src="${certificate_ico_url}" alt="Image for course mode of type ${course_mode_class}">
                 </span>
 
                 <span class="accomplishment-type-label hd-3">${document_title}</span>

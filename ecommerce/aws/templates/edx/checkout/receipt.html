@@ -39,13 +39,11 @@
               {% endcaptureas %}
               {% if has_enrollment_code_product %}
                   {% blocktrans trimmed with email=order.user.email link_end="</a>" %}
-                    Your enrollment is now complete. You will receive a confirmation message with this information at
-                    {{ link_start }}{{ email }}{{ link_end }}.
+                    Your enrollment is now complete.
                   {% endblocktrans %}
               {% else %}
                   {% blocktrans trimmed with email=order.user.email link_end="</a>" %}
-                    Your enrollment is now complete. You will receive a confirmation message with this information at
-                    {{ link_start }}{{ email }}{{ link_end }}.
+                    Your enrollment is now complete.
                   {% endblocktrans %}
               {% endif %}
             </div>
