@@ -1,0 +1,65 @@
+// Styles for index.html.
+
+.login-container {
+  position: relative;
+  float: right;
+  text-align: center;
+  right: 8%;
+  top: 25%;
+
+  .signin-logo {
+    width: 210px;
+    margin-bottom: 30px;
+  }
+
+  .signin-container {
+    background: white;
+    width: 300px;
+    padding: 10px;
+    border-radius: 10%;
+    box-shadow: 3px 2px 2px 5px $light-gray;
+  }
+
+  .toggle-form {
+    margin-bottom: 30px;
+    margin-top: 20px;
+
+    h1 {
+      font-weight: 600;
+    }
+  }
+
+  .login-providers {
+    background: $inverse;
+    padding: 10px 0;
+
+    .button-vue {
+      text-shadow: none;
+      text-transform: none;
+      border-radius: 5px;
+      background: $primary;
+      font-weight: bold;
+      letter-spacing: inherit;
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .login-container {
+    float: none;
+    right: initial;
+
+    .signin-container {
+      position: relative;
+      margin: 0 auto;
+    }
+  }
+}
+
+@include media-breakpoint-down(xs) {
+  .login-container {
+    .signin-container {
+      width: 200px;
+    }
+  }
+}
