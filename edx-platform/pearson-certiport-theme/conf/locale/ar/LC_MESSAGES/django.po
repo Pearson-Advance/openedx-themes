@@ -1,0 +1,427 @@
+# Arabic translations for PROJECT.
+# Copyright (C) 2022 eduNEXT
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: support@edunext.co\n"
+"POT-Creation-Date: 2022-04-08 00:15-0500\n"
+"PO-Revision-Date: 2022-04-08 00:15-0500\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ar\n"
+"Language-Team: ar <LL@li.org>\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : "
+"n%100>=3 && n%100<=10 ? 3 : n%100>=0 && n%100<=2 ? 4 : 5)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.6.0\n"
+
+#: edx-platform/pearson-certiport-theme/lms/templates/footer.html:25
+msgid "Legal"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/footer.html:28
+msgid "Privacy policy"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/footer.html:32
+msgid "Terms of service"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/index.html:14
+msgid "Welcome!"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/index.html:15
+msgid "Sign in or create an account to access your Certiport Learning Products."
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/index.html:20
+msgid "Continue"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/coach_dashboard.html:12
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/coach_dashboard.html:27
+msgid "CCX Coach Dashboard"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/coach_dashboard.html:46
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/coach_dashboard.html:47
+msgid "Name your CCX"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/coach_dashboard.html:50
+msgid "Create a new Custom Course"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/coach_dashboard.html:59
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/enrollment.html:21
+msgid "Enrollment"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/coach_dashboard.html:62
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/coach_dashboard.html:74
+msgid "Schedule"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/coach_dashboard.html:65
+msgid "Student Admin"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/coach_dashboard.html:68
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/coach_dashboard.html:80
+msgid "Grading Policy"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/coach_dashboard.html:71
+msgid "Batch Enrollment"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/coach_dashboard.html:77
+msgid "Student Grades"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/coach_dashboard.html:153
+msgid "Please enter a valid CCX name."
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/enrollment.html:25
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/enrollment.html:30
+msgid "Email Addresses/Usernames"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/enrollment.html:27
+msgid ""
+"Enter one or more email addresses or usernames separated by new lines or "
+"commas."
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/enrollment.html:28
+msgid ""
+"Make sure you enter the information carefully. You will not receive "
+"notification for invalid usernames or email addresses."
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/enrollment.html:35
+msgid "Auto Enroll"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/enrollment.html:39
+msgid ""
+"If this option is {em_start}checked{em_end}, users who have not yet "
+"registered for {platform_name} will be automatically enrolled."
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/enrollment.html:44
+msgid ""
+"If this option is left {em_start}unchecked{em_end}, users who have not "
+"yet registered for {platform_name} will not be enrolled, but will be "
+"allowed to enroll once they make an account."
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/enrollment.html:50
+msgid "Checking this box has no effect if 'Unenroll' is selected."
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/enrollment.html:57
+msgid "Notify users by email"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/enrollment.html:61
+msgid ""
+"If this option is {em_start}checked{em_end}, users will receive an email "
+"notification."
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/enrollment.html:70
+msgctxt "someone"
+msgid "Enroll"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/enrollment.html:72
+msgid "Unenroll"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/enrollment.html:86
+msgid "Student List Management"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/enrollment.html:88
+msgid "CCX student list management response message"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/enrollment.html:98
+msgid "Username"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/enrollment.html:99
+msgid "Email"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/enrollment.html:101
+#: edx-platform/pearson-certiport-theme/lms/templates/ccx/enrollment.html:113
+msgid "Revoke access"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/header/navbar-logo-header.html:19
+msgid "{platform_name} Home Page"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/header/navbar-not-authenticated.html:23
+msgid "Supplemental Links"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/header/navbar-not-authenticated.html:27
+msgid "How it Works"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/header/navbar-not-authenticated.html:31
+msgid "Courses"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/header/navbar-not-authenticated.html:35
+msgid "Schools"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/header/navbar-not-authenticated.html:41
+msgid "Explore courses"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/header/navbar-not-authenticated.html:51
+msgid "Register"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/header/navbar-not-authenticated.html:55
+msgid "Sign in"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/header/user_dropdown.html:29
+msgid "Dashboard for:"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/header/user_dropdown.html:34
+msgid "Options Menu"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/header/user_dropdown.html:37
+msgid "More Options"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/header/user_dropdown.html:39
+msgid "Resume your last course"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/header/user_dropdown.html:41
+msgid "Dashboard"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/header/user_dropdown.html:42
+msgid "Profile"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/header/user_dropdown.html:43
+msgid "Account"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/header/user_dropdown.html:45
+msgid "Order History"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/header/user_dropdown.html:48
+msgid "Support"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/header/user_dropdown.html:50
+msgid "Sign Out"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:14
+msgid ""
+"Click to display the grading configuration for the course. The grading "
+"configuration is the breakdown of graded subsections of the course (such "
+"as exams and problem sets), and can be changed on the 'Grading' page "
+"(under 'Settings') in Studio."
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:15
+msgid "Grading Configuration"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:20
+msgid "Click to download a CSV of anonymized student IDs:"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:21
+msgid "Get Student Anonymized IDs CSV"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:27
+msgid "Reports"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:29
+msgid ""
+"For large courses, generating some reports can take several hours. When "
+"report generation is complete, a link that includes the date and time of "
+"generation appears in the table below. These reports are generated in the"
+" background, meaning it is OK to navigate away from this page while your "
+"report is generating."
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:31
+msgid ""
+"Please be patient and do not click these buttons multiple times. Clicking"
+" these buttons multiple times will significantly slow the generation "
+"process."
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:33
+msgid ""
+"Click to generate a CSV file of all students enrolled in this course, "
+"along with profile information such as email address and username:"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:35
+msgid "Download profile information as a CSV"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:38
+msgid ""
+"Click to generate a CSV file of the license usage across all CCXs for "
+"each institution."
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:39
+msgid "Download license usage as a CSV"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:42
+msgid ""
+"Click to generate a CSV file that lists learners who can enroll in the "
+"course but have not yet done so."
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:44
+msgid "Download a CSV of learners who can enroll"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:47
+msgid "Click to generate a CSV file of all proctored exam results in this course."
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:48
+msgid "Generate Proctored Exam Results Report"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:52
+msgid "Click to generate a CSV file of survey results for this course."
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:53
+msgid "Generate Survey Results Report"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:56
+msgid ""
+"Select a problem to generate a CSV file that lists all student answers to"
+" the problem. You also select a section or chapter to include results of "
+"all problems in that section or chapter."
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:60
+msgid "NOTE"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:61
+msgid ""
+"The generated report is limited to {max_entries} responses. If you expect"
+" more than {max_entries} responses, try generating the report on a "
+"chapter-by-chapter, or problem-by-problem basis, or contact your site "
+"administrator to increase the limit."
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:81
+msgid "Download a CSV of problem responses"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:85
+msgid "Click to list certificates that are issued for this course:"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:87
+msgid "View Certificates Issued"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:88
+msgid "Download CSV of Certificates Issued"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:95
+msgid ""
+"For smaller courses, click to list profile information for enrolled "
+"students directly on this page:"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:96
+msgid "List enrolled students' profile information"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:101
+msgid "Click to generate a CSV grade report for all currently enrolled students."
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:103
+msgid "Generate Grade Report"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:104
+msgid "Generate Problem Grade Report"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:105
+msgid "Generate ORA Data Report"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:113
+msgid "Reports Available for Download"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:115
+msgid ""
+"The reports listed below are available for download, identified by UTC "
+"date and time of generation."
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:120
+msgid ""
+"The answer distribution report listed below is generated periodically by "
+"an automated background process. The report is cumulative, so answers "
+"submitted after the process starts are included in a subsequent report. "
+"The report is generated several times per day."
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:126
+msgid ""
+"{strong_start}Note{strong_end}: {ul_start}{li_start}To keep student data "
+"secure, you cannot save or email these links for direct access. Copies of"
+" links expire within 5 minutes.{li_end}{li_start}Report files are deleted"
+" 90 days after generation. If you will need access to old reports, "
+"download and store the files, in accordance with your institution's data "
+"security policies.{li_end}{ul_end}"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:143
+msgid "Pending Tasks"
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/instructor/instructor_dashboard_2/data_download.html:145
+msgid "The status for any active tasks appears in a table below."
+msgstr ""
+
+#: edx-platform/pearson-certiport-theme/lms/templates/widgets/footer-language-selector.html:23
+msgid "Choose Language"
+msgstr ""
+

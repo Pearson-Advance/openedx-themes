@@ -1,0 +1,50 @@
+// Styles for footer.html.
+
+.wrapper-footer {
+  box-shadow: none;
+  background: $primary-black;
+
+  footer#footer-openedx {
+    .colophon {
+      text-align: center;
+      float: none;
+      display: block;
+      margin-right: initial;
+      width: auto;
+      margin-bottom: 60px;
+      font-size: 1.2em;
+
+      .nav-legal {
+        text-align: inherit;
+
+        li:last-child:before {
+          color: $inverse;
+          content: '|';
+        }
+      }
+    }
+
+    .copyright {
+      margin: 0;
+      text-align: center;
+    }
+
+    a, .copyright {
+      color: $inverse;
+    }
+
+    .footer-language-selector {
+      text-align: left;
+
+      label {
+        color: $inverse;
+        font-size: 1em;
+      }
+
+      #footer-language-select {
+        font-size: 0.8em;
+      }
+    }
+
+  }
+}

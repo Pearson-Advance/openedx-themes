@@ -1,0 +1,75 @@
+// Styles for header.html.
+
+.global-header {
+  background-color: $primary-black !important;
+  border: none;
+  color: $inverse;
+
+  .nav-links {
+    .main {
+      .nav-tab {
+        a {
+          padding: 10px;
+          color: $inverse !important;
+        }
+      }
+    }
+
+    .secondary {
+      .nav-item {
+        a {
+          color: $inverse;
+        }
+      }
+
+      .dropdown-user-menu {
+        .dropdown-item {
+          a {
+            color: $secondary;
+          }
+        }
+      }
+
+      a.sign-in-btn, a.register-btn {
+        background-color: $primary-black;
+        border: 1px solid $inverse;
+        color: $inverse;
+
+        &:hover {
+          background-color: $inverse;
+          border: 1px solid $primary-black;
+          color: $primary-black;
+        }
+      }
+    }
+  }
+
+  .header-logo .course-header {
+    color: $inverse !important;
+
+    .course-name {
+      display: block;
+      font-size: $font-size-base;
+      margin-top: 15px !important;
+      font-weight: 600;
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .global-header {
+    .mobile-menu {
+      .mobile-nav-link {
+        a {
+          background-color: $light-gray;
+          border-bottom: 1px solid $primary;
+          color: $secondary;
+
+          &:hover {
+            background-color: $dark-gray;
+          }
+        }
+      }
+    }
+  }
+}
