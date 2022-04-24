@@ -24,13 +24,15 @@
 
         <nav class="nav-legal" aria-label="${_('Legal')}">
           <ul>
-            <li class="nav-legal-01">
-              <a href="${MKTG_URL_PRIVACY}">${_('Privacy policy')}</a>
-            </li>
-
-            <li class="nav-legal-02">
-              <a href="${MKTG_URL_TOS}">${_('Terms of service')}</a>
-            </li>
+            % for item_num, link in enumerate(footer['legal_links'], start=1):
+              ## Remove the Honor Code link.
+              % if link['name'] == 'honor_code':
+                <% continue %>
+              % endif
+              <li class="nav-legal-0${item_num}">
+                <a href="${link['url']}">${link['title']}</a>
+              </li>
+            % endfor
           </ul>
         </nav>
 
