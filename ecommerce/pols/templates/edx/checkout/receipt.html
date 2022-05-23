@@ -2,6 +2,7 @@
 {% load core_extras %}
 {% load currency_filters %}
 {% load i18n %}
+{% load django_markup %}
 {% load l10n %}
 {% load offer_tags %}
 {% load static %}
@@ -43,11 +44,12 @@
                       {{ link_start }}{{ email }}{{ link_end }}. If you need a receipt, you can print this page.
                   {% endblocktrans %}
               {% else %}
-                  {% blocktrans trimmed with email=order.user.email link_end="</a>" %}
+                  {% blocktrans trimmed asvar tmsg %}
                       Your order is complete. If you need a receipt, you can print this page.
                       You will also receive a confirmation message with this information at
-                      {{ link_start }}{{ email }}{{ link_end }}.
+                      {link_start}{email}{link_end}.
                   {% endblocktrans %}
+                {% interpolate_html tmsg email=order.user.email|safe link_end="</a>"|safe link_start=link_start|safe %}
               {% endif %}
             </div>
 
