@@ -1,0 +1,213 @@
+// Styles for the footer template.
+
+$line-color: rgba(255,255,255,0.2);
+$main-font-size: 0.875em;
+
+.wrapper-footer {
+  border-top: none;
+  background: $footer-background;
+  color: $inverse;
+
+  footer {
+    // Reset Bootstrap "container" style.
+    max-width: 1170px !important;
+    padding: 40px 0 0 0;
+
+    // There is a generic style similar applying div and box shadow on the wiki page of course.
+    // so disabling that design for footer in the lines below.
+    & > div {
+      display: flex;
+      background: inherit;
+      border: none;
+      box-shadow: none;
+    }
+
+    .row {
+      margin-right: initial;
+      margin-left: initial;
+      margin-bottom: 60px;
+    }
+
+    .wrapper-logo {
+      img {
+        width: 10em;
+      }
+
+      h4 {
+        font-family: $font-family-sans-serif;
+        font-weight: 600;
+        line-height: 28px;
+        color: $inverse;
+        margin-top: 12px;
+      }
+    }
+
+    .icon-background {
+      color: $inverse;
+    }
+
+    .social-links {
+      list-style: none;
+      padding: 0;
+
+      li {
+        display: inline;
+        margin: 0 14px 0 0;
+
+        a {
+          color: $footer-background;
+        }
+      }
+    }
+
+    .mid-footer-container {
+      padding-left: 50px;
+
+      h4 {
+        font-family: $font-family-sans-serif;
+        font-weight: 600;
+        line-height: 28px;
+        color: $inverse;
+        margin-bottom: 18px;
+      }
+
+      p {
+        margin-bottom: 10px;
+        font-family: $font-family-sans-serif;
+        font-size: $main-font-size;
+        line-height: 26px;
+        a {
+          color: $footer-contrast;
+        }
+      }
+    }
+  }
+
+  .legal-nav {
+    border-top: solid 1px $line-color;
+    padding: 0 14px 0 0;
+    margin-top: 35px;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+
+      li {
+        display: inline-block;
+        margin: 0 42px 0 0;
+        font-family: $font-family-sans-serif;
+        font-size: $main-font-size;
+        line-height: 21px;
+
+        a {
+          color: $footer-contrast;
+        }
+      }
+
+      li:not(:first-child) a::before {
+        content: none;
+      }
+    }
+
+    .notice {
+      color: $inverse;
+      color: $footer-contrast;
+      text-transform: capitalize;
+      font-family: $font-family-sans-serif;
+      font-size: $main-font-size;
+      line-height: 21px;
+    }
+
+    .copyright {
+      margin-top: 20px;
+      color: $footer-contrast;
+      text-transform: capitalize;
+      font-family: $font-family-sans-serif;
+      font-size: $main-font-size;
+      line-height: 21px;
+
+      a {
+        color: $footer-contrast;
+      }
+    }
+  }
+
+  .footer-about-openedx {
+    text-align: center;
+
+    p {
+      text-align: inherit;
+    }
+  }
+
+  .footer-miscellaneous-buttons {
+    position: relative;
+    width: auto;
+    float: right;
+    top: -300px;
+    right: 20px;
+    background: initial;
+
+    .back-to-top-btn {
+      background: $primary;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      top: 115px;
+      position: absolute;
+      right: 0;
+      color: $inverse;
+      top: 115px;
+      font-size: 0.7em;
+
+      i {
+        position: relative;
+        top: -3px;
+      }
+
+      span {
+        position: absolute;
+        top: 20px;
+        left: 14px;
+      }
+    }
+  }
+}
+
+// Screens less than 768px.
+@include media-breakpoint-down(sm) {
+  .wrapper-footer {
+    padding: 25px 20px 30px 22px;
+
+    footer {
+      max-width: 100%;
+
+      .mid-footer-container {
+        h4 {
+          margin-top: 48px;
+        }
+      }
+
+      .col-md-4, .col-12 {
+        padding-left: 0;
+      }
+    }
+
+    .legal-nav {
+      ul {
+        li {
+          margin: 0 42px 17px 0;
+        }
+      }
+
+      .copyright {
+        margin-top: 40px;
+      }
+    }
+
+    .notice {
+      margin-top: 40px;
+    }
+  }
+}

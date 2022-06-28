@@ -1,0 +1,17 @@
+// Styles for the courseware page.
+
+.course-wrapper {
+  border: none !important;
+
+  main {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .course-content {
+    .page-header {
+      padding: 20px 0;
+      border-bottom: none;
+    }
+  }
+}
