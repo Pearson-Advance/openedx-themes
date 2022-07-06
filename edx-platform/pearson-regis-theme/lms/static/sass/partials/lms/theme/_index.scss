@@ -1,0 +1,22 @@
+// Index styles.
+
+.home-banner > header {
+  background-position: center;
+  min-height: 65vh;
+
+  .title {
+    color: $primary;
+    padding: 50px;
+    margin-top: 3%;
+    box-shadow: none;
+
+    .title-super {
+      font-family: $font-family-serif;
+      font-size: 4rem;
+    }
+
+    .title-sub {
+      font-size: 2rem;
+    }
+  }
+}

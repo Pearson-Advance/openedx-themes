@@ -1,0 +1,122 @@
+## mako
+<%page expression_filter="h"/>
+<%!
+  from datetime import datetime
+  from django.urls import reverse
+  from django.utils.translation import ugettext as _
+  from branding.api import get_footer
+  from openedx.core.djangoapps.lang_pref.api import footer_language_selector_is_enabled
+%>
+<% footer = get_footer(is_secure=is_secure) %>
+<% icp_license_info = getattr(settings, 'ICP_LICENSE_INFO', {})%>
+<%namespace name='static' file='static_content.html'/>
+
+<div class="wrapper-footer">
+  <footer class="container">
+    <div class="row">
+      <div class="col-md-4 col-12">
+        <div class="wrapper-logo">
+          <p>
+            <a href="/">
+              ## The default logo is a placeholder.
+              ## You can either replace this link entirely or update
+              ## the FOOTER_ORGANIZATION_IMAGE in Django settings.
+              ## If you customize FOOTER_ORGANIZATION_IMAGE, then the image
+              ## can be included in the footer on other sites
+              ## (e.g. a blog or marketing front-end) to provide a consistent
+              ## user experience.  See the branding app for details.
+              <img alt="${_('organization logo')}" src="${footer['logo_image']}">
+            </a>
+          </p>
+          <h4>Empowering people to make progress in their lives through learning</h4>
+        </div>
+        <ul class="social-links">
+          <li>
+            <a href="https://www.facebook.com/PearsonPathways" target="_blank" aria-label="Facebook">
+              <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x icon-background"></i>
+                <i class="fa fa-facebook fa-stack-1x"></i>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.twitter.com/PearsonPathways" target="_blank" aria-label="Twitter">
+              <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x icon-background"></i>
+                <i class="fa fa-twitter fa-stack-1x"></i>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/company/pearson-pathways" target="_blank" aria-label="LinkedIn">
+              <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x icon-background"></i>
+                <i class="fa fa-linkedin fa-stack-1x"></i>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/pearsonpathways/" target="_blank" aria-label="Instagram">
+              <span class="fa-stack">
+                <i class="fa fa-circle fa-stack-2x icon-background"></i>
+                <i class="fa fa-instagram fa-stack-1x"></i>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4 col-12 mid-footer-container">
+        <h4>Students</h4>
+        <p><a href="https://www.pearson.com/pathways/learner-profile.html/account">My Learner Profile</a></p>
+        <p><a href="https://www.pearson.com/pathways/recommended-programs.html">Get Recommendations</a></p>
+        <p><a href="https://www.pearson.com/pathways/areas-work-study.html">View Areas of Study</a></p>
+        <p><a href="https://www.pearson.com/pathways/program-profiles.html">Degrees, Courses &amp; Certificates</a></p>
+        <p><a href="https://www.pearson.com/pathways/student-resources.html">Student Resources</a></p>
+        <p><a href="https://www.pearson.com/pathways/blog.html">Education news and trends</a></p>
+      </div>
+      <div class="col-md-4 col-12 mid-footer-container">
+        <h4>Company</h4>
+        <p><a href="https://www.pearson.com/pathways/about.html">About Pearson Pathways</a></p>
+        <p><a href="https://www.pearson.com/pathways/request-information.html">Request for information</a></p>
+        <p><a href="https://www.pearson.com/pathways/contact.html">Contact us</a></p> <br> <br>
+        <h4>Colleges &amp; Universities</h4>
+        <p><a href="https://www.pearson.com/pathways/partner-with-us.html">Join the Pathways Marketplace</a></p>
+      </div>
+      <div class="col-12 legal-nav">
+        <ul>
+            <li><a href="https://www.pearson.com/pathways/terms-of-use.html">Terms of use</a></li>
+            <li><a href="https://www.pearson.com/pathways/privacy-policy.html">Privacy policy</a></li>
+            <li><a href="https://www.pearson.com/pathways/do-not-sell-my-information.html">Do not sell my personal information</a><br></li>
+            <li><a href="https://www.pearson.com/pathways/complaint-resolution.html">Complaint resolution</a></li>
+        </ul>
+        <p class="notice">
+          Tuition, fees, and dates may be subject to change without notice by university,
+          administrative, federal, or state legislative changes. <br>
+          Consult with the specific institution for more specific information.
+        </p>
+        <p class="copyright">Copyright ©&nbsp;1996–${datetime.today().year}&nbsp;
+          <a href="https://www.pearson.com" aria-label="Pearson" title="Pearson">Pearson</a>&nbsp;
+          All rights reserved.
+        </p>
+      </div>
+    </div>
+    <div class="footer-miscellaneous-buttons">
+      <a href="#top" class="btn btn-default back-to-top-btn">
+        <i class="fa fa-angle-up" aria-hidden="true"></i>
+        <span>TOP</span>
+      </a>
+    </div>
+  </footer>
+</div>
+
+% if include_dependencies:
+  <%static:js group='base_vendor'/>
+  <%static:css group='style-vendor'/>
+  <%include file="widgets/segment-io.html" />
+  <%include file="widgets/segment-io-footer.html" />
+% endif
+% if footer_css_urls:
+  % for url in footer_css_urls:
+    <link rel="stylesheet" type="text/css" href="${url}"></link>
+  % endfor
+% endif
