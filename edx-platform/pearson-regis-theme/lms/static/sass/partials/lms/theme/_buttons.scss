@@ -1,7 +1,10 @@
 // General styles for buttons.
 
 // Reset platform styles.
-input[type="submit"], input[type="button"], button, .button {
+input[type="submit"],
+input[type="button"],
+button,
+.button {
   &:hover:not(:disabled) {
     background-image: none;
   }

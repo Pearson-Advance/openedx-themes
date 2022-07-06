@@ -4,42 +4,30 @@
   float: left;
   margin: 1%;
   min-width: 250px;
-  padding: 0px;
-  width: 23%;
-}
+  padding: 0;
+  width: 98%;
 
-@media (max-width: 1190px) {
-  .view-dashboard div.item .items.course.single-course {
-    width: 31%;
-  }
-}
-
-@media (max-width: 890px) {
-  .view-dashboard div.item .items.course.single-course {
+  @include media-breakpoint-up(md) {
     width: 48%;
   }
-}
 
-@media (max-width: 660px) {
-  .view-dashboard div.item .items.course.single-course {
-  width: 98%;
+  @include media-breakpoint-up(lg) {
+    width: 31%;
+  }
+
+  @include media-breakpoint-up(xl) {
+    width: 23%;
   }
 }
 
 .view-dashboard div.item li.course-item {
   text-align: left;
   width: 100%;
-  box-shadow: 0 1px 10px 0 rgba(0,48,87,0.125), inset 0 0 0 1px rgba(255,255,255,0.75);
+  box-shadow: 0 1px 10px 0 rgba(0,48,87,0.125), inset 0 0 0 1px rgba(255,255,255,0.75);
 }
 
 .view-dashboard div.item li.course-item:hover {
-  box-shadow: 0 1px 4px 0 rgba(0,127,163,0.4);
-}
-
-@media (max-width: 991px) {
-  .view-dashboard div.item .course .details {
-    padding-left: 0px !important;
-  }
+  box-shadow: 0 1px 4px 0 rgba(0,127,163,0.4);
 }
 
 .view-dashboard div.item .course .details {
@@ -62,6 +50,10 @@
     text-align: center;
     width: 100%;
   }
+
+  @include media-breakpoint-down(lg) {
+    padding-left: 0 !important;
+  }
 }
 
 .dashboard .main-container .my-courses
@@ -69,16 +61,15 @@
 .wrapper-action-more div.actions-dropdown {
   min-width: 108px;
   width:100%;
-  right: 0px;
+  right: 0;
   top: 50px;
 }
 
-//Upgrade button style and verify button hide
-
-.wrapper-messages-primary { 
+// Upgrade button style and verify button hide.
+.wrapper-messages-primary {
 
   .message.is-shown {
-    padding: 0px 0px 10px 0px;
+    padding: 0 0 10px 0;
   }
 
   //verify
@@ -105,22 +96,22 @@
 
     .action-upgrade-container {
       width: 100%;
-      margin: 0px !important;
+      margin: 0 !important;
     }
 
     .action-upgrade {
       width: 100%;
-      color: #003057;
-      max-width: 192px; 
-      background-color: #D2DB0E !important; 
+      color: #003057;
+      max-width: 192px;
+      background-color: #D2DB0E !important;
       }
-    
+
     .action-upgrade:hover {
-      background-color: #84BD00;
+      background-color: #84BD00;
     }
 
     .wrapper-extended {
-      padding: 0px; 
+      padding: 0;
     }
   }
 }
@@ -144,7 +135,7 @@ div.course-caption p.localized-datetime {
 }
 
 section[role=courses] div.container.no-border {
-  max-width: 2100px; 
+  max-width: 2100px;
   min-height: 77vh;
 
   header {
@@ -164,16 +155,19 @@ section[role=courses] div.container.no-border {
       color: $inverse;
     }
   }
-}
 
-
-section[role=courses] div.container.no-border {
   h1 {
     font: normal 2.5em Playfair Display;
     margin-bottom: 30px;
     text-align: left;
     font-family: inherit;
     font-weight: lighter;
+  }
+
+  @include media-breakpoint-down(md) {
+    h1 {
+      display: none;
+    }
   }
 }
 
@@ -182,7 +176,6 @@ section[role=courses] div.container.no-border {
 .view-dashboard div.item {
   margin: 0 auto;
   max-width: 2180px;
-  min-width: 760px;
   width: 100%;
 
   .wrapper-header-courses .header-courses {
@@ -342,7 +335,7 @@ section[role=courses] div.container.no-border {
   .course .details .course-actions .wrapper-action-more
   .actions-dropdown.is-visible{
       display: block;
-    pointer-events: auto;
+      pointer-events: auto;
   }
   .course .details .course-actions .wrapper-action-more
   .actions-dropdown .actions-dropdown-list {
@@ -358,47 +351,43 @@ section[role=courses] div.container.no-border {
   }
 
   //dashboard-subcription-mobile
-  @media (max-width: 991px){
+  @include media-breakpoint-down(lg) {
     .course .details {
       padding-left: 10px;
     }
   }
 
-  @media (max-width: 767px){
+  @include media-breakpoint-down(md) {
     .course .details .wrapper-course-image {
       display: none;
     }
-  }
 
-  @media (max-width: 767px){
     .course .details .wrapper-course-details {
       display: flex;
       flex-direction: column;
     }
-  }
 
-  @media (max-width: 767px){
     .course .details .wrapper-course-details .course-info,
     .course .details .wrapper-course-details .wrapper-course-actions {
       flex-grow: 1;
       text-align: left;
     }
-  }
 
-  @media (max-width: 767px){
     .course .details .wrapper-course-details
     div.wrapper-course-actions div.course-actions {
       padding-top: 50px;
     }
-  }
 
-  @media (max-width: 767px){
     .course .details .wrapper-course-details .course-info .wrapper-action-more,
     .course .details .wrapper-course-details .course-info .entitlement-actions-wrapper,
     .course .details .wrapper-course-details .wrapper-course-actions .wrapper-action-more,
     .course .details .wrapper-course-details .wrapper-course-actions .entitlement-actions-wrapper {
       padding-top: 3px;
     }
+  }
+
+  @include media-breakpoint-down(sm) {
+    min-width: 0;
   }
 }
 
@@ -440,24 +429,8 @@ div.modal-content .modal-header button.close {
     width: 25%;
     float: right;
 
-    @media (max-width: 767px) {
+    @include media-breakpoint-down(md)  {
       width: 100%;
-    }
-  }
-}
-
-// Screens less than 768px.
-@include media-breakpoint-down(sm) {
-  .view-dashboard div.item {
-    min-width: 0;
-  }
-}
-
-// Screens less than 992px.
-@include media-breakpoint-down(md) {
-  section[role=courses] div.container.no-border {
-    h1 {
-      display: none;
     }
   }
 }
