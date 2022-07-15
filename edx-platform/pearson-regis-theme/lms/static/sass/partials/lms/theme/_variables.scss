@@ -4,13 +4,13 @@
 $primary: #B70005;
 $inverse: #FFF;
 $secondary: #E89D00;
-$footer-background: #0d2b52;
-$footer-contrast: rgba(255,255,255,0.7);
+$footer-background: #242E33;
+$footer-contrast: #F2F2F2;
 $dark: #313131;
 $gray: #E6E6E6;
 
 // Theme fonts
-$font-family-sans-serif: Open Sans;
+$font-family-sans-serif: 'Roboto', sans-serif;
 $font-family-serif: Playfair Display, 'Georgia', 'Times New Roman', serif;
 
 // Initialize the Open edX Bootstrap theme
@@ -18,3 +18,4 @@ $font-family-serif: Playfair Display, 'Georgia', 'Times New Roman', serif;
 // Import Bootstrap layout definitions.
 @import 'bootstrap/scss/bootstrap-grid';
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
