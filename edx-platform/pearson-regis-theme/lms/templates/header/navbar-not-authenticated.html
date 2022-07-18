@@ -44,14 +44,15 @@ from six import text_type
   <div class="secondary">
     <div>
       % if allows_login:
-        % if allow_public_account_creation:
-            <div class="mobile-nav-item hidden-mobile nav-item">
-              <a class="register-btn btn" href="/register${login_query()}">${_("Register")}</a>
-            </div>
-        % endif
-          <div class="mobile-nav-item hidden-mobile nav-item">
-            <a class="sign-in-btn btn" href="/login${login_query()}">${_("Sign in")}</a>
-          </div>
+        <div class="mobile-nav-item hidden-mobile nav-item">
+          <a class="sign-in-btn btn" href="/login${login_query()}">
+            <span class="fa-stack fa-sm">
+              <i class="fa fa-circle fa-stack-2x"></i>
+              <i class="fa fa-user fa-stack-1x fa-inverse" aria-hidden="true"></i>
+            </span>
+            ${_("Log in")}
+          </a>
+        </div>
       % endif
     </div>
   </div>

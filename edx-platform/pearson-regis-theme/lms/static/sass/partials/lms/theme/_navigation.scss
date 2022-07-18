@@ -4,18 +4,59 @@
 // and avoid an issue because lms-course.css
 // is imported after lms-main-v1.css on the courseware page and overwrites the theme rules.
 #top {
+  @include media-breakpoint-down(lg) {
+    padding: 0 15px !important;
+  }
+
   &.global-header {
-    border-bottom: none;
+    border-bottom: 1px solid $light-gray;
+    box-shadow: none;
+    min-height: 100px;
+    padding: 0 55px;
+
+    .main-header {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      height: 100px;
+
+      @include media-breakpoint-down(lg) {
+        height: 100px;
+        justify-content: space-between;
+
+        h1 {
+          a {
+            margin: 0;
+          }
+        }
+      }
+    }
 
     .nav-links {
+      display: none;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      justify-content: space-between;
+
       .main {
+        display: flex;
+        gap: 30px;
+        margin: 0;
+        height: 100%;
+
         .nav-tab {
           a, .tab-nav-link {
-            color: $primary;
+            color: $gray;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 0;
+            font-weight: 500;
 
             &.active,
             &:hover {
-              border-bottom-color: $secondary;
+              border-bottom-color: $primary-light;
               font-weight: 700;
             }
           }
@@ -23,60 +64,96 @@
       }
 
       .secondary {
-        color: $primary;
+        border: none;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        margin: 0;
+        gap: 30px;
 
-        .toggle-user-dropdown {
-          i {
-            padding: 0 0.5em;
+        .nav-item {
+          margin: 0;
+
+          a {
+            font-weight: 500;
           }
         }
 
-        .nav-item {
-          a, .help-link {
-            color: $primary;
+        .user-image-frame {
+          border: none;
+        }
+      }
+
+      @include media-breakpoint-up(lg) {
+        display: flex;
+
+        .secondary {
+          a.sign-in-btn,
+          .nav-item a.shopping-cart {
+            background-color: initial;
+            color: initial;
+            border: none;
+
+            &:hover {
+              background-color: theme-color("inverse");
+              color: theme-color("primary");
+              border-color: initial;
+            }
+          }
+        }
+      }
+    }
+
+    .header-logo {
+      margin: 0;
+
+      a {
+        margin: 0;
+
+        .logo {
+          height: 30px;
+          margin: 0;
+        }
+
+        @include media-breakpoint-down(sm) {
+          .logo {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    // Responsive styling for mobile
+    @include media-breakpoint-down(md) {
+      .hamburger-menu {
+        @include right($baseline);
+        left: initial;
+        position: relative;
+        top: 0;
+        padding: 0;
+
+        .line {
+          height: 4px;
+          background: $gray;
+
+          &:nth-child(2),
+          &:nth-child(3) {
+            top: 8px
+          }
+
+          &:nth-child(4) {
+            top: 16px;
           }
         }
       }
     }
   }
-}
 
-// Screens less than 992px.
-@include media-breakpoint-down(md) {
-  #top {
-    &.global-header {
-      .hamburger-menu {
-        top: 27px;
-        left: unset;
-        right: 30px;
-        width: 18px;
-
-        .line {
-          height: 2px;
-
-          &:nth-child(1) {
-            top: 0;
-          }
-
-          &:nth-child(2),
-          &:nth-child(3) {
-            top: 5px;
-          }
-
-          &:nth-child(4) {
-            top: 10px;
-          }
-        }
-      }
-
-      .header-logo {
+  .mobile-menu {
+    @include media-breakpoint-down(md) {
+      .mobile-nav-link {
         a {
-          margin: 20px 0 0 20px;
-
-          .logo {
-            margin-left: 0;
-            height: 27px;
-          }
+          color: initial;
         }
       }
     }
