@@ -38,19 +38,23 @@ from openedx.core.djangolib.js_utils import (
                 % endfor
               </ul>
             % endif
-            <div>
-              <p class="request-response-error" id="ccx-create-message"></p>
-              <form action="${create_ccx_url}" class="ccx-form" method="POST" onsubmit="return validateForm(this)">
-                <input type="hidden" name="csrfmiddlewaretoken" value="${csrf_token}"/>
-                <div class="field">
-                  <label class="sr" for="ccx_name">${_('Name your CCX')}</label>
-                  <input name="name" id="ccx_name" placeholder="${_('Name your CCX')}"/><br/>
-                </div>
-                <div class="field">
-                  <button id="create-ccx" type="submit">${_('Create a new Custom Course')}</button>
-                </div>
-              </form>
-          </div>
+            % if is_ccx_admin:
+              <div>
+                <p class="request-response-error" id="ccx-create-message"></p>
+                <form action="${create_ccx_url}" class="ccx-form" method="POST" onsubmit="return validateForm(this)">
+                  <input type="hidden" name="csrfmiddlewaretoken" value="${csrf_token}"/>
+                  <div class="field">
+                    <label class="sr" for="ccx_name">${_('Name your CCX')}</label>
+                    <input name="name" id="ccx_name" placeholder="${_('Name your CCX')}"/><br/>
+                  </div>
+                  <div class="field">
+                    <button id="create-ccx" type="submit">${_('Create a new Custom Course for edX')}</button>
+                  </div>
+                </form>
+              </div>
+            % else:
+              <meta http-equiv='refresh' content='0; URL=about'>
+            %endif
           %endif
 
           %if ccx:
