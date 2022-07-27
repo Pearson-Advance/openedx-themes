@@ -1,15 +1,25 @@
 // Theme variables.
 
+// color scale
+$gray-20: #FAFAFA;
+$gray-30: #F5F5F5;
+$gray-50: #CCCCCC;
+$dark-gray: #242E33;
+$red-20: #EE3F40;
+$red-50: #A52238;
+$red-60: #991f34;
+
 //color
-$primary: #B70005;
+$primary: $red-50;
 $inverse: #FFF;
 $secondary: #E89D00;
-$footer-background: #242E33;
+$footer-background: $dark-gray;
 $footer-contrast: #F2F2F2;
 $dark: #313131;
-$gray: #242E33;
+$gray: $dark-gray;
 $light-gray: #D4D7D9;
-$primary-light: #EE3F40;
+$primary-light: $red-20;
+$button-primary-dark: $red-60;
 
 // Theme fonts
 $font-family-sans-serif: 'Roboto', sans-serif;
@@ -20,4 +30,4 @@ $font-family-serif: Playfair Display, 'Georgia', 'Times New Roman', serif;
 // Import Bootstrap layout definitions.
 @import 'bootstrap/scss/bootstrap-grid';
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display");
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');

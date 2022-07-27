@@ -1,0 +1,452 @@
+// Style for the profile template.
+
+$font-size-small: 0.875em;
+
+@mixin learner-profile-button(
+  $background: $red-50,
+  $border: 1px solid $red-50,
+  $color: white,
+  $background-active: $red-60,
+  $color-active: white,
+  $border-color-active: $red-60
+) {
+  background: $background;
+  border: $border;
+  font-weight: 500;
+  font-size: $font-size-small;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-radius: 0;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  transition: background 0.2s linear, border 0.2s linear, color 0.2s;
+  color: $color;
+
+  &:hover,
+  &:focus {
+    background: $background-active;
+    border-color: $border-color-active;
+    box-shadow: none;
+    color: $color-active;
+  }
+}
+
+@mixin learner-profile-button-outline {
+  @include learner-profile-button(
+    $background: white,
+    $border: 1px solid $gray, 
+    $color: $gray,
+    $background-active: $gray,
+    $color-active: white,
+    $border-color-active: $gray
+  );
+}
+
+.view-profile {
+  .wrapper-profile {
+    font-family: $font-family-sans-serif;
+    background-color: white;
+
+    .wrapper-profile-field-account-privacy {
+      padding: 10px 55px;
+      min-height: 64px;
+      background-color: $gray-30;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      &::after {
+        display: none;
+      }
+
+      .u-field-account_privacy {
+        width: fit-content;
+        max-width: none;
+        min-width: auto;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+
+        .u-field-message {
+          flex-basis: fit-content;
+        }
+
+        .u-field-value {
+          select {
+            background: $gray-30;
+            border: 2px solid $gray-50;
+            padding: 5px 10px;
+            border-radius: 5px;
+
+            &:hover {
+              border-color: $dark; 
+            }
+          }
+        }
+
+        .btn-change-privacy {
+          @include learner-profile-button;
+        }
+      }
+
+      @include media-breakpoint-down(sm) {
+        height: auto;
+        flex-direction: column;
+        padding: 20px 15px;
+        gap: 30px;
+        align-items: center;
+
+        .wrapper-profile-records {
+          align-self: center;
+          width: fit-content;
+          height: fit-content;
+        }
+      }
+    }
+
+    .profile-header {
+      padding: 45px 55px 40px;
+
+      h2.header {
+        font-style: normal;
+        font-weight: 300;
+        font-size: 40px;
+        line-height: 48px;
+        margin-bottom: 30px;
+      }
+
+      @include media-breakpoint-down(md) {
+        padding: 30px 15px 60px;
+      }
+    }
+
+    .account-settings-container {
+      padding: 0 55px 90px;
+
+      .wrapper-profile-section-container-one {
+        .wrapper-profile-section-one {
+          border: none;
+          padding-bottom: 0;
+
+          .image-wrapper {
+            width: 80px;
+            margin: 0;
+
+            .image-frame {
+              border: none;
+              margin: 0;
+              width: 80px;
+              height: 80px;
+              border: 1px solid $gray-50;
+            }
+
+            .u-field-upload-button {
+              width: 80px;
+              height: 80px;
+
+              .upload-button-icon,
+              .upload-button-title {
+                transform: none;
+              }
+            }
+          }
+
+          .profile-section-one-fields {
+            margin: 20px 0 0 0;
+
+            .u-field {
+              border: none;
+              padding: 0;
+              margin-top: 20px;
+
+              .message-can-edit {
+                color: $red-50;
+                display: block;
+              }
+
+              .u-field-title {
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 24px;
+                color: black;
+                padding-bottom: 5px;
+              }
+
+              .u-field-value {
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 24px;
+              }
+            }
+
+            .u-field-date {
+              margin: 0;
+            }
+
+            .u-field-username {
+              margin: 0;
+              padding: 0;
+
+              #u-field-value-username {
+                font-weight: 500;
+                font-size: 1.125rem;
+                line-height: 28px;
+              }
+            }
+          }
+        }
+      }
+
+      .wrapper-profile-section-container-two {
+        background: white;
+        padding: 0;
+        margin-left: 20px;
+
+        .wrapper-profile-bio {
+          .page-content-nav {
+            margin-bottom: 45px;
+            border-bottom: none;
+            display: flex;
+            gap: 30px;
+
+            .nav-item {
+              display: inline-block;
+              color: $dark;
+              font-weight: 700;
+              font-size: 16px;
+              line-height: 24px;
+              padding: 13px 0;
+              border-bottom: 5px solid transparent;
+              transition: border-color 0.2s linear, color 0.2s linear;
+
+              &.is-active,
+              &:hover,
+              &:focus {
+                border-bottom-color: $red-20;
+                color: black;
+              }
+            }
+          }
+
+          .profile-private-message {
+            font-weight: 400;
+            font-size: 21px;
+            line-height: 28px;
+            width: 100%;
+            padding: 0;
+            display: flex;
+            min-height: 148px;
+            align-items: center;
+            justify-content: center;
+            background-color: $gray-20;
+            padding: 60px 30px;
+
+            @include media-breakpoint-down(md) {
+              min-height: 176px;
+            }
+          }
+
+          .page-content-main {
+            #tabpanel-about_me {
+              .field-container {
+                .u-field-bio {
+                  margin: 0;
+                  padding: 40px;
+                  border: 1px dashed $gray-50;
+    
+                  @include media-breakpoint-down(md) {
+                    padding: 40px 30px;
+                  }
+    
+                  &.mode-display {
+                    padding: 0;
+                    border: none;
+    
+                    .message-can-edit {
+                      display: block;
+                      margin-left: 10px;
+                      color: $red-50;
+                    }
+                  }
+    
+                  &.mode-edit {
+                    padding: 0;
+                    border: none;
+    
+                    textarea {
+                      border: 1px solid $gray-50;
+                      background-color: $gray-20;
+                      min-height: 154px;
+                      padding: 10px 15px;
+                    }
+                  }
+    
+                  &:hover {
+                    background-color: transparent;
+                  }
+    
+                  .u-field-header {
+                    width: fit-content;
+                  }
+                }
+    
+                .wrapper-u-field {
+                  .u-field-header {
+                    margin-bottom: 20px;
+    
+                    .u-field-title {
+                      font-weight: 400;
+                      font-size: 21px;
+                      text-align: initial;
+                      display: flex;
+                      align-items: center;
+                      gap: 15px;
+      
+                      .fa.fa-plus {
+                        content: "\f067";
+                        background: $red-50;
+                        color: white;
+                        font-weight: 200;
+                        padding: 5px;
+                        border-radius: 50%;
+                        width: 24px;
+                        display: flex;
+                        height: 24px;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 1rem;
+                        margin: 0;
+                      }
+                    }
+                  }
+    
+                  .u-field-value {
+                    text-align: initial;
+    
+                    .u-field-value-readonly {
+                      font-weight: 400;
+                      font-size: 16px;
+                      line-height: 24px;
+                    }
+                  }
+                }
+              }
+            }
+
+            #tabpanel-accomplishments {
+              .badge-paging-header {
+                display: none;
+              }
+
+              .badge-set-display {
+                margin: 0;
+                max-width: none;
+              }
+
+              .badge-list {
+                padding: 0;
+
+                .row {
+                  margin: 0;
+
+                  .badge-display {
+                    .badge-details .share-button {
+                      @include learner-profile-button-outline;
+                    }
+
+                    @include media-breakpoint-down(md) {
+                      width: 100%;
+                    }
+                  }
+
+                  .badge-display.badge-placeholder {
+                    background-color: $gray-20;
+                    flex-basis: 100%;
+                    border: none;
+                    box-shadow: none;
+                    padding: 40px 42px;
+
+                    .badge-image-container {
+                      display: none;
+                    }
+
+                    .badge-details {
+                      .badge-name {
+                        font-weight: 400;
+                        font-size: 21px;
+                        line-height: 28px;
+                        padding-bottom: 20px;
+                        display: flex;
+                        gap: 15px;
+
+                        &::before {
+                          content: "\f059";
+                          width: 24px;
+                          height: 24px;
+                          display: block;
+                          font-family: FontAwesome;
+                        }
+                      }
+
+                      .badge-description {
+                        font-weight: 400;
+                        font-size: 16px;
+                        line-height: 24px;
+                      }
+
+                      .find-course .find-button-container {
+                        @include learner-profile-button-outline;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .learner-achievements {
+          margin-top: 45px;
+
+          .u-field-title {
+            font-weight: 400;
+            font-size: 24px;
+            margin: 0;
+          }
+
+          .learner-message {
+            margin-top: 20px;
+            text-align: initial;
+            background-color: $gray-20;
+            box-shadow: none;
+
+            .message-header {
+              font-weight: 400;
+              font-size: 21px;
+              text-align: initial;
+            }
+            
+            .message-actions {
+              margin-top: 20px;
+              text-align: initial;
+            }
+          }
+        }
+        
+        @include media-breakpoint-down(md) {
+          margin-left: 0;
+        }
+      }
+
+      @include media-breakpoint-down(md) {
+        padding: 0 15px 60px;
+      }
+    }
+
+    .btn {
+      @include learner-profile-button;
+    }
+  }
+}
