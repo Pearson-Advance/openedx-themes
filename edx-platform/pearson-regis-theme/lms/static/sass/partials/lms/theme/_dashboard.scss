@@ -1,143 +1,11 @@
-// Change cards from landscape to portrait
+/* stylelint-disable color-function-notation */
+/* stylelint-disable alpha-value-notation */
+// Styles for the dashboard page.
 
-.view-dashboard div.item .items.course.single-course {
-  float: left;
-  margin: 1%;
-  min-width: 250px;
-  padding: 0;
-  width: 98%;
-
-  @include media-breakpoint-up(md) {
-    width: 48%;
-  }
-
-  @include media-breakpoint-up(lg) {
-    width: 31%;
-  }
-
-  @include media-breakpoint-up(xl) {
-    width: 23%;
-  }
-}
-
-.view-dashboard div.item li.course-item {
-  text-align: left;
-  width: 100%;
-  box-shadow: 0 1px 10px 0 rgba(0,48,87,0.125), inset 0 0 0 1px rgba(255,255,255,0.75);
-}
-
-.view-dashboard div.item li.course-item:hover {
-  box-shadow: 0 1px 4px 0 rgba(0,127,163,0.4);
-}
-
-.view-dashboard div.item .course .details {
-
-  .enter-course {
-    width: 100%;
-  }
-
-  .course-actions .wrapper-action-more .btn  {
-    color: #007FA3;
-    background: #fff;
-    float: right;
-    font-size: 16px;
-    line-height: 24px;
-    box-sizing: border-box;
-    letter-spacing: 0;
-    border: 1px solid #007FA3;
-    border-radius: 3px;
-    padding: 8px 20px;
-    text-align: center;
-    width: 100%;
-  }
-
-  @include media-breakpoint-down(lg) {
-    padding-left: 0 !important;
-  }
-}
-
-.dashboard .main-container .my-courses
-.course .details .course-actions
-.wrapper-action-more div.actions-dropdown {
-  min-width: 108px;
-  width:100%;
-  right: 0;
-  top: 50px;
-}
-
-// Upgrade button style and verify button hide.
-.wrapper-messages-primary {
-
-  .message.is-shown {
-    padding: 0 0 10px 0;
-  }
-
-  //verify
-
-  .message.message-status {
-
-    .verification-reminder {
-      display: none;
-    }
-
-    .verification-cta {
-      display: none;
-    }
-
-  }
-
-  //upgrade
-
-  .message.message-upsell {
-
-    .wrapper-extended .message-copy {
-      display: none;
-    }
-
-    .action-upgrade-container {
-      width: 100%;
-      margin: 0 !important;
-    }
-
-    .action-upgrade {
-      width: 100%;
-      color: #003057;
-      max-width: 192px;
-      background-color: #D2DB0E !important;
-      }
-
-    .action-upgrade:hover {
-      background-color: #84BD00;
-    }
-
-    .wrapper-extended {
-      padding: 0;
-    }
-  }
-}
-
+$checkbox-border: #999999;
 
 // General styling
-
-.dashboard .main-container .my-courses
-.course .details .enter-course {
-  color: $primary;
-  background: $primary;
-}
-
-.wrapper-messages-primary .message.message-upsell
-.action-upgrade span {
-  color: $primary;
-}
-
-div.course-caption p.localized-datetime {
-  display: none;
-}
-
-section[role=courses] div.container.no-border {
-  max-width: 2100px;
-  min-height: 77vh;
-
+section[role="courses"] {
   header {
     display: flex;
     flex-wrap: wrap;
@@ -152,242 +20,15 @@ section[role=courses] div.container.no-border {
 
     a.btn.btn-lg.btn-default,
     a.btn.btn-lg.btn-default:hover {
-      color: $inverse;
+      color: $white;
     }
   }
 
   h1 {
-    font: normal 2.5em Playfair Display;
-    margin-bottom: 30px;
     text-align: left;
-    font-family: inherit;
-    font-weight: lighter;
-  }
-
-  @include media-breakpoint-down(md) {
-    h1 {
-      display: none;
-    }
-  }
-}
-
-//dashboard-subcription
-
-.view-dashboard div.item {
-  margin: 0 auto;
-  max-width: 2180px;
-  width: 100%;
-
-  .wrapper-header-courses .header-courses {
-    padding-right: 10px;
-  }
-
-  li.course-item {
-    list-style: none;
-    .course-container {
-      border: 1px solid $gray;
-      border-radius: 3px;
-    }
-  }
-
-  .wrapper-header-courses {
-   margin-bottom: 10px;
-  }
-
-  .items.course.single-course {
-   margin-bottom: 20px;
-   line-height: 26.64px;
-  }
-
-  .wrapper-course-image {
-    float: left;
-    margin-right: 2.35765%;
-    width: 23.23176%;
-    max-height: 150px;
-    overflow: hidden;
-  }
-
-  .course-item .course-container {
-    border-radius: 3px;
-  }
-
-  .course-container .course .details .wrapper-course-image .cover,
-  .course-container .course .details .wrapper-course-image a.fade-cover {
-    box-sizing: border-box;
-    transition: all 0.15s linear 0s;
-    float: left;
-    position: relative;
-  }
-
-  .course .details .wrapper-course-image .cover .course-image,
-  .course .details .wrapper-course-image a.fade-cover .course-image {
-    width: 100%;
-  }
-
-  .course .details .wrapper-course-details {
-    margin-top: 30px;
-
-    .course-title {
-      width: 100%;
-      font-size: 1.1em;
-      font-weight: 600;
-      font-family: $font-family-sans-serif;
-      padding: 0 15px;
-
-      a,span {
-        color: $dark;
-        overflow: hidden;
-        text-decoration: none;
-      }
-    }
-
-    .course-info {
-      font-size: 0.9em;
-      padding: 0 15px;
-
-      .info-course-id {
-        font-weight: 700;
-      }
-
-      .info-date-block-container {
-        display: block;
-      }
-    }
-  }
-
-  div.course-image {
-    height: 88px;
-    overflow: hidden;
-    border-bottom: 1px solid $gray;
-
-    img {
-      width: 100%;
-    }
-  }
-
-  .course .details .wrapper-course-details
-  .wrapper-course-actions {
-    width: 100%;
-    border-top: solid $gray 1px;
-    margin-top: 110px;
-    padding: 15px 15px 0 15px;
-  }
-
-  .course .details .enter-course {
-    margin-bottom: 20px;
-    height: 40px;
-    color: $primary;
-    float: right;
-    border: 1px solid $primary;
-    border-radius: 2em;
-    padding: 6px 0;
-    font-size: 0.75em;
-    font-weight: 600;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-  }
-
-  .course .details .course-actions .wrapper-action-more,
-  .course .details .course-actions .entitlement-actions-wrapper {
-    display: inline-block;
-    position: relative;
-    width: 100%;
-  }
-
-  .course .details .course-actions .wrapper-action-more .action-more,
-  .course .details .course-actions .entitlement-actions-wrapper .action-more,
-  .course .details .course-actions .wrapper-action-more .entitlement-action-more,
-  .course .details .course-actions .entitlement-actions-wrapper .entitlement-action-more {
-    width: 100%;
-    font-size: 14px;
-    box-shadow: none;
-    background: $inverse;
-    text-shadow: none;
-    color: $primary;
-    border: none;
-  }
-
-  .course .details .course-actions
-  .wrapper-action-more div.actions-dropdown {
-      min-width: 108px;
-      display: none;
-    position: absolute;
-    top: 40px;
-    width: 100%;
-    pointer-events: none;
-  }
-
-  .wrapper-action-more .actions-dropdown
-  .actions-dropdown-list {
-      box-sizing: border-box;
-    display: table;
-    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-    position: relative;
-    width: 100%;
-    border-radius: 3px;
-    margin: 5px 0 0 0;
-    padding: 5px 10px;
-    background: #D4EAE4;
-    list-style: none;
-  }
-
-  .course .details .course-actions .wrapper-action-more
-  .actions-dropdown.is-visible{
-      display: block;
-      pointer-events: auto;
-  }
-  .course .details .course-actions .wrapper-action-more
-  .actions-dropdown .actions-dropdown-list {
-      box-sizing: border-box;
-    display: table;
-    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-    position: relative;
-    width: 100%;
-    border-radius: 3px;
-    margin: 5px 0 0 0;
-    padding: 5px 10px;
-    background: #D4EAE4;
-  }
-
-  //dashboard-subcription-mobile
-  @include media-breakpoint-down(lg) {
-    .course .details {
-      padding-left: 10px;
-    }
-  }
-
-  @include media-breakpoint-down(md) {
-    .course .details .wrapper-course-image {
-      display: none;
-    }
-
-    .course .details .wrapper-course-details {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .course .details .wrapper-course-details .course-info,
-    .course .details .wrapper-course-details .wrapper-course-actions {
-      flex-grow: 1;
-      text-align: left;
-    }
-
-    .course .details .wrapper-course-details
-    div.wrapper-course-actions div.course-actions {
-      padding-top: 50px;
-    }
-
-    .course .details .wrapper-course-details .course-info .wrapper-action-more,
-    .course .details .wrapper-course-details .course-info .entitlement-actions-wrapper,
-    .course .details .wrapper-course-details .wrapper-course-actions .wrapper-action-more,
-    .course .details .wrapper-course-details .wrapper-course-actions .entitlement-actions-wrapper {
-      padding-top: 3px;
-    }
-  }
-
-  @include media-breakpoint-down(sm) {
-    min-width: 0;
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 40px;
   }
 }
 
@@ -395,7 +36,7 @@ input.btn.btn-lg.btn-default {
   color: $primary;
   background: $primary;
   float: right;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 23.68px;
   box-sizing: border-box;
   letter-spacing: 0;
@@ -412,7 +53,7 @@ p#track-info {
 div.modal-content .modal-header button.close {
   background: transparent;
   float: right;
-  font-size: 26px;
+  font-size: 1.625rem;
   border: 0;
   box-shadow: none;
 }
@@ -429,8 +70,263 @@ div.modal-content .modal-header button.close {
     width: 25%;
     float: right;
 
-    @include media-breakpoint-down(md)  {
+    @include media-breakpoint-down(md) {
       width: 100%;
     }
+  }
+}
+
+// Content layout.
+.view-dashboard .content-wrapper {
+  padding: 0;
+}
+
+.view-dashboard .container {
+  max-width: none;
+  min-height: 77vh;
+  padding: 10px 15px;
+
+  @include media-breakpoint-up(xl) {
+    padding: 30px 55px;
+  }
+}
+
+// Empty message.
+.view-dashboard .empty-dashboard-message {
+  color: $black;
+  background: $gray-20;
+  border: none;
+  padding: 60px 0;
+
+  p {
+    color: $black;
+    font-size: 1.313rem;
+  }
+
+  a.btn {
+    background: $button-primary-dark;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    border-radius: 0;
+    transition: background-color 0.1s linear;
+    font-weight: 500;
+
+    &:hover,
+    &:focus {
+      background: $red-6;
+    }
+  }
+}
+
+// Courses list item.
+.view-dashboard .items.course.single-course {
+  float: left;
+  width: 98%;
+  min-width: 270px;
+  border: 1px solid $gray-40;
+  box-shadow:
+    inset -1px 0 0 $gray-40,
+    inset 0 -1px 0 $gray-40,
+    inset 1px 0 0 $gray-40;
+  list-style: none;
+  padding: 0;
+  margin: 0 1% 30px;
+
+  // Image.
+  .wrapper-course-image {
+    width: 100%;
+    height: 99px;
+
+    .course-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  // Title.
+  .course-title {
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: $font-family-sans-serif;
+    padding: 0 15px;
+    margin: 15px 0 10px;
+
+    a,
+    span {
+      color: $black;
+      text-decoration: none;
+    }
+  }
+
+  // Information.
+  .course-info {
+    color: $gray-80;
+    font-size: 0.875rem;
+    font-weight: 400;
+    padding: 0 15px;
+    margin-bottom: 20px;
+
+    // Hide organization and course id.
+    .info-university,
+    .info-course-id {
+      display: none;
+    }
+  }
+
+  // Actions.
+  .wrapper-course-actions {
+    width: 100%;
+    border-top: 1px solid $gray-40;
+    padding: 15px;
+
+    // View action button.
+    .enter-course {
+      float: right;
+      width: 100%;
+      color: $gray;
+      border: 1px solid $gray;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 12px 20px;
+      margin-bottom: 10px;
+      transition: background-color 0.1s linear;
+
+      &:hover,
+      &:focus {
+        color: $white;
+        background: $gray;
+        text-decoration: none;
+      }
+    }
+
+    // Actions dropdown.
+    .actions-dropdown {
+      display: none;
+      position: absolute;
+      top: 49px;
+      width: 100%;
+      pointer-events: none;
+
+      a {
+        color: $gray;
+        font-size: 0.875rem;
+      }
+
+      .actions-dropdown-list {
+        box-sizing: border-box;
+        display: table;
+        position: relative;
+        width: 100%;
+        background: $white;
+        border: 1px solid $gray-40;
+        border-radius: 0;
+        box-shadow: 0;
+        list-style: none;
+        padding: 10px 15px;
+        margin: 0;
+      }
+    }
+
+    .actions-dropdown.is-visible {
+      display: block;
+      pointer-events: auto;
+    }
+  }
+
+  // Extra actions buttons.
+  .wrapper-action-more,
+  .entitlement-actions-wrapper {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+
+    .action-more,
+    .entitlement-action-more {
+      width: 100%;
+      color: $gray;
+      background: $white;
+      border: none;
+      box-shadow: none;
+      text-shadow: none;
+      font-size: 0.75rem;
+    }
+  }
+
+  // Messages.
+  .wrapper-messages-primary {
+    .messages-list {
+      background-color: $gray-20;
+    }
+
+    .message {
+      padding: 15px;
+    }
+
+    .message-copy {
+      display: none;
+    }
+
+    // Upgrade button.
+    .action-upgrade-container {
+      float: none;
+      margin: 0;
+    }
+
+    .action-upgrade {
+      color: $gray;
+      background: none;
+      box-shadow: none;
+      padding: 0;
+
+      &:hover,
+      &:focus {
+        background: none;
+      }
+
+      span {
+        color: $gray;
+        font-weight: 400;
+        font-size: 0.875rem;
+      }
+
+      .action-upgrade-icon {
+        border: 1px solid $checkbox-border;
+
+        &:hover,
+        &:focus {
+          border: 1px solid $black;
+        }
+      }
+    }
+
+    // Verify button.
+    .verification-reminder,
+    .verification-cta {
+      display: none;
+    }
+
+    .wrapper-extended {
+      padding: 0;
+    }
+  }
+
+  // Item responsive layout.
+  @include media-breakpoint-up(md) {
+    width: 48%;
+    margin: 0 2% 30px 0;
+  }
+
+  @include media-breakpoint-up(lg) {
+    width: 31%;
+  }
+
+  @include media-breakpoint-up(xl) {
+    width: 23%;
   }
 }
