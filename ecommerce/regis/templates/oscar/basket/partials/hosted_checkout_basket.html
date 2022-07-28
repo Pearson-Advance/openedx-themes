@@ -10,6 +10,7 @@
 {% endif %}
 
 <div id="content-inner">
+    <h3>{% trans "Order Summary" as tmsg %}{{ tmsg | force_escape }}</h3>
     {% block basket_form_main %}
         <form action="." method="post">
             {% csrf_token %}
@@ -18,11 +19,6 @@
             {% for form, line_data in formset_lines_data %}
                 {% purchase_info_for_line request line_data.line as session %}
                 <div class="basket-items">
-                    {% if line_data.seat_type %}
-                        <p class="certificate_type">
-                            {% trans "Earn a valuable certificate to showcase the skills you learn in" as tmsg %}{{ tmsg | force_escape }}
-                        </p>
-                    {% endif %}
                     <div class="row">
                         <div class="col-md-2 col-sm-12 product-image">
                             {{ form.id }}
@@ -88,7 +84,8 @@
     {% endblock %}
 
     <div class="total">
-        <div class="row">
+        {# If hide_voucher_section is set to True, it will hide the voucher section no matter what. #}
+        {% if not custom_settings.hide_voucher_section %}
             {% if show_voucher_form %}
                 {% block vouchers %}
                     {% if basket.contains_a_voucher %}
@@ -111,9 +108,9 @@
                     {% else %}
                         {# Hide the entire section if a custom BasketView doesn't pass in a voucher form #}
                         {% if voucher_form %}
-                            <div class="use-voucher col-sm-7 col-xs-8">
+                            <div class="use-voucher col-xs-12">
                                 <p id="voucher_form_link">
-                                    <a href="#voucher">{% trans "Apply a coupon code" as tmsg %}{{ tmsg | force_escape }}</a>
+                                    <a href="#voucher">{% trans "Promotional Code" as tmsg %}{{ tmsg | force_escape }}</a>
                                 </p>
                                 {% include 'oscar/basket/partials/add_voucher_form.html' %}
                             </div>
@@ -121,25 +118,31 @@
                     {% endif %}
                 {% endblock vouchers %}
             {% endif %}
+        {% endif %}
 
-            <div id="basket_totals" class="col-xs-4">
+        <div id="basket_totals" class="col-md-4 col-sm-5 col-xs-12">
+            {% trans "Total:" as tmsg %}{{ tmsg | force_escape }}
+            <span class="text-right">
                 {% block order_total %}
-                    {% trans "Total:" as tmsg %}{{ tmsg | force_escape }}
                     {{ order_total.incl_tax|currency:basket.currency }}
                 {% endblock %}
-            </div>
+            </span>
         </div>
     </div>
 
     <div class="row">
         <div class="col-sm-12">
-            {# Switch Basket view in between single and bulk purchase items #}
-            {% if partner_sku %}
-                <div class="pull-left basket-switch-link">
-                    <a href="/basket/add/?sku={{ partner_sku }}" class="btn btn-link">
-                        {{ switch_link_text }}
-                    </a>
-                </div>
+            {# If hide_multiple_or_single_purchase_section is set to True, it will hide this section no matter what. #}
+            {# See: get_basket_switch_data() #}
+            {% if not custom_settings.hide_multiple_or_single_purchase_section %}
+                {# Switch Basket view in between single and bulk purchase items #}
+                {% if partner_sku %}
+                    <div class="pull-left basket-switch-link">
+                        <a href="/basket/add/?sku={{ partner_sku }}" class="btn btn-link">
+                            {{ switch_link_text }}
+                        </a>
+                    </div>
+                {% endif %}
             {% endif %}
 
             <div class="pull-right payment-buttons" data-basket-id="{{ basket.id }}">
@@ -148,7 +151,7 @@
                        data-track-type="click"
                        data-track-event="edx.bi.ecommerce.basket.free_checkout"
                        data-track-category="checkout"
-                       class="btn btn-success checkout-button">
+                       class="btn payment-button">
                         {% trans "Place Order" as tmsg %}{{ tmsg | force_escape }}
                     </a>
                 {% else %}
@@ -170,26 +173,6 @@
                     {% endfor %}
                 {% endif %}
             </div>
-        </div>
-    </div>
-
-    <div class="row verification-note">
-        <div class="col-sm-12">
-            <span><i class="fa fa-exclamation-circle"></i></span>
-            {# Translators: <strong></strong> tags will bold the text within. Keep the tags and translate the text within. #}
-            {% if display_verification_message %}
-                {% trans "{strong_start}Note:{strong_end} To earn a verified certificate, you must verify your identity with a {strong_start}webcam{strong_end} and a {strong_start}government-issued photo ID{strong_end}. " as tmsg %}
-                {% interpolate_html tmsg strong_start='<strong>'|safe strong_end='</strong>'|safe %}
-            {% else %}
-                {% trans "{strong_start}Note:{strong_end} To complete your enrollment, select Checkout or Checkout with PayPal." as tmsg %}
-                {% interpolate_html tmsg strong_start='<strong>'|safe strong_end='</strong>'|safe %}
-            {% endif %}
-        </div>
-    </div>
-    <div class="row help">
-        <div class="col-sm-12">
-            <p><strong>{% trans "Have questions?" as tmsg %}{{ tmsg | force_escape }}</strong></p>
-            <a href="{{ support_url }}">{% trans "Please read our FAQs to view common questions about our certificates." as tmsg %}{{ tmsg | force_escape }}</a>
         </div>
     </div>
 </div>

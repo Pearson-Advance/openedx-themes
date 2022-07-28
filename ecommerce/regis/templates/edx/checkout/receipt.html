@@ -32,12 +32,10 @@
        data-total-amount="{{ order.total_incl_tax | unlocalize }}"
        data-back-button="{{ disable_back_button | default:0 }}">
        {% include 'oscar/partials/alert_messages.html' %}
-
-      <h2 class="thank-you">{% trans "Thank you for your order!" as tmsg %}{{ tmsg | force_escape }}</h2>
-
       <div class="list-info">
         <div class="info-item payment-info row">
           <div class="copy col-md-8">
+            <h2 class="thank-you">{% trans "Thank you for your order!" as tmsg %}{{ tmsg | force_escape }}</h2>
             <div class="confirm-message">
               {% captureas link_start %}
                 <a href="mailto:{{ order.user.email }}">
@@ -68,13 +66,17 @@
           </div>
 
           <div class="order-headers order-summary col-md-4">
-            <dl>
+            <dl class="col-md-6 col-xs-12">
               <dt>{% trans "Order Number:" as tmsg %}{{ tmsg | force_escape }}</dt>
               <dd>{{ order.number }}</dd>
-              {% if payment_method %}
+            </dl>
+            {% if payment_method %}
+              <dl class="col-md-6 col-xs-12">
                 <dt>{% trans "Payment Method:" as tmsg %}{{ tmsg | force_escape }}</dt>
                 <dd>{{ payment_method }}</dd>
-              {% endif %}
+              </dl>
+            {% endif %}
+            <dl class="col-md-6 col-xs-12">
               <dt>{% trans "Order Date:" as tmsg %}{{ tmsg | force_escape }}</dt>
               <dd>{{ order.date_placed|date:"E d, Y" }}</dd>
             </dl>
@@ -188,20 +190,13 @@
         {% endif %}
       </div>
 
-      {% if not has_enrollment_code_product and show_verification_banner  %}
-        <div class="nav-wizard row">
-            {% include 'oscar/checkout/_verification_data.html' %}
-        </div>
-      {% endif %}
       <div id="cta-nav-links" class="row">
         <div class="col-xs-12 text-right">
-          {% if not show_verification_banner %}
-          <a class="dashboard-link nav-link" href="{{ order_dashboard_url }}">
-            {% trans "Go to dashboard" as tmsg %}{{ tmsg | force_escape }}
+          <a class="btn nav-link-button find-more-courses-button" href="{{ custom_settings.find_more_courses_link|default:explore_courses_url }}">
+            {% trans "FIND MORE COURSES" as tmsg %}{{ tmsg | force_escape }}
           </a>
-          {% endif %}
-          <a class="find-more-courses-link nav-link" href="{{ explore_courses_url }}">
-            {% trans "Find more courses" as tmsg %}{{ tmsg | force_escape }}
+          <a class="btn nav-link-button" href="{{ order_dashboard_url }}">
+            {% trans "GO TO DASHBOARD" as tmsg %}{{ tmsg | force_escape }}
           </a>
         </div>
       </div>

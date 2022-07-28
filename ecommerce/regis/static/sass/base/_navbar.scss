@@ -1,0 +1,66 @@
+// Navbar styles ecommerce/ecommerce/static/sass/partials/components/_navbar.scss.
+
+.navbar {
+  border-bottom: solid rgba($main-elements-color, 0.1) 1px;
+
+  .navbar-brand {
+    .navbar-brand-logo {
+      display: inline-block;
+      width: 40%;
+      height: auto;
+      margin-right: 10px;
+    }
+  }
+}
+
+.user-menu {
+  .dropdown-toggle {
+    box-shadow: none !important;
+    border-radius: 0;
+  }
+  .dropdown-menu {
+    box-shadow: none;
+    .nav-link {
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: $primary-color;
+      }
+    }
+  }
+
+  > .nav-button {
+    border-color: $body-bg;
+    color: $main-elements-color;
+    background: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $main-elements-color;
+      background-color: $body-bg;
+      border-color: $body-bg;
+      box-shadow: none;
+
+      > .icon {
+        color: $main-elements-color;
+        background-color: $body-bg;
+      }
+    }
+  }
+}
+
+.navbar-default {
+  .navbar-toggle {
+    border: none;
+  }
+}
+
+/* extra Small devices (phones, 768px and lower) */
+@media (max-width: $screen-xs-max) {
+  .navbar-brand {
+    display: inherit;
+    float: none;
+    margin-left: 20px;
+  }
+}

@@ -1,0 +1,11 @@
+@import 'ecommerce/static/sass/base/main.scss';
+
+// Local imports.
+@import 'variables';
+@import 'navbar';
+@import 'basket';
+@import 'receipt';
+
+body {
+  background-color: $body-bg;
+}
