@@ -1,0 +1,203 @@
+// Receipt styles ecommerce/ecommerce/static/sass/partials/views/_receipt.scss.
+
+.receipt {
+  padding-top: 45px;
+
+  h2 {
+    color: initial;
+    margin-bottom: 30px;
+  }
+
+  .order-headers {
+    color: initial;
+    margin-top: 10px;
+
+    dl {
+      dd {
+        color: $primary-color;
+      }
+    }
+  }
+
+  .table {
+    dl {
+      border: 1px solid $gray;
+      margin-bottom: 45px;
+    }
+
+    .header,
+    .order-line-data {
+      dt,
+      dd {
+        padding: 15px 10px 15px 20px;
+
+        &:not(:last-child) {
+          border-right: none;
+        }
+      }
+    }
+
+    .header {
+      background-color: $body-bg;
+
+      dt {
+        border-bottom: 1px solid $gray;
+      }
+    }
+
+    .order-line-data {
+      &:not(:last-child) {
+        border-bottom: none;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      dd {
+        &.line-price {
+          text-align: center;
+        }
+      }
+    }
+
+    .order-total {
+      &:not(:last-child) {
+        border-bottom: 1px solid $gray;
+      }
+    }
+  }
+
+  #cta-nav-links {
+    .nav-link-button {
+      border-color: $contrast-color;
+      background: $contrast-color;
+      border-radius: initial;
+      color: $body-bg;
+      padding: 1em 2em;
+      font-size: 0.8em;
+      height: 48px;
+      letter-spacing: 0.16em;
+
+      &:hover,
+      &.is-hovered,
+      &:focus,
+      &.is-focused {
+        border-bottom: solid $contrast-color 1px;
+      }
+    }
+
+    .find-more-courses-button {
+      background: initial;
+      color: $contrast-color;
+      margin-right: 25px;
+      border-bottom: solid $primary-color 1px;
+    }
+  }
+
+  .nav-link,
+  a {
+    color: $primary-color;
+  }
+
+  .thank-you {
+    font-size: 2.5em;
+    font-weight: 300;
+  }
+
+  .confirm-message {
+    margin-top: 30px;
+    font-size: 1em;
+  }
+
+  .order-summary {
+    dt {
+      font-size: 0.8em;
+    }
+
+    dd {
+      font-size: 0.7em;
+      font-weight: 600;
+    }
+  }
+}
+
+/* Small devices (tablets, 992px and lower) */
+@media (max-width: $screen-sm-max) {
+  .receipt {
+    .thank-you {
+      font-size: 1.8em;
+    }
+
+    .order-summary {
+      border-top: none;
+      border-bottom: none;
+      background-color: initial;
+
+      dd {
+        color: $contrast-color !important;
+        font-weight: 400;
+      }
+    }
+
+    .table {
+      border-top: 1px solid $gray;
+
+      dl {
+        border: none;
+      }
+
+      .order-line-data {
+        dt,
+        dd {
+          padding: 15px 0;
+        }
+
+        dd {
+          &.course-description {
+            padding: 5px 0;
+          }
+        }
+      }
+
+      .order-total {
+        padding: 20px 0;
+      }
+    }
+  }
+
+  /*
+    This changes the position of the buttons.
+  */
+  #cta-nav-links {
+    .nav-link-button {
+      position: relative;
+      top: -20px;
+    }
+
+    .find-more-courses-button {
+      position: relative;
+      top: 60px;
+      right: -210px;
+      margin-right: 0 !important;
+    }
+  }
+}
+
+/*
+  This changes the position of the buttons.
+*/
+@media (max-width: 489.98px) {
+  #cta-nav-links {
+    .nav-link-button {
+      position: relative;
+      top: -80px;
+    }
+
+    .find-more-courses-button {
+      position: relative;
+      top: 50px;
+      right: 0;
+    }
+  }
+}

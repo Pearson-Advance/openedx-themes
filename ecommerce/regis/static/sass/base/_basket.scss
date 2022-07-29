@@ -1,0 +1,71 @@
+// Basket styles ecommerce/ecommerce/static/sass/partials/views/_basket.scss.
+
+.basket {
+  .container {
+    padding: 45px 20px 30px;
+
+    h3 {
+      margin-bottom: 30px;
+    }
+
+    .basket-items {
+      border: 1px solid $gray;
+      padding: 20px;
+      margin-bottom: 45px;
+    }
+
+    .payment-buttons {
+      .payment-button {
+        border-color: $contrast-color;
+        padding: 1em 3em;
+        background: $contrast-color;
+        border-radius: initial;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-size: 0.8em;
+
+        &:hover,
+        &.is-hovered,
+        &:focus,
+        &.is-focused {
+          border-color: $contrast-color;
+          background: $contrast-color;
+        }
+      }
+    }
+
+    .basket-switch-link {
+      a {
+        color: $contrast-color;
+        font-weight: 500;
+      }
+    }
+
+    .total,
+    #summary {
+      .use-voucher {
+        #voucher_form_link {
+          @include float(right);
+
+          a {
+            color: $contrast-color;
+            border: none;
+            font-weight: 500;
+          }
+        }
+      }
+
+      #basket_totals {
+        color: inherit;
+        text-align: initial;
+        border-top: 1px solid $gray;
+        margin-top: 15px;
+        padding: 15px 0 45px;
+
+        span {
+          float: right;
+        }
+      }
+    }
+  }
+}
