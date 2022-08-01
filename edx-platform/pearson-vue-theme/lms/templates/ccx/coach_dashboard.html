@@ -24,8 +24,6 @@ from openedx.core.djangolib.js_utils import (
   <div class="instructor-dashboard-wrapper-2">
         <main id="main" aria-label="Content" tabindex="-1">
         <section class="instructor-dashboard-content-2" id="ccx-coach-dashboard-content" aria-labelledby="header-ccx-dashboard">
-          <h2 class="hd hd-2" id="header-ccx-dashboard">${_("CCX Coach Dashboard")}</h2>
-
           %if not ccx:
             % if messages:
               <ul class="messages">
@@ -39,6 +37,7 @@ from openedx.core.djangolib.js_utils import (
               </ul>
             % endif
             % if is_ccx_admin:
+              <h2 class="hd hd-2" id="header-ccx-dashboard">${_("CCX Coach Dashboard")}</h2>
               <div>
                 <p class="request-response-error" id="ccx-create-message"></p>
                 <form action="${create_ccx_url}" class="ccx-form" method="POST" onsubmit="return validateForm(this)">
@@ -53,7 +52,10 @@ from openedx.core.djangolib.js_utils import (
                 </form>
               </div>
             % else:
-              <meta http-equiv='refresh' content='0; URL=about'>
+              <h2 class="hd hd-2" id="header-ccx-dashboard">
+                ${_("You are not an administrator to create CCX, you will be redirected to the Course About.")}
+              </h2>
+              <meta http-equiv='refresh' content='2; URL=about'>
             %endif
           %endif
 
