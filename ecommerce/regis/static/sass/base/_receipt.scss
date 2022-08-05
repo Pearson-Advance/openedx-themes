@@ -1,22 +1,81 @@
 // Receipt styles ecommerce/ecommerce/static/sass/partials/views/_receipt.scss.
 
 .receipt {
-  padding-top: 45px;
+  padding: 45px clamp(15px, 3.5vw, 55px) 134px;
+  width: 100%;
+  max-width: 1280px;
+  margin: auto;
+  font-family: $font-family-primary;
 
-  h2 {
-    color: initial;
-    margin-bottom: 30px;
-  }
+  .payment-info {
+    display: flex;
+    gap: 50px;
+    margin: 0;
 
-  .order-headers {
-    color: initial;
-    margin-top: 10px;
+    &::before,
+    &::after {
+      display: none;
+    }
 
-    dl {
-      dd {
-        color: $primary-color;
+    .copy {
+      max-width: 760px;
+      padding: 0;
+
+      h2.thank-you {
+        color: initial;
+        font-weight: 300;
+        font-size: 40px;
+        line-height: 48px;
+        font-family: $font-family-primary;
+        margin-bottom: 30px;
+      }
+  
+      .confirm-message {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        color: initial;
+        font-family: $font-family-primary;
       }
     }
+
+    .order-headers {
+      color: initial;
+      margin: 0;
+      padding: 0;
+      font-family: $font-family-primary;
+  
+      dl {
+        text-align: right;
+        padding: 0;
+
+        dt {
+          font-weight: 400;
+          padding: 0;
+          margin-bottom: 10px;
+          font-size: 21px;
+          line-height: 28px;
+          font-family: $font-family-primary;
+        }
+
+        dd {
+          color: $primary-color;
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 28px;
+          margin-top: 10px;
+          font-family: $font-family-primary;
+        }
+      }
+    }
+  }
+
+  .list-info > h2 {
+    font-weight: 400;
+    font-size: 1.3125em;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    color: black;
   }
 
   .table {
@@ -27,41 +86,73 @@
 
     .header,
     .order-line-data {
+      display: flex;
+      padding: 15px 30px 15px 20px;
+
       dt,
       dd {
-        padding: 15px 10px 15px 20px;
-
-        &:not(:last-child) {
-          border-right: none;
-        }
+        padding: 0;
+        border: none !important;
+        font-family: $font-family-primary;
+        color: black;
       }
-    }
 
-    .header {
-      background-color: $body-bg;
+      dt:nth-child(1),
+      dd:nth-child(2) {
+        flex-basis: 16%;
+      }
 
-      dt {
-        border-bottom: 1px solid $gray;
+      dt:nth-child(2),
+      dd:nth-child(4) {
+        flex-basis: 76%;
+      }
+
+      dt:nth-child(3),
+      dd:nth-child(6) {
+        flex-basis: 8%;
+        text-align: right;
+      }
+
+      dd.line-price.price {
+        padding: 0;
+      }
+
+      .course-description,
+      .quantity {
+        font-weight: 400;
+        font-size: 1rem;
       }
     }
 
     .order-line-data {
-      &:not(:last-child) {
-        border-bottom: none;
-      }
+      border: none !important;
+    }
 
-      &:last-child {
-        border-bottom: none;
-      }
-
-      dd {
-        &.line-price {
-          text-align: center;
-        }
-      }
+    .header {
+      background-color: $body-bg;
+      border-bottom: 1px solid $gray;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 28px;
     }
 
     .order-total {
+      margin-right: 30px;
+      margin-left: 60%;
+
+      .price {
+        margin-right: 0;
+      }
+
+      .description {
+        color: black;
+
+        .label {
+          display: block;
+          width: fit-content;
+        }
+      }
+
       &:not(:last-child) {
         border-bottom: 1px solid $gray;
       }
@@ -69,29 +160,14 @@
   }
 
   #cta-nav-links {
-    .nav-link-button {
-      border-color: $contrast-color;
-      background: $contrast-color;
-      border-radius: initial;
-      color: $body-bg;
-      padding: 1em 2em;
-      font-size: 0.8em;
-      height: 48px;
-      letter-spacing: 0.16em;
+    margin-right: 30px;
 
-      &:hover,
-      &.is-hovered,
-      &:focus,
-      &.is-focused {
-        border-bottom: solid $contrast-color 1px;
-      }
+    .text-right {
+      padding: 0;
     }
 
-    .find-more-courses-button {
-      background: initial;
-      color: $contrast-color;
-      margin-right: 25px;
-      border-bottom: solid $primary-color 1px;
+    .nav-link-button {
+      @include primary-button-mixin;
     }
   }
 
@@ -125,8 +201,15 @@
 /* Small devices (tablets, 992px and lower) */
 @media (max-width: $screen-sm-max) {
   .receipt {
-    .thank-you {
-      font-size: 1.8em;
+
+    .payment-info {
+      flex-direction: column;
+      gap: 20px;
+
+      .thank-you {
+        font-size: 1.8em;
+        text-align: left;
+      }
     }
 
     .order-summary {
@@ -134,34 +217,69 @@
       border-bottom: none;
       background-color: initial;
 
+      dl {
+        margin-bottom: 20px;
+      }
+
+      dt {
+        width: 100%;
+        text-align: left;
+      }
+
       dd {
         color: $contrast-color !important;
         font-weight: 400;
+        display: block;
+        text-align: left;
+        margin: 0;
+        padding: 0;
       }
     }
 
     .table {
-      border-top: 1px solid $gray;
+      border: none;
 
-      dl {
-        border: none;
+      .header {
+        display: none;
+      }
+
+      dl.order-lines {
+        border: 1px solid $gray;
+        padding: 15px 10px;
+        display: flex;
+        gap: 30px;
+        flex-direction: column;
       }
 
       .order-line-data {
-        dt,
-        dd {
-          padding: 15px 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        column-gap: 10%;
+        row-gap: 15px;
+
+        dt {
+          font-weight: 500 !important;
         }
 
+        dt,
         dd {
-          &.course-description {
-            padding: 5px 0;
-          }
+          padding: 0;
+        }
+
+        dd.course-description {
+          padding: 0;
+        }
+
+        dd.line-price {
+          font-weight: 500;
+          text-align: left;
         }
       }
 
       .order-total {
         padding: 20px 0;
+        margin: 0;
       }
     }
   }
@@ -170,9 +288,11 @@
     This changes the position of the buttons.
   */
   #cta-nav-links {
+    margin-right: 0 !important;
+
     .nav-link-button {
       position: relative;
-      top: -20px;
+      top: 0 !important;
     }
 
     .find-more-courses-button {
