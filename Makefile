@@ -29,3 +29,8 @@ update_translations: ## update strings to be translated
 compile_translations: ## compile .mo files into .po files
 	pybabel compile -f -D django -d $(theme)/conf/locale/; \
 	pybabel compile -f -D djangojs -d $(theme)/conf/locale/
+
+
+run_linter:
+	npm install --save-dev stylelint @edx/stylelint-config-edx
+	npx stylelint "**/*.scss"
