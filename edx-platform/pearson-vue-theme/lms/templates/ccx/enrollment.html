@@ -11,9 +11,9 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
 
     if configuration_helpers.get_value('PCO_ENABLE_LICENSE_ENFORCEMENT', False) and not configuration_helpers.get_value('ALLOW_CCX_UNENROLL', True):
         try:
-            from pearson_course_operation.utils import is_ccx_license_managed
+            from pearson_course_operation.utils import is_licensed_ccx
 
-            allow_ccx_unenroll = not is_ccx_license_managed(course.id)
+            allow_ccx_unenroll = not is_licensed_ccx(course.id)
         except ImportError:
             pass
 %>
