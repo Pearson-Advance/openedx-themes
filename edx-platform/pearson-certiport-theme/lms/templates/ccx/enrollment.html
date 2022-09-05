@@ -86,11 +86,16 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
         <h2 class="hd hd-2">${_("Student List Management")}</h2>
         %if messages:
           <label for="ccx_std_list_messages" class="sr">${_("CCX student list management response message")}</label>
-          <div id="ccx_std_list_messages" tabindex="-1" class="request-response-error">
+          <div id="ccx_std_list_messages" tabindex="-1" class="request-response">
             %for message in messages:
-              ${message}
+              <div class="msg msg-${message.tags}" style="margin: 0;">
+                <div class="msg-content">
+                  ${message}
+                </div>
+              </div>
             %endfor
           </div>
+        <br/>
         %endif
         <table>
           <thead>
