@@ -3,13 +3,14 @@
 from django.utils.translation import ugettext as _
 from django.utils.translation import pgettext
 from openedx.core.djangolib.markup import HTML, Text
+from openedx.core.djangoapps.plugins.plugins_hooks import run_extension_point
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 %>
 
 <%
     allow_ccx_unenroll = True
 
-    if configuration_helpers.get_value('PCO_ENABLE_LICENSE_ENFORCEMENT', False) and not configuration_helpers.get_value('ALLOW_CCX_UNENROLL', True):
+    if run_extension_point('PCO_ENABLE_COURSE_LICENSING') and not configuration_helpers.get_value('ALLOW_CCX_UNENROLL', True):
         try:
             from pearson_course_operation.utils import is_licensed_ccx
 
