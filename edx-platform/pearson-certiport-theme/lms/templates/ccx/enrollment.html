@@ -116,6 +116,17 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
                 %endif
               </tr>
             %endfor
+            %for pending_enrollment in pending_ccx_members:
+              <tr>
+                <td>${'Pending Enrollment'}</td>
+                <td>${pending_enrollment.email}</td>
+                <td>
+                  <button type="button" class="revoke">
+                    <span class="fa fa-times-circle" aria-hidden="true"></span>${_("Revoke access")}
+                  </button>
+                </td>
+              </tr>
+            %endfor
           </tbody>
         </table>
       </div>
