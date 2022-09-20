@@ -3,19 +3,14 @@
 from django.utils.translation import ugettext as _
 from django.utils.translation import pgettext
 from openedx.core.djangolib.markup import HTML, Text
-from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
+from openedx.core.djangoapps.plugins.plugins_hooks import run_extension_point
 %>
 
 <%
     allow_ccx_unenroll = True
 
-    if configuration_helpers.get_value('PCO_ENABLE_LICENSE_ENFORCEMENT', False) and not configuration_helpers.get_value('ALLOW_CCX_UNENROLL', True):
-        try:
-            from pearson_course_operation.utils import is_ccx_license_managed
-
-            allow_ccx_unenroll = not is_ccx_license_managed(course.id)
-        except ImportError:
-            pass
+    if run_extension_point('PCO_ENABLE_COURSE_LICENSING'):
+        allow_ccx_unenroll = not run_extension_point('PCO_IS_LICENSED_CCX', course_id=course.id)
 %>
 
 <h2 class="hd hd-2">${_("Enrollment")}</h2>
@@ -102,9 +97,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
             <tr>
               <th class="label" scope="col">${_("Username")}</th>
               <th class="label" scope="col">${_("Email")}</th>
-              %if allow_ccx_unenroll:
-                <th class="label" scope="col">${_("Revoke access")}</th>
-              %endif
+              <th class="label" scope="col">${_("Revoke access")}</th>
             </tr>
           </thead>
           <tbody>
