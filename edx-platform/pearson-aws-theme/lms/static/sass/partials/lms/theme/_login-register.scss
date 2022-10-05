@@ -1,12 +1,70 @@
+$form-background: #3e5cd2;
+$bg-image: '#{$static-path}/images/login-register.jpg';
+
+
 .login-register-content {
+  min-height: 100vh;
+  background-image: url($bg-image);
+  background-repeat: no-repeat;
+  background-size: cover;
+
   h2 {
-    color: $primary;
+    color: $inverse;
+    font-weight: bold;
   }
 
   .login-register {
+    padding: 20px;
+    margin: auto auto;
+    background-color: $form-background;
+
+    p, .text {
+      color: $inverse;
+    }
+
+    a {
+      color: $inverse;
+
+      &:hover, &:focus {
+        color: $inverse;
+      }
+    }
+
+    // Login and register form fields.
+    .form-field {
+      .tip,
+      .plaintext-field,
+      input.checkbox+label {
+        color: $inverse;
+      }
+
+      .focus-in {
+        color: $inverse;
+
+        .label-optional {
+          color: $inverse;
+        }
+      }
+
+      select {
+        background: $inverse;
+      }
+    }
+
+    // Login form fields.
+    #login .form-field {
+      label {
+        color: $inverse;
+      }
+    }
+
     .action-primary {
       background: $primary;
       color: $inverse;
+    }
+
+    @include media-breakpoint-up(xl) {
+      margin: auto auto auto 50%;
     }
   }
 }
