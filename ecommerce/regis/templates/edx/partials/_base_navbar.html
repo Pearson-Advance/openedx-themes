@@ -26,9 +26,6 @@
               <span class="sr-only">{% trans "Dashboard for:" as tmsg %}{{ tmsg | force_escape }}</span>
               {{ user.username }}
             </button>
-            <ul class="dropdown-menu" aria-expanded="false">
-              {% block dropdown_menu %}{% endblock dropdown_menu %}
-            </ul>
               {% block small_dropdown_menu %}{% endblock small_dropdown_menu %}
           </li>
         {% else %}
