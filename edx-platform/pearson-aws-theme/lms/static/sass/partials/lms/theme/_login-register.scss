@@ -1,9 +1,18 @@
 $form-background: #3e5cd2;
 $bg-image: '#{$static-path}/images/login-register.jpg';
 
+.view-login-register {
+  .content-wrapper {
+    max-width: initial;
+    margin-top: 0;
+    padding: 0;
+  }
+}
 
 .login-register-content {
+  max-width: inherit;
   min-height: 100vh;
+  margin-top: 0;
   background-image: url($bg-image);
   background-repeat: no-repeat;
   background-size: cover;
@@ -34,27 +43,13 @@ $bg-image: '#{$static-path}/images/login-register.jpg';
     .form-field {
       .tip,
       .plaintext-field,
-      input.checkbox+label {
+      label:not(.focus-out) *,
+      label[for=toggle_optional_fields] * {
         color: $inverse;
-      }
-
-      .focus-in {
-        color: $inverse;
-
-        .label-optional {
-          color: $inverse;
-        }
       }
 
       select {
         background: $inverse;
-      }
-    }
-
-    // Login form fields.
-    #login .form-field {
-      label {
-        color: $inverse;
       }
     }
 
