@@ -250,15 +250,6 @@ iframe.rocket-chat-view {
   margin-bottom: 10px;
 }
 
-.login-providers {
-  display: flex;
-  text-align: left;
-  background: $inverse;
-  padding: 10px 0;
-  justify-content: center;
-  align-items: center;
-}
-
 .login-register-content {
   h2 {
     @extend %t-title4;
@@ -287,39 +278,14 @@ iframe.rocket-chat-view {
   margin-bottom: 5px;
 }
 
-div.toggle-form {
-  margin-top: 15px;
-  text-align: center;
-  max-width: initial;
-  min-width: initial;
-
-  h1 {
-    font-size: 45px;
-    color: $vue-black;
-    font-weight: 600;
-  }
-
-  span {
-    color: $vue-black;
-  }
-}
-
 .action-primary {
   width: 100%;
   display: block;
 }
 
-.signin-container {
-  background: white;
-  padding: 10px;
-  border-radius: 10%;
-  box-shadow: 3px 2px 2px 5px $light-shadow;
-  position: absolute;
-}
-
 .background-login {
-  background: url('/static/pearson-vue-theme/images/CertPREP-Sign-In-background.jpg');
-  height: 100vh;
+  background: url('#{$static-path}/images/CertPREP_homepage_background.png');
+  height: 70vh;
   width: 100%;
   position: absolute;
   top: 0;
@@ -330,6 +296,119 @@ div.toggle-form {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.homepage-content {
+  min-height: calc(100vh - 60px);
+  display: grid;
+  grid-template-columns: 40% 60%;
+  margin-top: -20px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 70px;
+    left: 0;
+    height: 70%;
+    width: 100%;
+    background: url('#{$static-path}/images/CertPREP_homepage_background.png');;
+    background-size: cover;
+  }
+
+  & > div {
+    position: relative;
+    z-index: 1;
+  }
+
+  .info-container {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding-top: 60px;
+
+    .info-logo {
+      height: 70px;
+      width: 170px;
+    }
+
+    .info {
+      color: $vue-homepage-font-clr;
+
+      .info-title {
+        text-align: left;
+        color: $vue-homepage-font-clr;
+        margin-bottom: 60px;
+        font-size: 36px;
+      }
+    }
+
+    .buttons-container {
+      display: flex;
+      gap: 1em;
+
+      a {
+        border: none;
+        font-weight: 300;
+        font-size: 14px;
+        padding: 12.5px 25px;
+      }
+    }
+  }
+
+  .video-container {
+    display: flex;
+    justify-content: center;
+    height: 70%;
+    align-items: center;
+    align-self: end;
+
+    img {
+      cursor: pointer;
+      width: clamp(500px, 50vw, 700px);
+    }
+  }
+}
+
+.video-modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+  padding-top: 5%;
+  justify-content: center;
+  
+  
+  iframe {
+    width: 600px;
+    height: 330px;
+    border: none;
+  }
+
+  @media (max-width: 850px) {
+    padding-top: 8%;
+
+    iframe {
+      width: 100%;
+      background-color: black;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: -100%;
+  }
+
+  100% {
+    transform: 0;
+  }
 }
 
 .content-wrapper .main-container {
@@ -368,58 +447,14 @@ label[for=register-password]{
   padding-top: 0 !important;
 }
 
-.button-vue {
-  padding: 0 10px;
-  text-align: left;
-  position: relative;
-  height: 25px;
-  text-shadow: none;
-  text-transform: none;
-  width: auto;
-  border-radius: 5px;
-  background: $vue-btn;
-  color: $inverse;
-  font-size: 12px;
-  font-weight: bold;
-  letter-spacing: inherit;
-  margin: auto;
-}
-
 .login-provider span, .financial-assistance-wrapper .financial-assistance-form .login-provider span {
   color: inherit;
   padding-left: 10px;
 }
 
-.login-container {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  align-items: center;
-}
-
 @media (min-width: 240px) {
   .global-header h1.header-logo a .logo {
     height: 30px;
-  }
-
-  .signin-logo {
-    width: 270px;
-  }
-
-  .background-login {
-    display: none;
-  }
-
-  .signin-container {
-    top: 230px;
-    width: 230px;
-    box-shadow: 2px 1px 1px 3px $light-shadow;
-  }
-
-  div.toggle-form {
-    h1 {
-      font-size: 30px;
-    }
   }
 }
 
@@ -427,132 +462,45 @@ label[for=register-password]{
   .global-header h1.header-logo a .logo {
     height: 40px;
   }
-
-  .signin-logo {
-    width: 280px;
-  }
-
-  .background-login {
-    display: none;
-  }
-
-  .signin-container {
-    top: 230px;
-  }
-
-  div.toggle-form {
-    h1 {
-      font-size: 35px;
-    }
-  }
 }
 
-@media (min-width: 768px) {
-  .background-login {
-    display: initial;
-  }
-
-  .signin-logo {
-    position: absolute;
-    right: 35px;
-    top: 15px;
-    width: 130px;
-  }
-
-  .login-container {
-    position: absolute;
-    right: 8%;
-    top: 25%;
-  }
-
-  .signin-container {
-    top: 90px;
-    right: 15px;
-    width: 150px;
-  }
-
-  div.toggle-form {
+@media (max-width: 850px) {
+  .homepage-content {
+    grid-template-rows: auto 1fr;
+    grid-template-columns: auto;
     margin-top: 0;
-    font-size: 12px;
 
-    h1 {
-      font-size: 25px;
-      margin-bottom: 0;
+    &::before {
+      height: 45vw;
     }
-  }
 
-  .button-vue {
-    font-size: 8px;
-  }
-}
+    .info-container {
+      order: 1;
+      padding: 20px;
+      padding-top: 0;
+      gap: 2em;
 
-@media (min-width: 1024px) {
-  .signin-logo {
-    right: 25px;
-    top: 22px;
-    width: 130px;
-  }
+      .info-logo {
+        align-self: center;
+        height: 80px;
+        width: 180px;
+      }
 
-  .signin-container {
-    top: 90px;
-    right: 5px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .signin-logo {
-    right: 55px;
-    top: 50px;
-    width: 150px;
-  }
-
-  .signin-container {
-    top: 130px;
-    right: 10px;
-    width: 220px;
-    height: 250px;
-  }
-
-  div.toggle-form {
-    font-size: 16px;
-    margin-bottom: 30px;
-    margin-top: 20px;
-
-    h1 {
-      font-size: 35px;
+      .info .info-title {
+        margin-bottom: 0;
+      }
     }
-  }
 
-  .button-vue {
-    font-size: 12px;
-  }
-}
+    .video-container {
+      align-items: initial;
+      align-self: initial;
+      padding: 20px;
+      height: max-content;
 
-@media (min-width: 1860px) {
-  .signin-logo {
-    width: 210px;
-    top: 50px;
-    right: 55px;
-  }
-
-  .signin-container {
-    top: 150px;
-    right: 0;
-    width: 300px;
-    height: 320px;
-  }
-
-  div.toggle-form {
-    font-size: 20px;
-
-    h1 {
-      font-size: 45px;
-      margin-bottom: 50px;
+      img {
+        height: initial;
+        width: 100%;
+      }
     }
-  }
-
-  .button-vue {
-    font-size: 16px;
-    height: 45px;
   }
 }
