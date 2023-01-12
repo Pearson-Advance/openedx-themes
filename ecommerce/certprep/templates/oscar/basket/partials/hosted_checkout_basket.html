@@ -13,9 +13,6 @@
         <form action="." method="post">
             {% csrf_token %}
             {{ formset.management_form }}
-            <p class="certificate_type">
-                            {% trans "Order Summary" %}
-                        </p>
 
             {% for form, line_data in formset_lines_data %}
                 {% purchase_info_for_line request line_data.line as session %}
