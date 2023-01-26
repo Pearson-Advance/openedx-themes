@@ -1,0 +1,122 @@
+{% extends 'edx/base.html' %}
+{% load core_extras %}
+{% load currency_filters %}
+{% load i18n %}
+{% load l10n %}
+{% load offer_tags %}
+{% load static %}
+{% load enterprise %}
+
+{% block title %}
+{% blocktrans trimmed with order_number=order.number %}
+    Receipt for {{ order_number }}
+{% endblocktrans %}
+{% endblock title %}
+
+{% block javascript %}
+<script src="{% static 'js/apps/order_receipt_app.js' %}"></script>
+{% endblock javascript %}
+
+{% block navbar %}
+{% include 'edx/partials/_student_navbar.html' %}
+{% endblock navbar %}
+
+{% block content %}
+{{ custom_settings.GOOGLE_TAG_MANAGER_SNIPPET|safe }}
+<div id="receipt-container"
+    class="receipt container content-container"
+    data-currency="{{ order.currency }}"
+    data-order-id="{{ order.number }}"
+    data-total-amount="{{ order.total_incl_tax | unlocalize }}">
+    <h2 class="thank-you">{% trans "You are now enrolled!" %}</h2>
+
+    <div class="list-info">
+        <div class="info-item payment-info row">
+        <div class="copy col-md-8">
+            <div class="confirm-message">
+            {% captureas link_start %}
+                <a href="mailto:{{ order.user.email }}">
+            {% endcaptureas %}
+            {% if has_enrollment_code_product %}
+                {% blocktrans trimmed with email=order.user.email link_end="</a>" %}
+                    Your enrollment is now complete.
+                {% endblocktrans %}
+            {% else %}
+                {% blocktrans trimmed with email=order.user.email link_end="</a>" %}
+                Your enrollment is now complete.
+                {% endblocktrans %}
+            {% endif %}
+            </div>
+
+            {% if order.billing_address %}
+            <address class="billing-address">
+                {% for field in order.billing_address.active_address_fields %}
+                {{ field }}<br/>
+                {% endfor %}
+            </address>
+            {% endif %}
+        </div>
+
+        <div class="order-headers order-summary col-md-4">
+            <dl>
+            <dt>{% trans "Enrollment Date:" %}</dt>
+            <dd>{{ order.date_placed|date:"E d, Y" }}</dd>
+            </dl>
+        </div>
+        </div>
+
+        <h2>{% trans "Enrollment Information" %}</h2>
+        <div class="table">
+        <dl class="order-lines">
+            <div class="header">
+            <dt aria-hidden="true">{% trans "Description" %}</dt>
+            </div>
+            {% for line in order.lines.all %}
+            <div>
+                <dt class="course-description sr">{% trans "Description:" %}</dt>
+                <dd class="course-description">
+                <span>{{ line.title }}</span>
+                {% if line.product.course %}
+                    <p class="course-description-subtitle" data-course-id="{{ line.product.course.id }}">
+                    {{ line.product.course.id|course_organization }}
+                    </p>
+                {% endif %}
+                </dd>
+            </div>
+            {% endfor %}
+        </dl>
+        </div>
+
+        {% if display_credit_messaging %}
+        {% captureas link_start %}
+            <a href="{{ lms_dashboard_url }}">
+        {% endcaptureas %}
+        <div class="nav-wizard row">
+            <p class="header">{% trans "Get Your Course Credit" %}</p>
+            <p class="message">
+            {% blocktrans trimmed with link_end="</a>" %}
+                To receive academic credit for this course, you must apply for credit at the organization that offers the credit.
+                You can find a link to the organization’s website on your {{ link_start }}dashboard{{ link_end }}, next to the course name.
+            {% endblocktrans %}
+            </p>
+        </div>
+        {% endif %}
+    </div>
+
+    {% if not has_enrollment_code_product and show_verification_banner  %}
+        <div class="nav-wizard row">
+            {% include 'oscar/checkout/_verification_data.html' %}
+        </div>
+    {% endif %}
+    <div id="cta-nav-links" class="row">
+        <div class="col-xs-12 text-right">
+        {% if not show_verification_banner %}
+        <a class="dashboard-link nav-link" href="{{ lms_dashboard_url }}">
+            {% trans "Go to dashboard" %}
+        </a>
+        {% endif %}
+        </div>
+    </div>
+    </div>
+</div>
+{% endblock content %}
