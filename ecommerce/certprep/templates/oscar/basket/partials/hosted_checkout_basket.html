@@ -62,22 +62,13 @@
                                     {% trans "Enroll" %}
                                 </a>
                             {% else %}
-                                {% for processor in payment_processors %}
-                                    <button data-track-type="click"
-                                            data-track-event="edx.bi.ecommerce.basket.payment_selected"
-                                            data-track-category="checkout"
-                                            data-processor-name="{{ processor.NAME|lower }}"
-                                            data-track-checkout-type="hosted"
-                                            class="btn payment-button"
-                                            id="{{ processor.NAME|lower }}">
-                                        {% if processor.NAME == 'cybersource' %}
-                                            {% trans "Enroll" %}
-                                        {% elif processor.NAME == 'paypal' %}
-                                            {# Translators: Do NOT translate the name PayPal. #}
-                                            {% trans "Enroll" %}
-                                        {% endif %}
-                                    </button>
-                                {% endfor %}
+                                {% settings_value 'payment_support_email' as support_email %}
+                                {% settings_value 'payment_support_url' as support_url %}
+                                <p>{% trans "The enrollment link is invalid, please contact" %}
+                                    <a {% if support_email %} href=mailto:{{ support_email }} {% else %} href={{ support_url }} {% endif %}>
+                                        {% trans "Pearson VUE Support" %}
+                                    </a>.
+                                </p>
                             {% endif %}
                         </div>
                     </div>
