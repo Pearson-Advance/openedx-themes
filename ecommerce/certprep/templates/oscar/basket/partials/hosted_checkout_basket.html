@@ -64,10 +64,10 @@
                             {% else %}
                                 {% settings_value 'payment_support_email' as support_email %}
                                 {% settings_value 'payment_support_url' as support_url %}
-                                <p>{% trans "The enrollment link is invalid, please contact" %}
+                                <p class="support-text">{% trans "The enrollment link is invalid, please contact" %}
                                     <a {% if support_email %} href=mailto:{{ support_email }} {% else %} href={{ support_url }} {% endif %}>
-                                        {% trans "Pearson VUE Support" %}
-                                    </a>.
+                                        {% trans "Pearson VUE Support." %}
+                                    </a>
                                 </p>
                             {% endif %}
                         </div>
