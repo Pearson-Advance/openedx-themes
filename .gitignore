@@ -1,0 +1,8 @@
+# Ignoring compiled css for edx-platform themes
+edx-platform/*/*/static/css/*
+ecommerce/*/static/css/*
+
+# Common environment artifacts
+node_modules/
+venv/
+**/.DS_Store
