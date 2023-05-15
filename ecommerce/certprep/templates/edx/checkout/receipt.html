@@ -1,0 +1,132 @@
+{% extends 'edx/base.html' %}
+{% load core_extras %}
+{% load currency_filters %}
+{% load i18n %}
+{% load django_markup %}
+{% load l10n %}
+{% load offer_tags %}
+{% load static %}
+{% load enterprise %}
+
+{% block title %}
+  {% filter force_escape %}
+  {% blocktrans trimmed with order_number=order.number %}
+    Receipt for {{ order_number }}
+  {% endblocktrans %}
+  {% endfilter %}
+{% endblock title %}
+
+{% block javascript %}
+  <script src="{% static 'js/apps/order_receipt_app.js' %}"></script>
+{% endblock javascript %}
+
+{% block post_js %}
+ <script type="text/javascript">
+   var  awinProductTrackingData = `{{ product_tracking }}`;
+  </script>
+{% endblock post_js %}
+
+{% block navbar %}
+  {% include 'edx/partials/_student_navbar.html' %}
+{% endblock navbar %}
+
+{% block content %}
+  <div id="receipt-container"
+       class="receipt container content-container"
+       data-currency="{{ order.currency }}"
+       data-order-id="{{ order.number }}"
+       data-total-amount="{{ order.total_incl_tax | unlocalize }}"
+       data-back-button="{{ disable_back_button | default:0 }}"
+       data-product-ids="{{ order_product_ids }}">
+       {% include 'oscar/partials/alert_messages.html' %}
+
+      <h2 class="thank-you">{% trans "You are now enrolled!" as tmsg %}{{ tmsg | force_escape }}</h2>
+
+      <div class="list-info">
+        <div class="info-item payment-info row">
+          <div class="copy col-md-8">
+            <div class="confirm-message">
+              {% captureas link_start %}
+                <a data-hj-suppress href="mailto:{{ order.user.email }}">
+              {% endcaptureas %}
+              {% if has_enrollment_code_product %}
+                  {% blocktrans trimmed asvar tmsg %}
+                    Your enrollment is now complete.
+                  {% endblocktrans %}
+              {% else %}
+                  {% blocktrans trimmed asvar tmsg %}
+                    Your enrollment is now complete.
+                  {% endblocktrans %}
+                {% interpolate_html tmsg %}
+              {% endif %}
+            </div>
+
+            {% if order.billing_address %}
+              <address data-hj-suppress class="billing-address">
+                {% for field in order.billing_address.active_address_fields %}
+                  {{ field }}<br/>
+                {% endfor %}
+              </address>
+            {% endif %}
+          </div>
+
+          <div class="order-headers order-summary col-md-4">
+            <dl>
+              {% if payment_method %}
+                <dt>{% trans "Payment Method:" as tmsg %}{{ tmsg | force_escape }}</dt>
+                <dd>{{ payment_method }}</dd>
+              {% endif %}
+              <dt>{% trans "Enrollment Date:" as tmsg %}{{ tmsg | force_escape }}</dt>
+              <dd>{{ order.date_placed|date:"E d, Y" }}</dd>
+            </dl>
+          </div>
+        </div>
+
+        <h2>{% trans "Enrollment Information" as tmsg %}{{ tmsg | force_escape }}</h2>
+        <div class="table">
+          <dl class="order-lines">
+            <div class="header">
+              <dt aria-hidden="true">{% trans "Description" as tmsg %}{{ tmsg | force_escape }}</dt>
+            </div>
+            {% for line in order.lines.all %}
+              <div>
+                <dt class="course-description sr">{% trans "Description:" as tmsg %}{{ tmsg | force_escape }}</dt>
+                <dd class="course-description">
+                  <span>{{ line.title }}</span>
+                  {% if line.product.course %}
+                    <p class="course-description-subtitle" data-course-id="{{ line.product.course.id }}">
+                      {{ line.product.course.id|course_organization }}
+                    </p>
+                  {% endif %}
+                </dd>
+              </div>
+            {% endfor %}
+          </dl>
+        </div>
+
+        {% if display_credit_messaging %}
+          <div class="nav-wizard row">
+            <p class="header">{% trans "Get Your Course Credit" as tmsg %}{{ tmsg | force_escape }}</p>
+            <p class="message">
+              {% blocktrans trimmed asvar tmsg %}
+                To receive academic credit for this course, you must apply for credit at the organization that offers the credit.
+                You can find a link to the organization’s website on your {link_start}{lms_dashboard_url}{link_middle}dashboard{link_end}, next to the course name.
+              {% endblocktrans %}
+              {% interpolate_html tmsg link_start='<a href="'|safe link_middle='">'|safe link_end='</a>'|safe lms_dashboard_url=lms_dashboard_url|safe %}
+            </p>
+          </div>
+        {% endif %}
+      </div>
+
+      {% if show_receipt_cta_links %}
+        <div id="cta-nav-links" class="row">
+          <div class="col-xs-12 text-right">
+            <a class="dashboard-link nav-link" href="{{ order_dashboard_url }}">
+              {% trans "Go to dashboard" as tmsg %}{{ tmsg | force_escape }}
+            </a>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endblock content %}
