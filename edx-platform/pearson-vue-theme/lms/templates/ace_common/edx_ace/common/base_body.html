@@ -47,7 +47,7 @@
     <![endif]-->
 
     <!-- CONTENT -->
-    <table class="content" role="presentation" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffd1d1" width="100%" style="
+    <table class="content" role="presentation" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#f5f5f5" width="100%" style="
         font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         font-size: 1em;
         line-height: 1.5;
@@ -58,19 +58,23 @@
             <!-- HEADER -->
             <td class="header" style="
                 padding: 20px;
+                background-color: #003057;
+                color: #FFFFFF;
             ">
+                {% block header %}
                 <table role="presentation" width="100%" align="left" border="0" cellpadding="0" cellspacing="0">
                     <tr>
                         <td width="70">
                             <a href="{% with_link_tracking homepage_url %}"><img
-                                    src="http://localhost:18000/static/red-theme/images/logo.png"
-                                    alt="{% filter force_escape %} {% blocktrans %}Go to {{ platform_name }} Home Page{% endblocktrans %} {% endfilter %}"/></a>
+                                    src="https://pearsonvue.pearson.com/static/pearson-vue-theme/images/logo.2ed5e625f7c9.png"
+                                    height="70" alt="{% filter force_escape %}{% blocktrans %}Go to {{ platform_name }} Home Page{% endblocktrans %}{% endfilter %}"/></a>
                         </td>
                         <td align="right" style="text-align: {{ LANGUAGE_BIDI|yesno:"left,right" }};">
-                            <a class="login" href="{% with_link_tracking dashboard_url %}" style="color: #960909;">{%  trans "Sign In" %}</a>
+                            <a class="login" href="{% with_link_tracking dashboard_url %}" style="color: white; font-size: 1.5em;">{%  trans "Sign in" %}</a>
                         </td>
                     </tr>
                 </table>
+                {% endblock %}
             </td>
         </tr>
 
@@ -97,7 +101,7 @@
                                         <td height="32" width="42">
                                             <a href="{{ social_media_urls.linkedin|safe }}">
                                                 <img src="https://media.sailthru.com/595/1k1/8/o/599f354ec70cb.png"
-                                                     width="32" height="32" alt="{% filter force_escape %} {% blocktrans %}{{ platform_name }} on LinkedIn{% endblocktrans %} {% endfilter %}"/>
+                                                     width="32" height="32" alt="{% filter force_escape %}{% blocktrans %}{{ platform_name }} on LinkedIn{% endblocktrans %}{% endfilter %}"/>
                                             </a>
                                         </td>
                                     {% endif %}
@@ -105,7 +109,7 @@
                                         <td height="32" width="42">
                                             <a href="{{ social_media_urls.twitter|safe }}">
                                                 <img src="https://media.sailthru.com/595/1k1/8/o/599f354d9c26e.png"
-                                                     width="32" height="32" alt="{% filter force_escape %} {% blocktrans %}{{ platform_name }} on Twitter{% endblocktrans %} {% endfilter %}"/>
+                                                     width="32" height="32" alt="{% filter force_escape %}{% blocktrans %}{{ platform_name }} on Twitter{% endblocktrans %}{% endfilter %}"/>
                                             </a>
                                         </td>
                                     {% endif %}
@@ -113,7 +117,7 @@
                                         <td height="32" width="42">
                                             <a href="{{ social_media_urls.facebook|safe }}">
                                                 <img src="https://media.sailthru.com/595/1k1/8/o/599f355052c8e.png"
-                                                     width="32" height="32" alt="{% filter force_escape %} {% blocktrans %}{{ platform_name }} on Facebook{% endblocktrans %} {% endfilter %}"/>
+                                                     width="32" height="32" alt="{% filter force_escape %}{% blocktrans %}{{ platform_name }} on Facebook{% endblocktrans %}{% endfilter %}"/>
                                             </a>
                                         </td>
                                     {% endif %}
@@ -121,7 +125,7 @@
                                         <td height="32" width="42">
                                             <a href="{{ social_media_urls.google_plus|safe }}">
                                                 <img src="https://media.sailthru.com/595/1k1/8/o/599f354fc554a.png"
-                                                     width="32" height="32" alt="{% filter force_escape %} {% blocktrans %}{{ platform_name }} on Google Plus{% endblocktrans %} {% endfilter %}"/>
+                                                     width="32" height="32" alt="{% filter force_escape %}{% blocktrans %}{{ platform_name }} on Google Plus{% endblocktrans %}{% endfilter %}"/>
                                             </a>
                                         </td>
                                     {% endif %}
@@ -129,7 +133,7 @@
                                         <td height="32" width="42">
                                             <a href="{{ social_media_urls.reddit|safe }}">
                                                 <img src="https://media.sailthru.com/595/1k1/8/o/599f354e326b9.png"
-                                                     width="32" height="32" alt="{% filter force_escape %} {% blocktrans %}{{ platform_name }} on Reddit{% endblocktrans %} {% endfilter %}"/>
+                                                     width="32" height="32" alt="{% filter force_escape %}{% blocktrans %}{{ platform_name }} on Reddit{% endblocktrans %}{% endfilter %}"/>
                                             </a>
                                         </td>
                                     {% endif %}
@@ -161,8 +165,8 @@
                         <td style="padding-bottom: 20px;">
                             {% for action_link_url, action_link_text in channel.action_links %}
                                 <p>
-                                    <a href="{{ action_link_url }}" style="color: #960909">
-                                        <font color="#960909"><b>{{ action_link_text }}</b></font>
+                                    <a href="{{ action_link_url }}" style="color: #003057;">
+                                        <font color="#005686"><b>{{ action_link_text }}</b></font>
                                     </a>
                                 </p>
                             {% endfor %}
@@ -171,12 +175,19 @@
                     <tr>
                         <!-- COPYRIGHT -->
                         <td>
-                            &copy; {% now "Y" %} {{ platform_name }}, {% trans "All rights reserved" as tmsg %}{{ tmsg | force_escape }}.<br/>
-                            <br/>
-                            {% trans "Our mailing address is" as tmsg %}{{ tmsg | force_escape }}:<br/>
-                            {{ contact_mailing_address }}
+                          Copyright &copy; {% now "Y" %} Pearson Education, Inc. or its affiliate(s). All rights reserved.
+                          <br/><br/>
+                          Pearson VUE, 5601 Green Valley Drive, Bloomington, MN 55437-1099, USA.
+                          <br/>
                         </td>
                     </tr>
+                    {% if unsubscribe_url %}
+                        <tr>
+                            <td>
+                                <a href="{% with_link_tracking unsubscribe_url %}">{% trans "Unsubscribe from these emails." as tmsg %}{{ tmsg | force_escape }}</a>
+                            </td>
+                        </tr>
+                    {% endif %}
                 </table>
             </td>
         </tr>

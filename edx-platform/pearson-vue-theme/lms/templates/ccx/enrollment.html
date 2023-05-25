@@ -3,6 +3,13 @@
 from django.utils.translation import gettext as _
 from django.utils.translation import pgettext
 from openedx.core.djangolib.markup import HTML, Text
+from openedx.core.djangoapps.plugins.plugins_hooks import run_extension_point
+%>
+
+<%
+    allow_ccx_unenroll = True
+    if run_extension_point('PCO_ENABLE_COURSE_LICENSING'):
+        allow_ccx_unenroll = not run_extension_point('PCO_IS_LICENSED_CCX', course_id=course.id)
 %>
 
 <h2 class="hd hd-2">${_("Enrollment")}</h2>
@@ -55,6 +62,9 @@ from openedx.core.djangolib.markup import HTML, Text
 
   <div>
     <input type="submit" name="enrollment-button" class="enrollment-button" value="${pgettext('someone','Enroll')}">
+    %if allow_ccx_unenroll:
+      <input type="submit" name="enrollment-button" class="enrollment-button" value="${_("Unenroll")}">
+    %endif
     <input type="submit" name="enrollment-button" class="enrollment-button" value="${_("Unenroll")}">
   </div>
   <div class="request-response"></div>
@@ -71,9 +81,13 @@ from openedx.core.djangolib.markup import HTML, Text
         <h2 class="hd hd-2">${_("Student List Management")}</h2>
         %if messages:
           <label for="ccx_std_list_messages" class="sr">${_("CCX student list management response message")}</label>
-          <div id="ccx_std_list_messages" tabindex="-1" class="request-response-error">
+          <div id="ccx_std_list_messages" tabindex="-1" class="request-response">
             %for message in messages:
-              ${message}
+              <div class="msg msg-${message.tags}" style="margin: 0;">
+                <div class="msg-content">
+                  ${message}
+                </div>
+              </div>
             %endfor
           </div>
         %endif
@@ -90,7 +104,24 @@ from openedx.core.djangolib.markup import HTML, Text
             <tr>
               <td>${member.user}</td>
               <td>${member.user.email}</td>
-              <td><button type="button" class="revoke"><span class="fa fa-times-circle" aria-hidden="true"></span>${_("Revoke access")}</button></td>
+              %if allow_ccx_unenroll:
+                <td>
+                  <button type="button" class="revoke">
+                    <span class="fa fa-times-circle" aria-hidden="true"></span>${_("Revoke access")}
+                  </button>
+                </td>
+              %endif
+            </tr>
+          %endfor
+          %for pending_enrollment in pending_ccx_members:
+            <tr>
+              <td>${'Pending Enrollment'}</td>
+              <td>${pending_enrollment.email}</td>
+              <td>
+                <button type="button" class="revoke">
+                  <span class="fa fa-times-circle" aria-hidden="true"></span>${_("Revoke access")}
+                </button>
+              </td>
             </tr>
             %endfor
           </tbody>

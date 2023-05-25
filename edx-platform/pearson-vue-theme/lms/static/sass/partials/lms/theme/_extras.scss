@@ -1,7 +1,506 @@
-// Extra rules needed for an LMS theme
+// Extra rules needed for the LMS dark theme.
 //
 // The _extras.scss file is imported after all other rules by
 // the LMS Sass. For your own theme, you can override this file
 // to add any custom rules that you need. You can also import
 // partials directly into this file so that you can break your
 // rules into modular pieces.
+
+@import 'courses';
+@import 'header';
+@import 'navigation';
+@import 'footer';
+@import 'course-experience';
+@import 'dashboard';
+@import 'ccx-course-name';
+
+
+//registration
+.view-register .form-actions button[type="submit"]:hover {
+  background-color: #fff;
+  border: 1px solid $primary;
+}
+
+.register-form {
+  max-width: 600px;
+  margin: auto;
+}
+//generals
+
+body, html, button, textarea {
+  color: $primary-font-color;
+}
+
+html {
+  background: $inverse !important;
+}
+
+input::not(input[type="button"]) {
+  color: $primary-font-color !important;
+}
+
+select, option, optgroup {
+  color: $primary-font-color !important;
+  background-color: $inverse !important;
+  -webkit-appearance: menulist !important;
+  -moz-appearance: menulist !important;
+  -ms-appearance: menulist !important;
+  -o-appearance: menulist !important;
+}
+
+textarea {
+  color: $primary-font-color !important;
+  background-color: $inverse !important;
+}
+
+a, a:visited:not(.btn) {
+  color: $primary;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  color: $primary-font-color;
+}
+
+
+.light-button:hover:not(:disabled),
+div.history-controls input[type="submit"]:hover:not(:disabled),
+a.light-button:hover:not(:disabled),
+div.info-wrapper section.handouts ol li div.hitarea:hover+h4.light-button:not(:disabled),
+div.info-wrapper section.handouts ol li div.hitarea:focus+h4.light-button:not(:disabled),
+.gray-button:hover:not(:disabled),
+input[type="reset"]:hover:not(:disabled),
+input[type="submit"]:hover:not(:disabled),
+input[type="button"]:hover:not(:disabled),
+button:hover:not(:disabled),
+.button:hover:not(:disabled),
+.xmodule_display.xmodule_LTIModule div.lti.wrapper-lti-link
+.lti-link .link_lti_new_window:hover:not(:disabled),
+input[type="submit"].btn-blue:hover:not(:disabled),
+input.btn-blue:hover:not(:disabled),
+button.btn-blue:hover:not(:disabled) {
+  background: $primary;
+  background-image: none;
+}
+
+
+
+.field-label{
+  color: $primary-font-color;
+}
+
+.field-input{
+  background-color: $inverse;
+}
+
+.btn {
+  border-color: $inverse;
+  background: $primary;
+  color: $inverse;
+}
+
+.btn:hover, .is-hovered.btn, .btn:focus, .is-focused.btn {
+  border-color: $inverse;
+  background: $primary;
+}
+
+div.page-banner div.alert.alert-warning {
+  background-color: $gray-l5;
+  border-color: $gray-l5;
+}
+
+div.prompt.warning.has-actions
+nav.nav-actions li.nav-item button.action-primary {
+  background-color: $primary;
+  border: 1px solid $primary;
+  border-color: $primary;
+}
+
+.wrapper-prompt div.prompt.warning div.copy {
+  background: $gray-l5;
+  border-top-color: $primary;
+}
+
+.contact-us-wrapper .btn-primary,
+.contact-us-wrapper .btn-brand {
+  border-color: $primary;
+}
+
+.contact-us-wrapper .btn-primary:hover,
+.contact-us-wrapper .btn-brand:hover,
+.contact-us-wrapper .btn-primary:focus,
+.contact-us-wrapper .btn-brand:focus {
+  background-image: none;
+  background-color: $primary;
+  border-color: $primary;
+}
+
+.submit-attempt-container {
+  .btn-primary:disabled, .btn-brand:disabled,
+  .btn-primary.is-disabled, .is-disabled.btn-brand {
+    border-color: $pearson-grey;
+    background: $pearson-grey;
+  }
+}
+
+input.js-post-title.field-input,
+form.forum-new-post-form input[type=text].field-input,
+form.forum-new-post-form input[type=text].wrapper-custom-select,
+.edit-post-form input[type=text].field-input,
+.edit-post-form input[type=text].wrapper-custom-select {
+  color: $primary-font-color;
+}
+
+div.wmd-panel.wmd-preview p {
+  color: $inverse;
+}
+
+
+
+//static-tamplate
+
+section.container.about {
+  border-left: 1px solid $primary;
+  margin-top: 50px;
+  margin-bottom: 30px;
+
+  h1,
+  h2,
+  a, {
+    color: $primary;
+  }
+
+  ol {
+    list-style-type: none;
+  }
+}
+
+// Rocket chat tab service
+
+iframe.rocket-chat-view {
+  width: 100%;
+  height: 500px;
+  border: none;
+}
+
+.rocket_chat_error_message {
+  text-align: center;
+  color: red;
+}
+
+.alert.warning .action-secondary,
+.notification.warning .action-secondary,
+.prompt.warning .action-secondary {
+  color: $primary;
+}
+
+.course-info .pay-now-button.btn {
+  background-color: $pearson-dark-blue-courseware;
+  border: 1px solid $pearson-dark-blue-courseware;
+  padding: 10px 0;
+  width: 40%;
+  display: block;
+  font: normal 1.2rem/1.6rem Open Sans;
+  text-align: center;
+}
+
+.modal .inner-wrapper p {
+  font-size: 0.9em;
+}
+
+.modal .inner-wrapper .close-modal:focus {
+  outline: none;
+}
+
+.u-field-date_joined .u-field-title {
+  cursor: text;
+}
+
+.view-profile .tabpanel {
+  .badge-set-display {
+    min-width: auto;
+
+    .badge-list {
+      padding: 0;
+    }
+
+    .badge-display {
+      width: 100%;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .view-profile .tabpanel {
+    .badge-set-display {
+      min-width: auto;
+    }
+  }
+
+  .content-wrapper {
+    padding: 0 0 10px;
+  }
+}
+
+.signing-title {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.login-register-content {
+  h2 {
+    @extend %t-title4;
+    font-size: 1.2em;
+    margin-top: $baseline;
+    letter-spacing: normal;
+    font-family: $font-family-sans-serif;
+    color: $uxpl-blue-hover-active;
+  }
+}
+
+.login-register .status {
+  margin: 0;
+}
+
+.email-email .label-text,
+.password-password .label-text {
+  display: block;
+  margin: 10px 0;
+  height: 0;
+}
+
+.form-field input.input-block {
+  height: 45px;
+  padding: 15px;
+  margin-bottom: 5px;
+}
+
+.action-primary {
+  width: 100%;
+  display: block;
+}
+
+.background-login {
+  background: url('#{$static-path}/images/CertPREP_homepage_background.png');
+  height: 70vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.homepage-content {
+  min-height: calc(100vh - 60px);
+  display: grid;
+  grid-template-columns: 40% 60%;
+  margin-top: -20px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 70px;
+    left: 0;
+    height: 70%;
+    width: 100%;
+    background: url('#{$static-path}/images/CertPREP_homepage_background.png');;
+    background-size: cover;
+  }
+
+  & > div {
+    position: relative;
+    z-index: 1;
+  }
+
+  .info-container {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding-top: 60px;
+
+    .info-logo {
+      height: 70px;
+      width: 170px;
+    }
+
+    .info {
+      color: $vue-homepage-font-clr;
+
+      .info-title {
+        text-align: left;
+        color: $vue-homepage-font-clr;
+        margin-bottom: 60px;
+        font-size: 36px;
+      }
+    }
+
+    .buttons-container {
+      display: flex;
+      gap: 1em;
+
+      a {
+        border: none;
+        font-weight: 300;
+        font-size: 14px;
+        padding: 12.5px 25px;
+      }
+    }
+  }
+
+  .video-container {
+    display: flex;
+    justify-content: center;
+    height: 70%;
+    align-items: center;
+    align-self: end;
+
+    img {
+      cursor: pointer;
+      width: clamp(500px, 50vw, 700px);
+    }
+  }
+}
+
+.video-modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+  padding-top: 5%;
+  justify-content: center;
+  
+  
+  iframe {
+    width: 600px;
+    height: 330px;
+    border: none;
+  }
+
+  @media (max-width: 850px) {
+    padding-top: 8%;
+
+    iframe {
+      width: 100%;
+      background-color: black;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: -100%;
+  }
+
+  100% {
+    transform: 0;
+  }
+}
+
+.content-wrapper .main-container {
+  padding-bottom: 500px;
+}
+
+.cc-grower {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 1s;
+  z-index: 1;
+  position: relative;
+}
+
+.js-form-feedback {
+  max-width: 650px;
+  bottom: 0px;
+  right: 0px;
+  margin: 25px 0;
+  z-index: 1;
+}
+
+label[for=register-name]{
+  padding-top: 10px !important;
+}
+
+label[for=register-username]{
+  padding-top: 10px !important;
+}
+
+label[for=register-email]{
+  padding-top: 0 !important;
+}
+
+label[for=register-password]{
+  padding-top: 0 !important;
+}
+
+.login-provider span, .financial-assistance-wrapper .financial-assistance-form .login-provider span {
+  color: inherit;
+  padding-left: 10px;
+}
+
+@media (min-width: 240px) {
+  .global-header h1.header-logo a .logo {
+    height: 30px;
+  }
+}
+
+@media (min-width: 480px) {
+  .global-header h1.header-logo a .logo {
+    height: 40px;
+  }
+}
+
+@media (max-width: 850px) {
+  .homepage-content {
+    grid-template-rows: auto 1fr;
+    grid-template-columns: auto;
+    margin-top: 0;
+
+    &::before {
+      height: 45vw;
+    }
+
+    .info-container {
+      order: 1;
+      padding: 20px;
+      padding-top: 0;
+      gap: 2em;
+
+      .info-logo {
+        align-self: center;
+        height: 80px;
+        width: 180px;
+      }
+
+      .info .info-title {
+        margin-bottom: 0;
+      }
+    }
+
+    .video-container {
+      align-items: initial;
+      align-self: initial;
+      padding: 20px;
+      height: max-content;
+
+      img {
+        height: initial;
+        width: 100%;
+      }
+    }
+  }
+}
