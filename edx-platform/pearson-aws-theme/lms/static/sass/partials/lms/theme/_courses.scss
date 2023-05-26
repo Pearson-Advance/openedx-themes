@@ -1,0 +1,20 @@
+// Course About button.
+
+.course-info header.course-profile .intro-inner-wrapper
+section.intro div.main-cta a strong {
+  background: $primary;
+  box-shadow: none;
+  border: 0;
+  color: $inverse;
+
+  &:hover:not(:disabled) {
+    background-image: none;
+  }
+
+  &:active:not(:disabled),
+  &:focus:not(:disabled) {
+    box-shadow: none;
+    outline: none;
+    border: none;
+  }
+}

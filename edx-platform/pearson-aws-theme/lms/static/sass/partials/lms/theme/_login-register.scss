@@ -1,0 +1,66 @@
+$form-background: #3e5cd2;
+$bg-image: '#{$static-path}/images/login-register.jpg';
+
+.view-login-register {
+  .content-wrapper {
+    max-width: initial;
+    margin-top: 0;
+    padding: 0;
+  }
+}
+
+.login-register-content {
+  max-width: inherit;
+  min-height: 100vh;
+  margin-top: 0;
+  background-image: url($bg-image);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  h1, h2 {
+    color: $inverse;
+    font-weight: bold;
+    font-family: $font-family-sans-serif;
+  }
+
+  .login-register {
+    padding: 20px;
+    margin: auto auto;
+    background-color: $form-background;
+
+    p, .text {
+      color: $inverse;
+    }
+
+    a {
+      color: $inverse;
+
+      &:hover, &:focus {
+        color: $inverse;
+      }
+    }
+
+    // Login and register form fields.
+    .form-field {
+      .tip,
+      .plaintext-field,
+      label:not(.focus-out) *,
+      label[for=toggle_optional_fields] * {
+        color: $inverse;
+      }
+
+      select {
+        background: $inverse;
+      }
+    }
+
+    .action-primary {
+      background: $primary;
+      color: $inverse;
+    }
+
+    @include media-breakpoint-up(xl) {
+      margin: auto auto auto 50%;
+    }
+  }
+}
