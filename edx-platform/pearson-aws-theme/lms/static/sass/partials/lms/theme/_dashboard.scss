@@ -1,0 +1,132 @@
+// Dashboard styles.
+
+.view-dashboard div.item {
+  li.course-item {
+    list-style: none;
+
+    .course-container {
+      border: 1px solid $gray;
+      border-radius: 3px;
+    }
+  }
+
+  .items.course.single-course {
+    margin-bottom: 20px;
+  }
+
+  .wrapper-course-image {
+    float: left;
+    margin-right: 2%;
+    width: 23%;
+    max-height: 150px;
+    overflow: hidden;
+
+    .cover {
+      .course-image {
+        width: 100%;
+      }
+    }
+  }
+
+  .course .details .wrapper-course-details {
+    display: flex;
+    flex-flow: row wrap;
+    margin-bottom: 10px;
+    justify-content: space-between;
+
+    .course-title {
+      flex-basis: 100%;
+      padding-top: 10px;
+      font-size: 24px;
+      font-family: $font-family-sans-serif;
+    }
+
+    .course-info [class*="info-"] {
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    .course-info .info-date-block-container {
+      display: block;
+
+      .info-date-block {
+        color: $secondary;
+      }
+    }
+
+    .wrapper-course-actions {
+      margin-right: 20px;
+    }
+
+    .enter-course {
+      color: $inverse;
+      background: $primary;
+      float: right;
+      line-height: 23px;
+      border: 1px solid $primary;
+      border-radius: 3px;
+      padding: 8px 20px;
+      text-align: center;
+    }
+
+    .course-actions .wrapper-action-more {
+      position: relative;
+      float: right;
+
+      .action-more {
+        box-shadow: none;
+        background: $inverse;
+        line-height: 16px;
+        text-shadow: none;
+        margin-right: 10px;
+        padding: 12px;
+        border: 1px solid $inverse;
+      }
+
+      .actions-dropdown {
+        display: none;
+        position: absolute;
+        top: 30px;
+        right: 20px;
+
+        .actions-dropdown-list {
+          background: $inverse;
+          box-sizing: border-box;
+          border-radius: 3px;
+          margin: 5px 0 0 0;
+          border: 1px solid $secondary;
+          padding: 5px 10px;
+          list-style: none;
+        }
+      }
+
+      .actions-dropdown.is-visible {
+        display: block !important;
+        pointer-events: auto;
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  section .container.no-border .grid {
+    padding: 20px;
+  }
+
+  .view-dashboard div.item {
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .course .details .wrapper-course-image {
+    display: none;
+  }
+
+  .course .details {
+    padding-left: 10px;
+
+    .wrapper-course-image {
+      display: none;
+    }
+  }
+}
