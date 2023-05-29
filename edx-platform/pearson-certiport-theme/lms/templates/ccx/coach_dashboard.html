@@ -2,8 +2,7 @@
 <%inherit file="/main.html" />
 <%namespace name='static' file='/static_content.html'/>
 <%!
-from django.conf import settings
-from django.utils.translation import gettext as _
+from django.utils.translation import ugettext as _
 from django.urls import reverse
 from openedx.core.djangolib.js_utils import (
     dump_js_escaped_json, js_escaped_string
@@ -48,7 +47,7 @@ from openedx.core.djangolib.js_utils import (
                   <input name="name" id="ccx_name" placeholder="${_('Name your CCX')}"/><br/>
                 </div>
                 <div class="field">
-                  <button id="create-ccx" type="submit">${_('Create a new Custom Course for {platform_name}').format(platform_name=settings.PLATFORM_NAME)}</button>
+                  <button id="create-ccx" type="submit">${_('Create a new Custom Course')}</button>
                 </div>
               </form>
           </div>
@@ -68,6 +67,9 @@ from openedx.core.djangolib.js_utils import (
             <li class="nav-item">
               <button type="button" class="btn-link" data-section="grading_policy">${_("Grading Policy")}</button>
             </li>
+            <li class="nav-item">
+              <button type="button" class="btn-link" data-section="course_name">${_("Course Name")}</button>
+            </li>
           </ul>
           <section id="membership" class="idash-section" aria-label="${_('Batch Enrollment')}">
             <%include file="enrollment.html" args="" />
@@ -80,6 +82,9 @@ from openedx.core.djangolib.js_utils import (
           </section>
           <section id="grading_policy" class="idash-section" aria-label="${_('Grading Policy')}">
             <%include file="grading_policy.html" args="" />
+          </section>
+          <section id="course_name" class="idash-section" aria-label="${_('Course Name')}">
+            <%include file="course_name.html" args="" />
           </section>
           %endif
 
