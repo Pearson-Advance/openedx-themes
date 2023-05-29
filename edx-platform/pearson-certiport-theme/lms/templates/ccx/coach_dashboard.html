@@ -2,7 +2,6 @@
 <%inherit file="/main.html" />
 <%namespace name='static' file='/static_content.html'/>
 <%!
-from django.conf import settings
 from django.utils.translation import gettext as _
 from django.urls import reverse
 from openedx.core.djangolib.js_utils import (
@@ -24,6 +23,7 @@ from openedx.core.djangolib.js_utils import (
 <section class="container">
   <div class="instructor-dashboard-wrapper-2">
         <main id="main" aria-label="Content" tabindex="-1">
+        %if not user.is_staff:
         <section class="instructor-dashboard-content-2" id="ccx-coach-dashboard-content" aria-labelledby="header-ccx-dashboard">
           <h2 class="hd hd-2" id="header-ccx-dashboard">${_("CCX Coach Dashboard")}</h2>
 
@@ -48,7 +48,7 @@ from openedx.core.djangolib.js_utils import (
                   <input name="name" id="ccx_name" placeholder="${_('Name your CCX')}"/><br/>
                 </div>
                 <div class="field">
-                  <button id="create-ccx" type="submit">${_('Create a new Custom Course for {platform_name}').format(platform_name=settings.PLATFORM_NAME)}</button>
+                  <button id="create-ccx" type="submit">${_('Create a new Custom Course')}</button>
                 </div>
               </form>
           </div>
@@ -68,6 +68,9 @@ from openedx.core.djangolib.js_utils import (
             <li class="nav-item">
               <button type="button" class="btn-link" data-section="grading_policy">${_("Grading Policy")}</button>
             </li>
+            <li class="nav-item">
+              <button type="button" class="btn-link" data-section="course_name">${_("Course Name")}</button>
+            </li>
           </ul>
           <section id="membership" class="idash-section" aria-label="${_('Batch Enrollment')}">
             <%include file="enrollment.html" args="" />
@@ -81,9 +84,16 @@ from openedx.core.djangolib.js_utils import (
           <section id="grading_policy" class="idash-section" aria-label="${_('Grading Policy')}">
             <%include file="grading_policy.html" args="" />
           </section>
+          <section id="course_name" class="idash-section" aria-label="${_('Course Name')}">
+            <%include file="course_name.html" args="" />
+          </section>
           %endif
 
       </section>
+      %endif
+      %if user.is_staff:
+      <h2 class="hd hd-2" id="header-ccx-dashboard">${_("Global Staff cannot create CCXs.")}</h2>
+      %endif
         </main>
   </div>
 </section>
