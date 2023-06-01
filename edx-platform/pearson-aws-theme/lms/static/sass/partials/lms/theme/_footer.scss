@@ -9,6 +9,12 @@
     .wrapper-logo {
       margin: 15px;
       float: right;
+
+      a img {
+        width: 120px;
+        height: auto;
+        padding-top: 0;
+      }
     }
   }
 }
