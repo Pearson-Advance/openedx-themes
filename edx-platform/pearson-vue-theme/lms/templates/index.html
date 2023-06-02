@@ -1,0 +1,43 @@
+<%page expression_filter="h"/>
+<%inherit file="main.html" />
+<%namespace name='static' file='static_content.html'/>
+<%!
+from django.utils.translation import ugettext as _
+%>
+
+<div class="homepage-content">
+  <div class="info-container">
+    <img class="info-logo" src="${static.url('images/CertPREP_Logo.png')}">
+    <div class="info">
+      <h1 class="info-title">
+        ${_("Introducing the ultimate training solution")}
+      </h1>
+      <p class="info-description">
+        ${_("A comprehensive learning toolkit that saves trainers time and money.")}
+      </p>
+    </div>
+    <div class="buttons-container">
+      <a class="btn btn-primary" href="https://www.mindhubpro.com/shop/courseware" role="button" target="_blank">${_("Explore our catalog")}</a>
+      <a class="btn btn-primary" href="/login" role="button">${_("Sign In")}</a>
+    </div>
+  </div>
+  <div class="video-container">
+    <script>
+      function openVideoModal() {
+        const modal = document.getElementById("videoModal");
+        modal.style.display = "flex";
+      }
+
+      function closeVideoModal(e) {
+        modal = document.getElementById("videoModal");
+        iframe = document.getElementById("videoModalIframe");
+        iframe.src = iframe.src;
+        modal.style.display = "none";
+      }
+    </script>
+    <img src="${static.url('images/CertPREP_homepage_laptop.png')}" onclick="openVideoModal()">
+  </div>
+</div>
+<div class="video-modal" id="videoModal" onclick="closeVideoModal()">
+  <iframe id="videoModalIframe" src="https://player.vimeo.com/video/578134840?h=198d342005&title=0&byline=0&portrait=0">
+</div>
