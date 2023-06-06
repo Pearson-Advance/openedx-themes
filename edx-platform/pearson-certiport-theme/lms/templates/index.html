@@ -1,0 +1,35 @@
+<%page expression_filter="h"/>
+<%inherit file="main.html" />
+<%namespace name='static' file='static_content.html'/>
+<%!
+from django.utils.translation import ugettext as _
+%>
+
+<div class="login-container">
+    <img class="signin-logo" src="/static/pearson-certiport-theme/images/certprep-logo.png">
+  <div class="signin-container">
+    <div class="toggle-form">
+      <h1>${_("Welcome!")}</h1>
+      <span class="text">${_("Sign in or create an account to access your Certiport Learning Products.")}</span>
+    </div>
+    <div class="login-providers">
+      <a href="/login">
+        <button class="button-vue">
+          <span aria-hidden="true">${_("Continue")}</span>
+          <span class="icon fa fa-arrow-right"></span>
+        </button>
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+#content.content-wrapper.main-container {
+  margin-top: 0;
+  background: url('/static/pearson-certiport-theme/images/certprep-background.jpg');
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+</style>
