@@ -1,0 +1,16 @@
+// Colors
+$payment-button-color: #fcfcfc;
+
+.btn-success {
+    border-color: darken($brand-primary, 10%);
+    background: $brand-primary;
+    color: $payment-button-color;
+
+    &:hover,
+    &.is-hovered,
+    &:focus,
+    &.is-focused {
+        border-color: darken($brand-primary, 20%);
+        background: darken($brand-primary, 10%);
+    }
+}
