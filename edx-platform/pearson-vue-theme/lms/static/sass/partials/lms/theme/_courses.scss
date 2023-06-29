@@ -718,3 +718,13 @@ div.content-wrapper.main-container div.container div.home {
     }
   }
 }
+
+.courses-container .courses .course .course-info {
+  display: none !important;
+}
+
+@media (max-width: 540px) {
+  .courses {
+    width: 100%;
+  }
+}
