@@ -59,24 +59,6 @@
                             </div>
                         {% endif %}
                         <div class="col-md-{% if line_data.enrollment_code %}1{% else %}5{% endif %} col-xs-12 product-prices pull-right">
-                            {% if line_data.enrollment_code %}
-                                <label class="product-price-label text-muted">{% trans 'Price' as tmsg %}{{ tmsg | force_escape }}</label>
-                            {% endif %}
-
-                            {% if line_data.line.has_discount %}
-                                <div class="discount">
-                                    <div class="benefit">
-                                        {% filter force_escape %}
-                                        {% blocktrans with benefit_value=line_data.benefit_value %}
-                                            {{ benefit_value }} off
-                                        {% endblocktrans %}
-                                        {% endfilter %}
-                                    </div>
-                                    <div class="old-price">
-                                        {{ line_data.line.line_price_incl_tax|currency:line_data.line.price_currency }}
-                                    </div>
-                                </div>
-                            {% endif %}
                             <div class="price {% if line_data.line.has_discount %}discounted{% endif %}">
                                 {{ line_data.line.line_price_incl_tax_incl_discounts|currency:line_data.line.price_currency }}
                             </div>
