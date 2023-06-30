@@ -35,7 +35,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
              ${_("Courses")}
         </a>
       </div>
-      % if show_program_listing:
+      % if show_program_listing and configuration_helpers.get_value('SHOW_PROGRAMS_HEADER_TAB', True):
         <div class="mobile-nav-item hidden-mobile nav-item nav-tab">
           <a class="${'active ' if reverse('program_listing_view') in request.path else ''}tab-nav-link" href="${reverse('program_listing_view')}"
              aria-current="${'page' if reverse('program_listing_view') == request.path else 'false'}">
