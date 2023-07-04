@@ -1,0 +1,140 @@
+/* lms-main-v1.css | http://lbs.localhost:18000/static/pearson-lbs-theme/css/lms-main-v1.css */
+
+.course-info header.course-profile {
+  /* box-shadow: inset 0 1px 5px 0 rgba(0,0,0,0.1); */
+  border: none;
+  box-shadow: none;
+  background-color: $gray;
+}
+
+.course-info header.course-profile .intro-inner-wrapper {
+  border: none;
+  background: transparent;
+  padding-bottom: 60px;
+}
+
+.course-info header.course-profile .intro-inner-wrapper > div.table {
+  display: flex;
+  flex-direction: column;
+}
+
+.course-info
+  header.course-profile
+  .intro-inner-wrapper
+  .intro
+  > .heading-group
+  h1 {
+  text-shadow: none;
+  color: white;
+}
+
+.course-info
+  header.course-profile
+  .intro-inner-wrapper
+  .intro
+  > .heading-group {
+  border: none;
+  box-shadow: none;
+  text-align: center;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.course-info header.course-profile .intro-inner-wrapper .intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  padding-top: 75px;
+}
+
+.course-info header.course-profile .intro-inner-wrapper .intro .main-cta {
+  width: fit-content;
+}
+
+.course-info header.course-profile .intro-inner-wrapper .media {
+  margin: auto;
+  width: 1100px;
+}
+
+.course-info .details p {
+  margin: 0;
+}
+
+/* Element | http://lbs.localhost:18000/courses/course-v1:edX+DemoX+Demo_Course/about */
+
+.important-dates {
+  list-style: none;
+  list-style: none;
+  margin: 0;
+  padding: 0 10px;
+  border-bottom: 1px dotted #c8c8c8;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  flex-direction: row;
+  padding: 0;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  padding: 20px 0;
+  width: 100%;
+}
+
+/* Element | http://lbs.localhost:18000/courses/course-v1:edX+DemoX+Demo_Course/about */
+
+.fa-info-circle {
+  float: left;
+}
+
+/* Element | http://lbs.localhost:18000/courses/course-v1:edX+DemoX+Demo_Course/about */
+
+li.important-dates-item {
+  /* gap: 10px; */
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  color: white;
+  padding-bottom: 5px;
+}
+
+/* Element | http://lbs.localhost:18000/courses/course-v1:edX+DemoX+Demo_Course/about */
+
+.container {
+  /* padding 40px 30px 120px 30px: ; */
+  color: black;
+  background: white;
+  width: 100%;
+  margin: 0;
+  max-width: none;
+  padding: 40px 40px 70px 40px;
+}
+
+header.course-profile {
+  background-color: $dark-gray;
+}
+
+/* Element | http://lbs.localhost:18000/courses/course-v1:edX+DemoX+Demo_Course/about */
+
+/* Element | http://lbs.localhost:18000/courses/course-v1:edX+DemoX+Demo_Course/about */
+
+.main-container .course-info .container .details {
+  width: 100% !important;
+  text-align: left;
+}
+
+/* Element | http://lbs.localhost:18000/courses/course-v1:edX+DemoX+Demo_Course/about */
+
+.details > div {
+  text-align: left;
+  font-family: Lato;
+}
+
+/* Element | http://lbs.localhost:18000/courses/course-v1:edX+DemoX+Demo_Course/about */
+
+.about > h2 {
+  font-family: Lato;
+}
+
+.main-container .course-info .container .details section,
+.main-container .course-info .container .details article {
+  background-color: white;
+}
