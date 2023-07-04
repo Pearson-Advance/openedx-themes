@@ -1,0 +1,13 @@
+$light-gray: #e8e6e5;
+$gray: #6a6d6d;
+$dark-gray: #4e5759;
+$lbs-blue: #001E62;
+
+// Theme fonts
+$font-family-sans-serif: "Lato", "Helvetica", sans-serif;
+$font-family-serif: "Lato", "Helvetica", sans-serif;
+
+// Initialize the Open edX Bootstrap theme
+@import 'edx-bootstrap/sass/open-edx/theme';
+@import url("https://fonts.googleapis.com/css?family=Lato:boldLato:bold,normal");
+@import url("https://fonts.googleapis.com/css?family=Lato:boldLato:bold,normal");

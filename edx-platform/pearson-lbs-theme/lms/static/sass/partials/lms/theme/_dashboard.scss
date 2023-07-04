@@ -1,0 +1,471 @@
+.listing-courses {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+
+  // Limit to maximum 4 columns
+  @media screen and (min-width: 992px) {
+    grid-template-columns: repeat(4, minmax(300px, 1fr));
+  }
+
+  .course-item {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column; // Display items vertically
+
+    .course-container {
+      flex: 1; // Fill remaining vertical displa
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .course-image {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+      }
+
+      .course-title {
+        margin: 10px 0;
+
+        a {
+          text-align: left !important;
+          font-weight: bold;
+        }
+      }
+
+      .course-info {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+
+        span {
+          color: white !important;
+        }
+      }
+
+      .wrapper-course-actions {
+        display: flex;
+        justify-content: flex-end;
+
+        .wrapper-action-more {
+          position: relative;
+
+          .action.action-more {
+            border-radius: 0;
+            background-color: transparent !important;
+
+            &:hover {
+              background-color: transparent !important;
+              border-color: white;
+            }
+          }
+
+          .actions-dropdown {
+            position: absolute;
+            top: 100% !important;
+            left: 0 !important;
+            background-color: #fff !important;
+            border: none !important;
+            border-radius: 0 !important;
+            padding: 0 !important;
+            display: none;
+            width: 99% !important;
+
+            ul {
+              padding: 0 !important;
+              margin: 0 !important;
+              border: none !important;
+              border-radius: 0 !important;
+
+              &::before,
+              &::after {
+                content: none !important;
+                display: none !important;
+              }
+
+              a {
+                width: 100% !important;
+                padding: 5px !important;
+                border-radius: 0 !important;
+
+                &:hover {
+                  background-color: $dark-gray;
+                  color: white !important;
+                  border-radius: 0 !important;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .continue-button {
+        margin-top: 10px;
+      }
+
+      .course-target-link {
+        text-decoration: none;
+        color: #333;
+        width: 100%;
+      }
+    }
+  }
+
+  // Additional styles for responsiveness
+  @media screen and (min-width: 1200px) {
+    // Scale down to 2 columns
+    grid-template-columns: repeat(3, minmax(300px, 354px));
+  }
+
+  @media screen and (max-width: 1200px) {
+    // Scale down to 2 columns
+    grid-template-columns: repeat(2, minmax(150px, 1fr));
+    padding: 0 50px !important;
+    box-sizing: border-box;
+
+    .course .details .wrapper-course-image {
+      display: block !important;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    // Scale down to 1 column
+    grid-template-columns: 1fr;
+    padding: 0 15px !important;
+    box-sizing: border-box;
+  }
+}
+
+.dashboard
+  .main-container
+  .my-courses
+  .course
+  .details
+  .wrapper-course-details
+  .wrapper-course-info-actions
+  .wrapper-course-info-row {
+  flex-direction: column;
+  align-items: center;
+}
+.dashboard .main-container .my-courses .course .details {
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.dashboard .main-container .my-courses .course .details .wrapper-course-image {
+    width: 100%;
+    margin: 0;
+}
+
+.dashboard .main-container .my-courses .course .details .wrapper-course-details .wrapper-course-info-actions .continue-button {
+    margin: auto;
+}
+
+.dashboard
+  .main-container
+  .my-courses
+  .course
+  .details
+  .wrapper-course-details
+  .wrapper-course-info-actions {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.dashboard .main-container .my-courses .course .details .wrapper-course-image {
+  margin-right: 0;
+  width: 100%;
+}
+@media (min-width: 1200px) {
+  .wrapper-messages-primary .message.message-upsell .wrapper-extended {
+    flex-direction: column;
+  }
+}
+.dashboard
+  .main-container
+  .my-courses
+  .course
+  .details
+  .wrapper-course-image
+  .cover
+  .course-image,
+.dashboard
+  .main-container
+  .my-courses
+  .course
+  .details
+  .wrapper-course-image
+  a.fade-cover
+  .course-image {
+  height: 165px;
+  width: 100%;
+}
+
+.dashboard
+  .main-container
+  .my-courses
+  .course
+  .details {
+  padding: 0;
+}
+
+.dashboard .main-container .my-courses .listing-courses .course-item {
+  background: $lbs-blue;
+}
+
+
+/* lms-main-v1.css | http://lbs.localhost:18000/static/pearson-lbs-theme/css/lms-main-v1.css */
+
+.dashboard .main-container .my-courses .listing-courses .course-item .course-container {
+  border: none;
+  border-radius: 0;
+}
+
+.dashboard .main-container .my-courses .listing-courses .course-item {
+  border-radius: 0;
+}
+
+.dashboard .main-container .my-courses .course .details .wrapper-course-image {
+  height: 200px;
+  max-height: none;
+}
+
+.dashboard .main-container .my-courses .course .details .wrapper-course-details .course-title {
+  /* text-align: center; */
+  margin-bottom: 40px;
+  padding: 0;
+}
+
+.dashboard .main-container .my-courses .course .details .wrapper-course-details {
+  /* padding: 0; */
+  padding: 0 25px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.dashboard .main-container .my-courses .course .details .wrapper-course-details .wrapper-course-info-actions .wrapper-course-info-row .course-info {
+  /* min-width: 10em; */
+  min-width: auto;
+  color: white;
+}
+
+.dashboard .main-container .my-courses .course .details .wrapper-course-details .wrapper-course-info-actions .wrapper-course-info-row .wrapper-course-actions {
+  /* flex-grow: 1; */
+  /* flex-shrink: 0; */
+  margin: 0;
+  width: 101%;
+}
+
+.dashboard .main-container .my-courses .course .details .course-actions .wrapper-action-more .action-more, .dashboard .main-container .my-courses .course .details .course-actions .entitlement-actions-wrapper .action-more, .entitlement-actions-wrapper .dashboard .main-container .my-courses .course .details .course-actions .wrapper-action-more .entitlement-action-more, .dashboard .main-container .my-courses .course .details .course-actions .entitlement-actions-wrapper .entitlement-action-more {
+  /* font-size: 14px; */
+  /* background: #fff; */
+  /* line-height: 16px; */
+  margin: 0;
+  width: 99%;
+  min-width: auto;
+  max-width: none;
+  float: initial;
+}
+
+footer#footer-edx-v3 .about-links, footer#footer-edx-v3 .legal-links, footer#footer-edx-v3 .social-media-links, footer#footer-edx-v3 .mobile-app-links, .modal-settings-language .list-input, .modal-settings-language .list-actions, .dashboard .main-container .my-courses .listing-courses, .dashboard .main-container .my-courses .course .details .course-actions .wrapper-action-more .actions-dropdown, .dashboard .main-container .my-courses .course .details .course-actions .entitlement-actions-wrapper .actions-dropdown, .entitlement-actions-wrapper .dashboard .main-container .my-courses .course .details .course-actions .wrapper-action-more .entitlement-actions-dropdown, .dashboard .main-container .my-courses .course .details .course-actions .entitlement-actions-wrapper .entitlement-actions-dropdown, .dashboard .main-container .my-courses .course .details .course-actions .wrapper-action-more .actions-dropdown .actions-dropdown-list, .dashboard .main-container .my-courses .course .details .course-actions .entitlement-actions-wrapper .actions-dropdown .actions-dropdown-list, .entitlement-actions-wrapper .dashboard .main-container .my-courses .course .details .course-actions .wrapper-action-more .entitlement-actions-dropdown .actions-dropdown-list, .dashboard .main-container .my-courses .course .details .course-actions .entitlement-actions-wrapper .entitlement-actions-dropdown .actions-dropdown-list, .entitlement-actions-wrapper .entitlement-actions-dropdown .dashboard .main-container .my-courses .course .details .course-actions .wrapper-action-more .actions-dropdown .entitlement-actions-dropdown-list, .entitlement-actions-wrapper .dashboard .main-container .my-courses .course .details .course-actions .wrapper-action-more .entitlement-actions-dropdown .entitlement-actions-dropdown-list, .dashboard .main-container .my-courses .course .details .course-actions .entitlement-actions-wrapper .entitlement-actions-dropdown .entitlement-actions-dropdown-list, .status-verification .list-actions, .find-courses .search-facets .facet-list, .view-survey .message.submission-error .message-copy, .view-survey .list-input, .verification-process .list-actions, .verification-process .list-steps, .verification-process .progress-steps, .verification-process .list-controls, .verification-process .list-fields, .verification-process .list-nav, .verification-process .list-help, .verification-process .list-faq, .verification-process .nav-wizard, .verification-process .list-reqs, .verification-process .review-tasks, .verification-process .list-tips, .verification-process .wrapper-photos, .verification-process .field-group, .verification-process .list-info, .shopping-cart .steps, .courses-container .courses .courses-listing, .view-teams .edit-members {
+  width: 100%;
+}
+
+.dashboard .main-container .my-courses .course .details .wrapper-course-image .cover, .dashboard .main-container .my-courses .course .details .wrapper-course-image a.fade-cover {
+  height: 100%;
+}
+
+.dashboard .main-container .my-courses .course .details .wrapper-course-image .cover .course-image, .dashboard .main-container .my-courses .course .details .wrapper-course-image a.fade-cover .course-image, .dashboard .main-container .my-courses .course .details .wrapper-course-image a.fade-cover .course-image {
+  height: 100%;
+  object-fit: cover;
+}
+
+.dashboard .main-container .my-courses .course .details .wrapper-course-details .course-title a, .dashboard .main-container .my-courses .course .details .wrapper-course-details .course-title span {
+  color: white;
+  font-size: 18px;
+}
+
+.dashboard .main-container .my-courses .course .details .wrapper-course-details .course-info .info-date-block-container {
+  color: white;
+}
+.listing-courses {
+  width: fit-content;
+}
+
+/* Element | http://lbs.localhost:18000/dashboard */
+
+.wrapper-header-courses {
+  width: fit-content;
+}
+
+/* Element | http://lbs.localhost:18000/dashboard */
+
+#my-courses {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Inline #5 | http://lbs.localhost:18000/dashboard */
+
+.course-actions {
+  width: 100%;
+}
+
+.wrapper-action-more {
+  width: 100%;
+}
+
+.continue-button {
+  margin: 0;
+  width: 100%;
+}
+.course-target-link.enter-course {
+  margin: 0;
+  width: 100%;
+}
+
+.wrapper-action-more {
+  position: relative;
+  box-sizing: border-box;
+}
+
+
+/* lms-main-v1.css | http://lbs.localhost:18000/static/pearson-lbs-theme/css/lms-main-v1.css */
+
+.dashboard .main-container .my-courses .course .details .course-actions .wrapper-action-more .action-more, .dashboard .main-container .my-courses .course .details .course-actions .entitlement-actions-wrapper .action-more, .entitlement-actions-wrapper .dashboard .main-container .my-courses .course .details .course-actions .wrapper-action-more .entitlement-action-more, .dashboard .main-container .my-courses .course .details .course-actions .entitlement-actions-wrapper .entitlement-action-more {
+  padding: 6px;
+}
+
+.verification-process .report-receipt-provider .provider-buttons-logos .complete-order button:hover, .dashboard .main-container .my-courses .course .details .enter-course:hover, .wrapper-messages-primary .message.message-upsell .action-view-consent:hover, .wrapper-messages-primary .message.message-status .verification-cta .btn:hover, .wrapper-messages-primary .message.message-status .credit-action .credit-btn:hover, .btn-secondary:hover, .account-settings-sections .section .account-settings-section-body .u-field .field .u-field-link:hover, .account-settings-sections .section .account-settings-section-body .u-field .u-field-order .u-field-order-link .u-field-link:hover, .account-settings-sections .section .account-settings-section-body .u-field .u-field-order-lines .u-field-order-link .u-field-link:hover, .account-settings-sections .section .account-deletion-details .btn-outline-primary:hover, .account-settings-sections .section .account-deletion-details .delete-confirmation-wrapper .paragon__modal-footer .paragon__btn-outline-primary:hover, .account-settings-message .alert-message .alert-actions .btn-alert-secondary:hover, .courseware-bookmarks-button .bookmarks-list-button:hover, .verification-process .report-receipt-provider .provider-buttons-logos .complete-order button:focus, .dashboard .main-container .my-courses .course .details .enter-course:focus, .wrapper-messages-primary .message.message-upsell .action-view-consent:focus, .wrapper-messages-primary .message.message-status .verification-cta .btn:focus, .wrapper-messages-primary .message.message-status .credit-action .credit-btn:focus, .btn-secondary:focus, .account-settings-sections .section .account-settings-section-body .u-field .field .u-field-link:focus, .account-settings-sections .section .account-settings-section-body .u-field .u-field-order .u-field-order-link .u-field-link:focus, .account-settings-sections .section .account-settings-section-body .u-field .u-field-order-lines .u-field-order-link .u-field-link:focus, .account-settings-sections .section .account-deletion-details .btn-outline-primary:focus, .account-settings-sections .section .account-deletion-details .delete-confirmation-wrapper .paragon__modal-footer .paragon__btn-outline-primary:focus, .account-settings-message .alert-message .alert-actions .btn-alert-secondary:focus, .courseware-bookmarks-button .bookmarks-list-button:focus {
+  padding: 6px;
+}
+
+.dashboard .main-container .my-courses .course .details .enter-course {
+  margin: 0;
+  margin-bottom: 5px;
+  padding: 6px;
+  font-size: 14px;
+}
+
+.sr, .sr-only {
+  font-size: 14px;
+}
+
+.dashboard .main-container .my-courses .course .details .wrapper-course-details .wrapper-course-info-actions .wrapper-course-info-row .course-info {
+  margin-bottom: 5px;
+}
+
+.dashboard .main-container .my-courses .listing-courses .course-item {
+  margin: 0;
+}
+
+.listing-courses {
+  /* grid-gap: 20px; */
+  grid-gap: 30px;
+  justify-content: center;
+}
+
+.dashboard .main-container {
+  padding: 0;
+  padding-bottom: 100px;
+}
+
+#my-courses {
+  margin: auto;
+}
+
+.dashboard .main-container .my-courses .course .details .wrapper-course-image .cover .course-image, .dashboard .main-container .my-courses .course .details .wrapper-course-image a.fade-cover .course-image, .dashboard .main-container .my-courses .course .details .wrapper-course-image a.fade-cover .course-image, .dashboard .main-container .my-courses .course .details .wrapper-course-image a.fade-cover .course-image {
+  padding: 0;
+  border-radius: 0;
+}
+
+.dashboard .main-container .my-courses .wrapper-header-courses .header-courses {
+  color: black;
+  font-size: 42px;
+  margin: 0;
+  height: auto;
+  min-height: auto;
+  max-height: none;
+  line-height: 20px;
+}
+/* Element | http://lbs.localhost:18000/dashboard */
+
+.header-courses {
+  all: initial;
+  color: black;
+  font-size: 42px;
+  margin: 0;
+  height: auto;
+  min-height: auto;
+  max-height: none;
+  line-height: 20px;
+}
+
+
+#dashboard-main .side-container {
+  display: none;
+}
+
+/* Element | http://lbs.localhost:18000/dashboard */
+
+.dashboard .main-container .my-courses .wrapper-header-courses {
+  all: initial;
+  margin-bottom: 40px ;
+  margin-top: 80px;
+}
+
+/* Element | http://lbs.localhost:18000/dashboard */
+
+.header-courses {
+  all: initial;
+  font-size: 42px;
+  font-family: $font-family-sans-serif;
+}
+
+.dashboard .main-container .my-courses .course .details .enter-course {
+  background: #001e62;
+  color: white;
+  border: none;
+}
+
+.verification-process .report-receipt-provider .provider-buttons-logos .complete-order button:hover,
+.dashboard .main-container .my-courses .course .details .enter-course:hover,
+.wrapper-messages-primary .message.message-upsell .action-view-consent:hover,
+.wrapper-messages-primary .message.message-status .verification-cta .btn:hover,
+.wrapper-messages-primary .message.message-status .credit-action .credit-btn:hover,
+.btn-secondary:hover,
+.account-settings-sections .section .account-settings-section-body .u-field .field .u-field-link:hover,
+.account-settings-sections .section .account-settings-section-body .u-field .u-field-order .u-field-order-link .u-field-link:hover,
+.account-settings-sections .section .account-settings-section-body .u-field .u-field-order-lines .u-field-order-link .u-field-link:hover,
+.account-settings-sections .section .account-settings-section-body .u-field .u-field-order-lines .u-field-order-link .u-field-link:hover,
+.account-settings-sections .section .account-deletion-details .btn-outline-primary:hover,
+.account-settings-sections .section .account-deletion-details .delete-confirmation-wrapper .paragon__modal-footer .paragon__btn-outline-primary:hover,
+.account-settings-message .alert-message .alert-actions .btn-alert-secondary:hover,
+.courseware-bookmarks-button .bookmarks-list-button:hover,
+.verification-process .report-receipt-provider .provider-buttons-logos .complete-order button:focus,
+.dashboard .main-container .my-courses .course .details .enter-course:focus,
+.wrapper-messages-primary .message.message-upsell .action-view-consent:focus,
+.wrapper-messages-primary .message.message-status .verification-cta .btn:focus,
+.wrapper-messages-primary .message.message-status .credit-action .credit-btn:focus,
+.btn-secondary:focus,
+.account-settings-sections .section .account-settings-section-body .u-field .field .u-field-link:focus,
+.account-settings-sections .section .account-settings-section-body .u-field .u-field-order .u-field-order-link .u-field-link:focus,
+.account-settings-sections .section .account-settings-section-body .u-field .u-field-order-lines .u-field-order-link .u-field-link:focus,
+.account-settings-sections .section .account-settings-section-body .u-field .u-field-order-lines .u-field-order-link .u-field-link:focus,
+.account-settings-sections .section .account-deletion-details .btn-outline-primary:focus,
+.account-settings-sections .section .account-deletion-details .delete-confirmation-wrapper .paragon__modal-footer .paragon__btn-outline-primary:focus,
+.account-settings-message .alert-message .alert-actions .btn-alert-secondary:focus,
+.courseware-bookmarks-button .bookmarks-list-button:focus {
+ padding:6px;
+ background: black;
+ border: none;
+}
+
+.dashboard .main-container .my-courses .course .details .wrapper-course-details .course-title a {
+  font-weight: bold;
+}

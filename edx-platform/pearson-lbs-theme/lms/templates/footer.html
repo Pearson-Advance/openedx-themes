@@ -1,0 +1,62 @@
+## mako
+<%page expression_filter="h"/>
+<%!
+  from django.urls import reverse
+  from django.utils.translation import gettext as _
+  from lms.djangoapps.branding.api import get_footer
+  from openedx.core.djangoapps.lang_pref.api import footer_language_selector_is_enabled
+%>
+<% footer = get_footer(is_secure=is_secure) %>
+<% icp_license_info = getattr(settings, 'ICP_LICENSE_INFO', {})%>
+<%namespace name='static' file='static_content.html'/>
+
+  <div class="wrapper wrapper-footer">
+    <footer id="footer-openedx" class="grid-container"
+      ## When rendering the footer through the branding API,
+      ## the direction may not be set on the parent element,
+      ## so we set it here.
+      % if bidi:
+        dir=${bidi}
+      % endif
+    >
+      <div class="colophon">
+        <nav class="nav-colophon" aria-label="${_('About')}">
+          <ol>
+            <li><a href="" target="_blank">${_("About")}</a></li>
+            <li><a href="" target="_blank">${_("Contact")}</a></li>
+              % if user.is_authenticated:
+              <li><a href="${marketing_link('EULA')}" target="_blank">${_("Terms of Service")}</a></li>
+            % else:
+              <li><a href="${marketing_link('TOS')}" target="_blank">${_("Terms of Service")}</a></li>
+            % endif
+            <li><a href="${marketing_link('PRIVACY')}" target="_blank">${_("Privacy Policy")}</a></li>
+            <li><a href="${marketing_link('COOKIES')}" target="_blank">${_("Cookie Policy")}</a></li>
+          </ol>
+        </nav>
+
+      ## Please leave this link and use one of the logos provided
+      ## The OpenEdX link may be hidden when this view is served
+      ## through an API to partner sites (such as marketing sites or blogs),
+      ## which are not technically powered by OpenEdX.
+      % if not hide_openedx_link:
+      <div class="footer-about-openedx">
+        <p>
+          <a href="${footer['openedx_link']['url']}">
+            <img src="/static/pearson-lbs-theme/images/openedx.svg" alt="${footer['openedx_link']['title']}" width="175" />
+          </a>
+        </p>
+      </div>
+      % endif
+    </footer>
+  </div>
+% if include_dependencies:
+  <%static:js group='base_vendor'/>
+  <%static:css group='style-vendor'/>
+  <%include file="widgets/segment-io.html" />
+  <%include file="widgets/segment-io-footer.html" />
+% endif
+% if footer_css_urls:
+  % for url in footer_css_urls:
+    <link rel="stylesheet" type="text/css" href="${url}"></link>
+  % endfor
+% endif

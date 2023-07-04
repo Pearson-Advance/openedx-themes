@@ -1,0 +1,12 @@
+@import 'landing';
+@import 'header';
+@import 'assets';
+@import 'dashboard';
+@import 'footer';
+@import 'courses';
+@import 'auth';
+@import 'course_details';
+
+[role="legal"] h2, h1 {
+    font-family: $font-family-sans-serif;
+}

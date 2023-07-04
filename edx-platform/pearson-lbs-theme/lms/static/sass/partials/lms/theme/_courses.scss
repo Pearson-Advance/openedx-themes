@@ -1,0 +1,29 @@
+main {
+    background-color: $light-gray;
+
+    .find-courses {
+        .courses-container {
+            display: flex;
+            background-color: $light-gray;
+
+            .courses {
+                margin: auto !important;
+                padding-top: 80px;
+
+                h1 {
+                    font-size: 42px;
+                }
+                .courses-listing {
+                    grid-template-columns: 1fr 1fr 1fr;
+                    align-items: center;
+
+                    .courses-listing-item:nth-child(2) {
+                        transform: scaleY(120%);
+                        margin-top: 50px;
+                        margin-bottom: 40px;
+                    }
+                }
+            }
+        }
+    }
+}
