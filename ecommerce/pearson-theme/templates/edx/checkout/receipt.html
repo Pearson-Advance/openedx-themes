@@ -118,15 +118,13 @@
         {% endif %}
       </div>
 
-      {% if show_receipt_cta_links %}
-        <div id="cta-nav-links" class="row">
-          <div class="col-xs-12 text-right">
-            <a class="dashboard-link nav-link" href="{{ order_dashboard_url }}">
-              {% trans "Go to dashboard" as tmsg %}{{ tmsg | force_escape }}
-            </a>
-          </div>
+      <div id="cta-nav-links" class="row">
+        <div class="col-xs-12 text-right">
+          <a class="dashboard-link nav-link" href="{{ order_dashboard_url }}">
+            {% trans "Go to dashboard" as tmsg %}{{ tmsg | force_escape }}
+          </a>
         </div>
-      {% endif %}
+      </div>
     </div>
   </div>
 {% endblock content %}

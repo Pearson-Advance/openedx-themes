@@ -9,6 +9,8 @@
     {% include 'oscar/partials/alert_messages.html' %}
 {% endif %}
 
+{% settings_value 'custom_settings' as custom_settings %}
+
 <div id="content-inner">
     {% block basket_form_main %}
         <form action="." method="post">
@@ -18,11 +20,6 @@
             {% for form, line_data in formset_lines_data %}
                 {% purchase_info_for_line request line_data.line as session %}
                 <div class="basket-items">
-                    {% if line_data.seat_type %}
-                        <p class="certificate_type">
-                            {% trans "Earn a valuable certificate to showcase the skills you learn in" as tmsg %}{{ tmsg | force_escape }}
-                        </p>
-                    {% endif %}
                     <div class="row">
                         <div class="col-md-2 col-sm-12 product-image">
                             {{ form.id }}
@@ -89,37 +86,40 @@
 
     <div class="total">
         <div class="row">
-            {% if show_voucher_form %}
-                {% block vouchers %}
-                    {% if basket.contains_a_voucher %}
-                        <div class="vouchers col-sm-7 col-xs-8">
-                            {% for voucher in basket.vouchers.all %}
-                                <p class="voucher">
-                                    {% filter force_escape %}
-                                        {% blocktrans with voucher_code=voucher.code %}
-                                            Coupon code {{ voucher_code }} applied
-                                        {% endblocktrans %}
-                                    {% endfilter %}
-                                <form action="{% url 'basket:vouchers-remove' pk=voucher.id %}" method="POST">
-                                    {% csrf_token %}
-                                    <button class="remove-voucher" type="submit"><i class="fa fa-times"></i>
-                                    </button>
-                                </form>
-                                </p>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {# Hide the entire section if a custom BasketView doesn't pass in a voucher form #}
-                        {% if voucher_form %}
-                            <div class="use-voucher col-sm-7 col-xs-8">
-                                <p id="voucher_form_link">
-                                    <a href="#voucher">{% trans "Apply a coupon code" as tmsg %}{{ tmsg | force_escape }}</a>
-                                </p>
-                                {% include 'oscar/basket/partials/add_voucher_form.html' %}
+            {# If hide_voucher_section is set to True, it will hide the voucher section no matter what. #}
+            {% if not custom_settings.hide_voucher_section %}
+                {% if show_voucher_form %}
+                    {% block vouchers %}
+                        {% if basket.contains_a_voucher %}
+                            <div class="vouchers col-sm-7 col-xs-8">
+                                {% for voucher in basket.vouchers.all %}
+                                    <p class="voucher">
+                                        {% filter force_escape %}
+                                            {% blocktrans with voucher_code=voucher.code %}
+                                                Coupon code {{ voucher_code }} applied
+                                            {% endblocktrans %}
+                                        {% endfilter %}
+                                    <form action="{% url 'basket:vouchers-remove' pk=voucher.id %}" method="POST">
+                                        {% csrf_token %}
+                                        <button class="remove-voucher" type="submit"><i class="fa fa-times"></i>
+                                        </button>
+                                    </form>
+                                    </p>
+                                {% endfor %}
                             </div>
+                        {% else %}
+                            {# Hide the entire section if a custom BasketView doesn't pass in a voucher form #}
+                            {% if voucher_form %}
+                                <div class="use-voucher col-sm-7 col-xs-8">
+                                    <p id="voucher_form_link">
+                                        <a href="#voucher">{% trans "Promotional Code" as tmsg %}{{ tmsg | force_escape }}</a>
+                                    </p>
+                                    {% include 'oscar/basket/partials/add_voucher_form.html' %}
+                                </div>
+                            {% endif %}
                         {% endif %}
-                    {% endif %}
-                {% endblock vouchers %}
+                    {% endblock vouchers %}
+                {% endif %}
             {% endif %}
 
             <div id="basket_totals" class="col-xs-4">
@@ -133,14 +133,19 @@
 
     <div class="row">
         <div class="col-sm-12">
-            {# Switch Basket view in between single and bulk purchase items #}
-            {% if partner_sku %}
-                <div class="pull-left basket-switch-link">
-                    <a href="/basket/add/?sku={{ partner_sku }}" class="btn btn-link">
-                        {{ switch_link_text }}
-                    </a>
-                </div>
-            {% endif %}
+            <div class="col-sm-12">
+                {# If hide_multiple_or_single_purchase_section is set to True, it will hide this section no matter what. #}
+                {% if not custom_settings.hide_multiple_or_single_purchase_section %}
+                    {# Switch Basket view in between single and bulk purchase items #}
+                    {% if partner_sku %}
+                        <div class="pull-left basket-switch-link">
+                            <a href="/basket/add/?sku={{ partner_sku }}" class="btn btn-link">
+                                {{ switch_link_text }}
+                            </a>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            </div>
 
             <div class="pull-right payment-buttons" data-basket-id="{{ basket.id }}">
                 {% if free_basket %}
@@ -169,21 +174,6 @@
                     {% endfor %}
                 {% endif %}
             </div>
-        </div>
-    </div>
-
-    <div class="row verification-note">
-        <div class="col-sm-12">
-            <span><i class="fa fa-exclamation-circle"></i></span>
-            {# Translators: <strong></strong> tags will bold the text within. Keep the tags and translate the text within. #}
-            {% trans "{strong_start}Note:{strong_end} To complete your enrollment, select Checkout or Checkout with PayPal." as tmsg %}
-            {% interpolate_html tmsg strong_start='<strong>'|safe strong_end='</strong>'|safe %}
-        </div>
-    </div>
-    <div class="row help">
-        <div class="col-sm-12">
-            <p><strong>{% trans "Have questions?" as tmsg %}{{ tmsg | force_escape }}</strong></p>
-            <a href="{{ support_url }}">{% trans "Please read our FAQs to view common questions about our certificates." as tmsg %}{{ tmsg | force_escape }}</a>
         </div>
     </div>
 </div>
