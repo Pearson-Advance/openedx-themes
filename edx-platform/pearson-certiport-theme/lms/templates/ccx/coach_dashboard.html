@@ -23,6 +23,7 @@ from openedx.core.djangolib.js_utils import (
 <section class="container">
   <div class="instructor-dashboard-wrapper-2">
         <main id="main" aria-label="Content" tabindex="-1">
+        %if not user.is_staff:
         <section class="instructor-dashboard-content-2" id="ccx-coach-dashboard-content" aria-labelledby="header-ccx-dashboard">
           <h2 class="hd hd-2" id="header-ccx-dashboard">${_("CCX Coach Dashboard")}</h2>
 
@@ -89,6 +90,10 @@ from openedx.core.djangolib.js_utils import (
           %endif
 
       </section>
+      %endif
+      %if user.is_staff:
+      <h2 class="hd hd-2" id="header-ccx-dashboard">${_("Global Staff cannot create CCXs.")}</h2>
+      %endif
         </main>
   </div>
 </section>
