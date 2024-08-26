@@ -6,20 +6,29 @@ from django.utils.translation import ugettext as _
 %>
 
 <div class="homepage-content">
+  <img class="info-logo-mobile" src="${static.url('images/CertPREP_Logo.png')}">
   <div class="info-container">
     <img class="info-logo" src="${static.url('images/CertPREP_Logo.png')}">
     <div class="info">
       <h1 class="info-title">
-        ${_("Introducing the ultimate training solution")}
+        ${_("Comprehensive online IT training with CertPREP by Pearson")}
       </h1>
       <p class="info-description">
-        ${_("A comprehensive learning toolkit that saves trainers time and money.")}
+        ${_("""Looking for a one-stop solution for technology-focused training and certification? CertPREP by Pearson is a comprehensive online IT
+        training solution for training centers, instructors, and learners with all the resources you need to succeed. Enjoy the convenience of
+        practice tests, training labs and videos all in one spot.""")}
       </p>
     </div>
-    <div class="buttons-container">
-      <a class="btn btn-primary" href="https://www.mindhubpro.com/shop/courseware" role="button" target="_blank">${_("Explore our catalog")}</a>
-      <a class="btn btn-primary" href="/login" role="button">${_("Sign In")}</a>
-    </div>
+    <section class="buttons-section-container">
+      <div class="buttons-section-signin-container">
+        <p>${_("Access my course.")}</p>
+        <button class="btn btn-primary" href="/login" role="button">${_("Log in Here")}</button>
+      </div>
+      <div class="buttons-section-catalog-container">
+        <p>${_("Looking for online IT training? See the CertPREP by Pearson course catalog.")}</p>
+        <button class="btn btn-primary" href="https://www.mindhubpro.com/shop/courseware" role="button" target="_blank">${_("View All Courses")}</button>
+      </div>
+    </section>
   </div>
   <div class="video-container">
     <script>
@@ -36,6 +45,7 @@ from django.utils.translation import ugettext as _
       }
     </script>
     <img src="${static.url('images/CertPREP_homepage_laptop.png')}" onclick="openVideoModal()">
+    <b>${_("Watch the CertPREP overview")}</b>
   </div>
 </div>
 <div class="video-modal" id="videoModal" onclick="closeVideoModal()">

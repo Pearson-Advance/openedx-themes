@@ -299,15 +299,14 @@ iframe.rocket-chat-view {
 }
 
 .homepage-content {
-  min-height: calc(100vh - 60px);
-  display: grid;
-  grid-template-columns: 40% 60%;
+  min-height: calc(100vh - 120px);
   margin-top: -20px;
+  display: flex;
+  flex-direction: row;
 
   &::before {
     content: '';
     position: absolute;
-    top: 70px;
     left: 0;
     height: 70%;
     width: 100%;
@@ -322,14 +321,16 @@ iframe.rocket-chat-view {
 
   .info-container {
     text-align: left;
+    line-height: 1.4em;
     display: flex;
     flex-direction: column;
     gap: 1em;
     padding-top: 60px;
+    width: 50%;
 
     .info-logo {
-      height: 70px;
-      width: 170px;
+      width: 200px;
+      margin-bottom: 1vh;
     }
 
     .info {
@@ -338,36 +339,81 @@ iframe.rocket-chat-view {
       .info-title {
         text-align: left;
         color: $vue-homepage-font-clr;
-        margin-bottom: 60px;
+        margin-bottom: 2vh;
         font-size: 36px;
+      }
+
+      .info-description {
+        margin-bottom: 2vh;
       }
     }
 
-    .buttons-container {
+    .buttons-section-container {
       display: flex;
-      gap: 1em;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+      align-content: flex-start;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      flex-direction: row;
 
-      a {
+      button {
         border: none;
-        font-weight: 300;
-        font-size: 14px;
-        padding: 12.5px 25px;
+        font-weight: 500;
+        font-size: 12px;
+        padding: 15px;
+        letter-spacing: 0.5px;
+        line-height: 1vh;
+      }
+
+      div,
+      .buttons-section-signin-container,
+      .buttons-section-catalog-container {
+        height: 100px;
+        margin: 5px;
+
+        p {
+          margin-bottom: 1vh;
+          font-weight: bold;
+        }
+      }
+
+      .buttons-section-signin-container {
+        margin: 5px 50px 5px 5px;
       }
     }
   }
 
   .video-container {
     display: flex;
-    justify-content: center;
     height: 70%;
-    align-items: center;
     align-self: end;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 
     img {
       cursor: pointer;
       width: clamp(500px, 50vw, 700px);
     }
+
+    b {
+      margin: 30px;
+    }
   }
+
+  .info-logo-mobile {
+    display: none;
+  }
+}
+
+// Hide the language selector as we are not currently using it.
+// In case we need to use it, we have to check the position inside the page,
+// since right now it is behind the background banner.
+.settings-language-form {
+  display: none;
 }
 
 .video-modal {
@@ -383,8 +429,7 @@ iframe.rocket-chat-view {
   background-color: rgba(0,0,0,0.4);
   padding-top: 5%;
   justify-content: center;
-  
-  
+
   iframe {
     width: 600px;
     height: 330px;
@@ -466,12 +511,11 @@ label[for=register-password]{
 
 @media (max-width: 850px) {
   .homepage-content {
-    grid-template-rows: auto 1fr;
-    grid-template-columns: auto;
-    margin-top: 0;
+    flex-direction: column;
 
     &::before {
       height: 45vw;
+      background-size: auto;
     }
 
     .info-container {
@@ -479,15 +523,34 @@ label[for=register-password]{
       padding: 20px;
       padding-top: 0;
       gap: 2em;
+      width: initial;
 
       .info-logo {
-        align-self: center;
-        height: 80px;
-        width: 180px;
+        display: none;
       }
 
       .info .info-title {
         margin-bottom: 0;
+      }
+
+      .buttons-section-container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: normal;
+        align-items: normal;
+        align-content: normal;
+        height: 300px;
+
+        div,
+        .buttons-section-signin-container,
+        .buttons-section-catalog-container {
+          text-align: center;
+        }
+
+        .buttons-section-signin-container {
+          margin: 0;
+        }
       }
     }
 
@@ -495,12 +558,24 @@ label[for=register-password]{
       align-items: initial;
       align-self: initial;
       padding: 20px;
-      height: max-content;
+      justify-content: initial;
 
       img {
         height: initial;
         width: 100%;
       }
+
+      b {
+        text-align: center;
+      }
+    }
+
+    .info-logo-mobile {
+      display: block;
+      z-index: 1;
+      width: 30%;
+      align-self: center;
+      margin: 20px;
     }
   }
 }
