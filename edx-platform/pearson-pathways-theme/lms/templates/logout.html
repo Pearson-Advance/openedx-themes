@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% load staticfiles theme_pipeline %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+
+    {% javascript 'main_vendor' %}
+</head>
+<body>
+</body>
+    <script type="text/javascript" src="{% static 'js/jquery.allLoaded.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/logout.js' %}"></script>
+
+    <div id="iframeContainer" style="visibility: hidden" data-redirect-url="{{ target }}">
+        {% for uri in logout_uris %}
+            <iframe src="{{ uri }}"></iframe>
+        {% endfor %}
+    </div>
+</html>
