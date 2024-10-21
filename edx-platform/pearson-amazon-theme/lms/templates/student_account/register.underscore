@@ -71,3 +71,7 @@
         </button>
     </div>
 </form>
+<script>
+    const fullname_field_label = document.querySelector('label[for="register-name"]');
+    fullname_field_label.textContent = "Company Name"
+</script>
