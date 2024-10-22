@@ -44,7 +44,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
         </div>
       % endif
     % endif
-    % if show_explore_courses:
+    % if show_explore_courses and configuration_helpers.get_value('SHOW_EXPLORE_COURSES', True):
       <div class="mobile-nav-item hidden-mobile nav-item nav-tab">
           <a class="tab-nav-link discover-new-link" href="${marketing_link('COURSES')}"
              aria-current="${'page' if '/courses' in request.path else 'false'}">
