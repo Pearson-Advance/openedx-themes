@@ -1,0 +1,376 @@
+<%page expression_filter="h"/>
+<%inherit file="/main.html" />
+<%namespace name='static' file='/static_content.html'/>
+<%!
+from django.utils.translation import ugettext as _
+
+from openedx.core.djangolib.markup import HTML
+from openedx.core.djangolib.js_utils import js_escaped_string
+
+%>
+<%def name="course_name()">
+ <% return _("{course_number} Courseware").format(course_number=course.display_number_with_default) %>
+</%def>
+<%block name="bodyclass">view-in-course view-courseware courseware ${course.css_class or ''}</%block>
+<%block name="title"><title>
+    % if section_title:
+${static.get_page_title_breadcrumbs(section_title, course_name())}
+    % else:
+${static.get_page_title_breadcrumbs(course_name())}
+    %endif
+</title></%block>
+
+<%block name="header_extras">
+% for template_name in ["image-modal"]:
+<script type="text/template" id="${template_name}-tpl">
+    <%static:include path="common/templates/${template_name}.underscore" />
+</script>
+% endfor
+<%
+  header_file = None
+%>
+</%block>
+
+<%block name="headextra">
+<%static:css group='style-course-vendor'/>
+<%static:css group='style-course'/>
+## Utility: Notes
+% if edx_notes_enabled:
+<%static:css group='style-student-notes'/>
+% endif
+
+<script type="text/javascript" src="${static.url('js/jquery.autocomplete.js')}" async></script>
+<script type="text/javascript" src="${static.url('js/src/tooltip_manager.js')}" async></script>
+
+<link href="${static.url('css/vendor/jquery.autocomplete.css')}" rel="preload" type="text/css" as="style">
+  ${HTML(fragment.head_html())}
+
+% if is_learning_mfe:
+  ## If this chromeless view is in an iframe in the learning microfrontend app
+  ## then add a base tag in the head (of the iframe document) to force links
+  ## in this iframe to navigate the parent window.
+  <base target="_parent">
+%endif
+
+## Expose the $$course_id variable for course-team-authored JS.
+## We assign it in the <head> so that it will definitely be
+## assigned before any in-XBlock JS is run.
+<script type="text/javascript">
+  var $$course_id = "${course.id | n, js_escaped_string}";
+</script>
+
+</%block>
+
+<%block name="js_extra">
+  <script type="text/javascript" src="${static.url('common/js/vendor/jquery.scrollTo.js')}" async></script>
+  <script type="text/javascript" src="${static.url('js/vendor/flot/jquery.flot.js')}" async></script>
+
+  <%static:js group='courseware'/>
+
+  % if enable_mathjax:
+    <%include file="/mathjax_include.html" args="disable_fast_preview=True"/>
+  % endif
+  % if staff_access:
+  	<%include file="xqa_interface.html"/>
+  % endif
+
+${HTML(fragment.foot_html())}
+
+</%block>
+
+<div class="course-wrapper chromeless">
+  <section class="course-content" id="course-content"\
+    % if enable_completion_on_view_service:
+      data-enable-completion-on-view-service="true" \
+    % else:
+      data-enable-completion-on-view-service="false" \
+    % endif
+    style="display: block; width: auto; margin: 0;"
+  >
+      <main id="main" aria-label="Content">
+        ${HTML(fragment.body_html())}
+      </main>
+  </section>
+</div>
+% if not is_learning_mfe:
+
+  % if course.show_calculator or edx_notes_enabled:
+    <nav class="nav-utilities ${"has-utility-calculator" if course.show_calculator else ""}" aria-label="${_('Course Utilities')}">
+      ## Utility: Notes
+      % if edx_notes_enabled:
+        <%include file="/edxnotes/toggle_notes.html" args="course=course"/>
+      % endif
+
+      ## Utility: Calc
+      % if course.show_calculator:
+        <%include file="/calculator/toggle_calculator.html" />
+      % endif
+    </nav>
+  % endif
+% else:
+  % if edx_notes_enabled:
+    <%include file="/edxnotes/toggle_notes.html" args="course=course"/>
+  % endif
+% endif
+
+% if is_learning_mfe:
+<script type="text/javascript">
+  (function() {
+    // If this view is rendered in an iframe within the learning microfrontend app
+    // it will report the height of its contents to the parent window when the
+    // document loads, window resizes, or DOM mutates.
+    if (window !== window.parent) {
+      document.body.className += ' view-in-mfe';
+      const extraHeight = 250;  // Set extra height value.
+      var lastHeight = window.offsetHeight + extraHeight; // Add extra height to avoid clipping.
+      var lastWidth = window.offsetWidth;
+      var contentElement = document.getElementById('content');
+
+      function dispatchResizeMessage(event) {
+        // Note: event is actually an Array of MutationRecord objects when fired from the MutationObserver
+        var isLoadEvent = event.type === 'load';
+        var newHeight = contentElement.offsetHeight + extraHeight;  // Add extra height to avoid clipping.
+        var newWidth = contentElement.offsetWidth;
+        if (!isLoadEvent && newWidth === lastWidth && newHeight === lastHeight) {
+            // Monitor when any anchor tag is clicked, it is checked to make sure
+            // it is referencing an element's id or name (not an external website). If
+            // the href attribute is an id or name, the location of the selected focus
+            // element is sent through its offset attribute. The offset will
+            // allow the page to scroll to the location of the focus element so
+            // that it is at the top of the page. Unique ids and names are
+            // required for proper scrolling.
+            $('a').on("click", function(event){
+              if ($(this).attr('href')[0] === "#") {
+                var targetId = $(this).attr('href');
+                var targetName = $(this).attr('href').slice(1);
+                // Checks if the target uses an id or name to focus and gets offset.
+                var targetOffset = $(targetId).offset() || $(document.getElementsByName(targetName)[0]).offset();
+                if (targetOffset) {
+                  event.preventDefault();
+                  window.parent.postMessage({"offset": targetOffset.top}, document.referrer);
+                }
+              }
+            })
+          return;
+        }
+        // Monitor for messages and checks if the message contains an id. If
+        // there is an id, then the location of the selected focus element
+        // is sent through its offset attribute. The offset will allow the
+        // page to scroll to the location of the focus element so that it is
+        // at the top of the page. Unique ids and names are required for
+        // proper scrolling.
+        window.addEventListener('message', function (event) {
+          if (event.data.hashName) {
+            var targetId = event.data.hashName;
+            var targetName = event.data.hashName.slice(1);
+            // Checks if the target uses an id or name to focus and gets offset.
+            var targetOffset = $(targetId).offset() || $(document.getElementsByName(targetName)[0]).offset();
+            window.parent.postMessage({ 'offset': targetOffset.top }, document.referrer);
+          }
+        })
+
+        window.parent.postMessage({
+            type: 'plugin.resize',
+            payload: {
+              width: newWidth,
+              height: newHeight,
+            }
+          }, document.referrer
+        );
+
+        lastHeight = newHeight;
+        lastWidth = newWidth;
+
+        // Within the learning microfrontend the iframe resizes to match the
+        // height of this document and it should never scroll. It does scroll
+        // ocassionally when javascript is used to focus elements on the page
+        // before the parent iframe has been resized to match the content
+        // height. This window.scrollTo is an attempt to keep the content at the
+        // top of the page. See TNL-7094
+        window.scrollTo(0, 0);
+      }
+
+      // Create an observer instance linked to the callback function
+      const observer = new MutationObserver(dispatchResizeMessage);
+
+      // Start observing the target node for configured mutations
+      observer.observe(document.body, { attributes: true, childList: true, subtree: true });
+
+      window.addEventListener('load', dispatchResizeMessage);
+      window.addEventListener('resize', dispatchResizeMessage);
+    }
+  }());
+</script>
+<%text>
+<script type="text/javascript" class="fix-annotator-resizer">
+  /**
+   * @description Overrides AnnotatorJS default resizing behavior with a custom resizer. 
+   *              Automatically intercepts new .annotator-resize elements and applies 
+   *              a more direct, mouse-based resizing for <textarea> elements.
+   */
+
+  /**
+   * Checks if the closest .annotator-editor is displayed "down" rather than "up".
+   * 
+   * @param {HTMLElement} resizer - The .annotator-resize handle (or any child within the .annotator-editor).
+   * @returns {boolean} - True if the editor has the class 'annotator-invert-y' (meaning it displays downward).
+   */ 
+  function isEditorDown(resizer) {
+    const editor = resizer.closest('.annotator-editor');
+    if (!editor) {
+      return false;
+    }
+    return editor.classList.contains('annotator-invert-y');
+  }
+
+  /**
+   * A class that makes a <textarea> resizable by clicking and dragging a handle element.
+   */
+  class ResizableTextarea {
+    /**
+     * @param {HTMLElement} draggable - The element that initiates the resize on mousedown (the "handle").
+     * @param {HTMLTextAreaElement} textarea - The <textarea> to be resized.
+     */
+    constructor(draggable, textarea) {
+      this.draggable = draggable;
+      this.textarea = textarea;
+
+      /** @type {number} */
+      this.startX = 0;
+      /** @type {number} */
+      this.startY = 0;
+      /** @type {number} */
+      this.startWidth = 0;
+      /** @type {number} */
+      this.startHeight = 0;
+
+      this.onResize = this.onResize.bind(this);
+      this.stopResize = this.stopResize.bind(this);
+
+      this.init();
+    }
+
+    /**
+     * Binds the mousedown listener on the handle in capture phase, 
+     * preventing AnnotatorJS from receiving the event first.
+     */
+    init() {
+      this.draggable.addEventListener(
+        'mousedown',
+        (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          event.stopImmediatePropagation();
+          this.startResize(event);
+        },
+        { capture: true }
+      );
+    }
+
+    /**
+     * Called on mousedown. Stores the initial position and size, then 
+     * starts listening for mousemove/mouseup at document level.
+     * 
+     * @param {MouseEvent} event - The mousedown event.
+     */
+    startResize(event) {
+      this.startX = event.clientX;
+      this.startY = event.clientY;
+      this.startWidth = this.textarea.offsetWidth;
+      this.startHeight = this.textarea.offsetHeight;
+
+      document.addEventListener('mousemove', this.onResize);
+      document.addEventListener('mouseup', this.stopResize);
+    }
+
+    /**
+     * Handles mousemove events, updating the <textarea> width/height 
+     * based on the difference between current and initial pointer positions.
+     * 
+     * @param {MouseEvent} event - The mousemove event.
+     */
+    onResize(event) {
+      const deltaX = event.clientX - this.startX;
+      const deltaY = event.clientY - this.startY;
+
+      // Decide if we add or subtract the vertical delta 
+      // based on whether the editor is "down" or "up".
+      const editorIsDown = isEditorDown(this.draggable);
+      const newHeight = editorIsDown
+        ? this.startHeight + deltaY
+        : this.startHeight - deltaY;
+
+      const newWidth = this.startWidth + deltaX;
+
+      this.textarea.style.setProperty('width',  `${newWidth}px`,  'important');
+      this.textarea.style.setProperty('height', `${newHeight}px`, 'important');
+    };
+
+    /**
+     * Called on mouseup. Stops listening to mousemove/mouseup 
+     * and finalizes the resize action.
+     */
+    stopResize() {
+      document.removeEventListener('mousemove', this.onResize);
+      document.removeEventListener('mouseup', this.stopResize);
+    };
+  }
+
+  /**
+   * Given a .annotator-resize element, it removes native drag attributes, 
+   * finds the target <textarea>, and creates a ResizableTextarea instance.
+   * 
+   * @param {HTMLElement} resizer - The element with class .annotator-resize
+   */
+  function handleResizer(resizer) {
+    // Disable native HTML5 drag if present
+    resizer.removeAttribute('draggable');
+
+    // const textarea = document.forms[0]?.querySelector('textarea');
+    const editor = resizer.closest('.annotator-editor');
+    const textarea = editor.querySelector('textarea');
+
+    if (!textarea) {
+      console.warn('No <textarea> found for handle:', resizer);
+      return;
+    }
+    new ResizableTextarea(resizer, textarea);
+  }
+
+  /**
+   * Main initialization IIFE. 
+   * - Scans existing .annotator-resize elements 
+   * - Sets up a MutationObserver to watch for newly inserted ones
+   */
+  (() => {
+    document.querySelectorAll('.annotator-resize').forEach((resizer) => {
+      handleResizer(resizer);
+    });
+
+    // Observe future insertions
+    const observer = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        for (const node of mutation.addedNodes) {
+          if (node.nodeType === Node.ELEMENT_NODE) {
+            // If the added node itself is .annotator-resize
+            if (node.matches('.annotator-resize')) {
+              handleResizer(node);
+            }
+            // Or if it contains children with .annotator-resize
+            node.querySelectorAll?.('.annotator-resize').forEach((child) => {
+              handleResizer(child);
+            });
+          }
+        }
+      }
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+  })();
+</script>
+</%text>
+% endif
+
