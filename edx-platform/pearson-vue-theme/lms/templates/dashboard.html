@@ -116,23 +116,65 @@ from common.djangoapps.student.models import CourseEnrollment
   % endif
 </%block>
 
+
+<style>
+  div .alert-wrapper {
+    position: relative !important;
+  }
+
+  .banner-message {
+    line-height: 20px;
+  }
+
+  .banner-custom-close-btn {
+    position: absolute;
+    top: 1px;
+    right: -12px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: none !important;
+    color: #d9534f;
+  }
+
+  .banner-custom-close-btn:hover {
+    background: transparent !important;
+  }
+
+  .banner-message {
+    text-align: center;
+  }
+</style>
+
 <div class="dashboard-notifications" tabindex="-1">
   %if maintenance_banner_text:
     <div class="page-banner">
-        <div class="user-messages" role="complementary" aria-label="messages">
-            <ul class="user-messages-ul">
-                    <li>
-                        <div class="alert alert-warning" role="alert">
-                            <span class="icon icon-alert fa fa fa-warning" aria-hidden="true"></span>
-                            <p class="lh-lg">
-                                ${sanitize_html(maintenance_banner_text) | n, decode.utf8}
-                            </p>
-                        </div>
-                    </li>
-            </ul>
-        </div>
+      <div class="user-messages" role="complementary" aria-label="messages">
+          <ul class="user-messages-ul">
+              <li>
+                <div class="alert alert-warning alert-wrapper" role="alert">
+                  <span class="icon icon-alert fa fa fa-warning" aria-hidden="true"></span>
+                  <p class="lh-lg banner-message">
+                      ${sanitize_html(maintenance_banner_text) | n, decode.utf8}
+                  </p>
+                  <button class="banner-custom-close-btn">&times;</button>
+                </div>
+              </li>
+          </ul>
+      </div>
+    
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const button = document.querySelector(".banner-custom-close-btn")
+          button?.addEventListener("click", function () {
+            this.parentElement.remove();
+          });
+        });
+      </script>
     </div>
     %endif
+
     %if banner_account_activation_message:
         <div class="dashboard-banner">
             ${banner_account_activation_message | n, decode.utf8}
