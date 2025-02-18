@@ -117,21 +117,25 @@ from common.djangoapps.student.models import CourseEnrollment
 
 <div class="dashboard-notifications" tabindex="-1">
   %if maintenance_banner_text:
-    <div class="page-banner">
-        <div class="user-messages" role="complementary" aria-label="messages">
-            <ul class="user-messages-ul">
-                    <li>
-                        <div class="alert alert-warning" role="alert">
-                            <span class="icon icon-alert fa fa fa-warning" aria-hidden="true"></span>
-                            <p class="lh-lg">
-                                ${sanitize_html(maintenance_banner_text) | n, decode.utf8}
-                            </p>
-                        </div>
-                    </li>
-            </ul>
-        </div>
+    <div class="page-banner hidden-element" id="custom-banner">
+      <div class="user-messages" role="complementary" aria-label="messages">
+          <ul class="user-messages-ul">
+              <li>
+                <div class="alert alert-warning alert-wrapper" role="alert">
+                  <span class="icon icon-alert fa fa fa-warning" aria-hidden="true"></span>
+                  <p class="lh-lg banner-message" id="banner-message-wrapper">
+                      ${sanitize_html(maintenance_banner_text) | n, decode.utf8}
+                  </p>
+                  <button class="banner-custom-close-btn" id="banner-custom-close-btn">&times;</button>
+                </div>
+              </li>
+          </ul>
+      </div>
+    
+      <script type="text/javascript" src="${static.url('js/dashboard/dismiss-banner.js')}" defer></script>
     </div>
     %endif
+
     %if banner_account_activation_message:
         <div class="dashboard-banner">
             ${banner_account_activation_message | n, decode.utf8}
