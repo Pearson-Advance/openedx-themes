@@ -71,7 +71,15 @@
         </button>
     </div>
 </form>
-<script>
-    const fullname_field_label = document.querySelector('label[for="register-name"]');
-    fullname_field_label.textContent = "Company Name"
+<script type="text/javascript">
+    const fullname_field_label = document.querySelector('label[for="register-name"] > .label-text');
+    const username_field_label = document.querySelector('label[for="register-username"] > .label-text');
+    const username_desc = document.getElementById('register-username-desc');
+
+    fullname_field_label.textContent = fullname_field_label.textContent.replace('Full Name', gettext('Company Name'));
+    username_field_label.textContent = username_field_label.textContent.replace('Public Username', gettext('External ID'));
+    username_desc.textContent = username_desc.textContent.replace(
+        'The name that will identify you in your courses. It cannot be changed later.',
+        gettext('This ID will identify you in your courses. It cannot be changed later.')
+    );
 </script>
