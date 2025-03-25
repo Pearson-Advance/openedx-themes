@@ -1,33 +1,44 @@
 <%
 import jwt
+from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 
 header_payload = request.COOKIES.get('edx-jwt-cookie-header-payload')
 signature = request.COOKIES.get('edx-jwt-cookie-signature')
 
+institution_path = configuration_helpers.get_value('INSTITUTION_PORTAL_PATH', '/admin')
+instructor_path = configuration_helpers.get_value('INSTRUCTOR_PORTAL_PATH', '/instructor')
+
 DEFAULT_ROLES = []
 
-CERTPREP_MANAGER = {'url': '/certprep-manager', 'label': 'CertPREP Manager'}
-INSTRUCTOR_PORTAL = {'url': '/instructor-portal', 'label': 'Instructor Portal'}
+CERTPREP_MANAGER = {'url': institution_path, 'label': 'Skilling Administrator'}
+INSTRUCTOR_PORTAL = {'url': instructor_path, 'label': 'Instructor Portal'}
 
-ROLES_PERMISSIONS = {
-    'admin': [CERTPREP_MANAGER, INSTRUCTOR_PORTAL],
-    'global_staff': [CERTPREP_MANAGER, INSTRUCTOR_PORTAL],
-    'institution_admin': [CERTPREP_MANAGER, INSTRUCTOR_PORTAL],
-    'institution_instructor': [INSTRUCTOR_PORTAL]
-}
+GLOBAL_STAFF = 'GLOBAL_STAFF'
+INSTITUTION_ADMIN = 'INSTITUTION_ADMIN'
+INSTRUCTOR = 'INSTRUCTOR'
 
 ROLES_PRIORITY = [
-    'admin',
-    'global_staff',
-    'institution_admin',
-    'institution_instructor'
+    GLOBAL_STAFF,
+    INSTITUTION_ADMIN,
+    INSTRUCTOR
 ]
+
+DEFAULT_ROLE_PERMISSIONS = {
+    GLOBAL_STAFF: [CERTPREP_MANAGER],
+    INSTITUTION_ADMIN: [CERTPREP_MANAGER],
+    INSTRUCTOR: [INSTRUCTOR_PORTAL]
+}
+
+roles = DEFAULT_ROLES
+jwt_valid = False
 
 if header_payload and signature:
     try:
         full_jwt = f"{header_payload}.{signature}"
         decoded = jwt.decode(full_jwt, options={"verify_signature": False})
-        roles = decoded.get('roles', DEFAULT_ROLES)
+        extra_data = decoded.get('extra_data', {})
+        roles = extra_data.get('permission_roles', DEFAULT_ROLES)
+        jwt_valid = True
     except Exception:
         roles = DEFAULT_ROLES
 else:
@@ -60,21 +71,31 @@ def get_user_links(user_roles):
     sorted_roles = sorted(valid_roles, key=lambda r: ROLES_PRIORITY.index(r))
     highest_role = sorted_roles[0]
 
-    return ROLES_PERMISSIONS.get(highest_role, [])
+    # Check if the role has 'INSTRUCTOR' access based on the user's roles
+    if INSTRUCTOR in user_roles and highest_role in [GLOBAL_STAFF, INSTITUTION_ADMIN]:
+        return DEFAULT_ROLE_PERMISSIONS.get(highest_role, []) + [INSTRUCTOR_PORTAL]
 
-hardcoded_cookie_example = {
-    'roles': ['admin']
-}
+    return DEFAULT_ROLE_PERMISSIONS.get(highest_role, [])
 
-menu_items = get_user_links(hardcoded_cookie_example['roles'])
+menu_items = get_user_links(roles)
 
+# This script handles edx jwt (header, signature) cookie renewal. When cookies expire,
+# valid users may lose access to their role-based menu items. By redirecting
+# to the login page while the user still has an active session, the system
+# automatically regenerates the cookie and returns the user to
+# the dashboard with proper permissions restored instead to ask again for
+# their credentials.
 %>
-
-
-% for item in menu_items:
-<div class="mobile-nav-item dropdown-item dropdown-nav-item">
-    <a href="${item['url']}" role="menuitem">
-        ${item['label']}
-    </a>
-</div>
-% endfor
+% if not jwt_valid:
+    <script type="text/javascript">
+        window.location.href = '/login';
+    </script>
+% else:
+    % for item in menu_items:
+    <div class="mobile-nav-item dropdown-item dropdown-nav-item">
+        <a href="${item['url']}" role="menuitem">
+            ${item['label']}
+        </a>
+    </div>
+    % endfor
+% endif
