@@ -2,8 +2,8 @@
 <%inherit file="/main.html" />
 <%namespace name='static' file='/static_content.html'/>
 <%!
-from django.conf import settings
-from django.utils.translation import gettext as _
+import waffle
+from django.utils.translation import ugettext as _
 from django.urls import reverse
 from openedx.core.djangolib.js_utils import (
     dump_js_escaped_json, js_escaped_string
@@ -23,68 +23,70 @@ from openedx.core.djangolib.js_utils import (
 
 <section class="container">
   <div class="instructor-dashboard-wrapper-2">
-        <main id="main" aria-label="Content" tabindex="-1">
-        <section class="instructor-dashboard-content-2" id="ccx-coach-dashboard-content" aria-labelledby="header-ccx-dashboard">
-          <h2 class="hd hd-2" id="header-ccx-dashboard">${_("CCX Coach Dashboard")}</h2>
+    <main id="main" aria-label="Content" tabindex="-1">
+      <section class="instructor-dashboard-content-2" id="ccx-coach-dashboard-content" aria-labelledby="header-ccx-dashboard">
+        %if ccx:
+        <h2 class="hd hd-2" id="header-ccx-dashboard">${_("CCX Coach Dashboard")}</h2>
 
-          %if not ccx:
-            % if messages:
-              <ul class="messages">
-                % for message in messages:
-                  % if message.tags:
-                    <li class="${message.tags}">${message}</li>
-                  % else:
-                    <li>${message}</li>
-                  % endif
-                % endfor
-              </ul>
-            % endif
-            <div>
-              <p class="request-response-error" id="ccx-create-message"></p>
-              <form action="${create_ccx_url}" class="ccx-form" method="POST" onsubmit="return validateForm(this)">
-                <input type="hidden" name="csrfmiddlewaretoken" value="${csrf_token}"/>
-                <div class="field">
-                  <label class="sr" for="ccx_name">${_('Name your CCX')}</label>
-                  <input name="name" id="ccx_name" placeholder="${_('Name your CCX')}"/><br/>
-                </div>
-                <div class="field">
-                  <button id="create-ccx" type="submit">${_('Create a new Custom Course for {platform_name}').format(platform_name=settings.PLATFORM_NAME)}</button>
-                </div>
-              </form>
-          </div>
-          %endif
+        <ul class="instructor-nav">
+          % if waffle.switch_is_active('enable_ccx_coach_dashboard_membership_tab'):
+          <li class="nav-item">
+            <button type="button" class="btn-link" data-section="membership">${_("Enrollment")}</button>
+          </li>
+          % endif
+          % if waffle.switch_is_active('enable_ccx_coach_dashboard_schedule_tab'):
+          <li class="nav-item">
+            <button type="button" class="btn-link" data-section="schedule">${_("Schedule")}</button>
+          </li>
+          % endif
+          % if waffle.switch_is_active('enable_ccx_coach_dashboard_student_admin_tab'):
+          <li class="nav-item">
+            <button type="button" class="btn-link" data-section="student_admin">${_("Student Admin")}</button>
+          </li>
+          % endif
+          % if waffle.switch_is_active('enable_ccx_coach_dashboard_grading_policy_tab'):
+          <li class="nav-item">
+            <button type="button" class="btn-link" data-section="grading_policy">${_("Grading Policy")}</button>
+          </li>
+          % endif
+          % if waffle.switch_is_active('enable_ccx_coach_dashboard_course_name_tab'):
+          <li class="nav-item">
+            <button type="button" class="btn-link" data-section="course_name">${_("Course Name")}</button>
+          </li>
+          % endif
+        </ul>
 
-          %if ccx:
-          <ul class="instructor-nav">
-            <li class="nav-item">
-              <button type="button" class="btn-link" data-section="membership">${_("Enrollment")}</button>
-            </li>
-            <li class="nav-item">
-              <button type="button" class="btn-link" data-section="schedule">${_("Schedule")}</button>
-            </li>
-            <li class="nav-item">
-              <button type="button" class="btn-link" data-section="student_admin">${_("Student Admin")}</button>
-            </li>
-            <li class="nav-item">
-              <button type="button" class="btn-link" data-section="grading_policy">${_("Grading Policy")}</button>
-            </li>
-          </ul>
-          <section id="membership" class="idash-section" aria-label="${_('Batch Enrollment')}">
-            <%include file="enrollment.html" args="" />
-          </section>
-          <section id="schedule" class="idash-section" aria-label="${_('Schedule')}">
-            <%include file="schedule.html" args="" />
-          </section>
-          <section id="student_admin" class="idash-section" aria-label="${_('Student Grades')}">
-            <%include file="student_admin.html" args="" />
-          </section>
-          <section id="grading_policy" class="idash-section" aria-label="${_('Grading Policy')}">
-            <%include file="grading_policy.html" args="" />
-          </section>
-          %endif
+        % if waffle.switch_is_active('enable_ccx_coach_dashboard_membership_tab'):
+        <section id="membership" class="idash-section" aria-label="${_('Batch Enrollment')}">
+          <%include file="enrollment.html" args="" />
+        </section>
+        %endif
+        % if waffle.switch_is_active('enable_ccx_coach_dashboard_schedule_tab'):
+        <section id="schedule" class="idash-section" aria-label="${_('Schedule')}">
+          <%include file="schedule.html" args="" />
+        </section>
+        %endif
+        % if waffle.switch_is_active('enable_ccx_coach_dashboard_student_admin_tab'):
+        <section id="student_admin" class="idash-section" aria-label="${_('Student Grades')}">
+          <%include file="student_admin.html" args="" />
+        </section>
+        %endif
+        % if waffle.switch_is_active('enable_ccx_coach_dashboard_grading_policy_tab'):
+        <section id="grading_policy" class="idash-section" aria-label="${_('Grading Policy')}">
+          <%include file="grading_policy.html" args="" />
+        </section>
+        %endif
+        % if waffle.switch_is_active('enable_ccx_coach_dashboard_course_name_tab'):
+        <section id="course_name" class="idash-section" aria-label="${_('Course Name')}">
+          <%include file="course_name.html" args="" />
+        </section>
+        %endif
 
+        %else:
+        <h2 class="hd hd-2" id="header-ccx-dashboard">${_("Cannot create CCXs.")}</h2>
+        %endif
       </section>
-        </main>
+    </main>
   </div>
 </section>
 
