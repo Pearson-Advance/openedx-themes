@@ -1,7 +1,41 @@
+@import 'variables';
+
 .dashboard .main-container .my-courses .course .details .wrapper-course-image {
   float: left;
   margin-right: 2.35765%;
   width: 23.23176%;
   max-height: 160px;
   overflow: hidden;
+}
+
+.hidden-element {
+  display: none;
+}
+
+div .alert-wrapper {
+  position: relative ;
+}
+
+.banner-message {
+  line-height: 20px;
+}
+
+#banner-custom-close-btn {
+  position: absolute;
+  top: 1px;
+  right: -12px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: none;
+  color: $red-1;
+}
+
+#banner-custom-close-btn:hover {
+  background: transparent;
+}
+
+.banner-message {
+  text-align: center;
 }
