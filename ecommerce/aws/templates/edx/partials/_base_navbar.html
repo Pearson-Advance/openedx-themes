@@ -1,5 +1,7 @@
 {% load i18n %}
 {% load static %}
+{% load core_extras %}
+{% settings_value 'custom_settings' as custom_settings %}
 
 <header class="navbar navbar-default">
   <div class="container">
@@ -37,9 +39,13 @@
               {% block small_dropdown_menu %}{% endblock small_dropdown_menu %}
           </li>
         {% else %}
-          <a class="btn btn-primary navbar-btn hidden-xs" href="{% url 'login' %}">{% trans "Login" as tmsg %}{{ tmsg | force_escape }}</a>
-          <li class="visible-xs"><a class="nav-link" href="{% url 'login' %}">{% trans "Login" as tmsg %}{{ tmsg | force_escape }}</a></li>
-          </a>
+          {# Show login button except when: #}
+          {# ALL conditions are met: COUPONS_DISABLE_LOGIN_BUTTON: true + valid request + path contains "/coupons/offer/" #}
+          {# Otherwise, show the button (missing request, missing path, different URL, or COUPONS_DISABLE_LOGIN_BUTTON: false or not defined) #}
+          {% if not custom_settings.COUPONS_DISABLE_LOGIN_BUTTON|default_if_none:False or not request or not request.path or not "/coupons/offer/" in request.path|default_if_none:"" %}
+            <a class="btn btn-primary navbar-btn hidden-xs" href="{% url 'login' %}">{% trans "Login" as tmsg %}{{ tmsg | force_escape }}</a>
+            <li class="visible-xs"><a class="nav-link" href="{% url 'login' %}">{% trans "Login" as tmsg %}{{ tmsg | force_escape }}</a></li>
+          {% endif %}
         {% endif %}
       </ul>
     </div>
