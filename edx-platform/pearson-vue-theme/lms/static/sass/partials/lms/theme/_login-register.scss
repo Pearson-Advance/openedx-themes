@@ -1,0 +1,110 @@
+@import 'variables';
+
+div.window-wrap {
+  background-color: $vue-register-background;
+  height: 100vh;
+}
+
+/* Form wrapper */
+div#register-form.form-wrapper {
+  border: 1px solid transparent;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+#content-container {
+  background-color: transparent;
+}
+
+/* Error red banner */
+div.js-form-errors.status.submission-error,
+div.js-auth-warning.status > div.message-copy {
+  border: none;
+  border-color: transparent;
+  background-color: $vue-btn-text;
+  padding: 0;
+  font-size: 15px;
+}
+
+div.js-form-errors.status.submission-error {
+  margin-bottom: 0;
+  box-shadow: none;
+}
+
+/* Banner error title */
+#register-form
+  > div.js-form-feedback
+  > div.js-form-errors.status.submission-error
+  > h4 {
+  color: $vue-black !important;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+/* Warning yellow banner */
+div.js-auth-warning.status > div.message-copy,
+#register-form > div.js-form-feedback > div.js-auth-warning.status,
+#login-form > div.js-form-feedback > div {
+  background: $vue-btn-text;
+  border-color: transparent;
+  padding: 0;
+}
+
+.message-copy {
+  color: $vue-black;
+}
+
+#register ul {
+  list-style: none;
+}
+
+/* Inputs */
+input#register-name,
+input#register-company,
+input.custom-input-override {
+  height: 50px;
+  border: 1px solid $vue-register-input-border-color;
+  border-radius: 4px;
+}
+
+.login-register .form-field label.error {
+  top: 3px !important;
+  color: $vue-black !important;
+}
+
+.login-register {
+  margin-top: 5rem;
+  border-radius: 8px;
+}
+
+#register > div > div.required-fields > div.form-field.text-company > label.focus-in, 
+#register > div > div.required-fields > div.form-field.text-name > label.focus-in {
+  top: -4px !important;
+  color: $vue-black !important;
+}
+
+/* Button */
+button.action.action-primary.action-update.js-register.register-button[type='submit'] {
+  background-color: $vue-register-button-background-color;
+  width: 100%;
+  border-radius: 6px;
+}
+
+ul {
+  padding-left: 15px;
+  padding: 0;
+  color: $vue-black;
+}
+
+.form-field.checkbox-terms_of_service {
+  margin: 20px 0;
+}
+
+#register
+  > div
+  > div.form-field.checkbox-terms_of_service
+  > label
+  > span.label-text
+  > a {
+  color: $vue-register-link-color;
+}
