@@ -21,7 +21,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
   mfe_config = configuration_helpers.get_value('MFE_CONFIG') or {}
   
   enable_exam_dashboard_link = mfe_config.get("ENABLE_EXAM_DASHBOARD")
-  exam_dashboard_base_url = mfe_config.get("EXAM_DASHBOARD_MFE_BASE_URL")
+  exam_dashboard_base_url = mfe_config.get("WEBNG_EXAM_MFE_BASE_URL")
 
   if online_help_token == "instructor":
     help_link = doc_link
