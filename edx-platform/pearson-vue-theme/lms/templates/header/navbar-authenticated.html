@@ -18,6 +18,11 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
   support_link = configuration_helpers.get_value('SUPPORT_SITE_LINK', settings.SUPPORT_SITE_LINK)
   doc_link = get_online_help_info(online_help_token)['doc_url']
 
+  mfe_config = configuration_helpers.get_value('MFE_CONFIG') or {}
+  
+  enable_exam_dashboard_link = mfe_config.get("ENABLE_EXAM_DASHBOARD")
+  exam_dashboard_base_url = mfe_config.get("EXAM_DASHBOARD_MFE_BASE_URL")
+
   if online_help_token == "instructor":
     help_link = doc_link
   elif support_link:
@@ -35,6 +40,13 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
              Pearson ${_("Courses")}
         </a>
       </div>
+	  % if enable_exam_dashboard_link and exam_dashboard_base_url:
+	    <div class="mobile-nav-item hidden-mobile nav-item nav-tab">
+        <a class="tab-nav-link" href="${exam_dashboard_base_url}">
+             ${_("Exams")}
+        </a>
+      </div>
+	  % endif
       % if show_program_listing:
         <div class="mobile-nav-item hidden-mobile nav-item nav-tab">
           <a class="${'active ' if reverse('program_listing_view') in request.path else ''}tab-nav-link" href="${reverse('program_listing_view')}"
