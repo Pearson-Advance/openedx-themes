@@ -1,0 +1,59 @@
+// Sample dark theme to demonstrate SASS overrides.
+@import 'edx-bootstrap/sass/open-edx/theme';
+// Theme colors
+//
+// Note: define colors needed by your theme first
+
+// Make the theme white on black
+
+//color
+$primary: #007FA3;
+$secondary: #003057;
+$inverse: #FFF;
+
+$theme-colors: map-merge($theme-colors, (
+  "primary": $primary,
+  "secondary": $secondary,
+  "inverse": $inverse,
+  "dark": $secondary,
+  "light": #D9D9D9
+));
+
+//Vue theme styling
+$vue-btn: #007FA3;
+$vue-btn-text: #fff;
+$vue-header-footer: #003057;
+$vue-header-footer-text: #fff;
+$vue-dark: #003057;
+
+//Apprenticeships theme styling
+$app-btn: #007FA3;
+$app-btn-text: #fff;
+$app-header: #fff;
+$app-header-text: #007FA3;
+$app-header-footer: #005A70;
+$app-header-footer-text: #fff;
+
+//color inline
+$dark: $secondary;
+$white: $inverse;
+$light: #D9D9D9;
+$light-gray:#D9D9D9;
+
+// Theme fonts
+$font-family-sans-serif: Open Sans;
+$serif: Playfair Display;
+
+// Initialize the Open edX Bootstrap theme
+
+//navigation
+$button-color-login: #003057;
+$font-color-login: #FFF;
+$button-color-register: #003057;
+$font-color-register: #FFF;
+
+$black: #000;
+$register-background: #e6e6e6;
+$register-button-background-color: #007394;
+$register-link-color: #4197af;
+$register-input-border-color: #707070;
