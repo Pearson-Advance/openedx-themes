@@ -3,13 +3,17 @@
 from django.utils.translation import gettext as _
 from django.utils.translation import pgettext
 from openedx.core.djangolib.markup import HTML, Text
-from openedx.core.djangoapps.plugins.plugins_hooks import run_extension_point
+from openedx_filters.license_enforcement.filters import (
+    CourseLicensingEnabledRequested,
+    CcxLicensedStatusRequested,
+)
 %>
 
 <%
     allow_ccx_unenroll = True
-    if run_extension_point('PCO_ENABLE_COURSE_LICENSING'):
-        allow_ccx_unenroll = not run_extension_point('PCO_IS_LICENSED_CCX', course_id=course.id)
+    is_course_licensing_enabled = CourseLicensingEnabledRequested.run_filter(enabled=False)
+    if is_course_licensing_enabled:
+        allow_ccx_unenroll = not CcxLicensedStatusRequested.run_filter(course_id=course.id, licensed=False)
 %>
 
 <h2 class="hd hd-2">${_("Enrollment")}</h2>
