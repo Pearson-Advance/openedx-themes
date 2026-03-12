@@ -186,7 +186,7 @@ $ui-notification-height: ($baseline*10);
 
 // social platforms
 $twitter-blue: #55acee;
-$facebook-blue: #1877F2;
+$facebook-blue: #4267b2;
 $facebook-focus-blue: #29487d;
 $linkedin-blue: #0077b5;
 $google-blue: #4285f4;
@@ -499,7 +499,7 @@ $homepage__header--gradient__color--bravo: saturate($gray, 30%) !default;
 $homepage__header--background: lighten($gray, 15%) !default;
 $homepage-background: rgb(252, 252, 252) !default;
 $course-card-height: ($baseline*18) !default;
-$course-image-height: ($baseline*8) !default;
+$course-image-height: auto;
 $course-info-height: ($baseline*10) !default;
 $course-title-height: ($baseline*3.6) !default;
 $homepage-bg-image: none !default;
@@ -547,7 +547,7 @@ $sidebar-active-image: linear-gradient(top, rgb(230, 230, 230), rgb(214, 214, 21
 
 
 // student notes
-$student-notes-highlight-color-base: #ffea75 !default;
+$student-notes-highlight-color-base: saturate($yellow, 65%) !default;
 $student-notes-highlight-color: tint($student-notes-highlight-color-base, 50%) !default;
 $student-notes-highlight-color-focus: $student-notes-highlight-color-base !default;
 
