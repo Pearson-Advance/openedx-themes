@@ -13,7 +13,7 @@ $admin-navbar-border-color: #cacaca;
 .navbar-default {
 
   .navbar-nav {
-    nav-link, li > a {
+    .nav-link, li > a {
       &:hover,
       &:focus {
         color: $white;
