@@ -8,16 +8,8 @@
 
 //color
 $primary: #007FA3;
-$secondary: #003057;
 $inverse: #FFF;
-
-$theme-colors: map-merge($theme-colors, (
-  "primary": $primary,
-  "secondary": $secondary,
-  "inverse": $inverse,
-  "dark": $secondary,
-  "light": #D9D9D9
-));
+$secondary: #003057;
 
 //Vue theme styling
 $vue-btn: #007FA3;

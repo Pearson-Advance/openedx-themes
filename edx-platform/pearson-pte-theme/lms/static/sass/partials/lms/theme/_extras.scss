@@ -11,6 +11,7 @@
 @import 'navigation';
 @import 'footer';
 @import 'ccx-course-name';
+@import 'login-register';
 
 
 //registration
@@ -165,7 +166,7 @@ section.container.about {
 
   h1,
   h2,
-  a, {
+  a {
     color: $primary;
   }
 
