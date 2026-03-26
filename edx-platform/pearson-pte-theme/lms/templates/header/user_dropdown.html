@@ -22,7 +22,11 @@ self.real_user = getattr(user, 'real_user', user)
 profile_image_url = get_profile_image_urls_for_user(self.real_user)['medium']
 username = self.real_user.username
 resume_block = retrieve_last_sitewide_block_completed(self.real_user)
-displayname = getattr(user.profile, "name", None) if getattr(user, "profile", None) else get_enterprise_learner_generic_name(request) or username
+displayname = (
+    getattr(getattr(user, "profile", None), "name", None)
+    or get_enterprise_learner_generic_name(request)
+    or username
+)
 enterprise_customer_portal = get_enterprise_learner_portal(request)
 ## Enterprises with the learner portal enabled should not show order history, as it does
 ## not apply to the learner's method of purchasing content.
