@@ -70,7 +70,7 @@ input.custom-input-override {
 }
 
 .login-register .form-field label.error {
-  top: 3px !important;
+  top: 9px !important;
   color: $black !important;
 }
 
@@ -81,7 +81,7 @@ input.custom-input-override {
 
 #register > div > div.required-fields > div.form-field.text-company > label.focus-in,
 #register > div > div.required-fields > div.form-field.text-name > label.focus-in {
-  top: -4px !important;
+  top: 1px !important;
   color: $black !important;
 }
 
