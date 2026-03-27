@@ -1,50 +1,91 @@
-// Styles for footer.html.
+.wrapper-footer.wrapper {
+  background-color: $inverse !important;
+}
+
+.wrapper-footer footer#footer-openedx .colophon {
+  float: none;
+  margin: auto;
+  min-height: 30px;
+}
+
+.wrapper-footer footer#footer-openedx .copyright {
+  color: $vue-black;
+  text-align: center;
+  float: left;
+  margin: 0;
+  font-size: 12px;
+}
+
+.wrapper-footer footer#footer-openedx.grid-container {
+  display: grid;
+}
+
+.wrapper-footer footer#footer-openedx .colophon .nav-legal {
+  text-align: center;
+  color: $primary;
+  float: none;
+
+  ul {
+    list-style: none;
+  }
+
+  li {
+    display: inline-block;
+    font-size: 0.6875em;
+  }
+
+  li + li::before {
+    content: "|";
+    margin-right: $baseline*0.25;
+    margin-left: $baseline*0.25;
+  }
+
+  a {
+    color: $primary;
+    text-decoration: underline!important;
+  }
+}
 
 .wrapper-footer {
-    box-shadow: none;
-    background: $primary-black;
-  
-    footer#footer-openedx {
-      .colophon {
-        text-align: center;
-        float: none;
-        display: block;
-        margin-right: initial;
-        width: auto;
-        margin-bottom: 60px;
-        font-size: 1.2em;
-  
-        .nav-legal {
-          text-align: inherit;
-  
-          li:last-child:before {
-            color: $inverse;
-            content: '|';
-          }
-        }
-      }
-  
-      .copyright {
-        margin: 0;
-        text-align: center;
-      }
-  
-      a, .copyright {
-        color: $inverse;
-      }
-  
-      .footer-language-selector {
-        text-align: left;
-  
-        label {
-          color: $inverse;
-          font-size: 1em;
-        }
-  
-        #footer-language-select {
-          font-size: 0.8em;
-        }
-      }
-  
-    }
+  border-top: 1px solid $pearson-grey-font;
+  background-color: $primary;
+  color: $inverse;
+  box-shadow: none;
+}
+
+.wrapper-footer footer#footer-openedx ul {
+ font-size: 1.2rem;
+}
+
+div.wrapper-footer footer#footer-openedx {
+  box-sizing: border-box;
+  max-width: 1920px;
+  margin-left: auto;
+  margin-right: auto;
+  margin: 0 auto;
+  background-color: transparent;
+  color: $inverse;
+}
+
+div.colophon nav.nav-legal ul {
+  margin-left: 0;
+  padding-bottom: 0.5rem;
+}
+
+@media (max-width: 991px) {
+  div.wrapper-footer footer#footer-openedx {
+    display: flex;
+    flex-wrap: wrap;
   }
+
+  .wrapper-footer footer#footer-openedx .nav-legal {
+    text-align: center;
+  }
+}
+
+@media (max-width: 500px) {
+
+  .wrapper-footer footer#footer-openedx .copyright {
+    text-align: center;
+  }
+}

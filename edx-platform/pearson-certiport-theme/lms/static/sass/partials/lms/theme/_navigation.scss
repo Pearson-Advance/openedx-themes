@@ -1,7 +1,6 @@
 // Styles for header.html.
 
 .global-header {
-    background-color: $primary-black !important;
     border: none;
     color: $inverse;
   
@@ -32,7 +31,7 @@
   
         a.sign-in-btn, a.register-btn {
           background-color: $primary-black;
-          border: 1px solid $inverse;
+          border: 1px solid $secondary;
           color: $inverse;
   
           &:hover {

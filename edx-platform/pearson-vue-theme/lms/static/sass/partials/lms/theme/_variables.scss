@@ -7,10 +7,10 @@
 // Make the theme white on black
 
 //color
-$primary: #007FA3;
-$primary-black: #007FA3;
+$primary: #512EAB;
+$primary-black: #512EAB;
 $inverse: #FFF;
-$secondary: #003057;
+$secondary: #0D004D;
 $container-bg: $inverse;
 $homepage-background: $inverse;
 $body-bg:$inverse;
@@ -41,13 +41,13 @@ $light-shadow: #bcb9b9;
 
 //Vue theme styling
 $vue-banner-bg: #D4EAE4;
-$vue-banner-text: #003057;
-$vue-btn: #007FA3;
+$vue-banner-text: #0D004D;
+$vue-btn: #512EAB;
 $vue-btn-text: #fff;
-$vue-header-footer: #003057;
+$vue-header-footer: #0D004D;
 $vue-header-footer-text: #fff;
 $vue-courses-bg: #fff;
-$vue-dark: #003057;
+$vue-dark: #0D004D;
 $vue-backgroud-white: #f8f8f8;
 $vue-light-gray: #eee;
 $vue-gray: #919191;
@@ -60,15 +60,15 @@ $vue-register-input-border-color: #707070;
 
 //Apprenticeships theme styling
 $app-banner-bg: #fff;
-$app-banner-text: #003057;
-$app-btn: #007FA3;
+$app-banner-text: #0D004D;
+$app-btn: #512EAB;
 $app-btn-text: #fff;
-$app-header-footer: #005A70;
+$app-header-footer: #0D004D;
 $app-header-footer-text: #fff;
 $app-header: #fff;
-$app-header-text: #007FA3;
+$app-header-text: #512EAB;
 $app-courses-bg: #F3F3F3;
-$app-dark: #003057;
+$app-dark: #0D004D;
 
 //color inline
 $uxpl-blue-hover-active: $primary;
@@ -96,7 +96,7 @@ $m-blue-d3:$primary;
 $uxpl-blue-hover-active:$primary;
 $m-blue:$primary;
 $red-1: #d9534f;
-
+$light-secondary: #EFEDFF;
 
 // Theme fonts
 $font-family-sans-serif: Open Sans;
@@ -106,9 +106,9 @@ $serif: Playfair Display;
 @import 'edx-bootstrap/sass/open-edx/theme';
 
 //navigation
-$button-color-login: #003057;
+$button-color-login: #0D004D;
 $font-color-login: #FFF;
-$button-color-register: #003057;
+$button-color-register: #0D004D;
 $font-color-register: #FFF;
 
 //login and register

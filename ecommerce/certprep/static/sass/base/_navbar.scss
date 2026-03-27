@@ -7,7 +7,7 @@
 $white: white;
 $black: black;
 $bg-navbar-color: #f6f6f6;
-$admin-navbar-div-color: #0ea6ec;
+$admin-navbar-div-color: $primary;
 $admin-navbar-border-color: #cacaca;
 
 .navbar-default {
@@ -18,7 +18,7 @@ $admin-navbar-border-color: #cacaca;
       &:focus {
         color: $white;
         outline: inherit;
-        background-color: $brand-primary;
+        background-color: $secondary;
         border-bottom-color: transparent;
       }
     }
@@ -54,7 +54,7 @@ $admin-navbar-border-color: #cacaca;
       @include center-vertically;
       top: 0;
       display: inline-block;
-      color: $brand-primary;
+      color: $white;
       font-weight: 600;
     }
   }

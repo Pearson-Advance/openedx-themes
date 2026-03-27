@@ -7,23 +7,33 @@
 // Make the theme white on black
 
 //color
-$primary: #007FA3;
+$primary: #512EAB;
+$secondary: #0D004D;
 $inverse: #FFF;
-$secondary: #003057;
+
+$theme-colors: map-merge($theme-colors, (
+  "primary": $primary,
+  "secondary": $secondary,
+  "inverse": $inverse,
+  "dark": $secondary,
+  "light": #D9D9D9
+));
 
 //Vue theme styling
-$vue-btn: #007FA3;
+$vue-btn: #512EAB;
 $vue-btn-text: #fff;
-$vue-header-footer: #003057;
+$vue-header-footer: #0D004D;
 $vue-header-footer-text: #fff;
-$vue-dark: #003057;
+$vue-dark: #0D004D;
+$vue-black: #000000;
+$light-secondary: #EFEDFF;
 
 //Apprenticeships theme styling
-$app-btn: #007FA3;
+$app-btn: #512EAB;
 $app-btn-text: #fff;
 $app-header: #fff;
-$app-header-text: #007FA3;
-$app-header-footer: #005A70;
+$app-header-text: #512EAB;
+$app-header-footer: #0D004D;
 $app-header-footer-text: #fff;
 
 //color inline
@@ -39,9 +49,9 @@ $serif: Playfair Display;
 // Initialize the Open edX Bootstrap theme
 
 //navigation
-$button-color-login: #003057;
+$button-color-login: #0D004D;
 $font-color-login: #FFF;
-$button-color-register: #003057;
+$button-color-register: #0D004D;
 $font-color-register: #FFF;
 
 $black: #000;
@@ -49,3 +59,4 @@ $register-background: #e6e6e6;
 $register-button-background-color: #007394;
 $register-link-color: #4197af;
 $register-input-border-color: #707070;
+$pearson-grey-font:#ccc;
