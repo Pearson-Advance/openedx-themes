@@ -3,11 +3,17 @@
 // Theme colors
 
 // Colours
-$primary: #007FA3;
+$primary: #512EAB;
 $primary-black: #003057;
 $inverse: #FFF;
 $light-gray: #D9D9D9;
 $dark-gray: #767676;
+$light-secondary: #EFEDFF;
+
+$pearson-grey-font:#ccc;
+$vue-header-footer: #0D004D;
+$vue-black: #000000;
+$secondary: #0D004D;
 
 // Initialize the Open edX Bootstrap theme
 @import 'edx-bootstrap/sass/open-edx/theme';

@@ -11,7 +11,7 @@
   padding-bottom: $baseline/2;
   border-bottom: 1px solid theme-color("primary");
   box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
-  background: theme-color("inverse");
+  background: $vue-header-footer;
   line-height: 1.5;
 
   @include media-breakpoint-up(lg) {
@@ -26,14 +26,14 @@
 
     a {
       @include float(left);
-      @include margin($baseline*0.75, 0, 0, $baseline*2);
+      @include margin($baseline*0.5, 0, 0, $baseline*2);
 
       display: block;
 
       .logo {
         @include float(left);
 
-        height: $header-logo-height;
+        height: 50px;
       }
 
       @include media-breakpoint-down(md) {
@@ -53,7 +53,7 @@
       @include margin($baseline*0.8, 0, 0, $baseline);
 
       font-size: $font-size-sm;
-      color: theme-color("dark");
+      color: $inverse;
       line-height: 1em;
       display: none;
 
@@ -91,6 +91,7 @@
 
         a {
           text-decoration: none;
+          color: $inverse;
         }
       }
 
@@ -148,7 +149,6 @@
           }
 
           a {
-            color: theme-color("dark");
             font-weight: $font-weight-normal;
           }
         }
@@ -156,7 +156,7 @@
 
         // Sign in, Register and Shopping Cart buttons
         .btn {
-          border: 1px solid theme-color("primary");
+          border: 1px solid theme-color("secondary|");
           padding: $baseline/4 $baseline;
           border-radius: $baseline/4;
           cursor: pointer;
@@ -165,27 +165,27 @@
 
         a.sign-in-btn,
         .nav-item a.shopping-cart {
-          background-color: theme-color("primary");
+          background-color: theme-color("secondary");
           color: theme-color("inverse");
-          border: 1px solid theme-color("inverse");
+          border: 1px solid theme-color("secondary");
           font-weight: $font-weight-normal;
           padding: $baseline/4 $baseline;
 
           &:hover {
             background-color: theme-color("inverse");
-            color: theme-color("primary");
-            border-color: theme-color("primary");
+            color: theme-color("secondary");
+            border-color: theme-color("secondary");
           }
         }
 
         a.register-btn {
-          background: theme-color("inverse");
-          color: theme-color("primary");
+          background: theme-color("secondary");
+          color: theme-color("inverse");
           font-weight: $font-weight-normal;
 
           &:hover {
-            background-color: theme-color("primary");
-            color: theme-color("inverse");
+            background-color: theme-color("inverse");
+            color: theme-color("secondary");
           }
         }
 
@@ -222,11 +222,11 @@
 
             &:hover {
               color: theme-color("dark");
-              background-color: theme-color("light");
+              background-color: $light-secondary;
             }
 
             &:not(:last-child) {
-              border-bottom: 1px solid theme-color("light");
+              border-bottom: 1px solid $light-secondary;
             }
 
             a {
@@ -238,7 +238,7 @@
               &:focus {
                 outline: none;
                 color: theme-color("dark");
-                background-color: theme-color("light");
+                background-color: $light-secondary;
               }
             }
           }
@@ -404,14 +404,4 @@
   @include float(right);
 
   padding: $baseline/2;
-}
-
-.enter-course {
-    border-color: $secondary !important;
-    color: $secondary!important;
-
-    &:hover {
-        background-color: $secondary !important;
-        color: white !important;
-    }
 }
