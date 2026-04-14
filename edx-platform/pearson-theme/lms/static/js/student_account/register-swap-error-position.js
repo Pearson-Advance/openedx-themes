@@ -62,13 +62,27 @@ function initMessageCopyObserver() {
     return false;
   }
 
+  var isProcessing = false;
   var observer = new MutationObserver(function() {
-    checkAndProcess();
+    if (isProcessing) {
+      return;
+    }
+
+    isProcessing = true;
+    observer.disconnect();
+
+    try {
+      checkAndProcess();
+    } finally {
+      observer.observe(document.body, { childList: true, subtree: true });
+      isProcessing = false;
+    }
   });
 
-  observer.observe(document.body, { childList: true, subtree: true });
-
+  // First pass before observing, to avoid reacting to our own initial DOM changes.
   checkAndProcess();
+
+  observer.observe(document.body, { childList: true, subtree: true });
 }
 
 $(document).ready(function() {
