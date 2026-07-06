@@ -1,0 +1,53 @@
+{% load i18n %}
+{% load static %}
+{% load core_extras %}
+{% settings_value 'custom_settings' as custom_settings %}
+
+<header class="navbar navbar-default">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button id="hamburger-button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target="#main-navbar-collapse" type="button" aria-expanded="false">
+        <span class="sr-only">{% trans "Toggle navigation" as tmsg %}{{ tmsg | force_escape }}</span>
+        <span aria-hidden="true" class="icon-bar"></span>
+        <span aria-hidden="true" class="icon-bar"></span>
+        <span aria-hidden="true" class="icon-bar"></span>
+      </button>
+      {% block navbar_brand %}{% endblock navbar_brand %}
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        {% if user.is_authenticated %}
+          <li class="btn-group user-menu">
+            <button data-hj-suppress type="button" class="btn btn-default hidden-xs main-btn nav-button"
+                    onclick="window.open('{{ lms_dashboard_url }}');">
+              <i class="icon fa fa-home" aria-hidden="true"></i>
+              <span class="sr-only">{% trans "Dashboard for:" as tmsg %}{{ tmsg | force_escape }}</span>
+              {{ user.username }}
+            </button>
+            <button type="button" class="btn btn-default dropdown-toggle hidden-xs nav-button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true">
+              <span class="caret"></span>
+              <span class="sr-only">{% trans "Toggle Dropdown" as tmsg %}{{ tmsg | force_escape }}</span>
+            </button>
+            <ul class="dropdown-menu" aria-expanded="false">
+              {% block dropdown_menu %}{% endblock dropdown_menu %}
+            </ul>
+              {% block small_dropdown_menu %}{% endblock small_dropdown_menu %}
+          </li>
+        {% else %}
+          {# Show login button except when: #}
+          {# ALL conditions are met: COUPONS_DISABLE_LOGIN_BUTTON: true + valid request + path contains "/coupons/offer/" #}
+          {# Otherwise, show the button (missing request, missing path, different URL, or COUPONS_DISABLE_LOGIN_BUTTON: false or not defined) #}
+          {% if not custom_settings.COUPONS_DISABLE_LOGIN_BUTTON|default_if_none:False or not request or not request.path or not "/coupons/offer/" in request.path|default_if_none:"" %}
+            <a class="btn btn-primary navbar-btn hidden-xs" href="{% url 'login' %}">{% trans "Login" as tmsg %}{{ tmsg | force_escape }}</a>
+            <li class="visible-xs"><a class="nav-link" href="{% url 'login' %}">{% trans "Login" as tmsg %}{{ tmsg | force_escape }}</a></li>
+          {% endif %}
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</header>
