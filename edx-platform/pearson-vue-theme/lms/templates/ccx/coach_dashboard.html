@@ -10,6 +10,15 @@ from openedx.core.djangolib.js_utils import (
 )
 %>
 
+<%
+## Pearson Institution Admins/Instructors manage students through the Pearson
+## portals, so the native "Student Admin" sub-tab is hidden for them. The value is
+## computed in the CCX dashboard view (is_suppressed_role) and gated by the
+## ENABLE_ROLE_BASED_PANEL_SUPPRESSION site configuration flag. Defaults to False
+## so the template never breaks when the value is not provided.
+hide_student_admin = context.get('hide_student_admin', False)
+%>
+
 <%block name="pagetitle">${_("CCX Coach Dashboard")}</%block>
 
 <%block name="headextra">
@@ -39,7 +48,7 @@ from openedx.core.djangolib.js_utils import (
             <button type="button" class="btn-link" data-section="schedule">${_("Schedule")}</button>
           </li>
           % endif
-          % if waffle.switch_is_active('enable_ccx_coach_dashboard_student_admin_tab'):
+          % if waffle.switch_is_active('enable_ccx_coach_dashboard_student_admin_tab') and not hide_student_admin:
           <li class="nav-item">
             <button type="button" class="btn-link" data-section="student_admin">${_("Student Admin")}</button>
           </li>
